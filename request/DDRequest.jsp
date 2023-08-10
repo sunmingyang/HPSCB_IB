@@ -260,184 +260,148 @@
 			</script>
 
 				<html>
-				<tiles:insert page="/common/siteLayout.jsp" flush="true">
-				<tiles:put name="title" value="Request"/>
-			<% if(!usrType.equals("admin")){%>
-				<tiles:put name="menu" value="/common/user_left.jsp?src=request"/>
-				<%}%>
-				<tiles:put name="header" value="/common/header.jsp"/>
-				<tiles:put name="header_marquee" value="/common/header_marquee.jsp"/>
-				<tiles:put name="menu_tab" value="/common/menu_tab.jsp?src=req"/>
-				<tiles:put name="line" value="/common/line.html"/>
-				<tiles:put name="page_header" type="String" >
-				&nbsp;<font color="#99FF00"><b><%if(usrName!=null) out.print(usrName);%>!</b></font>&nbsp;&nbsp;&nbsp;
-				Request >>Demand Draft Request
-				</tiles:put>
-				<tiles:put name="content" type="String">
-				<br>
-				<br>
+			<jsp:include page="/dashBoard/dashboardNew.jsp" />
 			<body onload="loadfun();DocumentType();BankInfo()">
 			<html:form action="/request/DDRequest">
-
-			<table>
-				<tr>
-					<td class="simple">	
-						Account No
-					</td>
-					<td class="simple">	
-					<%if(req_detail==null){%>
-					<html:select property="accList" >
-					<%	if(len != 0)
-						{ 
-							String accNo = "";
-							for(int i=0; i<len; i++)
-							{
-								
-								accNo = usrInfo[i][1]+"-"+usrInfo[i][0];
-								%>
-								<html:option value='<%=accNo%>' styleId="accNo"><%=accNo%></html:option>
-								<%
-							}
-						}	%>
-					</html:select >
-							<%}
-						else
-							{%>
-							<html:select property="accList" disabled="true">
-									<html:option value="accno"><%=accno%></html:option>
-							</html:select>
-							<%}%>
-					</td>
-				</tr>
-				<tr>
-					<td class="simple">
-					Name of Beneficiary
-					</td>
-					<td class="simple" colspan="4">
-					<%if(req_detail==null){%>
-							<html:text property="nameOfBen" size="40" maxlength="70" styleId="nameOfBen" />
-							(Max Length 70 Char)
-							<%}else{%>
-							<html:text property="nameOfBen" size="40" maxlength="70" value="<%=nameOfBen%>" />
-							<%}%>
-					</td>
-				</tr>
-				<tr>
-				<td class="simple">
-				Document Type
-				</td>
-				<td>
-					  
-						<html:select property="docType" styleId="DocType" onchange="onSet()">
-						
-							<html:option value="DocType" >Select</html:option>	
-									
-						</html:select>
-						<input type="text" name="isDocTypeLabel" size="50" tabindex="-1" value=""  class="LabelText" id="isDocType" > 
-				</td>
-				</tr>
-				<tr>
-				<td class="simple">
-				Bank Name
-				</td>
-				<td>
-						  <html:select property="bankCode" styleId="bankCode" onchange="setName1()">
-						
-							<html:option value="bankCode" >Select</html:option>	
-									
-						</html:select>
-							
-						<input type="text" name="isBankName" size="50" tabindex="-1" value=""  class="LabelText" id="isBankName" readonly="readonly"> 
-				</td>
-				</tr>
-				<tr>
-				<td class="simple">
-				Branch Name	
-				</td>
-				<td>
-					  
-						<html:text property="branchCode" maxlength="15" tabindex="2" value="" onchange="BranchInfo()" styleId="branchCode"/>	
-						<input type="text" name="isBranchName" size="50" tabindex="-1" value=""  class="LabelText" id="isBranchName" readonly="readonly">
-				</td>
-				</tr>
-				<tr>
-				<td class="simple">
-				Commission	
-				</td>
-				<td>
-				
-						<html:text property="commission"  styleId="commission"  size="20" styleId="commission" maxlength="15"  tabindex="2" value=".00" />
-						 
-				</td>
-				</tr>
-				<tr>
-					<td class="simple">
-					Demand Draft Amount
-					</td>
-					<td>
-						<%if(req_detail==null){%>
-							<html:text property="amount"  size="20" styleId="amount" maxlength="15" onkeypress="javascript:isValidAmount(event,amount)" />
-						<%}else{%>
-							<html:text property="amount" size="20" styleId="amount" value="<%=sAmt%>" maxlength="15" readonly="true"/>
-						<%}%>
-					</td>
-					<td class="simple">
-					Currency
-					</td>
-					<td>
-
-
-					<%if(req_detail==null){%>
-							<html:text property="curCode" size="20" styleId="curCode" maxlength="15" readonly="true" value="<%=usrInfo[0][5]%>" />
-						<%}else{%>
-							<html:text property="curCode" size="20" styleId="curCode" value="<%=curCode%>" maxlength="15" readonly="true"/>
-						<%}%>
-
-						</td>
-				</tr>
-				<tr>
-					<td class="simple">
-						&nbsp;&nbsp;&nbsp;Maximum Amount :<b> 100000.00 Rs</b>
-					</td>
-				</tr>
-				<tr>
-					<td class="simple">
-					Payable At
-					</td>
-					<td class="simple">
-					<%if(req_detail==null){%>
-							<html:text property="payableAt" styleId="payableAt" size="20" maxlength="35"  />
-					<%}else{%>
-							<html:text property="payableAt" size="20" styleId="payableAt" maxlength="35" disabled="true" value="<%=payableAt%>"/>				
-						<%}%>
-					</td>
-				</tr>
-				<!-- <tr>
-					<%if(req_detail==null){%>
-					<td class="simple">
-					Enter Transaction Password
-					</td>
-					<td>
-							<html:password property="tranPass" styleId="tranPass"   maxlength="20"/>
-					</td>
-					<%}%>
-				</tr> -->
-				<tr>
-					
-					<td>
-					<%if(req_detail==null){%>
-						<input type="button" name="save" value="Save" onclick="saveData()" class="button"/ >
-					<%}else{%>
-						<input type="button" name="save" value="Save" disabled class="button"/ >
-					<%}%>
-					</td>
-				</tr>
-				 <tr>
-				<td>
-					<input type="hidden"  style="margin-left: px;" maxlength="35"  value="<%=login_id%>" size="40" id="userid">
-				</td>
-				</tr>
-			</table>
+                <div class="breadcrumb-container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="breadcrumb">
+                                <div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
+                               
+                                <div class="breadcrumb-item"><a >Request</a></div>
+                                
+                                <div class="breadcrumb-item"><a> Demand Draft Request</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		
+                <div class="container-fluid box-sec p-4">
+                    <div class="row">
+                        <div class="col-md-3">
+                          
+                                <label class="simple" for="accList">Account No</label>
+                                <% if (req_detail == null) { %>
+                                    <select class="form-control" id="accList" name="accList">
+                                        <% if (len != 0) {
+                                            String accNo = "";
+                                            for (int i = 0; i < len; i++) {
+                                                accNo = usrInfo[i][1] + "-" + usrInfo[i][0];
+                                        %>
+                                                <option value='<%= accNo %>'><%= accNo %></option>
+                                        <% }
+                                        } %>
+                                    </select>
+                                <% } else { %>
+                                    <select class="form-control" id="accList" name="accList" disabled>
+                                        <option value="accno"><%= accno %></option>
+                                    </select>
+                                <% } %>
+                          
+                        </div>
+                        <div class="col-md-3">
+                          
+                                <label class="simple" for="nameOfBen">Name of Beneficiary</label>
+                                <% if (req_detail == null) { %>
+                                    <input type="text" class="form-control" id="nameOfBen" name="nameOfBen" size="40" maxlength="70">
+                                    <p class="small">(Max Length 70 Char)</p>
+                                <% } else { %>
+                                    <input type="text" class="form-control" id="nameOfBen" name="nameOfBen" size="40" maxlength="70" value="<%= nameOfBen %>">
+                                <% } %>
+                          
+                        </div>
+                  
+                  
+                        <div class="col-md-3">
+                          
+                                <label class="simple">Document Type</label>
+                                <select class="form-control" id="docType" name="docType" onchange="onSet()">
+                                    <option value="DocType">Select</option>
+                                </select>
+                                <input type="text"  class="form-control" name="isDocTypeLabel" size="50" tabindex="-1" value="" class="LabelText" id="isDocType">
+                           
+                        </div>
+                        <div class="col-md-3">
+                          
+                                <label class="simple">Bank Name</label>
+                                <select class="form-control" id="bankCode" name="bankCode" onchange="setName1()">
+                                    <option value="bankCode">Select</option>
+                                </select>
+                                <input type="text" name="isBankName" class="form-control" size="50" tabindex="-1" value="" class="LabelText" id="isBankName" readonly>
+                          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="simple">Branch Name</label>
+                                <input type="text" class="form-control" id="branchCode" name="branchCode" maxlength="15" tabindex="2" value="" onchange="BranchInfo()">
+                                <input type="text" class="form-control" name="isBranchName" size="50" tabindex="-1" value="" class="LabelText" id="isBranchName" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="simple">Commission</label>
+                                <input type="text" class="form-control" id="commission" name="commission" size="20" maxlength="15" tabindex="2" value=".00">
+                            </div>
+                        </div>
+                   
+                  
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="simple">Demand Draft Amount</label>
+                                <% if (req_detail == null) { %>
+                                    <input type="text" class="form-control" id="amount" name="amount" size="20" maxlength="15" onkeypress="javascript:isValidAmount(event,amount)">
+                                <% } else { %>
+                                    <input type="text" class="form-control" id="amount" name="amount" size="20" maxlength="15" value="<%= sAmt %>" readonly>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="simple">Currency</label>
+                                <% if (req_detail == null) { %>
+                                    <input type="text" class="form-control" id="curCode" name="curCode" size="20" maxlength="15" readonly value="<%= usrInfo[0][5] %>">
+                                <% } else { %>
+                                    <input type="text" class="form-control" id="curCode" name="curCode" size="20" maxlength="15" readonly value="<%= curCode %>">
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="simple">Maximum Amount: <b>100000.00 Rs</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        
+                                <label class="simple">Payable At</label>
+                                <% if (req_detail == null) { %>
+                                    <input type="text" class="form-control" id="payableAt" name="payableAt" size="20" maxlength="35">
+                                <% } else { %>
+                                    <input type="text" class="form-control" id="payableAt" name="payableAt" size="20" maxlength="35" disabled value="<%= payableAt %>">
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="hidden" maxlength="35" value="<%= login_id %>" size="40" id="userid">
+                        </div>
+                        <div class="row ">
+                            <div class="form-group text-center">
+                                <input type="button" class="btn-primary btn-sm" name="save" value="Save" <% if (req_detail == null) { %> onclick="saveData()" <% } %> class="button" <% if (req_detail != null) { %> disabled <% } %>>
+                            </div>
+                        </div>
+                   
+                    </div>
+                    
+                    
+                     
+                </div>
+                
+                
+			
 					<div id="diverrmessage">
 						<logic:messagesPresent property="NoServer">
 						<html:errors property="NoServer"/>
@@ -452,7 +416,4 @@
 			</html:form>
 			</body>
 			</html>
-			</tiles:put>
-			<tiles:put name="add" value="/Advertisement/add.jsp"/>
-			<tiles:put name="footer" value="/common/footer.jsp"/>
-			</tiles:insert >
+			

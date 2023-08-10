@@ -643,15 +643,7 @@
 	
 
 
-    <div class="bottom-footer">
-       <div class="container">
-          <div class="row">
-             <div class="col-md-12">                
-				<p>Copyright &#169;  2023, Himachal Pradesh State Co-operative Bank Ltd. All Rights Reserved.</p>
-             </div>
-          </div>
-       </div>
-    </div>
+   
 </html:form>
 
 
