@@ -21,7 +21,7 @@
 <style>
  .fd-details-table {
     background: #fff;
-    padding: 0 25px 50px;
+    /* padding: 0 25px 50px; */
 }
 
     .fd-details-table .table-inner {
@@ -44,7 +44,7 @@
 }
 
 .fd-details-table .table-inner table td {
-    padding: 15px;
+    padding: 8px;
     border: 1px solid #ccc;
 }
 
@@ -91,50 +91,7 @@ div#demo {
 <jsp:include page="/dashBoard/dashboardNew.jsp" />
 
 <body onload="fillData()" >
-      <!-- <section class="brad-log-time">
-        <div class="inner-brad-log">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bradcums">
-                            <ul>
-                                <li>
-                                    <a href="/dashBoard/dashboard.jsp">Dashboard</a>
-                                    >
-                                    <strong>Mini-Statement</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>  
-                    <div class="col-md-6">
-                     <div class="log-time">
-                        <span class="time">
-                            <%= (new java.util.Date()).toLocaleString()%>
-                        </span>
-                        <span class="">
-                            <strong><%=session.getAttribute("usrName") %></strong>
-                        </span>
-                        <span class="profile">                       
-                          <i class="fa fa-user" aria-hidden="true"></i>                     
-                           <img src="/styles/images/down-aroowwww.png" alt="">
-                        </span>
-                        <span class="profile-menu">
-                           <ul>
-                              <li>
-                                <a href="/my_profile/my_profile.jsp">My Profile</a>
-                              </li>
-                              <li>
-                                <a href="/jsp/login.do?action=ibUsrLogout">Log Out</a>
-                              </li>
-                           </ul>
-                        </span>
-                     </div>
-                    </div>              
-                </div>
-            </div>
-        </div>
-    </section> -->
-
+   
     <div class="breadcrumb-container">
         <div class="row">
             <div class="col">
@@ -161,16 +118,16 @@ div#demo {
                                        <!-- <div class="account-main-heading">
                                           <h2>Mini Statement</h2>
                                        </div> -->
-                                       <div class="pay-heading">
+                                       <div class="account-main-heading">
                                         <h6>
                                            <img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
                                            Mini Statement
                                         </h6>  
                                      </div>
-                                        <div class="chosse-an-account d-flex"> 
-                                            <span class="inner-inpts">
-                                                <div><label>Please Select Account:  </label></div>
-                                                <div>
+                                        <div class="chosse-an-account col-md-12"> 
+                                            <div class="inner-inpts d-flex">
+                                                <div class="col-md-6" ><label>Please Select Account:  </label></div>
+                                                <div class="col-md-4">
                                                     <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
                                                         <%
                                                             if(myList.size()!=0)
@@ -186,10 +143,10 @@ div#demo {
                                                         <%                                                            
                                                             }
                                                         %>
-                                                    </select>  
+                                                    </select>   
                                                 </div>
                                                                                                
-                                            </span>
+                                            </div>
                                         </div>  
                                         <div class="Selected-Account-Number">
                                             <strong>Selected Account Number:  </strong>

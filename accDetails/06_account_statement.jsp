@@ -537,7 +537,7 @@
 
                   
 
-                    <div class="statement-start-aria show">
+                    <div class="statement-start-aria show" style="width: 100%; margin-top: 85px;">
                         <span class="headline-upper">
                             <%
                                 if(source.equals("detail")){
@@ -578,7 +578,7 @@
 					System.out.print("jjj"+j);
 					if(j!=0) {}
 					{%>							
-				<table border="2" id="myTable" >						
+				<table border="2" id="myTable" style="width: 100%;" >						
 						<thead>		
 							<tr>						
 								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black "> S.No </th>
