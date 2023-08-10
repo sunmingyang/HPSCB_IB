@@ -35,10 +35,10 @@
     }
 
     .fd-details-table .table-inner table th {
-    padding: 15px 15px;
+    /* padding: 15px 15px; */
     background: #0a67b5;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     border: 1px solid #145996;
 }
@@ -167,25 +167,28 @@ div#demo {
                                            Mini Statement
                                         </h6>  
                                      </div>
-                                        <div class="chosse-an-account"> 
+                                        <div class="chosse-an-account d-flex"> 
                                             <span class="inner-inpts">
-                                                <label>Please Select Account:  </label>
-                                                <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
-                                                    <%
-                                                        if(myList.size()!=0)
-                                                    %>
-                                                    <%
-                                                        for(int i=0; i<myList.size(); i++){			        		    	               			
-                                                    %>
-                                                    <option value="<%=myList.get(i)%>" >                                   
-                                                        <span class="accountnu">
-                                                            <%=myList.get(i)%>     
-                                                        </span>
-                                                    </option>                                
-                                                    <%                                                            
-                                                        }
-                                                    %>
-                                                </select>                                                    
+                                                <div><label>Please Select Account:  </label></div>
+                                                <div>
+                                                    <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
+                                                        <%
+                                                            if(myList.size()!=0)
+                                                        %>
+                                                        <%
+                                                            for(int i=0; i<myList.size(); i++){			        		    	               			
+                                                        %>
+                                                        <option value="<%=myList.get(i)%>" >                                   
+                                                            <span class="accountnu">
+                                                                <%=myList.get(i)%>     
+                                                            </span>
+                                                        </option>                                
+                                                        <%                                                            
+                                                            }
+                                                        %>
+                                                    </select>  
+                                                </div>
+                                                                                               
                                             </span>
                                         </div>  
                                         <div class="Selected-Account-Number">
