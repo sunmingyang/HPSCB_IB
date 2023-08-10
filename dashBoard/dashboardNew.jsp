@@ -115,7 +115,7 @@ span.profile-menu a:hover {
                   </div>
                 </li>
                 <hr class="p-0 m-0">
-                <li class="py-2 px-2">
+                <li class="py-2 px-2" onclick="()=>{localStorage.clear()}">
                   <a href="/jsp/login.do?action=ibUsrLogout">
                     <i class="fa fa-sign-out me-2 "></i>  
                     <span class="text-dark fw-semibold">Logout</span> 
