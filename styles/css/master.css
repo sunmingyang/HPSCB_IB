@@ -2533,7 +2533,7 @@ section.PAYMENTS-TRANSFER-main .payments-and-transfer-inner .pay-heading {
   /*height: 45px*/
 }
 
- {section.PAYMENTS-TRANSFER-main .payments-and-transfer-inner .pay-heading h6
+ section.PAYMENTS-TRANSFER-main .payments-and-transfer-inner .pay-heading h6{
  /* margin: 0 0 30px;*/
   background: #e5f4ff;
   padding: 5px 18px;

@@ -548,7 +548,7 @@
                                         <span class="date-pikkar">
     		    		                    <bean:message bundle='<%=lang %>' key='115'/>
                                             &nbsp;:&nbsp;
-                	    			        <input type="text" id="fromdate" value="<%=frdate%>" class="miniStmtResultback" style="width: 167.66666px;margin-left: 20px;" disabled>
+                	    			        <input type="text" id="fromdate" value="<%=frdate%>" class="miniStmtResultback" disabled>
                                         </span>
 
                                         &nbsp;&nbsp;
@@ -556,7 +556,7 @@
                                         <span class="date-pikkar">
 			                    	        <bean:message bundle='<%=lang %>' key='116'/>
                                             &nbsp;:&nbsp;
-                				            <input type="text" id="todate" value="<%=todate%>" class="miniStmtResultback" style="width: 167.66666px;margin-left: 20px;" disabled>
+                				            <input type="text" id="todate" value="<%=todate%>" class="miniStmtResultback" disabled>
                                         </span>
                                     </div>
 				
@@ -581,12 +581,12 @@
 				<table border="2" id="myTable" style="width: 100%;" >						
 						<thead>		
 							<tr>						
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black "> S.No </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black " > Date </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black " > Description </th>
-                                <th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black " > DEBIT </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black " > CREDIT </th>								
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 18px; color:black " > BALANCE </th>
+								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black "> S.No </th>
+								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Date </th>
+								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Description </th>
+                                <th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > DEBIT </th>
+								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > CREDIT </th>								
+								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > BALANCE </th>
 							</tr>
 						</thead> 
 						<tbody>
@@ -597,12 +597,12 @@
 						int k=0;
 			%>				
 				<tr>			
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 18px;"> <%=i+1%>	</td> 
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 18px;"> <%= mini_date.get(i) %>     </td>
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 18px;"> <%=mini_Edesc.get(i) %> </td>
-					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 18px;" > <%if(mini_crdr.get(i).equals("D")){%> <%= mini_amt.get(i)%><%}%>  </td>
-                    <td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 18px;" > <%if(mini_crdr.get(i).equals("C")) {%> <%= mini_amt.get(i)%><%}%> </td>					
-					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 18px;" > <%= mini_cumbal.get(i) %> </td>
+					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=i+1%>	</td> 
+					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%= mini_date.get(i) %>     </td>
+					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=mini_Edesc.get(i) %> </td>
+					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("D")){%> <%= mini_amt.get(i)%><%}%>  </td>
+                    <td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("C")) {%> <%= mini_amt.get(i)%><%}%> </td>					
+					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%= mini_cumbal.get(i) %> </td>
 					
                 </tr>    
 					<%  session.removeAttribute("mini_stmt");
