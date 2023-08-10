@@ -43,7 +43,7 @@
 	else{
 		System.out.println("ACC NO is null : ");
 	}
-%>
+%>  
 <script>
 function submitPage(){
 	document.forms[0].action = "/accsum/acc_sum.do?action=AccDetail";
@@ -90,7 +90,7 @@ function helpopen()
 						
 					<html:form action="/accsum/acc_sum.do">
 						<div class="container">
-							<div class="box-sec mt-5 p-4 s">
+							<div class="box-sec mt-5 p-4">
 							  <div class="row align-items-center justify-content-center">
 								<div class="col-md-4 mb-3">
 								  <label class="normalHeadText d-flex">Select an Account</label>
@@ -234,7 +234,6 @@ function helpopen()
 						</tr>
 						<%}%>
 					</table>
-					<br>
 			</td>
 		</tr>
 	</table>
