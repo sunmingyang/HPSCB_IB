@@ -369,7 +369,7 @@
 
 <!-- header-end -->
 
-<section class="brad-log-time">
+<!-- <section class="brad-log-time">
         <div class="inner-brad-log">
             <div class="container">
                 <div class="row">
@@ -413,7 +413,21 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+	<div class="breadcrumb-container">
+		<div class="row">
+			<div class="col">
+				<div class="breadcrumb">
+					<div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
+					<div class="breadcrumb-item">    <a >Account</a></div>
+					
+					
+					<div class="breadcrumb-item"><a> Account Statement </a></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <section class="Account-Statement">
     <div class="Account-Statement-inner">
@@ -424,8 +438,8 @@
                     <div class="account-main-heading">
                         <img src="/styles/images/bank-statement-icon 1.png" alt=""> Account-Statement
                     </div>               
-                    <div class="chosse-an-account">
-                        <html:select property="sAccnum" styleId="sAccnum" onchange="radioClick(this.value)">                          
+                    <div class="chosse-an-account row p-2">
+                        <html:select property="sAccnum" style="padding: 5px; width: 30%; " styleId="sAccnum" onchange="radioClick(this.value)">                          
                                 <% 
 					            	if(myList.size() != 0){
         			      			    String accNo = "";
