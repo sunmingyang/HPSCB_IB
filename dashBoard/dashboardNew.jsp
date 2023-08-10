@@ -81,7 +81,7 @@ span.profile-menu a:hover {
   console.log("<%=ustKid%>");
 </script>
 <body id="body-pd">
-    <header class="header shadow" id="header">
+    <header class="header shadow-sm" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <nav class="navbar navbar-expand-lg navbar-light">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->

@@ -208,7 +208,19 @@ else
 				
 				
 </script>
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body>
+	<div class="breadcrumb-container">
+		<div class="row">
+			<div class="col">
+				<div class="breadcrumb">
+					<div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
+					<div class="breadcrumb-item"><a>Fund Transfer</a></div>
+					<div class="breadcrumb-item">Standing Instructions</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="wrapperDataTableTR  container text-center" >
 		<h2 class=" label-style badge bg-primary p-2 fs-6 mt-2 ">Standing Instructions Reminder</h2>
 	</div>
@@ -283,7 +295,7 @@ else
 			</div>
 			<input type="hidden" value="<%=date%>" id="tDate"/>
 			<div class="row justify-content-center">
-				<div class="col-md-4">
+				<div class="col-md-4 text-center">
 					<input type="button" onClick="return saveDetail()" class="btn btn-primary btn-block" value="<bean:message bundle='<%=lang%>' key='7119'/>">
 				</div>
 			</div>

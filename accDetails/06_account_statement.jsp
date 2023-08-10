@@ -369,51 +369,6 @@
 
 <!-- header-end -->
 
-<!-- <section class="brad-log-time">
-        <div class="inner-brad-log">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bradcums">
-                            <ul>
-                                <li>
-                                    <a href="/dashBoard/dashboard.jsp">Dashboard</a>
-                                    >
-                                    <strong>Account Statement</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>  
-                    <div class="col-md-6">
-                     <div class="log-time">
-                        <span class="time">
-                            <%= (new java.util.Date()).toLocaleString()%>
-                        </span>
-                        <span class="">
-                            <strong><%=session.getAttribute("usrName") %></strong>
-                        </span>
-                        <span class="profile">                       
-                          <i class="fa fa-user" aria-hidden="true"></i>                     
-                           <img src="/styles/images/down-aroowwww.png" alt="">
-                        </span>
-                        <span class="profile-menu">
-                           <ul>
-                              <li>
-                                <a href="/my_profile/my_profile.jsp">My Profile</a>
-                              </li>
-                              <li>
-                                <a href="/jsp/login.do?action=ibUsrLogout">Log Out</a>
-                              </li>
-                           </ul>
-                        </span>
-                     </div>
-                    </div>
-
-              
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 	<div class="breadcrumb-container">
 		<div class="row">
