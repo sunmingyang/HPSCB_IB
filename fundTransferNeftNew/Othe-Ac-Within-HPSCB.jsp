@@ -408,11 +408,10 @@ function otp_number(){
 
                   <div class="chosse-an-account">
 				     
-  
                       <div class="   d-flex justify-content-center my-0  col-md-4 ">
                          <label  class="col-md-4" for="">From Account</label>
 				                                      
-                                            <select name="fromAccount" id="fromAccount" class="form-select" onchange="radioClick(this.value)">
+                        <select name="fromAccount" id="fromAccount" class="form-select" onchange="radioClick(this.value)">
 											
                         <%if (accListArr != null) { %>       						
 					            <% for(int i=0;i<accListArr.length;i++){
@@ -425,7 +424,7 @@ function otp_number(){
                                           
                               <option value='<%=accListArr[i]%>'><%=accListArr[i]%></option>
 						<%}}%> 
-                     </select>
+                        </select>
                     </div>
                     
                 </div>
