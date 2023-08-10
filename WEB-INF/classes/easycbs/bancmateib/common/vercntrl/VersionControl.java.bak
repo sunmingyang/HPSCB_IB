@@ -1,0 +1,1186 @@
+package easycbs.bancmateib.common.vercntrl ; 
+//import cbs.CommonParameter ;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import easycbs.bancmateib.common.DateTime.DateTimeFunction;
+import easycbs.bancmateib.common.dataclasses.DataBaseClass;
+import easycbs.bancmateib.common.dataclasses.SelectDataBean;
+import easycbs.bancmateib.common.dataclasses.SelectDataBeanRowCol;
+import easycbs.bancmateib.common.globalfunction.GeneralGlobalFunction;
+import easycbs.bancmateib.common.util.MathFunction;
+
+//import bancmate.reports.common.ReportDeployement;
+
+public class VersionControl 
+{
+	String sSql = "" ; 
+	//double decAppVer = 1.87 ; // as per discussion with vinay sir dated 23 march 
+	//double decAppVer = 1.88 ; // Changes related to VFL Fund Transfer 
+	double decAppVer = 1.97 ; // Changes related to VFL Fund Transfer
+	
+	
+	public VersionControl() {}	 ; 
+	private void runVersionControlForIndex(String decver , DataBaseClass db) {
+		//CreateNewMenu createNewMenu = new CreateNewMenu() ;  	
+		if (decver.trim().equals("1.00") )
+		{}
+		else if ( decver.trim().equals("1.01") ) 
+		{}
+		
+		
+	}
+	
+	/*private void runVersionControl(String decver , DataBaseClass db) {
+
+	}*/
+	private void runVersionControl(String decver , DataBaseClass db) {
+//	decver  = Double.valueOf(sVer) ;
+	//CreateNewMenu createNewMenu = new CreateNewMenu() ;  	
+	if (decver.trim().equals("1.00") )
+	{}
+	else if ( decver.trim().equals("1.01") ) {}
+	else if (decver.trim().equals("1.03") ) {}
+	else if (decver.trim().equals("1.04") ) {}
+	
+	else if (decver.trim().equals("1.05") ) {}
+	else if (decver.trim().equals("1.06") ) {}
+	else if (decver.trim().equals("1.07") ) {}
+	else if (decver.trim().equals("1.08") ) {}
+	else if (decver.trim().equals("1.09") ) {}	
+		else if (decver.trim().equals("1.11") ) {}
+		else if (decver.trim().equals("1.12") ) {}
+		else if (decver.trim().equals("1.13") )  {}
+		else if (decver.trim().equals("1.14") ) 
+		{}
+		else if (decver.trim().equals("1.15") ) 
+		{}	
+		else if (decver.trim().equals("1.16") ) 
+		{}
+			
+		else if (decver.trim().equals("1.17") ) {}
+		else if (decver.trim().equals("1.18") ) {}
+		else if (decver.trim().equals("1.19") ) {} 
+		else if(decver.trim().equals("1.20")) {}
+		else if(decver.trim().equals("1.21")) {}
+		else if(decver.trim().equals("1.30")) {
+			// alter table s_ibcpr add ibcpr_version numeric(5)
+			// update s_ibcpr set ibcpr_version='1.80'
+		}
+		else if(decver.trim().equals("1.31")) {		}
+		else if(decver.trim().equals("1.32")) {		}
+		else if(decver.trim().equals("1.33")) {		}
+		else if(decver.trim().equals("1.34")) {		}
+		else if(decver.trim().equals("1.35")) {		}
+		else if(decver.trim().equals("1.36")) {		}
+		else if(decver.trim().equals("1.37")) {		}
+		else if(decver.trim().equals("1.38")) {		}
+		else if(decver.trim().equals("1.39")) {		}
+		else if(decver.trim().equals("1.40")) {		}
+		else if(decver.trim().equals("1.41")) {		}
+		else if(decver.trim().equals("1.42")) {		}
+		else if(decver.trim().equals("1.43")) {		}
+		else if(decver.trim().equals("1.44")) {		}
+		else if(decver.trim().equals("1.45")) {		}
+		else if(decver.trim().equals("1.46")) {		}
+		else if(decver.trim().equals("1.47")) {		}
+		else if(decver.trim().equals("1.48")) {		}
+		else if(decver.trim().equals("1.49")) {		}
+		else if(decver.trim().equals("1.50")) {		}
+		else if(decver.trim().equals("1.51")) {		}
+		else if(decver.trim().equals("1.52")) {		}
+		else if(decver.trim().equals("1.53")) {		}
+		else if(decver.trim().equals("1.54")) {		}
+		else if(decver.trim().equals("1.55")) {		}
+		else if(decver.trim().equals("1.56")) {		}
+		else if(decver.trim().equals("1.57")) {		}
+		else if(decver.trim().equals("1.58")) {		}
+		else if(decver.trim().equals("1.59")) {		}
+		else if(decver.trim().equals("1.60")) {		}
+		else if(decver.trim().equals("1.61")) {		}
+		else if(decver.trim().equals("1.62")) {		}
+		else if(decver.trim().equals("1.63")) {		}
+		else if(decver.trim().equals("1.64")) {		}
+		else if(decver.trim().equals("1.65")) {		}
+		else if(decver.trim().equals("1.66")) {		}
+		else if(decver.trim().equals("1.67")) {		}
+		else if(decver.trim().equals("1.68")) {		}
+		else if(decver.trim().equals("1.69")) {		}
+		else if(decver.trim().equals("1.70")) {		}
+		else if(decver.trim().equals("1.71")) {		}
+		else if(decver.trim().equals("1.72")) {		}
+		else if(decver.trim().equals("1.73")) {		}
+		else if(decver.trim().equals("1.74")) {		}
+		else if(decver.trim().equals("1.75")) {		}
+		else if(decver.trim().equals("1.75")) {		}
+		else if(decver.trim().equals("1.76")) {		}
+		else if(decver.trim().equals("1.77")) {		}
+		else if(decver.trim().equals("1.78")) {		}
+		else if(decver.trim().equals("1.79")) {		}
+		else if(decver.trim().equals("1.80")) {		}
+		else if(decver.trim().equals("1.81")) {
+			System.out.println("Going for Version 1.81");
+			db.alterTableAddColumn("s_ibusr","ibusr_mkrid","varchar(20)","null");
+			sSql="drop table s_emsgdtl";
+			System.out.println("query going to run : -->"+sSql);
+			db.dbRunDDLCommand(sSql);
+			sSql="CREATE TABLE [dbo].[s_emsgdtl](" +
+					"[emsgdtl_kid] [numeric](7, 0)IDENTITY(1,1) NOT NULL," +
+					"[emsgdtl_attach] [char](1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"[emsgdtl_msg] [ntext] COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"[emsgdtl_subject] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL" +
+					")";
+			db.dbRunDDLCommand(sSql);
+			sSql="drop table s_emsgsts";
+			System.out.println("query going to run : -->"+sSql);
+			db.dbRunDDLCommand(sSql);
+			sSql="		 CREATE TABLE [dbo].[s_emsgsts](" +
+					"	[emsgsts_id] [numeric](10, 0)IDENTITY(1,1) NOT NULL," +
+					"	[emsgsts_srcid] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"	[emsgs_brcode] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"	[emsgsts_destid] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"	[emsgsts_status] [char](1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"	[emsgsts_emsgdtlid] [numeric](7, 0) NULL," +
+					"	[emsgsts_contenttype] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL," +
+					"	[emsgsts_sentdate] [datetime] NULL," +
+					"	[emsgs_ccid] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL" +
+					")";
+			db.dbRunDDLCommand(sSql);
+			db.alterTableAddColumn("s_ibusr","ibusr_mailpswd","nvarchar(200)","null");
+		}
+		else if(decver.trim().equals("1.82")) {
+			// modifications for fetching data based on usr_kid begins
+			db.alterTableAddColumn("s_abbiblog","abbiblog_usrkid","numeric(10)","null");
+			db.alterTableAddColumn("s_ibusrstatuslog","log_usrkid","numeric(10)","null");
+			db.alterTableAddColumn("s_abbiblog","abbiblog_sessId","nvarchar(50)","null");
+			
+			String sql="CREATE TABLE [dbo].[s_hwmac](		" +
+			"			[mac_kid] [numeric](10, 0) IDENTITY(1,1) NOT NULL," +
+			"		[mac_ipadd] [nvarchar](20) ," +
+			"		[mac_brncode] [varchar](10)," +
+			"		[mac_dtofentry] [dbo].[BM_DATETIME] NULL," +
+			"		[mac_macAdd] [nvarchar](50) ," +
+			"		[mac_status] [char](1) ," +
+			"		[mac_flag] [char](1) ," +
+			"		[mac_usrid] [dbo].[BM_VARMSTKID_OLD] NOT NULL," +
+			"		[mac_susrid] [dbo].[BM_VARMSTKID_OLD] NOT NULL" +
+			"		)";
+			db.dbRunDDLCommand(sSql);
+			 sql="CREATE TABLE [dbo].[s_ibust](" +
+					" [ust_kid] [numeric](7, 0) IDENTITY(1,1) NOT NULL," +
+					"[ust_hname] [nvarchar](100) ," +
+					"[ust_ename] [nvarchar](50) ," +
+					"	[ust_pid] [numeric](7, 0) NULL," +
+					"[ust_psday] [numeric](3, 0) NULL," +
+					"	[ust_type] [char](1) ," +
+					"[checksum] [char](32) ," +
+					"[ust_sign] [char](1) ," +
+					"[ust_alltype] [char](1) ," +
+					"[ust_inopsign] [char](1) ," +
+					"[ust_level] [char](1) ," +
+					"[ust_status] [char](1) ," +
+					"[ust_alrtPswd] [numeric](3, 0) NULL)" ;
+			 db.dbRunDDLCommand(sSql);
+			 db.alterTableAddColumn("s_ibusr","ibusr_ibustid","numeric(9)","null");
+			 sql="CREATE TABLE [dbo].[s_mnu](" +
+			 		" [mnu_sno] [numeric](5, 0) NULL," +
+			 		" [mnu_ename] [nvarchar](50) ," +
+			 		" [mnu_hname] [nvarchar](100) ," +
+			 		" [mnu_next] [numeric](5, 0) NULL," +
+			 		" [mnu_current] [numeric](5, 0) NULL," +
+			 		" [mnu_lvlno] [char](20) ," +
+			 		" [mnu_lvlsno] [char](20) ," +
+			 		" [mnu_moduleno] [numeric](3, 0) NULL," +
+			 		" [mnu_abr] [varchar](10) ," +
+			 		" [mnu_free] [varchar](2) ," +
+			 		" [mnu_pageDisplayType] [varchar](2) ," +
+			 		" [mnu_application] [char](1) ," +
+			 		" [mnu_wordno] [numeric](7, 0) NULL," +
+			 		" [mnu_dualAuth] [char](1)" +
+			 		" )" ;
+			 db.dbRunDDLCommand(sSql);
+			 
+			sql=" CREATE TABLE [dbo].[s_mnuust](" +
+					" [mnuust_mnusno] [numeric](5, 0) NULL," +
+					" [mnuust_userid] [numeric](7, 0) NULL," +
+					" [mnuust_flag] [char](1)" +
+					" )";
+			db.dbRunDDLCommand(sSql);
+		}
+		else if(decver.trim().equals("1.83")) {
+		}
+		else if(decver.trim().equals("1.84")) {
+		}
+		else if(decver.trim().equals("1.85")) {
+			//drop the table and  recreate 
+			db.dbRunDDLCommand("drop table s_ibfundtrpayee" );
+			db.dbRunDDLCommand("CREATE TABLE s_ibfundtrpayee( " + 
+					" ibfund_kid numeric(10, 0) IDENTITY(1,1) NOT NULL," +
+					" ibfund_accno varchar(19) NULL," +
+					" ibfund_nick varchar(5) NULL," +
+					" ibfund_mobile varchar(20) NULL," +
+					" ibfund_email varchar(50) NULL," +
+					" ibfund_brncode varchar(10) NULL," +
+					" ibfund_linkedno numeric(9, 0) NULL," +
+					" ibfund_ifscode varchar(20) NULL," +
+					" ibfund_userid varchar(15) NULL," +
+					" ibfund_type varchar(1) NULL," +
+					" ibfund_payeename varchar(50) NULL," +
+					" ibfund_status varchar(1) NULL, "  +
+					" ibfund_acctype varchar(1) NULL) " );
+
+		}else if(decver.trim().equals("1.86")) { 
+			db.alterTableAddColumn("s_ibusr","ibusr_simno","nvarchar(50)","default '' with values");
+	
+		}else if(decver.trim().equals("1.87")) { 
+			db.alterTableAddColumn("s_ibusr","ibusr_custRole","nvarchar(50)","default 'C' with values");
+		}else if(decver.trim().equals("1.88")) { 
+			
+		}else if(decver.trim().equals("1.89")) { 
+			
+		}else if(decver.trim().equals("1.90")) { 
+			db.dbRunDDLCommand("create table s_otpsent(otp_kid numeric(20,0) identity(1,1) , " + 
+					" otp_userid varchar(20) null , " +
+					" otp_purpose varchar(50) null , " +
+					" otp_ref varchar(20) null , " +
+					" otp_otp varchar(200) null , " +
+					" otp_senttime datetime default getdate() , " +
+					" otp_status varchar(20) null ) ");
+			
+			db.dbRunDDLCommand("create unique index otpsentind01 on s_otpsent(otp_kid)"); 
+			db.dbRunDDLCommand("create index otpsentind02 on s_otpsent(otp_userid,otp_ref,otp_status)" ) ;
+			
+			
+			String sql = "create proc usp_verifyotp(@userId varchar(20) , @BeneficiaryAcc varchar(20) , @encvalue varchar(200) ,@otpTimeMin varchar(10) , @retFlag char(1) OUTPUT )  \r\n" +  
+			" as \r\n" + 
+			" begin \r\n" + 
+			" declare @otpdb varchar(200) \r\n" +  
+			" declare @otpsenttime datetime \r\n" +
+			" declare @otpKid numeric(20)   \r\n" +
+			" \r\n" +
+			"	select @otpdb=otp_otp ,@otpsenttime = otp_senttime from s_otpsent \r\n" + 
+			"	where otp_userid = @userId and  \r\n" +
+			"		  otp_ref = @BeneficiaryAcc and \r\n" +
+			"		  otp_status = 'N' and otp_otp = @encvalue ; \r\n" +
+			"	if (DATEDIFF(mi,@otpsenttime,GETDATE()) > 	convert(numeric(5),@otpTimeMin  ) ) \r\n" +
+			"	begin \r\n" +
+			"		-- OTP has been Expired \r\n" + 
+			"		set @retFlag='E'\r\n" +
+			"	end \r\n" +
+			"	else \r\n" +
+			"	begin \r\n" +
+			"		if (@otpdb = @encvalue )\r\n" + 
+			"		begin \r\n" +
+			"			set @retFlag='Y' \r\n" +
+			" 			update s_otpsent set otp_status = 'Y' where otp_kid = @otpKid ; \r\n" + 
+			"		end \r\n" +
+			"		else \r\n" +
+			"		begin\r\n" + 
+			"			set @retFlag='N'\r\n" +
+			"		end \r\n" +
+			"	end \r\n" +
+			" end \r\n"  +
+			" " ; 
+			db.dbRunDDLCommand(sql);
+			
+			
+		}else if(decver.trim().equals("1.91")) { 
+			db.dbRunDDLCommand("alter table s_activitylog add log_activityurl varchar(500) null") ;
+			db.dbRunDDLCommand("alter table s_atvt add atvt_url varchar(500) null") ;
+			
+		}
+		else if(decver.trim().equals("1.92")) {
+			db.dbRunDDLCommand("alter table s_ibusr add ibusr_mob varchar(20) null") ;
+			
+		}
+		else if(decver.trim().equals("1.93")) { 
+
+		 
+			 db.dbRunDDLCommand("alter table s_bnk add bnk_iburl varchar(500) null ") ;
+			 
+			 String ssql="CREATE TABLE s_fundTranReg("+
+			 "[ftr_kid] [numeric](12, 0) IDENTITY(1,1) NOT NULL,"+
+			 "[ftr_custname] [varchar](40) NOT NULL,"+
+			 "[ftr_mobileno] [varchar](20) NOT NULL,"+
+			 "[ftr_accno] [varchar](20) NOT NULL,"+
+			 "[ftr_bankid] numeric(10) NOT NULL,"+
+			 "[ftr_edflag] [char](1) NULL,"+
+			 "[ftr_login] [varchar](20) NULL)" ; 
+			 
+			 db.dbRunDDLCommand(ssql) ; 
+			 
+			 db.dbRunDDLCommand("CREATE TABLE s_Productlaunch( " + 
+						" product_kid numeric(10, 0) IDENTITY(1,1) NOT NULL, " +
+						" product_name varchar(100) NULL," +
+						" product_desc varchar(1000) NULL," +
+						" product_image image null," +
+						" product_PDF varchar(100) NULL," +
+						" product_ppt image null ," +
+						" product_ppt1 image null," +
+						" product_ppt2 image null ," +
+						" product_ppt3 image  null ) " ) ;  
+			 
+			/*
+			create table s_BulkTrn ( 
+					bulktrn_kid	numeric(20,  	0 ) identity(1,1) 
+					bulktrn_accno	varchar	no	20	     	     
+					bulktrn_name	varchar	no	100	     	     
+					bulktrn_ifsc	varchar	no	20	     	     
+					bulktrn_amount	numeric	no	13	25   	2    	yes	(n/a)	(n/a)	NULL
+					bulktrn_remark	varchar	no	100	     	     	yes	no	yes	SQL_Latin1_General_CP1_CI_AS
+					bulktrn_status	char	no	1	     	     	yes	no	yes	SQL_Latin1_General_CP1_CI_AS
+					bulktrn_userid	numeric	no	9	15   	0    	yes	(n/a)	(n/a)	NULL
+					bulktrn_fromaccount	varchar	no	20	     	     	yes	no	yes	SQL_Latin1_General_CP1_CI_AS
+					bulktrn_date	date	no	3	10   	0    	yes	(n/a)	(n/a)	NULL
+					TrdRefNo	numeric	no	13	25   	0    	yes	(n/a)	(n/a)	NULL
+					bulktrn_checkerdate	date	no	3	10   	0    	yes	(n/a)	(n/a)	NULL
+					bulktrn_superid	numeric	no	9	10   	0    	yes	(n/a)	(n/a)	NULL
+				*/
+		}
+		else if(decver.trim().equals("1.94")){
+			db.dbRunDDLCommand("create table s_smslog(smslog_kid numeric(20,0) identity(1,1) , "+
+					"smslog_userid varchar(20) null ,  smslog_purpose varchar(50) null ,"+
+					"smslog_mobile varchar(20) null ,  smslog_reply varchar(100) null ,"+  
+					"smslog_message varchar(1000) null ,  smslog_senttime datetime default getdate() ,"+
+			"smslog_Actualsenttime datetime ,  smslog_status varchar(20) null ) ; " ) ;  
+
+		}
+		else if(decver.trim().equals("1.95")){ 
+			db.dbRunDDLCommand("create table s_BulkTrn ( , "+
+				"	bulktrn_kid	numeric(20,  	0 ) identity(1,1) , "+
+					"	bulktrn_accno	varchar(20)	     , "+	     
+					"	bulktrn_name	varchar	(100)	  , "+   	     
+					"	bulktrn_ifsc	varchar	(20)	    , "+ 	     
+					"	bulktrn_amount	numeric(20,4)		NULL    , "+
+					"	bulktrn_remark	varchar	(50)	  	NULL    , "+
+					"	bulktrn_status	char(1)	    		NULL    , "+
+					"	bulktrn_userid	numeric(15,0)  		NULL    , "+
+					"	bulktrn_fromaccount	varchar(20)		NULL    , "+
+					"	bulktrn_date	datetime   			NULL    , "+
+					"	TrdRefNo	numeric	(25,0)    		NULL    , "+
+					"	bulktrn_checkerdate	datetime	   	NULL    , "+
+					"	bulktrn_superid	numeric(15,0)     	NULL    )" ); 
+
+			db.dbRunDDLCommand("create index BulkTrnind01 on s_BulkTrn (bulktrn_fromaccount)") ;
+			
+			db.dbRunDDLCommand("create index BulkTrnind02 on s_BulkTrn (bulktrn_fromaccount)") ;
+			
+			db.dbRunDDLCommand("Create table s_service_operator" +
+					"(service_kid numeric(20,0) identity(1,1), "+
+					" service_type varchar(30)," +
+					" service_category varchar(30),"
+					+ " service_operator varchar(50)," +
+							"service_code varchar(20))");
+
+			db.dbRunDDLCommand("create table s_serviceNoMst " +
+					" ( serviceNoMst_kid numeric(20,0) identity(1,1), "
+					+ " serviceNoMst_userid varchar(30), " +
+					  " serviceNoMst_no varchar(30), " +
+					  " serviceNoMst_type varchar(30))");
+		}
+		else if(decver.trim().equals("1.96")){ 
+			String sql= "insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','AIRTEL','AT');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','BSNL','BS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','BSNL SPECIAL','BSS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','IDEA(B2B)','IDX');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','IDEA(B2C)','IDY');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VODAFONE','VF');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','RELIANCE CDMA','RL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','RELIANCE GSM','RG');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','UNINOR','UN');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','UNINOR SPECIAL','UNS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','MTS','MS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','AIRCEL','AL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','TATA DOCOMO GSM','TD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','TATA DOCOMO GSM SPECIAL','TDS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','TATA INDICOM (CDMA)','TI');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','MTNL DELHI','MTD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','MTNL DELHI SPECIAL','MTDS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','MTNL MUMBAI','MTM');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','MTNL MUMBAI SPECIAL','MTMS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VIDEOCON','VD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VIDEOCON SPECIAL','VDS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VIRGIN GSM','VG');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VIRGIN GSM SPECIAL','VGS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','VIRGIN CDMA','VC');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','T24','T24');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','T24 SPECIAL','T24S');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','Mobile','TATA WALKY','TW');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','AIRTEL DTH','AD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','SUN DIRECT DTH','SD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','TATA SKY','TS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','DISH TV','DT');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','RELIANCE BIG TV','BT');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DTH','VIDEOCON D2H','VT');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','AIRTEL','ATD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','BSNL','BSD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','IDEA(B2B)','IDXD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','IDEA(B2C)','IDYD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','VODAFONE','VFD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','RELIANCE CDMA','RLD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','UNINOR','UND');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','MTS','MSD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','AIRCEL','ALD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','TATA INDICOM(CDMA)','TID');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','MTNL DELHI','MTDD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','MTNL MUMBAI','MTMD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('Recharge','DATACARD','VIDEOCON','VDD');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','AIRTEL','APOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','BSNL','BPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','IDEA','IPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','VODAFONE','VPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','RELIANCE GSM','RGPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','RELIANCE CDMA','RCPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','TATA DOCOMO GSM','DGPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','TATA INDICOM(CDMA)','DCPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','MOBILE','AIRCEL','CPOS');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','AIRTEL LANDLINE AND BROADBAND','ATL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','BSNL LANDLINE AND BROADBAND','BSL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','RELIANCE LANDLINE','RCOM');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','TATA LANDLINE','TIL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','MTNL DELHI LANDLINE','MTDL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','LANDLINE','TIKONA INTERNET','TIK');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','GAS','INDRAPRASTHA GAS LTD','IGL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','GAS','MAHANAGAR GAS LTD','MGL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','GAS','GUJRAT GAS COMPANY LTD','GGL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','INSURANCE','ICICI PRUDENTIAL LIFE','IPL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','INSURANCE','TATA AIA LIFE','TAL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','INSURANCE','PNB METLIFE INDIA CO. LTD','PMI');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','ANDHRA PRADESH CENTRAL POWER','APE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','SOUTHERN POWER CO.LTD','SPCL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','BSES RAJDHANI DELHI','BSESR');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','BSES YAMUNA DELHI','BSESY');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','NDPL DELHI','NDPL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','CESC LTD','CESC');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','CHHATISGARH STATE POWER','CSE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','DAKSHIN GUJARAT VIJ CO.LTD','DGE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','MADHYA GUJARAT VIJ CO.LTD','MGE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','UTTAR GUJARAT VIJ CO.LTD','UGE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','PASCHIM GUJARAT VIJ CO.LTD','PGE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','TORRENT POWER','TPE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','JAIPUR VIDYUT VITARAN','JAE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','JODHPUR VIDHYUT VITRAN','JOE');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','MAHARASTRA STATE ELECTRICITY','MSEB');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','RELIANCE ENERGY LTD MUMBAI','REL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','BRIHANMUMBAI ELECTRIC SUPPLY & TRANSPORT','BEST');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','UTTAR PRADESH POWER CO.LTD','UPPCL');"+
+			"insert into s_service_operator(service_type,service_category,service_operator,service_code) values('BillPayment','ELECTRICITY','MADHYA PRADESH ELECTRICITY','MPEB');"; 	System.out.println(sql);
+			try {
+				db.dbRunDDLCommand(sql);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(decver.trim().equals("1.97")){ 
+			db.dbRunDDLCommand("create table s_ibutp (Ibutp_kid numeric(15,0) identity(1,1) , " +  
+					" Ibutp_Custid  numeric(15,0) , " +
+					" Ibutp_userid	varchar(15)  ,	" +
+					" Ibutp_atpid  numeric(10,0) ," +
+					" Ibutp_type	char(1) ," +
+					" Ibutp_amt  numeric(18,4) )" ) ;  
+
+		}
+
+	
+	}
+	
+public String doVersionControl(DataBaseClass db) throws Exception {
+		
+		try {
+		 
+		ResultSet rs  = db.db_select("select ibcpr_version from s_ibcpr ") ;
+		rs.next() ; 		
+		double decExistVersion = MathFunction.bmRound(Double.parseDouble(rs.getString(1)),2);
+		System.out.println(decExistVersion) ; 
+//		double decExistVersion = 1.00 ;
+		if (decExistVersion > decAppVer) 
+			return "HigherVersion" ; 
+		while (decExistVersion < decAppVer )
+		{
+			decExistVersion += .01 ;
+//			decExistVersion = getDoubleFormat(String.valueOf(decExistVersion),2);
+//			System.out.println(decExistVersion) ; 
+			runVersionControl(getDoubleFormat(decExistVersion,2),db);
+		}
+		// Update Version control 
+		// we have to
+		
+		db.db_update("update s_ibcpr set ibcpr_version = " + decAppVer ) ;
+		} catch (Exception se)
+		{ se.printStackTrace() ;
+		throw se ;
+		}
+		return "" ;
+	}
+
+public void createIndexonDB(DataBaseClass db) {
+
+	db.createIndexOnTable("accind02"," s_accc ","acc_no",true,false);
+	db.createIndexOnTable("accind03"," s_accc ","acc_brancode,acc_type,acc_seqno",true,false);
+
+}
+
+public void updateAccDate(DataBaseClass db)throws Exception{
+	SelectDataBean bean = new SelectDataBean(db);
+	String data[] =null,tempData[][] = null;
+	String sql ;
+	Date gDate = null;
+	Date dtStDate =null,dtEndDate = null,dtUptoDate =null;
+	sql = "select bcf_cdate from s_bnkcnf";
+	data = bean.getRow(1,sql);
+	String sAccType ="0";
+	ArrayList<Object> arg = new ArrayList<Object>();
+	
+	GeneralGlobalFunction gf = new GeneralGlobalFunction();
+	if(data!=null){
+		gDate = DateTimeFunction.strToSqlDate(DateTimeFunction.sqlDateStrToStr(data[0]));
+	}
+	sql = "select distinct s_pri.acc_type,periodicity,int_month from  s_accc ,s_pri " +
+			" where  s_accc .acc_type = s_pri.acc_type and  s_accc .acc_type in " +
+			"(select act_kid from s_act where act_atptype  in ('a','t','c','d'))" +
+			" and acc_startdate is null and acc_enddate is null" +
+			" and acc_uptodate is null";
+	tempData = bean.getData(3,sql);
+	if(tempData!=null){
+		for(int i =0 ;i<tempData[0].length;i++){
+			sAccType = tempData[0][i];
+			System.out.println("sAccType === "+sAccType);
+			
+			data = gf.getIntPostingDates(gDate,tempData[1][i],Integer.parseInt(tempData[2][i]));
+			if(data!=null){
+				dtStDate = DateTimeFunction.strToSqlDate(DateTimeFunction.sqlDateStrToStr(data[0]));
+				dtEndDate = DateTimeFunction.strToSqlDate(DateTimeFunction.sqlDateStrToStr(data[1]));
+				dtUptoDate = DateTimeFunction.utilDateToSqlDate(DateTimeFunction.relativeDate(dtStDate,-1));
+				System.out.println("dtStDate === "+dtStDate);
+				System.out.println("dtEndDate === "+dtEndDate);
+				System.out.println("dtUptoDate === "+dtUptoDate);
+				sql = "update  s_accc  set acc_startdate = ?,acc_enddate= ?,acc_uptodate = ? from  s_accc  where acc_type = ? ";
+				arg.clear();
+				arg.add(dtStDate);
+				arg.add(dtEndDate);
+				arg.add(dtUptoDate);
+				arg.add(sAccType);
+				db.db_update(sql,arg);
+			}
+		}
+	}
+}
+public static void main(String[] args) {
+	DataBaseClass db = new DataBaseClass(
+			"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+			"jdbc:sqlserver://bm2005:1433;databaseName=bormvc", "sa" , "ntplupl") ;
+		
+	VersionControl vc = new VersionControl() ;
+	try {
+	//vc.doVersionControl(db) ;
+//	vc.runVersionControl("1.11",db) ; 
+		vc.updateAccDate(db);
+	} catch (Exception e) {e.printStackTrace();}
+}
+public void createPensionTable(DataBaseClass db) {
+String ssql  = "" ; 	
+	ssql="CREATE TABLE  s_pcat(    "+
+	     "	pcat_kid   numeric      (9, 0)         IDENTITY(1,1) NOT NULL,"+
+	     "	pcat_Ename varchar      (50)           NULL,"+
+	     "  pcat_Hname nvarchar     (50)           NULL,"+
+	     "	pcat_code varchar       (2)            NULL,"+
+	     "	pcat_type varchar       (2)            NULL "+
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_treasury(   "+
+	      "	treasury_kid numeric   (9, 0)         IDENTITY(1,1) NOT NULL,"+
+	      "	treasury_code varchar   (5)           NULL,"+
+	      "  treasury_ename varchar  (35)          NULL,"+
+	      "	treasury_hname nvarchar (35)          NULL  "+
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_nation(      "+
+	      "	nation_kid numeric    (9, 0)          IDENTITY(1,1) NOT NULL,"+
+	      "	nation_code char        (1)           NULL,"+
+	      "	nation_pbehType varchar (2)           NULL,"+
+	      "	nation_ename varchar   (35)           NULL,"+
+	      "	nation_hname nvarchar  (35)           NULL "+
+	")"; db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_pitaxmst(   "+
+	      "	pitaxmst_kid numeric  (9, 0)         IDENTITY(1,1) NOT NULL,"+
+	      "	pitaxmst_code varchar   (5)          NULL,"+
+	      "	pitaxmst_ename varchar  (150)        NULL,"+
+	      "	pitaxmst_hname nvarchar (150)        NULL "+
+	")"; db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_piTaxCat(   "+
+	      "	piTaxCat_kid numeric    (9, 0)      IDENTITY(1,1) NOT NULL,"+
+	      "	piTaxCat_Code varchar   (5)         NULL,"+
+	      "	piTaxCat_eDesc varchar  (50)        NULL,"+
+	      "	piTaxCat_hDesc nvarchar (50)        NULL " + 
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_piTaxSlab(   "+
+	      "	piTaxSlab_piTaxParaId numeric(9, 0)       NULL,"+
+	      "	piTaxSlab_MinAmt numeric     (15, 2)      NULL,"+
+	      "	piTaxSlab_MaxAmt numeric     (15, 2)      NULL,"+
+	      "  piTaxSlab_Tax numeric        (5, 2)       NULL,"+
+	      "	piTaxSlab_surcharge numeric  (5, 2)       NULL " + 
+	")" ; db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_piTaxHDesc(    "+
+	      "	piTaxHDesc_kid numeric       (9, 0)  IDENTITY(1,1) NOT NULL,"+
+	      "	piTaxHDesc_iTaxDetID numeric (9, 0)      NULL,"+
+	      "	piTaxHDesc_pitaxmstID numeric(9, 0)      NULL,"+
+	      "	piTaxHDesc_Amt numeric       (15, 2)     NULL " + 
+	")"; db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_piTaxHDet(      "+
+	      "	piTaxHDet_piTaxHDescID numeric(9, 0)     NULL,"+
+	      "	piTaxHDet_docno varchar        (20)      NULL,"+
+	      "	piTaxHDet_date datetime                  NULL,"+
+	      "	piTaxHDet_Amt numeric        (15, 2)     NULL,"+
+	      "	piTaxHDet_mDate datetime                 NULL,"+
+	      "	piTaxHDet_rem varchar         (50)       NULL " + 
+	")";db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_recpay(          "+
+	      "	recpay_kid numeric          (7, 0)  IDENTITY(1,1) NOT NULL,"+
+	      "	recpay_code varchar          (10)       NOT NULL,"+
+	      "	recpay_edesc nvarchar        (50)         NULL,"+
+	      " recpay_hdesc nvarchar        (50)         NULL,"+
+	      "	recpay_proc varchar          (10)         NULL " +
+	")"; db.dbRunDDLCommand(ssql) ;
+
+	ssql="CREATE TABLE s_min(             "+
+	     "	min_kid numeric           (7, 0)    IDENTITY(1,1) NOT NULL,"+
+	     "	min_ename nvarchar          (50)         NULL,"+
+	     " 	min_hname nvarchar          (50)         NULL,"+
+	     "	min_code varchar            (10)         NULL,"+
+	     "	min_type char               (1)          NULL " + 
+	")"; db.dbRunDDLCommand(ssql) ;
+
+
+	ssql="CREATE TABLE s_arer(            "+
+	     "	arer_code varchar          (10)         NULL,"+
+	     "	arer_edesc nvarchar        (50)         NULL,"+
+	     "	arer_hdesc nvarchar        (50)         NULL,"+
+	     "	arer_kid numeric           (7, 0)   IDENTITY(1,1) NOT NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pao(        "+
+	     "	pao_kid numeric           (7, 0)    IDENTITY(1,1) NOT NULL,"+
+	     "	pao_ename nvarchar         (50)         NULL,"+
+	     "	pao_hname nvarchar         (50)         NULL,"+
+	     "	pao_eadress nvarchar       (50)         NULL,"+
+	     "	pao_hadress nvarchar       (50)         NULL,"+
+	     "	pao_code varchar           (10)         NULL,"+ 
+	     "	pao_min numeric           (7, 0)        NULL,"+
+	     "	pao_type char              (1)          NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pbeh(        "+
+	     "	pbeh_type char             (1)       NOT NULL,"+
+	     "	pbeh_ename nvarchar        (50)          NULL,"+
+	     "	pbeh_hname nvarchar        (50)          NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pseries(       "+
+	      "	pseries_code varchar       (20)      NOT NULL,"+
+	      "	pseries_org numeric        (7, 0)        NULL,"+
+	     "	pseries_kid numeric        (7, 0)   IDENTITY(1,1) NOT NULL" +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+
+	ssql="CREATE TABLE s_pothdet(       "+
+	     "	pothdet_kid BM_ACCID IDENTITY(1,1)    NOT NULL,"+
+	     "	pothdet_ppsid numeric       (13, 0)       NULL,"+
+	     "	pothdet_ppoid BM_TRANSID                  NULL,"+
+	     "  pothdet_desc varchar        (200)         NULL,"+
+	     "	pothdet_type char            (1)          NULL" +
+	     "	pothdet_amount BM_AMOUNT NULL  " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+	ssql="CREATE TABLE s_rank(           "+
+	     "	rank_code varchar           (10)       NOT NULL,"+
+	     "	rank_ename varchar         (100)           NULL,"+
+	     "	rank_hname nvarchar         (100)           NULL,"+
+	     "	rank_ro varchar              (7)           NULL,"+
+	     " 	rank_kid BM_CONSTMSTKID IDENTITY(1,1)   NOT NULL,"+
+	     "	rank_minid numeric         (5, 0)          NULL " +  
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pdisp(         "+
+	     "	pdisp_date BM_DATETIME                     NULL,"+
+	     "	pdisp_modid BM_CONSTMSTKID             NOT NULL,"+
+	     "	pdisp_paybrid BM_CONSTMSTKID           NOT NULL,"+
+	     "	pdisp_docno BM_PHONE                       NULL,"+
+	     "	pdisp_ppoid BM_VARMSTKID                   NULL,"+
+	     "	pdisp_userid BM_VARMSTKID                  NULL,"+
+	     "	pdisp_suserid BM_VARMSTKID                 NULL,"+
+	     "	pdisp_status char           (1)            NULL,"+
+	     "	pdisp_kid BM_CONSTMSTKID IDENTITY(1,1)     NOT NULL )" ;
+	
+		db.dbRunDDLCommand(ssql) ;
+
+	ssql =  "CREATE TABLE s_ppartax(       "+
+	    "	ppartax_kid numeric          (9, 0)  IDENTITY(1,1) NOT NULL,"+
+	    "	ppartax_erdate BM_DATETIME                 NULL,"+
+	    "	ppartax_effdate BM_DATETIME                NULL,"+
+	    "	ppartax_pitaxmstid numeric   (9, 0)        NULL,"+
+	    " 	ppartax_nature char            (1)         NULL,"+
+	    "	ppartax_rule varchar           (50)        NULL,"+
+	    "   ppartax_MaxAmt numeric       (5, 0)        NULL,"+
+	    "	ppartax_per BM_PERCENT                     NULL,"+
+	    "	ppartax_intax char             (1)         NULL,"+
+	    "	ppartax_userid BM_USRID                    NULL,"+
+	    "	ppartax_suserid BM_USRID                   NULL,"+
+	    "	ppartax_status char            (1)         NULL " +
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pawold(            "+
+	    "	pallow_linkno BM_ACCDTLID                 NULL,"+
+	    "	pallow_kid BM_TRANSID                     NULL,"+
+	    " 	pallow_entrydate BM_DATETIME              NULL,"+
+	    "	pallow_fromdate BM_DATETIME               NULL,"+
+	    "	pallow_todate BM_DATETIME                 NULL,"+
+	    "	pallow_amount numeric        (9, 2)       NULL,"+
+	    "	pallow_userid BM_USRID                    NULL,"+
+	    "	pallow_suserid BM_USRID                   NULL  " +
+	") "; db.dbRunDDLCommand(ssql) ;  
+
+	ssql="CREATE TABLE s_ptrf(             "+
+	    " 	ptrf_kid BM_ACCID IDENTITY  (1,1)        NOT NULL,"+
+	    "	ptrf_ppoid BM_TRANSID                     NULL,"+
+	    "	ptrf_bnkcod char            (10)          NULL,"+
+	    "	ptrf_brncode char           (10)          NULL,"+
+	    "	ptrf_brnaddr varchar        (100)         NULL,"+
+	    "	ptrf_date BM_DATETIME                     NULL,"+
+	    "	ptrf_userid BM_USRID                      NULL,"+
+	    "	ptrf_suserid BM_USRID                     NULL,"+
+	    "	ptrf_status char            (1)           NULL  " + 
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pallow(          "+
+	   "	pallow_kid BM_TRANSID IDENTITY (1,1)     NOT NULL,"+
+	    "	pallow_ppoid BM_TRANSID                    NULL,"+
+	    "	pallow_code varchar             (5)        NULL,"+
+	    "	pallow_type char                (1)        NULL,"+ 
+	    "	pallow_entrydate BM_DATETIME               NULL,"+
+	    "	pallow_fromdate BM_DATETIME                NULL,"+
+	    "	pallow_todate BM_DATETIME                  NULL,"+
+	    " 	pallow_amount numeric         (9, 2)       NULL,"+
+	    "	pallow_addin char               (1)        NULL,"+
+	    "	pallow_userid BM_USRID                     NULL,"+
+	    "	pallow_suserid BM_USRID                    NULL,"+
+	    "	pallow_status char              (1)        NULL " + 
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_ppar(             "+
+	    "	ppar_kid BM_ACCID IDENTITY     (1,1)    NOT NULL,"+
+	    "	ppar_date BM_DATETIME                       NULL,"+
+	    "	ppar_ptype char                 (1)         NULL,"+
+	    " 	ppar_pcatid char                (1)         NULL,"+
+	    "	ppar_cirid numeric            (5, 0)        NULL,"+
+	    "	ppar_canheld numeric          (2, 0)        NULL,"+
+	    "	ppar_uptoDay numeric          (2, 0)        NULL,"+
+	    "	ppar_maxReco BM_PERCENT                     NULL,"+
+	    "	ppar_lcmnth numeric           (2, 0)        NULL,"+
+	    "	ppar_da numeric               (5, 2)        NULL,"+
+	    "	ppar_dr numeric               (5, 2)        NULL,"+
+	    "	ppar_commin char               (1)          NULL,"+
+	    "	ppar_calin char                (1)          NULL,"+
+	    "	ppar_link numeric             (7, 2)        NULL,"+
+	    "	ppar_nodal numeric            (7, 2)        NULL,"+
+	    " 	ppar_linkbr numeric           (7, 2)        NULL,"+
+	    "	ppar_payee numeric            (7, 2)        NULL,"+
+	    "	ppar_userid BM_USRID                        NULL,"+
+	    "	ppar_suserid BM_USRID                       NULL,"+
+	    "	ppar_status char               (1)          NULL  " + 
+	") "; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pcir(             "+
+	    "	pcir_kid BM_ACCID IDENTITY    (1,1)     NOT NULL,"+
+	    "	pcir_pbehType char             (1)          NULL,"+
+	    "	pcir_date BM_DATETIME                       NULL,"+
+	    "	pcir_no varchar               (50)          NULL,"+
+	    "	pcir_cirDate BM_DATETIME                    NULL,"+
+	    "	pcir_effDate BM_DATETIME                    NULL,"+
+	    "	pcir_issueby varchar          (50)          NULL,"+
+	    "	pcir_remark varchar           (100)         NULL " +  
+	")"; db.dbRunDDLCommand(ssql) ;  
+
+	ssql="CREATE TABLE s_ppo(               "+
+	    "	 ppo_kid BM_TRANSID IDENTITY (1,1)        NOT NULL,"+
+	    " 	ppo_penac BM_TRANSID                         NULL,"+
+	    "	ppo_idxno varchar           (20)             NULL,"+
+	    "	ppo_ssano varchar            (7)             NULL,"+
+	    "	ppo_stnyno varchar           (7)             NULL,"+
+	    "	ppo_recdate BM_DATETIME                      NULL,"+
+	    "	ppo_ppono varchar           (30)         NOT NULL,"+
+	    "	ppo_date BM_DATETIME                         NULL,"+
+	    "	ppo_diary varchar           (7)              NULL,"+
+	    "	ppo_idno varchar            (20)             NULL,"+
+	    " 	ppo_iauth numeric         (5, 0)             NULL,"+
+	    "	ppo_cat varchar              (2)             NULL,"+
+	    "	ppo_ename varchar          (30)              NULL,"+
+	    "	ppo_hname nvarchar         (30)              NULL,"+
+	    "	ppo_nodalbr varchar         (10)             NULL,"+
+	    "	ppo_linkbr varchar         (10)              NULL,"+
+	    "	ppo_payeebr varchar        (10)              NULL,"+
+	    "	ppo_accno BM_ACCOUNTNO                       NULL,"+
+	    "	ppo_addr1 varchar          (55)              NULL,"+
+	    "	ppo_addr2 varchar          (48)              NULL,"+
+	    "	ppo_addr3 varchar          (6)               NULL,"+
+	    " 	ppo_statcode varchar       (3)               NULL,"+
+	    "	ppo_retof varchar         (30)               NULL,"+
+	    "	ppo_retdt BM_DATETIME                        NULL,"+
+	    "	ppo_dob BM_DATETIME                          NULL,"+
+	    "	ppo_dod BM_DATETIME                          NULL,"+
+	    " 	ppo_doj BM_DATETIME                          NULL,"+
+	    "	ppo_rank char            (1)                 NULL,"+
+	    " 	ppo_stdate BM_DATETIME                       NULL,"+
+	    "	ppo_lpdpen BM_DATETIME                       NULL,"+
+	    "	ppo_pponofp varchar      (30)                NULL,"+
+	    " 	ppo_fptype varchar        (3)                NULL,"+
+	    " 	ppo_fpename varchar      (30)                NULL,"+
+	    "	ppo_fphname nvarchar     (30)                NULL,"+
+	    "	ppo_relat varchar         (2)                NULL,"+
+	    "	ppo_dodfp BM_DATETIME                        NULL,"+
+	    "	ppo_disppno varchar      (30)                NULL,"+
+	    "	ppo_penstat char         (1)                 NULL,"+
+	    " 	ppo_nation char          (1)                 NULL,"+
+	    "	ppo_remark varchar      (100)                NULL,"+
+	    "	ppo_behType varchar      (2)                 NULL,"+ 
+	    "	ppo_userid BM_USRID                          NULL,"+
+	    "	ppo_suserid BM_USRID                         NULL,"+
+	    "	ppo_status char         (1)                  NULL ) " ; 
+	
+	db.dbRunDDLCommand(ssql) ; 
+	
+	ssql="CREATE TABLE s_pps(                   "+
+	   "	pps_kid BM_ACCID IDENTITY  (1,1)          NOT NULL,"+
+	   "	pps_ppoid BM_TRANSID                         NULL,"+
+	   " 	pps_date BM_DATETIME                         NULL,"+ 
+	   "	pps_scrno varchar          (10)              NULL,"+
+	   " 	pps_nodalbr BM_USRID                         NULL,"+
+	   "	pps_linkbr BM_USRID                          NULL,"+
+	   "	pps_payeebr BM_USRID                         NULL,"+
+	   "	pps_month numeric         (2, 0)             NULL,"+
+	   "	pps_year numeric          (4, 0)             NULL,"+
+	   "	pps_basic numeric         (9, 2)             NULL,"+
+	   "	pps_commted numeric       (9, 2)             NULL,"+
+	   "	pps_reduced  AS (pps_basic-pps_commted) PERSISTED, " +
+	   "	pps_da numeric            (9, 2)            NULL,"+
+	   "	pps_dr numeric            (9, 2)            NULL,"+
+	   "	pps_others1 numeric       (9, 2)            NULL,"+
+	   " 	pps_others2 numeric       (9, 2)            NULL,"+
+	   "	pps_arear numeric         (9, 2)            NULL,"+
+	   "	pps_gross  AS ((((((pps_basic-pps_commted)+pps_da)+pps_dr)+pps_others1)+pps_others2)+pps_arear) PERSISTED, " + 
+	   " 	pps_itax numeric          (9, 2)           NULL,"+
+	   "	pps_recovery numeric      (9, 2)           NULL,"+
+	   "	pps_net  AS (((((((pps_basic-pps_commted)+pps_da)+pps_dr)+pps_others1)+pps_others2)+pps_arear)-(pps_itax+pps_recovery)) PERSISTED, " + 
+	   "	pps_remark varchar         (100)            NULL,"+
+	   "	pps_drcr char              (1)              NULL,"+
+	   " 	pps_userid BM_USRID                         NULL,"+
+	   "	pps_suserid BM_USRID                        NULL,"+
+	   "	pps_status char            (1)              NULL " + 
+	" )"; db.dbRunDDLCommand(ssql) ;                                                  
+
+	ssql="CREATE TABLE s_pdoctr( " + 
+	     "	pdoctr_kid BM_ACCID IDENTITY (1,1)      NOT NULL,"+
+	     "	pdoctr_pdocid BM_ACCID                      NULL,"+
+	     "	pdoctr_ppoid BM_TRANSID                     NULL,"+
+	     "	pdoctr_no varchar            (20)           NULL,"+
+	     "	pdoctr_docdate BM_DATETIME                  NULL,"+
+	     "	pdoctr_recDate BM_DATETIME                  NULL,"+
+	     "	pdoctr_uptoDate BM_DATETIME                 NULL,"+
+	     "	pdoctr_userid BM_USRID                      NULL,"+
+	     "	pdoctr_suserid BM_USRID                     NULL,"+
+	     " 	pdoctr_status char           (1)            NULL " +  
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pscroll( " + 
+	     "	pscroll_year numeric        (4, 0)          NULL,"+
+	     "	pscroll_no numeric          (3, 0)          NULL,"+
+	     "	pscroll_payeebr varchar        (7)          NULL,"+
+	     "	pscroll_penac BM_TRANSID                    NULL  " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_ppocng( " + 
+	    " 	ppocng_linkno BM_TRANSID                   NULL,"+
+	    "	ppocng_field varchar(15)                   NULL,"+
+	    "	ppocng_old varchar(100)                    NULL,"+
+	    "	ppocng_new varchar(100)                    NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_pbrlnk( " + 
+	    "	pbrlnk_kid BM_TRANSID IDENTITY (1,1)    NOT NULL,"+
+	    "	pbrlnk_parent BM_TRANSID                  NULL,"+
+	    "	pbrlnk_code varchar         (10)          NULL,"+
+	    "	pbrlnk_beh varchar          (2)           NULL,"+
+	    "	pbrlnk_date varchar         (10)          NULL,"+
+	    "	pbrlnk_type char            (1)           NULL,"+
+	    "	pbrlnk_status char          (1)           NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+	ssql="CREATE TABLE s_piTaxPara( " + 
+	    "	piTaxPara_kid numeric    (9, 0)   IDENTITY (1,1) NOT NULL,"+
+	    "	piTaxPara_piTaxCatid numeric (9, 0)       NULL,"+
+	    "	piTaxPara_effdate datetime                NULL,"+
+	    " 	piTaxPara_userid BM_USRID                 NULL,"+
+	    "	piTaxPara_suserid BM_USRID                NULL,"+
+	    "	piTaxPara_status char          (1)        NULL " +
+	")"; db.dbRunDDLCommand(ssql) ; 
+
+}
+
+public void createIBTable(DataBaseClass db) {
+	String ssql  = "" ; 	
+
+sSql = "	CREATE TABLE s_ibforpass(  " + 
+	"	forpass_kid BM_CONSTMSTKID IDENTITY(1,1) NOT NULL," +
+	"	forpass_usrid BM_CODE NULL," +
+	"	forpass_prod varchar(50)  NULL," +
+	"	forpas s_accc no varchar(19)  NULL," +
+	"	forpass_dob BM_DATETIME NULL," +
+	"	forpass_email BM_EMAIL NULL," +
+	"	forpass_Eaddr1 varchar(100)  NULL," +
+	"	forpass_Eaddr2 varchar(100)  NULL," +
+	"	forpass_Haddr1 BM_OTHLNGNAME NULL," +
+	"	forpass_Haddr2 BM_OTHLNGNAME NULL," +
+	"	forpass_citycode BM_CONSTMSTKID NULL, " +
+	"	forpass_pincode BM_PINCODE NULL) " ;
+
+db.dbRunDDLCommand(sSql) ;
+
+sSql = "CREATE UNIQUE CLUSTERED INDEX Ind_forpass_kid ON s_ibforpass (forpass_kid) " ; 
+
+db.dbRunDDLCommand(sSql) ;
+
+sSql = " CREATE TABLE s_ibddreq(  " + 
+	"	ddreq_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL," +
+	"	ddreq_dmstrid BM_CONSTMSTKID NOT NULL," +
+	"	ddreq_trntype BM_CODE NULL," +
+	"	ddreq_brncode BM_CODE NULL," +
+	"	ddreq_ename BM_NAME NULL," +
+	"	ddreq_hname BM_OTHLNGNAME NULL," +
+	"	ddreq_hadd1 BM_OTHLNGNAME NULL," +
+	"	ddreq_hadd2 BM_OTHLNGNAME NULL," +
+	"	ddreq_eadd1 varchar(100)  NULL," +
+	"	ddreq_eadd2 varchar(100)  NULL," +
+	"	ddreq_cityid BM_CONSTMSTKID NOT NULL," +
+	"	ddreq_stateid BM_CONSTMSTKID NOT NULL," +
+	"	ddreq_panno varchar(20)  NULL," +
+	"	ddreq_curid BM_CONSTMSTKID NOT NULL," +
+	"	ddreq_purpse varchar(20)  NULL," +
+	"	ddreq_date BM_DATETIME NULL," +
+	"	ddreq_flag char(1)  NULL," +
+	"	ddreq_remark BM_REMARKS NULL," +
+	"	ddreq_accno varchar(19)  NULL," +
+	"	ddreq_amt BM_AMOUNT NULL) " ; 
+
+db.dbRunDDLCommand(sSql) ;
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_ddreq_kid ON s_ibddreq(ddreq_kid)";
+db.dbRunDDLCommand(sSql) ;
+
+sSql="CREATE TABLE s_ibfundtrpayee("+
+	"	ibfund_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL,"+
+	"	ibfund_accno varchar(19)  NULL,"+
+	"	ibfund_nick varchar(5)  NULL,"+
+	"	ibfund_mobile BM_PHONE NULL,"+
+	"	ibfund_email BM_EMAIL NULL,"+
+	"	ibfund_custid BM_VARMSTKID NULL)"; 
+db.dbRunDDLCommand(sSql) ;
+
+sSql="CREATE TABLE s_iblog("+
+	"	iblog_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL,"+
+	"	iblog_usrid BM_CODE,"+
+	"	iblog_status varchar (1)" +
+	")"; 
+db.dbRunDDLCommand(sSql) ;
+
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_iblog_kid ON s_iblog(iblog_kid)";
+
+db.dbRunDDLCommand(sSql) ;
+
+sSql="CREATE TABLE s_ibreq("+
+	"	ibreq_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL,"+
+	"	ibreq_usrid BM_CODE NULL,"+
+	"	ibreq_accno varchar(19)  NULL,"+
+	"	ibreq_noofleafs numeric(3, 0) NULL,"+
+	"	ibreq_date BM_DATETIME NULL,"+
+	"	ibreq_type BM_CODE NULL,"+
+	"	ibreq_cardno varchar(20)  NULL,"+
+	"	ibreq_name BM_NAME NULL,"+
+	"	ibreq_servprov BM_CODE NULL,"+
+	"	ibreq_mobile BM_PHONE NULL,"+
+	"	ibreq_relno varchar(20)  NULL,"+
+	"	ibreq_flag char(1)  NULL DEFAULT ('Y'),"+
+	"	ibreq_remark BM_REMARKS NULL )";
+
+db.dbRunDDLCommand(sSql) ;
+
+	sSql="CREATE UNIQUE CLUSTERED INDEX Ind_ibreq_kid ON s_ibreq(ibreq_kid)";
+	db.dbRunDDLCommand(sSql) ;
+sSql="create table s_ibreqdeposit("+
+	"	ibreq_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL,"+
+	"	ibreq_usrid bm_usrid,"+
+	"	ibreq_date bm_datetime,"+
+	"	ibreq_type bm_code,"+
+	"	ibreq_accnodr varchar(19),"+
+	"	ibreq_scheme varchar(1), "+
+	"	ibreq_dd numeric(5),"+
+	"	ibreq_mm numeric(5),"+
+	"	ibreq_yyyy numeric(5),"+
+	"	ibreq_amt bm_amount,"+
+	"	ibreq_period varchar(1),"+
+	"	ibreq_accnocr varchar(19),"+
+	"	ibreq_renewdd numeric(5),"+
+	"	ibreq_renewmm numeric(5),"+
+	"	ibreq_renewyyyy numeric(5),"+
+	"	ibreq_balabove bm_amount,"+
+	"	ibreq_choice varchar(1) )";
+
+db.dbRunDDLCommand(sSql) ;
+
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_ibreq_kid ON s_ibreqdeposit(ibreq_kid)";
+db.dbRunDDLCommand(sSql) ;
+
+
+sSql="CREATE TABLE s_ibusr("+
+	"	ibusr_kid BM_VARMSTKID IDENTITY(1,1) NOT NULL,"+
+	"	ibusr_custid dbo.BM_VARMSTKID NULL,"+
+	"	ibusr_accid dbo.BM_VARMSTKID NULL,"+
+	"	ibusr_accno varchar(19)  NULL,"+
+	"	ibusr_usrid dbo.BM_CODE NULL,"+
+	"	ibusr_usrpass nvarchar(100)  NULL,"+
+	"	ibusr_trnpass nvarchar(100)  NULL,"+
+	"	ibusr_flag char(1)  NULL,"+
+	"	ibusr_date dbo.BM_DATETIME NULL,"+
+	"	ibusr_infoid dbo.BM_VARMSTKID NULL,"+
+	"	ibusr_status char(1)  NULL,"+
+	"	ibusr_brncode dbo.BM_CODE NULL,"+
+	"	ibusr_trnid varchar(20)  NULL)";
+db.dbRunDDLCommand(sSql) ;
+
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_ibusr_kid ON s_ibusr(ibusr_kid)";
+db.dbRunDDLCommand(sSql) ;
+sSql="create table s_ibusrinfo("+
+	"	info_kid bm_varmstkid identity,"+
+	"	info_ename bm_name,"+
+	"	info_hname bm_othlngname,"+
+	"	info_eaddress varchar(150),"+
+	"	info_haddress nvarchar(300),"+
+	"	info_email bm_email,"+
+	"	info_mobile bm_phone,"+
+	"	info_phone bm_phone,"+
+	"	info_dob bm_datetime,"+
+	"	info_pin bm_pincode,"+
+	"	info_cityid bm_constmstkid )";
+
+db.dbRunDDLCommand(sSql) ;
+
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_info_kid ON s_ibusrinfo(info_kid)";
+db.dbRunDDLCommand(sSql) ;
+
+
+
+sSql="create table s_ibusrlog ("+
+	"ibusrlog_kid bm_varmstkid IDENTITY(1,1) NOT NULL,"+
+	"ibusrlog_usrid bm_code,"+
+	"ibusrlog_log varchar(10),"+
+	"ibusr_logdate bm_datetime,"+
+	"ibusr_hostname varchar(50) )";
+db.dbRunDDLCommand(sSql) ;
+
+
+
+sSql="CREATE UNIQUE CLUSTERED INDEX Ind_ibusrlog_kid ON s_ibusrlog(ibusrlog_kid)";
+db.dbRunDDLCommand(sSql) ;
+sSql="CREATE TABLE s_key ("+
+	"key_id char(7)  NOT NULL )";
+
+db.dbRunDDLCommand(sSql) ;
+}// End of Function
+
+public void UpdateHcbOpBalance(DataBaseClass db) {
+	String query1="select hcb_kid," +
+			"isnull((select isnull(act_opbal,0) from s_act where act_kid = t1.hcb_headid and act_brcode = t1.hcb_branchid) +	" +
+			" (select isnull(sum(isnull(t2.hcb_bal,0)),0) from s_hcb t2		where t2.hcb_headid = t1.hcb_headid	and t2.hcb_branchid = t1.hcb_branchid 		and t1.hcb_curid=t2.hcb_curid 	and t2.hcb_date < t1.hcb_date  ),0) " +
+			"from s_hcb t1 ";
+		SelectDataBeanRowCol bean1=new SelectDataBeanRowCol(db);
+		try{
+		String data[][]=bean1.getData(2,query1);
+			if(data!=null)
+			{
+				for(int i=0;i<data.length;i++)
+				{
+					String QueryUpdate="update s_hcb set hcb_opbal="+data[i][1]+" where hcb_kid="+data[i][0]+" and hcb_opbal is null";	
+					db.db_update(QueryUpdate);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		String hcbTrig="create Trigger sql_on_insert_hcb On s_hcb For  INSERT " +
+				" As" +
+				" declare @hcbheadid BM_VARMSTKID_OLD," +
+				"	@hcbcur BM_CONSTMSTKID," +
+				"	@hcbbranchid BM_BRNCODE," +
+				"	@hcbdate BM_DATETIME," +
+				"	@hcbkid BM_TRANSID," +
+				"	@hcbbal BM_AMOUNT," +
+				"	@actopbal BM_AMOUNT	" +
+				"select @hcbheadid=hcb_headid," +
+				"	   @hcbcur=hcb_curid," +
+				"	   @hcbbranchid=hcb_branchid," +
+				"	   @hcbdate=hcb_date," +
+				"	   @hcbkid=hcb_kid " +
+				"from inserted " +
+				"select @hcbbal=isnull(hcb_clbal,0)" +
+				" from s_hcb" +
+				"where hcb_headid=@hcbheadid and  hcb_branchid=@hcbbranchid	" +
+				"and hcb_curid=@hcbcur and " +
+				"hcb_date = " +
+				"(select max(hcb_date) from s_hcb" +
+				"where hcb_headid=@hcbheadid and" +
+				"	 hcb_branchid=@hcbbranchid and	" +
+				"	 hcb_curid=@hcbcur and 	" +
+				"	hcb_date < @hcbdate )" +
+				"	if(@hcbbal <> 0)" +
+				"		BEGIN	" +
+				"			update s_hcb set hcb_opbal=@hcbbal where hcb_kid=@hcbkid" +
+				"			print 'in not null' " +
+				"		END" +
+				"	else" +
+				"		Begin" +
+				"			print 'in null'	" +
+				"			select @actopbal=isnull(act_opbal,0) " +
+				"			from s_act " +
+				"			where act_kid=@hcbheadid and" +
+				" 			act_brcode = @hcbbranchid" +
+				"			update s_hcb set hcb_opbal= @actopbal where hcb_kid=@hcbkid	" +
+				"		End" ;
+
+}
+public static String getDoubleFormat(double dVal, int iPrecision) {
+	
+	String sDouble = String.format("%1$." + iPrecision + "f", dVal);
+	MathContext cont = new MathContext(26, RoundingMode.HALF_UP);
+	BigDecimal bdOut = new BigDecimal(dVal, cont);
+	String str = bdOut.toString();
+	int index = str.indexOf('.');
+	if(index > -1 && (index + iPrecision + 1) < str.length())
+		str = str.substring(0,	index + iPrecision + 1);
+	else
+		str += ".00";
+	return sDouble;
+	}
+}
+

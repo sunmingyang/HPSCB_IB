@@ -1,0 +1,972 @@
+
+td
+{
+font-family: Comic Sans MS;
+font-size: 8pt;
+padding: 0px;
+padding-left: 0px;
+padding-right:0px;
+}
+
+
+.cal_calendar {font-size:10pt;font-family:verdana;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_header {background-color:#CCCCCC;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_cell {padding:2px;margin:1px;border:2px groove;text-align:center;width:3ex}
+.cal_labelcell {padding:2px;margin:1px;border:2px groove;text-align:center;}
+.cal_oddweek {background-color:#AAAACC;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_evenweek {background-color:#CCCCEE;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_day {width:3ex;text-align:center;padding:0px;margin:0px;border:none; border-collapse:collapse;cursor:hand;}
+.cal_today {color:Green;font-weight:bold;width:3ex;padding:0px;margin:0px;border: none; border-collapse:collapse; background-color:white;}
+.cal_disabled {color:#999999;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_common {color:black;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_holiday {color:red;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_event {background-color:yellow;color:red;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+
+.tdformenu
+{
+background-color:#efe6fb;
+text-align:center;
+font-weight:bold;
+
+}
+
+.tdforleft
+{
+background-color:#a5d1f1;
+}
+.tdforadd
+{
+background-color:#a5d1f1;
+}
+.tdforleft1
+{
+text-align:left;
+background-color:#698ed1;
+height:20Px;
+}
+
+.contentstyle
+{
+height:20Px;
+background-color:#e2d5f5;
+}
+
+.clicktdleft
+{
+height:20Px;
+background-color:#e2d5f5;
+text-align:center;
+}
+
+.trforReportRow1
+{
+background-color:#a5d1f1;
+}
+.trforReportRow2
+{
+background-color:#4395d1;
+}
+
+
+.tdforconfirmMsg
+{
+color:brown;
+font-size: 10pt;
+FONT-Weight: bold;
+}
+
+.formField
+ {
+	BORDER-RIGHT: #ece8d3 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #ece8d3 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; BORDER-LEFT: #9bc6e6 1px solid;  PADDING-TOP: 3px; BORDER-BOTTOM: #ece8d3 1px solid; FONT-FAMILY:  Comic Sans MS,Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+
+.LabelText {
+	FONT-SIZE: 8pt; TEXT-TRANSFORM: uppercase; BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR:#9bc6e6; BORDER-BOTTOM-STYLE: none
+}
+
+.heading
+{
+	FONT-SIZE: 8pt;  COLOR: #000792; 
+
+}
+
+.tbl_heading
+{
+	FONT-Weight: bold;	FONT-SIZE: 8pt;   COLOR: white; BORDER-TOP-STYLE: none; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+
+}
+
+
+.SelectText {
+	FONT-SIZE: 8pt;  CURSOR: hand; COLOR: white; BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+}
+
+
+
+.TableText
+ {
+	FONT-SIZE: 8pt;  CURSOR: hand; BORDER-TOP-STYLE: none; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: white; BORDER-BOTTOM-STYLE: none
+}
+
+
+.LeftMenu
+ {
+	FONT-SIZE: 8pt; COLOR: white;   BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+}
+
+INPUT 
+{
+	FONT-SIZE: 8pt;  BORDER-TOP-STYLE: groove; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove
+}
+
+SELECT 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY:  Verdana
+}
+LABEL 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana
+}
+TABLE 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana;
+	BORDER-LEFT:NONE;
+	BORDER-TOP:NONE;
+	BORDER-BOTTOM:NONE;
+	BORDER-RIGHT:NONE;
+	
+}
+
+
+
+
+
+.Button 
+{
+        background-color:#FFFF66;
+         
+	BORDER-TOP-STYLE: ridge; BORDER-RIGHT-STYLE: ridge; BORDER-LEFT-STYLE: ridge; BORDER-BOTTOM-STYLE: ridge
+}
+
+
+
+
+BODY {
+	BACKGROUND-COLOR: #FFFFFF
+}
+P {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+
+FONT.navmain {
+	 FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.nav {
+	FONT-SIZE: 8pt;
+	COLOR: black; 
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+FONT.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+FONT.instruct {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #004b68; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.note {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+FONT.notedetail {
+	FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.section {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+
+A:link {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+
+A:visited {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR:green; TEXT-DECORATION: none;
+}
+
+
+
+
+A.navmain:link {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A.navmain:visited {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A.navmain:hover {
+	COLOR: #171c76; TEXT-DECORATION: underline
+}
+A.nav:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A.nav:visited {
+	COLOR: black; TEXT-DECORATION: none ;padding-left:10px;
+}
+A.nav:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.book:link {
+	COLOR: #004b68; TEXT-DECORATION: none
+}
+A.book:visited {
+	COLOR: #004b68; TEXT-DECORATION: none
+}
+A.book:hover {
+	COLOR: #171c76; TEXT-DECORATION: underline
+}
+
+.button {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 11px; 
+	BORDER-LEFT: #999999 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #999999 1px solid; 
+	FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif; 
+	BACKGROUND-COLOR: #6600CC;
+}
+
+.buttonOver {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #999999 1px solid; COLOR: #000000; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #eaeaea
+}
+
+
+.Image
+{
+	CURSOR: hand;
+}
+
+.heading
+{
+FONT-SIZE: 8pt; COLOR:#E37200
+; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif;FONT-WEIGHT: bold;
+
+}
+
+.simple
+{
+FONT-SIZE: 8pt; COLOR:#9900CC; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+/*#E37200*/
+}
+td
+{
+font-family: Comic Sans MS;
+font-size: 8pt;
+padding: 0px;
+padding-left: 0px;
+padding-right:0px;
+}
+
+
+.cal_calendar {font-size:10pt;font-family:verdana;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_header {background-color:#CCCCCC;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_cell {padding:2px;margin:1px;border:2px groove;text-align:center;width:3ex}
+.cal_labelcell {padding:2px;margin:1px;border:2px groove;text-align:center;}
+.cal_oddweek {background-color:#AAAACC;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_evenweek {background-color:#CCCCEE;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_day {width:3ex;text-align:center;padding:0px;margin:0px;border:none; border-collapse:collapse;cursor:hand;}
+.cal_today {color:Green;font-weight:bold;width:3ex;padding:0px;margin:0px;border: none; border-collapse:collapse; background-color:white;}
+.cal_disabled {color:#999999;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_common {color:black;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_holiday {color:red;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+.cal_event {background-color:yellow;color:red;width:3ex;padding:0px;margin:0px;border:none; border-collapse:collapse;}
+
+.tdformenu
+{
+background-color:#efe6fb;
+text-align:center;
+font-weight:bold;
+
+}
+
+.tdforleft
+{
+background-color:#ffffff;
+}
+.tdforadd
+{
+background-color:#a5d1f1;
+}
+.tdforleft1
+{
+text-align:left;
+background-color:#698ed1;
+height:20Px;
+}
+
+.contentstyle
+{
+height:20Px;
+background-color:#ffffff;
+}
+
+.clicktdleft
+{
+height:20Px;
+background-color:#e2d5f5;
+text-align:center;
+}
+
+.trforReportRow1
+{
+background-color:#a5d1f1;
+}
+.trforReportRow2
+{
+background-color:#4395d1;
+}
+
+
+.tdforconfirmMsg
+{
+color:brown;
+font-size: 10pt;
+FONT-Weight: bold;
+}
+
+.formField
+ {
+	BORDER-RIGHT: #ece8d3 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #ece8d3 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; BORDER-LEFT: #9bc6e6 1px solid;  PADDING-TOP: 3px; BORDER-BOTTOM: #ece8d3 1px solid; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+
+.LabelText {
+	FONT-SIZE: 8pt; TEXT-TRANSFORM: uppercase; BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR:#9bc6e6; BORDER-BOTTOM-STYLE: none
+}
+th
+{
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+font-size: 8pt;
+padding: 0px;
+padding-left: 0px;
+padding-right:0px;
+ COLOR: white;
+BACKGROUND-COLOR: #E0E0E0;
+FONT-WEIGHT: normal;
+}
+
+.heading
+{
+	FONT-SIZE: 8pt;  COLOR: #000792; 
+
+}
+
+.tbl_heading
+{
+	FONT-Weight: bold;	FONT-SIZE: 8pt;   COLOR: white; BORDER-TOP-STYLE: none; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+
+}
+
+
+.SelectText {
+	FONT-SIZE: 8pt;  CURSOR: hand; COLOR: white; BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+}
+
+
+
+.TableText
+ {
+	FONT-SIZE: 8pt;  CURSOR: hand; BORDER-TOP-STYLE: none; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: white; BORDER-BOTTOM-STYLE: none
+}
+
+
+.LeftMenu
+ {
+	FONT-SIZE: 8pt; COLOR: white;   BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #000792; BORDER-BOTTOM-STYLE: none
+}
+
+INPUT 
+{
+	FONT-SIZE: 8pt;  BORDER-TOP-STYLE: groove; FONT-FAMILY:  Verdana; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove
+}
+
+SELECT 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY:  Verdana
+}
+LABEL 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana
+}
+TABLE 
+{
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana;
+	BORDER-LEFT:NONE;
+	BORDER-TOP:NONE;
+	BORDER-BOTTOM:NONE;
+	BORDER-RIGHT:NONE;
+	
+}
+
+
+
+
+
+.Button 
+{
+        background-color:#FFFF66;
+         
+	BORDER-TOP-STYLE: ridge; BORDER-RIGHT-STYLE: ridge; BORDER-LEFT-STYLE: ridge; BORDER-BOTTOM-STYLE: ridge
+}
+
+
+
+
+BODY {
+	BACKGROUND-COLOR: #FFFFFF
+}
+P {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+
+FONT.navmain {
+	 FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.nav {
+	FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+FONT.instruct {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #004b68; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.note {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+FONT.notedetail {
+	FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-STYLE: italic; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+FONT.heading3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.section {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #004b68; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif
+}
+FONT.active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000792; FONT-FAMILY: Arial,Helvetica,sans-serif
+}
+
+A:link {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR:#FF3300; TEXT-DECORATION: none;
+}
+
+
+
+
+A.navmain:link {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A.navmain:visited {
+	COLOR: #171c76; TEXT-DECORATION: none
+}
+A.navmain:hover {
+	COLOR: #171c76; TEXT-DECORATION: underline
+}
+A.nav:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A.nav:visited {
+	COLOR: black; TEXT-DECORATION: none ;padding-left:10px;
+}
+A.nav:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.book:link {
+	COLOR: #004b68; TEXT-DECORATION: none
+}
+A.book:visited {
+	COLOR: #004b68; TEXT-DECORATION: none
+}
+A.book:hover {
+	COLOR: #171c76; TEXT-DECORATION: underline
+}
+
+.button {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 11px; 
+	BORDER-LEFT: #999999 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #999999 1px solid; 
+	FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif; 
+	BACKGROUND-COLOR: #6600CC;
+}
+
+.buttonOver {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #999999 1px solid; COLOR: #000000; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #eaeaea
+}
+
+
+.Image
+{
+	CURSOR: hand;
+}
+
+.heading
+{
+FONT-SIZE: 8pt; COLOR:#E37200
+; FONT-FAMILY:  Verdana, Arial, Helvetica, sans-serif;FONT-WEIGHT: bold;
+
+}
+
+.simple
+{
+FONT-SIZE: 8pt; COLOR:#9900CC; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+/*#E37200*/
+}
+
+
+/* new added by Vijay Soni------------------------ */
+
+.dataInfoText{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 7pt;
+        font-weight: bold;
+        color: brown;
+        text-decoration: none;
+
+}
+.tableHeader{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #92610E;
+        text-decoration: none;
+
+}
+.normalHeadText{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+		font-weight: bold;
+}
+.errorInfoText{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+		font-weight: normal;
+		color: red;
+
+}
+.normalText{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+
+}
+.normalInfoText{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 7pt;
+}
+
+.dataTableTH{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+		padding-left:3;
+		padding-right:3;
+		
+        font-weight: bold;
+        color: #092771;
+        text-decoration: none;
+		background-color:#BFBFBF;
+		text-align:center;
+
+}
+.dataTableTD{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+		padding-left:3;
+		padding-right:3;
+        text-decoration: none;
+		background-color:#EFEFEF;
+		text-align:center;
+
+
+}
+.wrapperDataTable{
+		width: 99% ;
+		height: 280 ;
+		border: Solid 2 #8DC9F5;
+		border-left: Solid 8 #8DC9F5;
+		border-bottom: Solid 2 #8DC9F5; 
+		
+		
+}
+.wrapperDataTableTR {
+	height:20;
+	background-color:#8DC9F5;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.wrapperDataTableTD {
+	background-color:#ffffff;
+}
+
+.menuTabHeader{
+	background-image:url(/bancmateib/images/menuTabHeader.gif);
+	background-position:top;
+	background-repeat: norepeat; 
+}
+.useridchangeimage{
+	height:100;
+	width:100;
+	background-image:url(/bancmateib/images/useridchange.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+}
+.header_marquee{
+background-color:#0D5C97;
+}
+.siteLayoutBody{
+	text-align:center;
+	verticle-align:top;
+	margin:0 0 0 0;
+	/*background-color:#4A738A*/
+/*	background-color:#2F4956;*/
+	
+	/*background-image:url(/bancmateib/images/bg.jpg);*/
+	background-position:left;
+		background-repeat:repeat;
+
+}
+.footerEnd{
+height:10;
+background-image:url(/bancmateib/images/footerEnd.jpg);
+	background-position:top;
+	background-repeat:no-repeat;
+
+}
+.footer{
+height:30;
+background-color:#ffffff;
+background-image:url(/bancmateib/images/footer3.gif);
+	background-position:top;
+	background-repeat:no-repeat;
+}
+.tabMenu{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #092771;
+		border-right:Solid 1 #A6BEF9;
+			
+        text-decoration: none;
+		padding-left:15;
+		padding-right:15;
+		background-image:url(/bancmateib/images/tabMenuF.gif);
+		background-position:right;
+		background-repeat:repeat;
+		/*background-color:#D5EFFF;*/
+}
+
+.tabMenu1{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #092771;
+		border-right:Solid 1 #A6BEF9;
+		text-decoration: none;
+		padding-left:15;
+		padding-right:15;
+		background-color:transparent;
+		background-image:url(/bancmateib/images/menuTabHeader.gif);
+		background-position:right;
+		background-repeat:repeat; 
+	
+}
+.page_header{
+		background-image:url(/bancmateib/images/page_header1.gif);
+		background-position:top;
+		background-repeat:no-repeat; 
+
+}
+.topHeader{
+height:97px;
+width:800px;
+background-image:url(/bancmateib/images/MWBLogo.JPG);
+background-position:top;
+		background-repeat:no-repeat; 
+}
+
+.type1d{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+width:18;
+
+border:Solid 1 #092771;
+font-weight: bold;
+
+color:#092771;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: 0px right;
+background-repeat: no-repeat
+}
+.type2d{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+border:Solid 1 #092771;
+
+font-weight: bold;
+color:#092771;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: 0px right;
+background-repeat:repeat;
+
+}
+
+.type4d{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+	width:15;
+	height:18;
+	margin-top:5;
+	font-weight: bold;
+	border:Solid 1 #A61404;
+	background-color:white;
+	color:#A61404;
+	
+	cursor:hand;
+}
+.setborder{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+width:18;
+
+border:Solid 1 #FF3300;
+
+
+font-weight: bold;
+
+color:#FF3300;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: center;
+background-repeat: no-repeat
+}
+.resetborder{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+width:18;
+
+border:Solid 1 #092771;
+
+
+font-weight: bold;
+
+color:#092771;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: center;
+background-repeat: no-repeat
+}
+.setborder1{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+border:Solid 1 #FF3300;
+
+
+font-weight: bold;
+color:#FF3300;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: center;
+background-repeat:repeat;
+}
+.resetborder1{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+border:Solid 1 #092771;
+
+font-weight: bold;
+color:#092771;
+cursor:hand;
+background-image:url(/bancmateib/images/kepPadBtn.gif);
+background-position: center;
+background-repeat:repeat;
+}
+
+.tdformenu{
+
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: white;
+		height:20;
+        text-decoration: none;
+		/*background-color:#CFEDFF;*/
+		background-color:#8DC9F5;
+		border: Solid 1 #8DC9F5;
+		text-align:left;
+		padding: 2 2 2 2;
+		padding-right:0;
+	/*	background-image:url(/bancmateib/images/leftMenu1.gif);
+		background-position:top;
+		background-repeat:repeat; */
+		
+
+
+
+}
+.tdformenu1{
+
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #92610E;
+		height:20;
+        text-decoration: none;
+		background-color:#F4F9FF;
+		text-align:left;
+		padding: 2 2 2 2;
+		border:0;
+		border-bottom:Solid 1 #E0E0E0;
+		background-image:url(/bancmateib/images/user_left.gif);
+		background-position:center;
+		background-repeat:repeat;
+
+}
+
+.tdformenu2{
+
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #92610E;
+		height:20;
+        text-decoration: none;
+		background-color:#F4F9FF;
+		text-align:left;
+		padding: 2 2 2 2;
+		border:0;
+		background-image:url(/bancmateib/images/user_left.gif);
+		background-position:center;
+		background-repeat:repeat;
+}
+
+.tdformenuUp{
+
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #92610E;
+		height:20;
+        text-decoration: none;
+		background-color:#F4F9FF;
+		text-align:left;
+		padding: 2 2 2 2;
+		border:0;
+		border-top:Solid 1 #E0E0E0;
+		background-image:url(/bancmateib/images/user_left.gif);
+		background-position:center;
+		background-repeat:repeat;
+}
+.tdformenuUp2{
+
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        font-weight: bold;
+        color: #92610E;
+		height:20;
+        text-decoration: none;
+		background-color:#F4F9FF;
+		text-align:left;
+		padding: 2 2 2 2;
+		border:0;
+		border-top:Solid 1 #E0E0E0;
+		border-bottom:Solid 1 #E0E0E0;
+		background-image:url(/bancmateib/images/user_left.gif);
+		background-position:center;
+		background-repeat:repeat;
+}
+.accountImage{
+	height:100;
+	background-image:url(/bancmateib/images/account.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+
+}
+.requestImage{
+	height:100;
+	background-image:url(/bancmateib/images/request.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+
+}
+.miniStmtBack{
+background-color:#EAF8FF;
+
+}
+.miniStmtBackBorder{
+border:Solid 1 #B0E1FF;
+}
+
+.miniStmtResultback{
+background-color:#CFEDFF;
+}
+
+.userIdhangeBack{
+background-color:#F7F7F7;
+background-image:url(/bancmateib/images/useridchange.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+}
+
+
+
+.welcome{
+border-right:0;
+width:235;
+height:180;
+background-color:#F1F1F1 ;
+background-image:url(/bancmateib/images/welcomeGreen.jpg);
+background-position:left;
+	background-repeat:no-repeat;
+}
+.addEditBranchBack{
+background-color:#E9F2F7;
+
+background-image:url(/bancmateib/images/addEditBranch.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+}
+.showErrorBack{
+height:100;
+width:150;
+background-color:#E9F2F7;
+background-image:url(/bancmateib/images/showError.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+
+}
+.reportsImage{
+	height:100;
+	background-image:url(/bancmateib/images/reports12.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+}
+.userRequesttatusBack{
+height:100;
+width:150;
+background-color:#E9F2F7;
+background-image:url(/bancmateib/images/report19.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+}

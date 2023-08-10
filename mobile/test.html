@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+	<script language="javascript" src="js/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		jQuery(document).ready( function(){
+			try{
+
+				$("#spinner").bind("ajaxSend", function() {
+				$(this).show();
+			    }).bind("ajaxStop", function() {
+				$(this).hide();
+			    }).bind("ajaxError", function() {
+				$(this).hide();
+			    });
+	
+				$('#spinner').show();
+
+			}catch(err)
+			{
+				
+				$('#spinner').hide();
+				return false;
+			}
+
+		});
+
+	</script>
+	<style type="text/css">
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* half width of the spinner gif */
+    margin-top: -20px; /* half height of the spinner gif */
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 100px; /* width of the spinner gif */
+    height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+        </style>
+</head>
+<body >
+
+ <div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+</div>
+
+</body> 
+</html>

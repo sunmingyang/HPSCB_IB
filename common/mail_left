@@ -1,0 +1,11 @@
+<table>
+<tr>
+<td class=nav >
+<a href="/bancmateib/Mail/inbox.jsp" class=navmain>InBox</a></td></tr>
+<tr><td class=nav >
+<a href="/bancmateib/Mail/outbox.jsp" class=navmain>OutBox</a></td></tr>
+
+<tr><td class=nav >
+<a href="/bancmateib/Mail/compose.jsp" class=navmain>OutBox</a></td></tr>
+</table>
+</td>

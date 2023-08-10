@@ -1,0 +1,203 @@
+<%@ include file="/common/Include.jsp" %>
+<% String prev=(String)request.getParameter("prev"); 
+String prevpg=(String)request.getAttribute("pre_pg"); 
+
+if(prevpg!=null){
+	session.setAttribute("prevTransPage",prevpg);
+}
+
+String prevTransPg  = "";
+if(session.getAttribute("prevTransPage")!=null){
+prevTransPg = (String)session.getAttribute("prevTransPage");
+}
+
+%>
+<%String usrName = (String)session.getAttribute("user");
+%>
+<script>
+//alert("aaya");
+//alert('<%=prevpg%>');
+</script>
+<tiles:insert page="/common/siteLayout.jsp" flush="true">
+<tiles:put name="title" value="Login Page"/>
+
+<tiles:put name="header" value="/common/header.jsp"/>
+<tiles:put name="footer_jsp" value="/common/footer.jsp"/>
+<tiles:put name="footerEnd_jsp" value="/common/footerEnd.jsp"/>
+
+<%if(prevTransPg.equals("debCard")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=apforDbtCrd&src=request"/>
+<%}%>
+<%if(prevTransPg.equals("newChk")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=newChk&src=request"/>
+<%}%>
+<%if(prevTransPg.equals("stopChk")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=stopChk&src=request"/>
+<%}%>
+<%if(prevTransPg.equals("ldebcard")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=ldebcard&src=request"/>
+<%}%>
+<%if(prevTransPg.equals("chkStatus")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=chkStatus&src=request"/>
+<%}%>
+<%if(prevTransPg.equals("AddrChangeReq")){%>
+<tiles:put name="menu" value="/common/user_left.jsp?mode=AddrChangeReq&src=request"/>
+<%}%>
+<tiles:put name="header_marquee" value="/common/header_marquee.jsp"/>
+<tiles:put name="line" value="/common/line.html"/>
+<tiles:put name="menu_tab" value="/common/menu_tab.jsp?src=req"/>
+<tiles:put name="page_header" type="String" >
+&nbsp;<font color="#99FF00"><b><%if(usrName!=null) out.print(usrName);%>!</b></font>
+</tiles:put>
+<tiles:put name="content" type="String">
+<html:form action= "/jsp/login">
+<br>
+<table align="left" class="wrapperDataTable" cellpadding="0" cellspacing="0">
+
+	<tr >
+	<%if(prevTransPg.equals("debCard")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Apply for Debit Card >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Apply for Debit Card >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	<%if(prevTransPg.equals("newChk")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Order a new cheque book >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Order a new cheque book >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	<%if(prevTransPg.equals("stopChk")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Stop cheque request >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Stop cheque request >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	<%if(prevTransPg.equals("chkStatus")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Cheque Status Enquiry >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Cheque Status Enquiry >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	<%if(prevTransPg.equals("ldebcard")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Intimation For Loss of ATM Card >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Intimation For Loss of ATM Card >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	<%if(prevTransPg.equals("AddrChangeReq")){%>
+		<%  if(request.getParameter("success")!=null )
+		{%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Address Change Request >> Transaction Status</font></td>
+		<%} else {%>
+		<td class="wrapperDataTableTR" align="center"><font face="Verdana, Arial, Helvetica, sans-serif">Request >> Address Change Request >> Transaction Password Entry</font></td>
+		<%}%>
+	<%}%>
+	</tr>
+	<tr>
+		<td align="center">
+		
+	<!--	<%  if(request.getParameter("error")!=null )
+		{
+		%>
+		*<bean:message bundle='<%=lang %>' key='626'/>
+		<% 
+		} 
+		%>-->
+		<%  if(request.getParameter("success")!=null )
+		{
+		%>
+		<table cellspacing="10" width="350">
+			<tr  height="20">
+				<td class="normalHeadText" align="center">
+					<bean:message bundle='<%=lang %>' key='7220'/> &nbsp;!!!&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<input type="button" value="Back" onclick="trback()" ></td>
+			</tr>
+		</table>
+		<% 
+		}else {%>
+
+
+	
+	<table border="1" bordercolor="#E0E0E0" width="250">
+		<tr height="30">
+			<td class="tableHeader" align="center" style="border:0">
+   			 Enter Your Otp !!</td>
+		</tr>
+		<tr bgcolor="#F2F2F2">
+		<td align="center">
+
+			<table cellpadding="0" cellspacing="7" border="0" bordercolor="#E0E0E0">
+
+			<tr>
+     			<td class="normalHeadText" >
+      			<bean:message bundle="<%=lang%>" key= "7458"/> :
+      			<input type="text" name="sIbUsr_TrnPass" id="sIbUsr_TrnPass" size="15" onKeyPress="isValidNumAlpha()"></td>
+    		</tr>
+    			<input type="hidden"  id="sPrev_page" name="sPrev_page" value='<%=prev %>'>
+			<%
+			if( request.getParameter("error")!=null )
+			{
+				if (request.getParameter("error").equalsIgnoreCase("invalid"))
+				{ 
+					String prev_page=(String)request.getAttribute("prev_page");
+					if(prev_page!=null)
+					{
+						prev=prev_page;
+						System.out.print("999999999"+prev_page);
+					}%>
+			
+			<tr>
+     			<td align="center" class="errorInfoText">Your Otp did not match</td>
+    		</tr>
+			<%
+				}
+			}%>
+
+				<tr>
+					<td align="center"> 
+						<input value="&nbsp;&nbsp;<bean:message bundle='<%=lang%>' key='86'/>&nbsp;&nbsp;"	type="button" onclick="TransPass_submit('<%= prev %>')"  size="10">
+					
+						<input type="button" value="Back" onclick="trback()" ></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		</table>
+
+		<%}%>
+		</td>
+	</tr>
+</table>
+</html:form>
+</tiles:put>
+<tiles:put name="add" value="/Advertisement/add.jsp"/>
+<tiles:put name="footer" value="/common/footer.jsp"/>
+</tiles:insert>
+<script>
+function trback()
+{
+	//alert('<%=prevTransPg%>');
+	document.forms[0].action="/openaction.do?src="+'<%=prevTransPg%>'+"";
+	document.forms[0].submit();
+}
+
+</script>
+
+
+
+
+

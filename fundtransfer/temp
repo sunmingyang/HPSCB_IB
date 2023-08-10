@@ -1,0 +1,83 @@
+	
+			<tr><td><h3 style="margin-left:170px;margin-bottom:5px;font-family: Arial;">Favourite List</h3></td></tr>
+			<td align="center"  >
+
+				<%if(fundinfo!=null){
+						int k=0;
+					for(int i=0;i<fundinfo.length;i++){
+					if(fundinfo[i][9].trim().equals("Y")){	
+					k++;
+					if(k==1){
+					%>
+				<table  border="1" bordercolor="#ffffff" align="center" id = "favTabale" style="width: 790px; table-layout: fixed;" cellpadding="0" cellspacing="0">	
+				<tr>    
+				<TD class="dataTableTH" width = "50 px ">Select</TD> 
+				<TD class="dataTableTH" width = "50 px ">Account Number</TD> 
+				<td class="dataTableTH" width = "95px ">Mobile Number</td>
+				<td  class="dataTableTH" width = "50px ">Account Type</td>
+
+				<td  class="dataTableTH" width = "50px ">Remove From List</td>
+				<td  class="dataTableTH" width = "50px ">Remove From Favourite</td>
+				</tr> 
+				</table>
+				<div  style="overflow-x:auto;height:100PX;width:790px;">
+				<table  border="1" bordercolor="#ffffff" align="center" id = "favTab" style="width: 100%; table-layout: fixed;" cellpadding="0" cellspacing="0">	
+		
+<%}%>
+				<tr>   
+				<td  width = "50px" ><input type="checkbox" name="selectFav" id="selectFav" onchange="selectFromFav(this)"   ></td>
+				<TD  width = "50 px" style="font-family: Arial;"><%=fundinfo[i][2]%></TD> 
+				<td  width = "95px " style="font-family: Arial;"><%=fundinfo[i][1]%></td>
+				<td  width = "50px " style="font-family: Arial;"><%=fundinfo[i][6]%></td>
+				<td  width = "50px " ><input type="checkbox" name="rmList" id="rmList"  onchange="rmfrmList(this)" ></td>
+				<td  width = "50px "><input type="checkbox" name="rmFav" id="rmFav" onchange="rmfrmFav(this)"  >
+				<input type="hidden" name="benName" id="benName" value='<%=fundinfo[i][5]%>'>
+				
+				</td>
+				
+				</tr>	
+				<%}}}%>
+				</div>
+				</table>
+
+				
+				</td></tr>
+				<tr><td><h3 style="margin-left:170px;margin-bottom:5px; font-family: Arial;">Banificiary List</h3></td></tr>
+				<td align="center"  >
+
+
+				
+				<div  style="overflow-x:auto;height:100PX;width:790px">
+				<%if(fundinfo!=null){
+						int k=0;
+					for(int i=0;i<fundinfo.length;i++){
+					if(fundinfo[i][9].trim().equals("N")){	
+					k++;
+					if(k==1){
+					%>
+				<table  border="1" bordercolor="#ffffff" align="center"  id = "BenTab" style="width: 790px;  table-layout: fixed;" cellpadding="0" cellspacing="0">
+				<tr>    
+				<TD class="dataTableTH " width = "50px">Select</TD>
+				<TD class="dataTableTH" width = "50 px ">Account Number</TD> 
+				<td class="dataTableTH" width = "95px ">Mobile Number</td>
+				<td  class="dataTableTH" width = "50px ">Account Type</td>
+				<td  class="dataTableTH" width = "50px ">Remove </td>
+				<td  class="dataTableTH" width = "50px ">Make Favourite</td>
+				</tr> 
+				</table>
+				<table  border="1" bordercolor="#ffffff" align="center"  id = "BenTable" style="width: 100%;  table-layout: fixed;" cellpadding="0" cellspacing="0">	
+				<%}%>
+				<tr>   
+				<td  width = "50px "><input type="checkbox" name="selectBen" id="selectBen" onchange="selectFromBen(this)" ></td>
+				<TD  width = "50px "style="font-family: Arial; "><%=fundinfo[i][2]%> </TD> 
+				<td  width = "95px " style="font-family: Arial;"><%=fundinfo[i][1]%></td>
+				<td  width = "50px " style="font-family: Arial;"><%=fundinfo[i][6]%></td>
+				<td  width = "50px " ><input type="checkbox" name="rmBen" id="rmBen" onchange="rmFromBen(this)"  ></td>
+				<td  width = "50px "><input type="checkbox" name="mkBen" id="mkBen" onchange="mkFavAcc(this)" > 
+				<input type="hidden" name="benName" id="benName" value='<%=fundinfo[i][5]%>'>
+
+				
+				</td>
+				</tr>
+				<%}}}%>
+		

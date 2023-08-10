@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mBanking</title>
+
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	 <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+
+<script src="mbanking_js/mbanking.js"></script>
+<link rel="stylesheet" href="mbanking_css/style.css">
+
+	<style>
+
+	</style>
+
+		<script type="text/javascript">
+			//var $ =jQuery.noConflict();
+			
+			var accountNumber ="";
+			var accountAmount = "";
+			var accountLabel ="";
+						
+				jQuery(document).ready( function(){
+					try
+					{
+						
+						var vars = [], hash;
+						var decodedURIString = decodeURI(document.URL);
+						var q = decodedURIString.split('?')[1];
+						if(q != undefined){
+							 q = q.split('&');
+							
+							 for(var i = 0; i < q.length; i++){
+								 hash = q[i].split('=');
+								 vars.push(hash[1]);
+								 vars[hash[0]] = hash[1];
+			                 }
+			            }	
+						accountNumber =vars['accountNo'];
+						accountAmount = vars['amount'];
+						
+						accountLabel ="Effective Available Balance";
+						
+						$("#account_number").text(accountNumber);
+						$("#account_label").text(accountLabel);
+						$("#account_amount").text(accountAmount);
+						
+						//getAccountsData(JSON.parse(sessionStorage.accounts));
+						getData("ministatement",accountNumber);
+						
+						$("#spinner").bind("ajaxSend", function() {
+				       	 	$(this).show();
+						    }).bind("ajaxStop", function() {
+						        $(this).hide();
+						    }).bind("ajaxError", function() {
+						        $(this).hide();
+						});
+					    
+		    			//$('#spinner').show();
+			
+					}catch(err)
+					{
+					Android.alert(err);
+					}
+				});
+				
+			 function detailedStatementPage()
+			{
+			
+			//Android.alert("accountNo="+accountNumber+"&amount="+accountAmount);
+				window.location.href="./detailed_statement.html?accountNo="+accountNumber+"&amount="+accountAmount;
+				/*userID = $("#login-username").val();
+				password = $("#login-password").val();
+				//Android.alert(imeiNumber);
+				//Android.alert("Going to login="+userID);
+				
+				if(userID.length == 0)
+					showAlert("Error", "Please Enter User ID");
+				 else 
+				 {
+						sessionStorage.userID = userID;
+						sessionStorage.password = password;
+						sessionStorage.imeiNumber = imeiNumber;
+						sessionStorage.simNumber = simNumber;
+						location.href="home.html";
+			
+		 		  }*/
+			}
+		</script>	
+		
+	
+  </head>
+
+ <body>
+ 
+ 	<div id="spinner" class="spinner" style="display:none;">
+    	<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+	</div>
+
+ <div data-role="page" id="pageone" style="background-color:#ffffff;">
+ 
+ 
+  <div style="position:fixed; width:100%; background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+ </div> 
+
+ 
+ <div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+ 
+ 
+  <div data-role="main" class="ui-content" style="margin-top:10px;">
+  
+  
+  
+ 
+ 
+ 
+<div class="container" style="margin-top:0;width:100%;">
+ 
+<!-------->
+
+
+  
+   <div style='border: 2px solid;border-radius: 25px;background-color:#fbeded;color:#d9534f;margin-bottom:10px;font-weight: bold;min-height: 120px;margin-top:10px' id='account_div' >
+   <span style='font-size:14px;margin-left:10px;margin-top:20px;display: inline-block;' id="account_number">accountNumber</span>
+   <br />
+   <span style='font-size:12px;margin-left:10px;margin-top:10px;display: inline-block;' id="account_label">accountLabel</span>
+   <br /><span style='font-size:20px;margin-left:10px;margin-top:10px;display: inline-block;' id="account_amount">accountAmount</span>
+   </div>
+      <br />
+
+   <div style='font-size:24px;margin-left:10px;color:#666666;' id="recent_transaction">Recent Transactions</div><hr/>
+   <ul data-role="listview" id="recent_transaction_list" style="list-style: none;margin-top:0px;margin-left:10px;margin-right:10px;"></ul>
+   
+   
+   <br />
+   <br />
+   
+<!--
+<ul data-role="listview">
+      <li>
+      	<div style='border: 0px solid;border-radius: 25px;background-color:#ffffff;margin-bottom:5px;font-weight: bold;min-height: 60px;margin-top:5px' id='account_div' >
+   			<span style='font-size:18px;margin-left:10px;margin-top:10px;display: inline-block;' id="account_number">07 Mar '15</span>
+   			<span style='font-size:20px;float:right;margin-top:10px;color:#d9534f;' id="account_label">Rs. 75,000.00</span>
+		   	<br />
+		   	<span style='font-size:16px;margin-left:10px;margin-top:10px;display: inline-block;color:#C0C0C0;' id="account_amount">BIL/00078765987/Cr Card Pymt/4474470028</span>
+   		</div>
+   </li>
+   <li>
+      	<div style='border: 0px solid;border-radius: 25px;background-color:#ffffff;margin-bottom:5px;font-weight: bold;min-height: 60px;margin-top:5px' id='account_div' >
+   			<span style='font-size:18px;margin-left:10px;margin-top:10px;display: inline-block;' id="account_number">07 Mar '15</span>
+   			<span style='font-size:20px;float:right;margin-top:10px;color:#d9534f;' id="account_label">Rs. 75,000.00</span>
+		   	<br />
+		   	<span style='font-size:16px;margin-left:10px;margin-top:10px;display: inline-block;color:#C0C0C0;' id="account_amount">BIL/00078765987/Cr Card Pymt/4474470028</span>
+   		</div>
+   </li>
+   <li>
+      	<div style='border: 0px solid;border-radius: 25px;background-color:#ffffff;margin-bottom:5px;font-weight: bold;min-height: 60px;margin-top:5px' id='account_div' >
+   			<span style='font-size:18px;margin-left:10px;margin-top:10px;display: inline-block;' id="account_number">07 Mar '15</span>
+   			<span style='font-size:20px;float:right;margin-top:10px;color:#d9534f;' id="account_label">Rs. 75,000.00</span>
+		   	<br />
+		   	<span style='font-size:16px;margin-left:10px;margin-top:10px;display: inline-block;color:#C0C0C0;' id="account_amount">BIL/00078765987/Cr Card Pymt/4474470028</span>
+   		</div>
+   </li>
+	  
+     
+    </ul>
+ -->  
+<div style="width:75%;text-align:center;margin:auto;margin-top: -10px;" ><button type="button" id="button1" onclick="detailedStatementPage();return false;">Detailed Statement</button></div>
+
+
+
+</div>
+</div> <!-- container -->
+
+
+
+   <br />   
+</div>
+     <div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+      <img src="./img/home.png" alt="..." class="img-responsive" onclick="window.location.href='./home.html'">
+        </div> 
+        
+        
+
+        
+        
+        
+  </body>
+  
+
+</html>
+
+
+
+
+

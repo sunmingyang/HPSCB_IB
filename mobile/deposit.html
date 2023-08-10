@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		 <script src="mbanking_js/md5.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		#container-div {
+  position: absolute;
+  top: 18%;
+  bottom: 0;
+  height: 75%;
+  width: 100%;
+  overflow-y: auto;
+  border-top: 0px solid #2E2E2E;
+ 
+
+}
+		</style>
+		
+		<script type="text/javascript">
+		function cardconfirm()
+		{
+		location.href="http://www.deposit.com/";
+		}
+
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		
+
+
+		</script>
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:0px;overflow-y: auto; " >
+		   
+
+    		
+			    
+			    	<br/><div style="display:none" id="alert-div" class="alert alert-danger col-sm-12"></div>
+			        
+			       
+					<input type=button value="Deposit with Card" onclick="cardconfirm();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+					
+					<input type=button value="Deposit without Card" onclick="" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			   
+			   
+		   
+	</div>
+   
+   
+  	</body>
+  
+	 <div align="center" style="position:fixed; width:100%;  padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+		<a  href="/mobile/mobilemenu.jsp">   <img src="/mobile/img/home.png" alt="..." class="img-responsive" ></a>
+	</div>
+		 
+</html>
+
+
+

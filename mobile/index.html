@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+	<script src="js/controller.js"></script>
+  </head>
+  <body ng-app="starter">
+
+
+
+<!-- Side Menu-->
+
+<ion-side-menus>
+<!-- center content -->
+<ion-side-menu-content>
+<ion-header-bar align-title="center" class="bar-assertive">
+<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+  </button>
+	<h1 class="title">Fruits & Vegetables</h1>
+</ion-header-bar>
+<ion-content>
+
+<ion-list ng-controller="MyCtrl" show-reorder="true">
+
+    <ion-item class="item-icon-left" ng-repeat="item in items">
+        <i class="icon ion-{{item.icon}}" style="margin-left: 25px;"></i>
+        <span style="margin-left: 25px;">{{item}}</span>
+        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+    </ion-item>
+
+</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>
+</ion-side-menu-content>
+
+<!-- -->
+<ion-side-menu side="left">
+<ion-header-bar align-title="center" class="bar-assertive">
+
+
+<h1 class="title">Categories</h1>
+</ion-header-bar>
+<ion-content>
+
+
+<ion-list ng-controller="MyCtrl" show-reorder="true">
+
+    <ion-item class="item-icon-left" ng-repeat="category in categories" ng-click="categorySelected()">
+        <i class="icon ion-{{category.icon}}" style="margin-left: 25px;"></i>
+        <span style="margin-left: 25px;" >{{category}}</span>
+
+        <ion-reorder-button class="ion-navicon" on-reorder="moveCategory(category, $fromIndex, $toIndex)"></ion-reorder-button>
+    </ion-item>
+
+</ion-list>
+
+
+</ion-content>
+</ion-side-menu>
+
+
+
+<ion-footer-bar align-title="left" class="bar-assertive">
+  <div class="buttons">
+    <button class="button">Back</button>
+  </div>
+  <h1 class="title">All Rights Reserved.</h1>
+  <div class="buttons" ng-click="doSomething()">
+    <button class="button">Next</button>
+  </div>
+</ion-footer-bar>
+
+</ion-side-menus>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+
+<head runat="server">
+    <title></title>
+
+<script>
+
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+       <!--  <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+<html> 
+<!-- <script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script> -->
+  <script>
+   /* var gCalDate=changeDate('2016-06-30');
+    var intRound = '0';
+    var bankCocde= '208';*/
+
+
+function month(){
+var a=sessionStorage.getItem('limit');
+var limit=document.getElementById("repTotalLoan");
+limit.value=a;
+var GetPeriod=sessionStorage.getItem('month');
+var repPeriodInMonth=document.getElementById("repPeriodInMonth");
+repPeriodInMonth.value=GetPeriod;
+var repNoOfInstallment=document.getElementById("repNoOfInstallment");
+repNoOfInstallment.value=GetPeriod;
+}
+ </script>
+  <body onload="month(),sessionGetRp()">
+    <center>
+	 
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+	<H4>Repayment Schedule</H4></center>
+    <form name="loanLimitRepaymentScheduleForm" method="post" action="/CobaSys/account/acopen/loanLimitRepaymentScheduleAction.do">
+      <div id="divLoanEmi" class="div28"> 
+
+	  	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:65%;width:98% ">
+        <table width="99%" cellpadding="0" cellspacing="0" border="0" align="center">
+          <tr> 
+            <td colspan="4">&nbsp;</td>
+          </tr>
+          <tr> 
+            <td width="38%"> Total Loan </td>
+            <td width="20%"> <strong>:</strong> 
+			  <input type="text" name="repTotalLoan" size="15" value=""  readonly="readonly" style="direction:rtl" class="fancyHide" id="repTotalLoan" title="text">	
+            </td>
+			</tr>
+			<tr>
+            <td width="30%"> Period in Months </td>
+            <td width="20%"> <strong>:</strong> 
+			  <input type="text" name="repPeriodInMonth" maxlength="3" size="10" value=""  class="periodText" id="repPeriodInMonth" style="text-align:right;">	
+            </td>
+		    <input type="hidden" name="periodInMonth" value="" id="periodInMonth">
+          </tr>
+      
+	      <tr> 
+            <td> No.of Installments </td>
+            <td> <strong>:</strong> 
+			  <input type="text" name="repNoOfInstallment" size="10" value=""  readonly="readonly" class="fancyHide" id="repNoOfInstallment">	
+            </td>
+          </tr>
+	  
+	      <tr>
+	        <td width="157">Mode Of Payment</td>
+	        <td> <strong>:</strong> 
+		      <select name="repPaymentMode"   class="select" id="repPaymentMode"><option value="FR">FLAT RATE</option>
+		     
+		        <option value="NR">EMI</option></select>
+		    </td>
+	      </tr> 
+	      <!-- Added by amit semwal for Emi type -->
+	      <tr> </tr>
+	      <tr >
+	      <td width = "10%" >EMI Type</td>
+	     <td > 
+	      <input type="radio" name="emiType1" id ="emiTypeAD" onchange="emiTypeSelect(this)" value="AD" />
+	      Advance 
+	     </td>
+	     <td >
+
+	     <input type="radio" name="emiType1" id="emiTypeAR" onchange="emiTypeSelect(this)" value="AR" checked /> 
+	     Arrear Basis 
+	      <input type="hidden" name="emiType" value="" id="emiType">
+	     </td>
+	      
+	     </tr>
+	      <!-- End -->
+
+          <tr> 
+            <td> Inst.Payment Period </td>
+           
+
+			 <td> <strong>:</strong> 
+			  <select name="repPaymentPeriod" id="repPaymentPeriod" onchange="chkMonth()">
+                <option value="M">Monthly</option>
+                <option value="Q">Quarterly</option>
+                <option value="H">Half Yearly</option>
+                <option value="Y">Yearly</option>
+                <!-- <option value="D">Daily</option> -->
+              </select> </td>
+            <td> 
+		    </td>
+          </tr>
+        </table>
+        <div id="intOptEduLoanRow" style="padding:none">
+        <table width="99%" border="0" cellpadding="0" cellspacing="0"align="center">
+         <tr>
+           <td colspan="4">&nbsp;</td>
+         </tr>
+       
+       </table>
+       </div>
+
+        <div id="mqhy_display" class="div29"> 
+        <table width="99%" border="0" cellpadding="0" cellspacing="0" align="left">
+        
+			  <input type="hidden" name="repCalWithIntrest" value="Y"  id="repCalWithIntrest"> 
+          
+        
+
+          <tr> 
+            <td width="12.6%"> First Installment Amount </td>
+            <td width="20%" align="left"> <strong>:</strong> 
+			  <input type="text" name="repInstallment" size="12" value="" readonly="readonly" class="periodText" id="repInstallment" title="text"></td>&nbsp;&nbsp;&nbsp;&nbsp;
+		  <td><input type="button" name="calInstallment" class="btn btn-primary" id="calInstallment" value="CALCULATE INSTALLMENT" onclick="calculateIns()" style="width:200px"/> </td>
+            </td>
+          </tr>
+
+		  <script>
+
+function calculateIns(){
+var Totalloan=document.getElementById("repTotalLoan").value;
+var NoOfInstallment=document.getElementById("repNoOfInstallment").value;
+var paymode=document.getElementById("repPaymentMode").value;
+var InstPayPeriod=document.getElementById("repPaymentPeriod").value;
+var RateofInterest=sessionStorage.getItem('roi');
+var panelrate=sessionStorage.getItem('penalrate');
+var instStartDate=sessionStorage.getItem('startDate');
+var ActKid=284;
+var URL2 = "http://"+cbsserver+":"+cbsserverPort+"/CobaSys/custid/AddressDetail.do?action=calCulateInstallment&dPrincipalAmt="+Totalloan+"&dRoi="+RateofInterest+"&dProi="+panelrate+"&dNoofInst="+NoOfInstallment+"&repayMode="+paymode+"&inststDate="+instStartDate+"&instPayperiod="+InstPayPeriod+"&sActkid="+ActKid;
+http.onreadystatechange= function (){processAccount5("calInstallment")};
+http.open("POST",URL2,false);
+http.send(null);
+
+}
+   function processAccount5()
+{	
+
+if((http.readyState == 4) && (http.status == 200)){
+var resArray1=http.responseText;
+sessionStorage.setItem('resArray1',resArray1);
+var jsonData = JSON.parse(resArray1);
+var firstInstallment=jsonData[0]["emiAmt"];
+var textbox = document.getElementById('repInstallment'); 
+	  textbox.value=Math.round(firstInstallment * 100.0)/100.0;
+	
+}
+}
+function chkMonth(){
+		var Month=document.getElementById("repPeriodInMonth").value;
+		var Period=document.getElementById("repPaymentPeriod").value; 
+		if(Period=="M"){
+			document.getElementById("repNoOfInstallment").value=Month/1;
+		}
+		if(Period=="Q"){
+			if(!(Month%3==0)){
+				alert("./Period In Month should be in a multiple of 3");
+				document.getElementById("repPaymentPeriod").value="M";
+			}
+			else
+				document.getElementById("repNoOfInstallment").value=Month/3;
+		}
+		else if(Period=="H"){
+			if(!(Month%6==0)){
+				alert("./Period In Month should be in a multiple of 6");
+				document.getElementById("repPaymentPeriod").value="M";
+			}
+			else
+				document.getElementById("repNoOfInstallment").value=Month/6;
+		}
+		else if(Period=="Y"){
+			if(!(Month%12==0)){
+				alert("./Period In Month should be in a multiple of 12");
+				document.getElementById("repPaymentPeriod").value="M";
+			}
+			else
+				document.getElementById("repNoOfInstallment").value=Month/12;
+		}
+calculateIns();
+	}
+</script>
+           
+		  <tr> 
+            <td  > Remaining Installment </td>
+            <td align="left"> <strong>:</strong> 
+			  <input type="text" name="repRemInstallment" size="12" value=""  readonly="readonly" class="periodText" id="repRemInstallment" title="text"> 
+              &nbsp;&nbsp;&nbsp;&nbsp; 
+			</td>
+          </tr>
+        </table>
+      </div>
+      <div id="n_display" class="div30"> 
+        <table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+          <tr> 
+            <td colspan="4">&nbsp;</td>
+          </tr>
+      
+        </table>
+      </div>
+      <table width="100%" border="1" cellpadding="0" cellspacing="0" align="center">
+        <tr> 
+          <td width="37%"> Moratorium </td>
+          <td> <strong>:</strong> 
+			<input type="checkbox" name="repMoratorium" value="on" onclick="visiblDiv(),checkuncheck()"  id="repMoratorium"> 
+          </td>
+          <td colspan="2"> &nbsp; 
+		    <div id="mor_month" style="display:none"> 
+              Moratorium Months
+              <strong>:</strong> 
+			  <input type="text" name="repMorMonth" maxlength="3" size="5" value="0" class="periodText" id="repMorMonth"> 
+			  PERIOD INCLUDED
+			  <input type="checkbox" name="withinPeriodYN" value="on" onclick="checkuncheck(),isMorMonthCorrect(document.getElementById('repMorMonth').value),getInstallmentData()"  id="withinPeriodYN"> 
+            </div>
+		  </td>
+        </tr>
+
+		<script>
+function displayAmortisationSchedule(){
+sessionSetRp();
+window.location='AmortisationShedule.html';
+}
+</script>
+       
+	    <tr> 
+          <td colspan="2">&nbsp;</td>
+          <td colspan="2" rowspan="5" valign="top" align="center"> <fieldset class="field">
+            <legend> Operations </legend>
+            <br>
+            <input type="button" name="f2" id="f2" class="btn btn-primary" onClick="displayAmortisationSchedule()" style="width:200px"   value="Amortisation Schedule" />
+            <input type="button" name="f4" id="f4" class="btn btn-primary" style="width:200px"  value="Graduated E.M.I"   disabled="true"/>
+            </fieldset>
+		  </td>
+        </tr>
+        
+		<tr> 
+          <td> Installment Start Date </td>
+          <td> <strong>:</strong> 
+			<input type="text" name="startDate" size="12" value=""  id="startDate"> 
+			
+			</div>
+		  </td>
+        </tr>
+      
+	    <tr> 
+          <td> Last Installment Date </td>
+          <td> <strong>:</strong> 
+			<input type="text" name="lastDate" size="12" value=""   id="lastDate"> 
+			
+			</div>
+		  </td>
+        </tr>
+      
+	    <tr> 
+          <td>&nbsp;
+		    <input type="hidden" name="repInstValues" value="!!" id="repInstValues"> 
+          </td>        
+		</tr>
+      </table>
+
+	  <script>
+
+function sessionGetRp(){
+if(sessionStorage.getItem('repPaymentMode')=="" || sessionStorage.getItem('repPaymentMode')==null)
+	document.getElementById("repPaymentMode").value="NR"
+else
+	document.getElementById("repPaymentMode").value=sessionStorage.getItem('repPaymentMode');
+document.getElementById("emiTypeAD").value=sessionStorage.getItem('emiTypeAD');
+document.getElementById("emiTypeAR").value=sessionStorage.getItem('emiTypeAR');
+document.getElementById("repPaymentPeriod").value=sessionStorage.getItem('repPaymentPeriod');
+document.getElementById("repInstallment").value=sessionStorage.getItem('repInstallment');
+document.getElementById("repRemInstallment").value=sessionStorage.getItem('repRemInstallment');
+document.getElementById("startDate").value=sessionStorage.getItem('startDate');
+document.getElementById("lastDate").value=sessionStorage.getItem('lastDate');
+
+var date=sessionStorage.getItem('startDate');
+var no=sessionStorage.getItem('month');
+getRelativeMonth(date, no);
+}
+function sessionSetRp(){
+sessionStorage.setItem('repTotalLoan',document.getElementById("repTotalLoan").value);
+sessionStorage.setItem('repPeriodInMonth',document.getElementById("repPeriodInMonth").value);
+sessionStorage.setItem('repNoOfInstallment',document.getElementById("repNoOfInstallment").value);
+sessionStorage.setItem('repPaymentMode',document.getElementById("repPaymentMode").value);
+sessionStorage.setItem('emiTypeAD',document.getElementById("emiTypeAD").value);
+sessionStorage.setItem('emiTypeAR',document.getElementById("emiTypeAR").value);
+sessionStorage.setItem('repPaymentPeriod',document.getElementById("repPaymentPeriod").value);
+sessionStorage.setItem('repInstallment',document.getElementById("repInstallment").value);
+sessionStorage.setItem('repRemInstallment',document.getElementById("repRemInstallment").value);
+sessionStorage.setItem('startDate',document.getElementById("startDate").value);
+sessionStorage.setItem('lastDate',document.getElementById("lastDate").value);
+}
+
+function saveRepaymentScheduleDetail(){
+var jssondataadd="{";
+jssondataadd+='"'+document.getElementById("repTotalLoan").name+'":'+'"'+document.getElementById("repTotalLoan").value+'",';
+jssondataadd+='"'+document.getElementById("repPeriodInMonth").name+'":'+'"'+document.getElementById("repPeriodInMonth").value+'",';
+jssondataadd+='"'+document.getElementById("repNoOfInstallment").name+'":'+'"'+document.getElementById("repNoOfInstallment").value+'",';
+jssondataadd+='"'+document.getElementById("repPaymentMode").name+'":'+'"'+document.getElementById("repPaymentMode").value+'",';
+jssondataadd+='"'+document.getElementById("emiTypeAD").name+'":'+'"'+document.getElementById("emiTypeAD").value+'",';
+jssondataadd+='"'+document.getElementById("firstROI").name+'":'+'"'+document.getElementById("firstROI").value+'",';
+jssondataadd+='"'+document.getElementById("repPaymentPeriod").name+'":'+'"'+document.getElementById("repPaymentPeriod").value+'",';
+jssondataadd+='"'+document.getElementById("repInstallment").name+'":'+'"'+document.getElementById("repInstallment").value+'",';
+jssondataadd+='"'+document.getElementById("repRemInstallment").name+'":'+'"'+document.getElementById("repRemInstallment").value+'",';
+jssondataadd+='"'+document.getElementById("startDate").name+'":'+'"'+document.getElementById("startDate").value+'",';
+jssondataadd+='"'+document.getElementById("lastDate").name+'":'+'"'+document.getElementById("lastDate").value+'",';
+jssondataadd+="}";
+sessionStorage.jssondataadd=jssondataadd;
+sessionSetRp();
+location.href='LoanlimitInterest.html';
+}
+
+function callBackPage(){
+location.href='LoanlimitInterest.html';
+}
+function getLastDayOfMonth(month,year)
+{
+	var day;
+	switch(month)
+	{
+		case 1 :
+		case 3 :
+		case 5 :
+		case 7 :
+		case 8 :
+		case 10:
+		case 12:
+			day = 31;
+			break;
+		case 4 :
+		case 6 :
+		case 9 :
+		case 11:
+		   	day = 30;
+			break;
+		case 2 :
+			if( ( (year % 4 == 0) && ( year % 100 != 0) ) || (year % 400 == 0) )
+				day = 29;
+			else
+				day = 28;
+			break;
+	}
+	return day;
+}
+
+function getRelativeMonth(date , no)
+{
+	var dt = date.split("/");
+	var month = parseInt(no,10) + parseInt(dt[1],10);
+	var year = parseInt(dt[2],10) + Math.floor((month / 12));
+	month %= 12;
+	if(month == 0)
+	{
+		month = 12;
+		year -= 1;
+	}
+	///alert("here ");
+	var lday = getLastDayOfMonth(month,year);
+	if(month < 10 )
+		month = "0" + month ;
+	if(parseInt(dt[0],10) <= lday)
+		lday = parseInt(dt[0],10);
+	if(lday < 10 )
+		lday = "0" + lday ;
+	var str = lday +"/"+month+"/"+year;
+	//return str;
+	document.getElementById("lastDate").value=str;
+}
+
+	  </script>
+      <center>
+		<hr class="HeaderLabelAcOpen" size="2">
+		<INPUT TYPE="button" class="btn btn-primary"  name="ok" value="OK" ONCLICK="saveRepaymentScheduleDetail()"/>
+		<INPUT TYPE="button" class="btn btn-primary" name="cancel"  value="Cancel" ONCLICK="callBackPage()"/>
+		
+	  </center>
+	  <input type="hidden" name="focus" value="repPeriodInMonth" id="focus">
+	  <input type="hidden" name="mode" value="" id="mode">
+	  <input type="hidden" name="intWithinMorPeriod" value="Y" id="intWithinMorPeriod">
+	  		
+    </div>
+    <div id="divLoanAmort" class="div37"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr> 
+          <td class="HeaderLabelAcOpen" align="center"> 
+         
+	    
+		<tr> 
+          <td colspan="3"><br><br><br><br><br></td>
+        </tr> 
+      </table>
+	</div>
+	<input type="hidden" name="subsidyAmt" value="" id="subsidyAmt">
+	<input type="hidden" name="multipleSlab" value="N" id="multipleSlab">
+	<input type="hidden" name="firstSlab" value="100000.00" id="firstSlab">
+	<input type="hidden" name="firstROI" value="10" id="firstROI">
+	<input type="hidden" name="secondSlab" value="0.0" id="secondSlab"> 
+	<input type="hidden" name="secondROI" value="0.0" id="secondROI"> 
+	<input type="hidden" name="thirdSlab" value="0.0" id="thirdSlab"> 
+	<input type="hidden" name="thirdROI" value="0.0" id="thirdROI"> 
+	<input type="hidden" name="fourthSlab" value="0.0" id="fourthSlab"> 
+	<input type="hidden" name="fourthROI" value="0.0" id="fourthROI"> 
+	<input type="hidden" name="fifthSlab" value="0.0" id="fifthSlab"> 
+	<input type="hidden" name="fifthROI" value="0.0" id="fifthROI"> 
+    <input type="hidden" name="grdEmi_1" value="" id="grdEmi_1"> 
+	<input type="hidden" name="grdPeriod_1" value="" id="grdPeriod_1"> 
+	<input type="hidden" name="grdEmi_2" value="" id="grdEmi_2"> 
+	<input type="hidden" name="grdPeriod_2" value="" id="grdPeriod_2"> 
+	<input type="hidden" name="grdEmi_3" value="" id="grdEmi_3"> 
+	<input type="hidden" name="grdPeriod_3" value="" id="grdPeriod_3"> 
+	<input type="hidden" name="grdEmi_4" value="" id="grdEmi_4"> 
+	<input type="hidden" name="grdPeriod_4" value="" id="grdPeriod_4"> 
+	<input type="hidden" name="grdEmi_5" value="" id="grdEmi_5"> 
+	<input type="hidden" name="grdPeriod_5" value="" id="grdPeriod_5"> 
+	<input type="hidden" name="repMoratoriumYN" value="" id="repMoratoriumYN"> 
+	<input type="hidden" name="hdnwithinPeriodYN" value="" id="hdnwithinPeriodYN"> 
+	<input type="hidden" name="reschedullingMode" value="N" id="reschedullingMode"> 
+	<input type="hidden" name="tempInstStartDate" value="" id="tempInstStartDate"> 
+	<input type="hidden" name="repFlag" value="0" id="repFlag">
+	<DIV id="DivHotKey" style="display:block; height:15%; position: relative;">
+	
+	</DIV>
+  </form>
+</body >
+</html>
+ 

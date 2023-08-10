@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list).split(",");
+			
+			var s= document.getElementById('accounts');
+			var s2= document.getElementById('accounts2');
+			var s3= document.getElementById('accounts3');
+			if(s.options.length == 0)
+			{
+				for (var i in account_array) {
+					s.options[s.options.length]= new Option(account_array[i], account_array[i]);
+					s2.options[s2.options.length]= new Option(account_array[i], account_array[i]);
+					s3.options[s3.options.length]= new Option(account_array[i], account_array[i]);
+				}
+			}
+			
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+		
+	
+		function ok()
+		{
+			//location.href="home.html";
+			window.history.back();
+		}
+		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+		 
+		<div class="container" style="margin-left: 20px;margin-top:30px;width:90%;" >
+		
+		
+		<br/><div style="display:none" id="alert-div-neft" class="alert alert-danger col-sm-12"></div>
+		
+		<table style="border-collapse: collapse;">
+			
+    		<tr><th style="padding: 6px;">Date<th/><th style="padding: 6px;">Amount<th/><th style="padding: 6px;">Number<th/><th style="padding: 6px;">Account<th/></tr>
+			<tr><td style="padding: 6px;">12-04-2015<td/><td style="padding: 6px;">499<td/><td style="padding: 6px;">9799999342<td/><td style="padding: 6px;">0120001100345<td/></tr>
+			<tr><td style="padding: 6px;">14-03-2015<td/><td style="padding: 6px;">399<td/><td style="padding: 6px;">9799999343<td/><td style="padding: 6px;">0120001100345<td/></tr>
+			<tr><td style="padding: 6px;">18-02-2015<td/><td style="padding: 6px;">599<td/><td style="padding: 6px;">9799999345<td/><td style="padding: 6px;">0120001100345<td/></tr>
+		
+		</table>
+		
+			        
+			        
+			        				
+			
+			        <br/><div style="font-size:18px;color:#666666;">
+					<br/><br/><input type=button value="OK" onclick="ok();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+		
+		
+		
+		
+		
+		
+		
+</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+

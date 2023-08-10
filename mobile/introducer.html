@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>Introducer</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 30%;
+			bottom: 0;
+			height: 67%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+
+		</style>
+
+
+<link rel = "stylesheet" href="CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="CobaSys/scripts/CalendarJS.js">
+</script>
+
+<script>
+var serverIP = "192.168.1.101";		//"192.168.1.72";
+var serverPort = "8098";
+
+//var serverIP = "182.73.140.108";		//"192.168.1.72";
+//var serverPort = "8290";
+
+var AmtinGrp = '3';
+var appcontext ='CobaSys' ;
+function getSecondLangWord(engWord)
+{
+	return region(engWord,'english') ; 
+	
+}
+function showMessage(sArg)
+{
+	getMessage(1,sArg,"errors");
+}
+function bmdatefill(){
+	var bmform = document.forms[0];
+	for(var i=0; i<bmform.elements.length; i++){
+		if(bmform.elements[i].title == "bmdate" && bmform.elements[i].value=="" ) {
+			bmform.elements[i].value = changeDateFormat('2016-02-29');
+		}
+	}
+}
+var todayDate=new Date();
+var calShortWeekNames="";
+var calLongMntNames="";
+
+shortcut.add("ALT+F1", function() {
+	 var er=window.event || arguments.callee.caller.arguments[0];
+	 var em = er.srcElement||er.target;
+	 var cc = er.keyCode;
+	var n = em;
+	do n = n.nextSibling;
+	while (n && n.nodeType != 1);
+	if(n!=null){
+		n.onclick(er);
+		return false ;
+	}
+});
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="CobaSys/css/main.css">
+        <script src="CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+<script>
+var fastTrackCustIdParameter='false';
+var otherIntroAcc='C';
+var personalFlag=false;
+var  Dob="25/05/1978";
+var sDate="";
+var paramlang,total='9';
+var strDateSend="2005/12/15";
+var flag="";
+var brnCode='002';
+						
+						
+							
+						
+						
+					       personalFlag=true;
+					       Dob ='02/02/1978';
+					      
+						sDate='29/02/2016';
+						strDateSend="2016/02/29";
+					     paramlang='english';	
+
+var sValidAccNumber = '';
+</script>
+
+<html>
+<head>
+<title>Other Details</title>
+
+<script src="CobaSys/custid/customerId.js"> </script>
+
+
+</head>
+<body onLoad="getval()" marginheight="0"   topmargin="0" onhelp="return false">
+
+<center>
+
+
+<form id="frm3" name="CmmOtherJsp" method="post" action="CMMPersonal.html">
+
+<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:-5px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div  style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block; "  />
+		</div>
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; height:60%; width:95%;" >
+
+</center>
+
+<div id="div0" cellspacing="0" cellpadding="0"  align="center">
+<table  cellspacing=0 cellpadding=0  >
+	<tr>
+		<td nowrap>
+			 
+			
+	</tr>
+	
+</table> </div>
+
+<hr>
+
+
+	<!-------------------Introducer--------------->
+	<center>
+<div id="div2"  style="position:relative; display:block; overflow:auto;">
+<font size=2 color="'#003399'">
+<label ><u><b>Introducer Details (Description)</b></u></label>
+</font>
+
+<table border="0" bordercolor="red" cellpadding="0" cellspacing="0">
+    <tr>
+		<td width="200">
+			<label>Intro. Type<font size="2" color='red'id="introType">*</font></label></td>
+		<td colspan="0" nowrap>
+
+
+		 <script>
+function dis_able()
+{
+	var c=document.getElementById('select').value;
+	if(c=="A") {
+		document.getElementById('other').disabled=false;
+	} else if(!c){
+		document.getElementById('other').disabled=false;
+	} else {
+	//	document.getElementById('other').disabled=true;
+	}
+	var d=document.getElementById('select').value;
+	if(c=="K" || c=="S" ) {
+		document.getElementById('name').disabled=false;
+	}
+	else {
+		document.getElementById('name').disabled=true;
+	}
+	var e=document.getElementById('select').value;
+	if(c=="O") {
+		document.getElementById('description').disabled=false;
+	}
+	else {
+		document.getElementById('description').disabled=true;
+	}
+
+}
+
+</script>
+			<b>:&nbsp;&nbsp;</b><select  class="form-control input-lg" name="Intro.type" id="select"  onChange="dis_able();" >
+<option selected>Please select-- </option>
+ <option value="K">Known To Staff</option>
+<option value="A">Account Holder</option>
+ <option value="O">Others</option>
+ <option value="S">Staff</option>
+  </select>
+
+
+
+
+	<tr>
+						<td width="200">
+							<label>Account no.</label></td>
+						<td>
+							<b>:&nbsp;</b>
+							<input type="text" name="Account no." size="20" value="" id="accountNo"> </td>
+					</tr>
+
+	<tr>
+		<td colspan=2 nowrap>
+			<div id="byCustId" style="display:none;width:100%;">
+				<table width="38%">
+					<tr>
+						<td>
+							<label>Customer ID</label></td>
+						<td>
+							<b>:&nbsp;</b>
+
+						<td>
+
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2" nowrap>
+			<div id="byAccNo" style="display:none;width:100%;"><!-- jai -->
+				<table width="100%" cellpadding="0" cellspacing="0">
+
+				</table>
+			
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Name <font size="2" color='red'> *</font></label></td>
+		<td colspan="0" nowrap align="left">
+			<b>:</b>
+			<input type="text" name="name" size="20" value="" id="name1">
+
+
+		</tr>
+	<tr>
+
+		<td colspan="0" nowrap align="left">&nbsp;
+		<td>
+			<b>:&nbsp;</b>
+			 </td>
+
+
+
+
+			<!--MDCB -->
+			<!-- <img tabindex='4' src="/CobaSys/images/HELP1.BMP"   class="Image" onClick="openHelpPanelIntroducer('intCode', 'isIntrCustid', 'isIntrHName','isIntrEName','IntroducerDetails',document.getElementById('isIntrType').value,strDateSend,'6')" id="intrENameHelp"/><!--MDCB -->
+		</td>
+    </tr>
+
+    <tr> 
+		<td>
+			<label>Description</label></td>
+		<td colspan="0" nowrap align="left">
+			<b>:&nbsp;</b>
+			<input type="text" name="Description" size="20" value="" id="description"> </td>
+			
+		
+    </tr>
+	<tr>
+	<td align="right">
+	
+     <input type="button" align="center" class = "form-control input-lg btn btn-info" onclick="intro()" value='OK' tabindex="10" id="submit1"></td></tr>
+       
+  </table>
+
+
+	</center>
+<table>
+  </div>
+<tr>
+<script>
+
+
+
+function FillReg()
+	{
+		if(document.getElementById("isWithRegular").checked==true)
+			document.getElementById("isWithRegular").value="on";
+		else
+			document.getElementById("isWithRegular").value="off";
+		
+	}
+
+function focusSet()
+{
+
+			tabOnClick("2");
+			document.forms[0].isIntrType.focus();
+			
+
+}
+</script>
+</tr>
+</table>
+  <table>
+  <tr>
+	<td align="left" valign="bottom" ><div id ="errorhead" style="display:none;"><label><u><font color='red'> Errors</u></font></label></div></td>
+	 </td>
+  </tr>
+  </table>
+	</div>
+	
+
+	<table>
+    <tr> 
+    	<script>
+/*function focusSet()
+{
+	
+			tabOnClick("1");
+			document.forms[0].isCustBankCode.focus();
+		
+	
+}
+		var msg="Updation starts ! Do you want to continue?";
+		var msg1="Are You Sure ?";*/
+
+
+		function serializeSchema(form) {
+    return [].map.call(form.elements, function(el) {
+        return {
+           
+           name:el.name,
+           value: el.value
+        };
+    });
+};
+ function intro(){
+ var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+for(var i=0;i<d.length;i++)
+{
+inputField=d[i];
+jssondataadd+='"'+inputField.name+'" : ';
+jssondataadd+='"'+inputField.value+'" ,  ';
+}
+
+jssondataadd+="}";
+//alert(jssondataadd);
+var form = document.querySelector('form'),
+    schema = serializeSchema(form);
+sessionStorage.introducerform =jssondataadd;
+
+//alert(sessionStorage.introducerform);
+
+SessionSet();
+
+}
+
+
+function validateInputForm(){
+
+//alert("Hello! I am an alert box!--------------------");
+
+
+var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+for(var i=0;i<d.length;i++)
+{
+inputField=d[i];
+jssondataadd+='"'+inputField.name+'" : ';
+jssondataadd+='"'+inputField.value+'" ,  ';
+}
+jssondataadd+="}";
+
+var form = document.querySelector('form'),
+    schema = serializeSchema(form);
+
+sessionStorage.adressform =jssondataadd;
+var addressJson=jssondataadd;
+
+//var myJsonString = JSON.stringify(addressJson);
+window.history.back()
+
+
+
+}
+
+function getval(){
+var a = sessionStorage.name1;
+var b = sessionStorage.length;
+//alert(a+"::::"+b +"SSSSSS" + sessionStorage);
+//debugger;
+if (typeof(sessionStorage.name1) !== "undefined")
+//if((!a===undefined))
+{
+document.getElementById("description").value=sessionStorage.description;
+document.getElementById("accountNo").value=sessionStorage.accountNo;
+document.getElementById("name1").value=sessionStorage.name1;
+document.getElementById("select").value=sessionStorage.select;
+}else {
+
+//alert("hi"+sessionStorage.name1);
+alert("No Data Available");
+}}
+
+
+
+
+
+function SessionSet(){
+
+sessionStorage.description=document.getElementById("description").value;
+sessionStorage.accountNo=document.getElementById("accountNo").value;
+sessionStorage.name1=document.getElementById("name1").value;
+sessionStorage.select=document.getElementById("select").value;
+
+location.href='CMMPersonal.html';
+}
+
+
+		</script>
+	
+	
+</td>
+       
+	
+      <td>
+     
+      </tr>
+  </table>
+  </div>
+ 
+
+
+
+</form>
+</body>
+</html>

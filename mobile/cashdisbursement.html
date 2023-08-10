@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<script src="js/accounting.js"></script>
+
+		<script type="text/javascript">
+	function formatamt(val,id)
+{
+  debugger;
+  var amt = processAmountData(val,id);
+  document.getElementById(id).value = amt;
+    }
+</script>
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 30%;
+			bottom: 0;
+			height: 67%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list).split(",");
+			var account_array_fund_transfer = (sessionStorage.accounts_list_for_transfer).split(",");
+			var account_array_fund_transfer_to = (sessionStorage.accounts_list_for_transfer_to).split(",");
+
+
+			var s= document.getElementById('from_accounts_self');
+			var s2= document.getElementById('to_accounts_self');
+
+
+			//var s4= document.getElementById('to_accounts_others');
+
+			if(s.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s.options[s.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+			}
+			}
+
+			if(s2.options.length == 0)
+			{
+
+				for (var i in account_array_fund_transfer_to) {
+					s2.options[s2.options.length]= new Option(account_array_fund_transfer_to[i], account_array_fund_transfer_to[i]);
+				}
+			}
+
+
+			var s3= document.getElementById('from_accounts_others');
+			if(s3.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s3.options[s3.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+
+				}
+			}
+
+			// This should be listed when getting confirmed payee list or transfering to same bank but other's accounts
+			getData("confirmedPayee",sessionStorage.userID);
+
+			//$('#tabs').tab();
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+
+
+		 function getaccinfo()
+		  {
+            var accNumber = $("#to_accounts_others").val();
+			//Android.alert("hrllo");
+            if (accNumber != null) {
+
+                getData("accinfo", accNumber);
+            }
+
+          }
+
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		function self_proceed()
+		{
+			from = $('#from_accounts_self').val();
+			to = $('#to_accounts_self').val();
+			amount = $('#self_transfer_amount').val();
+			amount = removeregex(amount);
+			//alert("HI"+amount);
+			remarks = $('#self_transfer_remark').val();
+			
+			//Android.alert("fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks);
+			if(amount.length == 0)
+				showAlert("alert-div-self","Error", "Please Enter Amount");
+			/////else if(remarks.length == 0)
+			/////	showAlert("alert-div-self","Error", "Please Enter Remark");
+			else	
+			{
+				//sessionStorage.beneficiaryAccNo = from;
+				sessionStorage.beneficiaryAccNo = to;
+				getData("sendOTP",sessionStorage.userID);//custID
+				//Android.alert("mob="+sessionStorage.mobileNo);
+				/////////////location.href="fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks;
+			
+			}
+		}
+
+		function others_proceed()
+		{
+			from = $('#from_accounts_others').val();
+			to = $('#account_number').val();
+			amount = $('#others_transfer_amount').val();
+			remarks = $('#others_transfer_remark').val();
+          amount = removeregex(amount);
+			alert("HI"+amount);
+			//Android.alert("fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks);
+			if(amount.length == 0)
+				showAlert("alert-div-others","Error", "Please Enter Amount");
+			else if(to.length == 0)
+			{
+			showAlert("alert-div-others","Error", "Please Enter Account Number");
+			}
+			else
+			{
+				//sessionStorage.beneficiaryAccNo = from;
+				sessionStorage.beneficiaryAccNo = to;
+				getData("sendOTP",sessionStorage.userID);//custID
+				//getData("sendOTPotherbank",sessionStorage.userID);//custID
+				//Android.alert("mob="+sessionStorage.mobileNo);
+				////////////////location.href="fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks;
+
+			}
+		}
+
+		//Cash disbursement
+
+
+	function fillData()
+{
+
+		document.getElementById('otptable').style.display="none";
+		document.getElementById("ok").disabled = true;
+		
+}
+function verifysender()
+{
+
+	var userID=document.getElementById("userid").value;
+	var benemobile=document.getElementById("recmobno").value;
+	var senderac=document.getElementById("senderac").value;
+	var amount=document.getElementById("senderamt").value;
+	var trandate=document.getElementById("trdate").value;
+	var array = new Array();
+	array = trandate.split('/');
+	var trandate1=(array[2] + "-" + array[1] + "-" + array[0])
+	//alert(trandate1);
+	var ran=parseInt(Math.random()*9999);
+	var url="/TransactionAction.do?action=verifySenderDeposit&userID="+userID+"&mobileNo="+benemobile+"&senderAcc="+senderac+"&depositAmt="+amount+"&tranDate="+trandate1+"&ran="+ran;
+//	var url="http://192.168.1.72:8290/TransactionAction.do?action=verifySenderDeposit&userID=43860744&beneMobile=9314506489&senderAcc=0012011234&depositAmount=5000.00&tranDate=2015-01-01" +"&ran="+ran;"
+	//alert(url);
+	http.open("POST",url,false);
+	http.onreadystatechange= function (){processdataverify()};
+	http.send(null);
+}
+function processdataverify()
+	{
+		 if (http.readyState == 4)
+        {
+            if (http.status == 200)
+            {
+				   var resArray=http.responseText;
+				 // alert(resArray);
+				  var jsonData = JSON.parse(resArray);
+				 var senderName=jsonData.depositorName;
+				  if(senderName=="")
+				{
+					  alert("There is no transaction with the information provided by you.Please recheck the entry and try again.");
+				}
+				else
+				{
+					alert("Your information is verified, Please proceed");
+					document.getElementById("ok").disabled = false;
+				}
+			  
+				 
+			 }
+				 
+			
+		}
+	}
+
+ function sendOTP(){
+	
+  var recmobile=document.getElementById('recmobno').value;					
+ // var agmobile="7891500010";
+	var agmobile=document.getElementById('mob').value;
+	 document.getElementById('otptable').style.display="block";
+	    var purpose='Cash Disbusment';
+	    var userid=document.getElementById('userid').value;
+		var ran=parseInt(Math.random()*9999);
+		var url="/TransactionAction.do?action=sendOTPdisbus&userID="+userid+"&agmobile="+agmobile+"&recmobile="+recmobile+"&sessionID=<%=session.getId()%>&purpose="+purpose+"&ran="+ran;
+		//alert(url);
+					http.open("POST",url,false);
+					http.onreadystatechange= function (){processResOTP()};
+					http.send(null);	
+				
+			}
+			function processResOTP(){
+				 if (http.readyState == 4)
+					{
+					
+						// Check that a successful server response was received
+						if (http.status == 200)
+						{
+							var resArray=http.responseText;
+							var jsonData = JSON.parse(resArray);
+							alert("Dear Customer your OTP has been sent on Mobile: "+jsonData.mobileNo);
+						}
+					}
+		
+ }
+
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+		<div  style="margin-left: 20px;margin-top:30px;width:90%;" >
+
+			<ul id="tabs" class="nav nav-tabs" style="font-size:18px;" >
+				<li class="active"><a href="#D" data-toggle="tab" style="font-weight: bold;">Agent Cash Disbursement</a></li>
+				
+
+
+
+			</ul>
+
+			<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:90%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:90%;">
+			<div class="tab-pane fade in active" id="B">
+				<br/><div style="display:none" id="alert-div-self" class="alert alert-danger col-sm-12"></div>
+
+				<body style="margin:0 0 0 0;" onload="fillData()"><br>
+
+<table align="center" class="wrapperDataTable" cellpadding="0" cellspacing="0"  >
+	<tr>
+		<td  class="wrapperDataTableTR" align="center" width=950px > Agent Fund Transfer >> Cash Disbursement </td>
+	</tr>
+	<tr>
+	<td>
+	<table border="" align="center">
+	   <tr><td>
+	  Sender a/c Number
+				<input type=text  id="senderac" style="margin-left:88px;" maxlength=20/>
+	   </td></tr>
+	    <tr><td>
+	   Transaction Date (DD/MM/YYYY)
+				<input type=text   id="trdate" style="margin-left:20px;" />
+	   </td></tr>
+	    <tr><td>
+	   Amount
+				<input type=text  id="senderamt" style="margin-left:149px;" />
+	   </td></tr>
+	  
+	    <tr><td>
+	  Receiver Name
+				<input type=text  id="recname" style="margin-left:113px;" />
+	   </td></tr>
+	    <tr><td>
+	  Receiver Mobile Number
+				<input type=text  id="recmobno" style="margin-left:66px;" maxlength=10/>
+	   </td></tr>
+	   
+	     
+	    <tr>
+	  </br>
+	<td align="center">
+	<input type="button" name="verify" tabindex="22" value="Verify" onclick="verifysender()" class="Button" id="verify">
+		<input type="button" name="ok" tabindex="22" value="Send OTP" onclick="sendOTP()" class="Button" id="ok">
+		<input type="button" name="cancel" tabindex="23" value="Cancel" onclick="bacck()" class="Button" id="cancel"></td>
+    </td>
+	 </tr>
+	
+	<tr>
+	<td>
+	<table id="otptable">
+	<tr>
+	<td>
+	 Enter Agent OTP: &nbsp;&nbsp;&nbsp;<input type="text" name="otp" id="agnotp" style="margin-left:89px;"> 
+	 </td>
+	</tr>
+	<tr>
+	<td>
+	 Enter Reciever OTP: &nbsp;&nbsp;&nbsp;<input type="text" name="otp" id="recotp" style="margin-left:77px;">
+	 </td>
+	</tr>
+	<tr>
+	<td align="center">
+	 <input type="button" onClick="saveData()" style="width:100px" value="confirm" tabindex="22"/>
+	 </td>
+	</tr>
+			</table>
+			 </table>
+	 </td>
+	</tr>
+
+</table>
+	<input type="hidden" name="webData" id="webData"/>
+	<input type="hidden" name="kid" id="mob" value="<%=mob%>" />
+	<input type="hidden"  style="margin-left: px;" maxlength="35"  value="<%=login_id%>" size="40" id="userid">
+
+	
+</body>
+</html:form>
+</tiles:put>
+</html:form>
+</tiles:insert>
+	</body>
+
+	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+		<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	</div>
+</html>
+
+
+
+<script>
+ document.getElementById('otptable').style.display="none";
+
+
+  document.getElementById("location").checked=false;
+		 	     document.getElementById("locationN").checked=false;
+				 	     document.getElementById("tolocation").checked=false;
+						 	     document.getElementById("tolocationN").checked=false;
+
+document.getElementById('detailsT').style.display="none";
+	        document.getElementById('detailsF').style.display="none";
+			 document.getElementById('todetailsT').style.display="none";
+	         document.getElementById('todetailsF').style.display="none";
+			
+			 </script>

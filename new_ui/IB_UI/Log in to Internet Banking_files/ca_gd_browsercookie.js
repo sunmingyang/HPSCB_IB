@@ -1,0 +1,1 @@
+function flashtojs(e,n){"undefined"==e||null==e||""==e||setBrowserCookie(n,e)}

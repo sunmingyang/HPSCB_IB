@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 15%;
+			bottom: 0;
+			height: 74%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+
+			var operator= document.getElementById('operators');
+
+			if(operator.options.length == 0)
+			{
+				operator.options[operator.options.length]= new Option("Tata Sky", "Tata Sky");
+				//for (var i in account_array) {
+				//	s.options[s.options.length]= new Option(account_array[i], account_array[i]);
+				//}
+
+			}
+
+			var account_array = (sessionStorage.accounts_list_for_transfer).split(",");
+			
+			var s= document.getElementById('accounts');
+
+			if(s.options.length == 0)
+			{
+				for (var i in account_array) {
+					s.options[s.options.length]= new Option(account_array[i], account_array[i]);
+				}
+
+			}
+
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+		
+	
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		function proceed()
+		{
+
+
+			subscriber_number = $('#subscriber_number').val();
+			recharge_amount = $('#recharge_amount').val();
+
+			//Android.alert("fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks);
+			if(subscriber_number.length == 0)
+				showAlert("alert-div","Error", "Please Enter Subscriber Number.");
+			else if(recharge_amount.length == 0)
+				showAlert("alert-div","Error", "Please Enter Recharge Amount.");
+			else
+				showAlert("alert-div","DTH recharge successfully done.", "");
+			$('#container-div').scrollTop($('#container-div').scrollTop()+"px");
+		}
+		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:30px;width:90%;" >
+
+					<br/><div style="display:none" id="alert-div" class="alert alert-danger col-sm-12"></div>
+			        
+			        <br/><div style="font-size:18px;color:#666666;">Select Operator</div>
+
+					<br/><select name="select" id="operators" style="font-size:18px;"></select>
+					
+					<br/><div style="font-size:18px;color:#666666;">What is your Subscriber/VC/Smart Card number?</div>
+			        <br/><input type=text  id="subscriber_number" />
+					
+					<br/><div style="font-size:18px;color:#666666;">From which account do you want to pay?</div>
+
+					<br/><select name="select" id="accounts" style="font-size:18px;"></select>
+						  
+					
+			
+			        <br/><div style="font-size:18px;color:#666666;">How much do you want to recharge for?</div>
+			        <br/><input type=text  id="recharge_amount" />
+			        
+			        
+			        <br/><a href="past_dth_recharges.html" style="margin-left:80px;">Check Past Recharges</a>
+			        <br/><br/><input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+					<input type=button value="Proceed" onclick="proceed();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+
+			  
+</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+

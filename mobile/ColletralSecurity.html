@@ -1,0 +1,473 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+  
+	<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+      
+		$(function() {
+            $( "#revaluationDate" ).datepicker({
+              
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+		
+		
+		
+    </script>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #revaluationDate
+        {
+            background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 
+		</style>
+
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script> -->
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+<script>
+function Sessionget(){
+document.getElementById("Collsecurity").value=sessionStorage.getItem('Collsecurity'+securitysize);
+document.getElementById("valuecol").value=sessionStorage.getItem('valuecol'+securitysize);
+document.getElementById("revaluationDate").value=sessionStorage.getItem('revaluationDate'+securitysize);
+document.getElementById("hdescriptioncol").value=sessionStorage.getItem('hdescriptioncol'+securitysize);
+document.getElementById("edescriptioncol").value=sessionStorage.getItem('edescriptioncol'+securitysize);
+}
+
+
+
+function abc(){
+
+		
+		var a=sessionStorage.getItem('cust');
+		
+		 var textbox = document.getElementById('cst'); 
+	  textbox.innerHTML="Customer ID: "+a;
+
+	var GLCode=sessionStorage.getItem('glcode');
+	 var textbox = document.getElementById('glcode'); 
+	  textbox.innerHTML="GL Code: "+GLCode;
+
+	  var GLName=sessionStorage.getItem('glname');
+	 var textbox = document.getElementById('glname'); 
+	  textbox.innerHTML="GL Head: "+GLName;
+
+	  var cstname=sessionStorage.getItem('custname');
+	
+		 var textbox = document.getElementById('cstname'); 
+	  textbox.innerHTML=" Name: "+cstname;
+
+	   var currancy=sessionStorage.getItem('currency');
+	
+		 var textbox = document.getElementById('currency'); 
+	  textbox.innerHTML=" Currency: "+currancy;
+		}
+
+</script>
+<html>
+  <head>
+	<title>
+	  General Detail
+	</title>
+	 
+  </head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" onkeyDown="StopKeyHandler()" >
+	<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+		<tr >
+			<td colspan="3" height="25%" class="displayTitleacc">		  
+				
+
+<center>
+  <body >
+  <div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+	<table border="0" width="100%" height="100%" >
+ 
+
+	<!-- Added by Ashwani on 25.10.07 -->
+	<tr>
+			 <td colspan="6" align ="center">
+					  <label style = "font-weight:bold; font-size:14; color:#660000;" >
+						<b>New Account Open<b>
+					  </label>
+			 </td>	 
+	</tr>
+
+	<tr>
+		<!-- Customer ID -->
+		<td >
+			<b><label class="displayLabelBright" id="cst">
+				Customer ID:
+			</label><b>
+		</td>
+		<!-- CURRENCY -->
+		<td>		 
+			<b><label class="displayLabelBright" id="currency">
+				Currency:
+			</label><b>
+		</td>
+		<!-- Scheme Code -->
+		<td>
+			<b><label class="displayLabelBright" id="glcode">
+				GL Code:
+			</label><b>
+		</td>
+		<td >
+			<b><label class="displayLabelBright" id="glname">
+				GL Head:
+			</label><b>
+		</td> <!-- Added by Ashwani on 25.10.07 -->
+
+	</tr>
+	<tr>
+	 <!-- Customer Name -->
+	  <td colspan=4>
+	   <b><label class="displayLabelBright" id="cstname">
+		Name:
+	   </label><b>
+	  </td>
+	</tr>
+
+	
+	</table>
+	</body>
+</center>
+ 
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" height="2%" align="center" style="color:yellow;">		  
+				  <b>
+	Collateral Security
+<b>
+			</td>
+		</tr>
+
+
+		
+		<tr>
+			<td colspan="3" valign="top" height="70%">		  
+				  
+<body onkeypress="escapeKey(event)" onload="Sessionget(),abc()">
+<form name="loanLimitColletralSecurityDetailForm" method="post" action="/CobaSys/account/acopen/loanLimitColletralSecurityDetailAction.do">
+
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:52%;">
+  
+  <table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="35%">
+		  
+			Collateral Security
+		  
+	  </td>
+      <td> <strong>:</strong> 
+		  <select name="CollateralSecurity" id="Collsecurity" <option value="1"></option></select> 
+ 
+  <script>
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CollateralSecurity"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("Collsecurity")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+    </tr>
+    <tr> 
+      <td> Value </td>
+      <td> <strong>:</strong> 
+		<input type="bmamount" name="valuecol" class="form-control" maxlength="20" size="20"  value=""  style="text-align:right" id="valuecol" > 
+      </td>
+    </tr>
+    <tr> 
+      <td> Revaluation Date</td>
+      <td> <strong>:</strong>
+		<input type="text" class="form-control" name="revaluationDate" size="12" value=""  readonly="readonly" id="revaluationDate"> 
+       
+        </td>
+    </tr>
+	
+	<tr> 
+      <td> Remarks</td>
+      <td> <strong>:</strong>
+	  <input type="text" name="hdescriptioncol" class="form-control" maxlength="50" size="25" value="" readonly="readonly" id="hdescriptioncol"> 
+      </td>
+    </tr>
+    <tr> 
+      <td><label id="collSecE"></label></td>
+      <td> <strong>:</strong>
+	  <input type="text" name="edescriptioncol" class="form-control" maxlength="50" size="35" value="" onkeypress="isValidAlpha()" onblur="JavaScript:hdescriptioncol.value=region(edescriptioncol.value,thirdLng);" onfocus="hide()" id="edescriptioncol"> 
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2"></td>
+    </tr>
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+
+<script>
+var securitysize="";
+
+
+
+
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+
+securitysize="1";
+}
+else
+{
+securitysize=sessionStorage.getItem("NextPage");
+}
+
+
+
+function next(){
+
+sessionSet();
+
+//var securitysize="";
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+}
+else
+{
+securitysize=parseInt(sessionStorage.getItem("NextPage"))+1;
+sessionStorage.setItem("NextPage",securitysize);
+}
+
+location.href='ColletralSecurity.html';
+
+
+}
+</script>
+
+    <tr> 
+		<td colspan="3">
+			
+			<input type="button" class="btn btn-primary"  name ="Next" Id="Next" style="width:110px" value="Next" onClick="next()"/>
+			
+			
+		</td>
+    </tr>
+<script>
+
+function sessionSet(){
+sessionStorage.setItem('Collsecurity'+securitysize,document.getElementById("Collsecurity").value);
+sessionStorage.setItem('valuecol'+securitysize,document.getElementById("valuecol").value);
+sessionStorage.setItem('revaluationDate'+securitysize,document.getElementById("revaluationDate").value);
+sessionStorage.setItem('hdescriptioncol'+securitysize,document.getElementById("hdescriptioncol").value);
+sessionStorage.setItem('edescriptioncol'+securitysize,document.getElementById("edescriptioncol").value);
+}
+
+function saveLoanLimitColletralSecurityDetail()
+{
+ sessionSet();
+var jssondataadd="[";
+for(i=1;i<5;i++)
+{
+if(sessionStorage.getItem('Collsecurity'+i)==null)
+{
+break;
+}
+jssondataadd+=""+"{";
+jssondataadd+='"'+document.getElementById("Collsecurity").name+'":'+'"'+sessionStorage.getItem('Collsecurity'+i)+'",';
+jssondataadd+='"'+document.getElementById("valuecol").name+'":'+'"'+sessionStorage.getItem('valuecol'+i)+'",';
+jssondataadd+='"'+document.getElementById("revaluationDate").name+'":'+'"'+sessionStorage.getItem('revaluationDate'+i)+'",';
+jssondataadd+='"'+document.getElementById("hdescriptioncol").name+'":'+'"'+sessionStorage.getItem('hdescriptioncol'+i)+'",';
+jssondataadd+='"'+document.getElementById("edescriptioncol").name+'":'+'"'+sessionStorage.getItem('edescriptioncol'+i)+'",';
+jssondataadd+="},";
+}
+jssondataadd+="]";
+sessionStorage.CollateralSecurity=jssondataadd;
+location.href='LoanlimitInterest.html';
+}
+
+function callBackPage(){
+location.href='LoanlimitInterest.html';
+}
+
+</script>
+
+    <tr> 
+      <td colspan="2">&nbsp;</td>
+    </tr>
+
+	<tr> 
+			<td colspan="4" align="center"> 
+			<hr class="HeaderLabelAcOpen" size="2">
+			<input TYPE="button" class="btn btn-primary" name="ok" id="ok" value="OK" onclick="saveLoanLimitColletralSecurityDetail()"/>
+			<INPUT TYPE="button" class="btn btn-primary"  name="cancel" id="cancel" value="Cancel" onclick="callBackPage()"/>
+			
+			</td>
+	</tr>
+	
+
+				<input type="hidden" name="ihColletralCode" value="" id="ihColletralCode"> 
+				<input type="hidden" name="ihColletralLabel" value="" id="ihColletralLabel"> 
+				<input type="hidden" name="ihColletralKid" value="" id="ihColletralKid"> 
+				<input type="hidden" name="ihValuecol" value="" id="ihValuecol"> 
+				<input type="hidden" name="ihRevaluationDate" value="" id="ihRevaluationDate"> 
+				<input type="hidden" name="ihHdescriptioncol" value="" id="ihHdescriptioncol"> 
+				<input type="hidden" name="ihEdescriptioncol" value="" id="ihEdescriptioncol"> 
+				<input type="hidden" name="isDeletedL" id="isDeletedL" /> 
+				
+
+  </table>
+				
+
+				<script>
+					
+		
+				</script>
+		
+		<input type="hidden" name="focus" value="periodInMonth" id="focus">
+		<input type="hidden" name="mode" value="" id="mode">
+
+				
+
+</form>
+
+<DIV id = "DivHotKey" style = "display:block;">
+				
+</DIV>
+<br><br><br><br><br><br><br><br><br>
+</body>
+
+			</td>
+		</tr>
+		 
+	 
+	</table>
+</body>
+</html>
+
+
+</html>

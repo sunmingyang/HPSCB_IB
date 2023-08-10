@@ -1,0 +1,20 @@
+# This is the OpenCHAT <DOMAIN>.rooms configuration file.
+
+# The file name is case sensitive, so the "<DOMAIN>" prefix must be upper case,
+# and the "rooms", lower case.
+# The <DOMAIN> must match exactly the domain set on the OpenCHAT.Domains.conf file.
+
+# Note that this file defines the domain specific rooms, only pre opened in this domains.
+# To set rooms to be pre opened in all domains, use the OpenCHAT.rooms file.
+
+# You cannot use blank spaces or some special characters on the room name. Use %20 and URL encoded chars instead.
+
+# List the rooms for this Domain here:
+
+# This one is special. Defines the defaul room to set when user sends an invalid room
+_DEFAULT_=Demo%20Room%201
+
+# Define all this domain rooms here
+Demo%20Room%201=1
+Demo%20Room%202=1
+

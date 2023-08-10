@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Nominee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/mobile/jquery/jquery.min.js"></script>
+    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+    <script src="/mobile/mbanking_js/mbanking.js"></script>
+    <link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+
+<head runat="server">
+<title></title>
+  <style>
+  
+  img {
+      max-width: 100%;
+  }
+   #container-div {
+   position: absolute;
+   top: 30%;
+   bottom: 0;
+   height: 67%;
+   width: 100%;
+   overflow-y: auto;
+   border-top: 0px solid #2E2E2E;
+   }
+
+  </style>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- <link rel="stylesheet" href="CobaSys/css/normalize.css">
+    <link rel="stylesheet" href="CobaSys/css/main.css">
+    <script src="CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+</head>
+</html>
+
+<html>
+
+<!-- <script type="text/javascript" src="CobaSys/account/acopen/script/acOpenCommon.js"></script>
+<script type="text/javascript" src="CobaSys/account/acopen/script/nomineeDetail.js"></script> -->
+<script>
+
+//var gCalDate=changeDateFormat('2016-07-01');
+
+var sThirdLang='english'
+var tempCustId='10021';
+function transferCustID()
+{
+	getCustDetail(tempCustId);
+}
+function showMessagenew(code,type)
+{
+ 
+ if(type=="error")
+ {
+	 getMessage(1,code,"errors");
+ }
+ else
+ {
+	 getMessage(1,code,"ApplicationResources");
+
+ }
+}
+
+function nicDate(id)
+{
+	if(document.getElementById("nomename").value != "" && document.getElementById("nomage").value =="0"
+		&& document.getElementById("nomageM").value == "0" && document.getElementById("nomageD").value =="0")
+	{     
+		alert("./fill correct age ");
+		return false;
+	}
+	else if(equalTwoDate(document.forms[0].nomDob.value,document.forms[0].nomIssueDate.value)==0)
+	{
+		showMessagenew(1887,"error");
+		//document.getElementById("nomDob").value="01/01/1900";
+		document.getElementById("nomIssueDate").value=gCalDate;
+		document.getElementById("btnNomDob").focus();
+		return false;
+	}
+	else
+	{
+		openJspForm(id,document.forms[0].name);
+	}
+}
+
+function separateLabel()
+{
+	document.getElementById("rCounterL").style.display="block";
+	if(document.getElementById("mode").value=="Auth"){
+		
+		var nomList = document.getElementById("rCounterL").value;
+		var len = nomList.split("OF");
+		var length = parseInt(len[1]);
+		disabledControlsOnAction(document.forms[0]);
+		document.getElementById("btnGuar").disabled = false;
+		document.getElementById("Next").disabled=false;
+		document.getElementById("pre").disabled=false;
+		if(length==1)
+		{
+			document.getElementById("Next").disabled=true;
+			document.getElementById("pre").disabled=true;
+		}
+		document.getElementById("btnNomAdd").disabled = false;
+		document.getElementById("btnback").disabled = false;
+		 document.getElementById("cancel").disabled = false;
+		 document.getElementById("shelp").disabled=false;
+		 document.getElementById("nomrdsexM").disabled=true;
+		 document.getElementById("nomrdsexF").disabled=true;
+	 }
+	 if(document.getElementById("mode").value=="Locker")
+	 {
+		   document.getElementById("pre").style.display="none";
+		   document.getElementById("Next").style.display="none";
+	 }
+	 var age=document.getElementById("nomage").value;
+		 
+	 if(age<18)
+	 {
+		document.getElementById("btnGuar").disabled=false;
+		document.getElementById("nomage").readOnly=true;
+	 }
+	 else
+	 {
+	   document.getElementById("btnGuar").disabled=true;
+	   //document.getElementById("nomage").readOnly=false;
+	 }
+
+	var StrSep =new Array();  
+	var SepratFirst =new Array();
+	var SepratSecString =new Array();
+	StrSep[0]='Name';
+	
+	StrSep[1]='Reg. No.';
+	StrSep[2]='Relationship with depositor';
+	StrSep[3]='Sex';
+	StrSep[4]='Minor';
+	StrSep[5]='Age(years)';
+	StrSep[6]='Date of Birth';	
+	StrSep[7]='Witness-Others Details';
+	StrSep[8]='Nomination Date';
+	StrSep[9]='Male';
+	StrSep[10]='Female';
+	StrSep[11]='Yes';
+	StrSep[12]='No';
+	
+
+	for (var StringSepInc = 0; StringSepInc < StrSep.length;StringSepInc++) 
+	{
+		var StringFind = StrSep[StringSepInc];
+		var ShgIndex= StringFind.indexOf("/");
+		SepratFirst[StringSepInc] = StringFind.substring(0,ShgIndex);
+		SepratSecString[StringSepInc]=StringFind.substring(ShgIndex+1,StringFind.length);
+	}
+
+
+	
+	document.getElementById("lblnomename").innerHTML=SepratSecString[0];
+	document.getElementById("lblnomregNO").innerHTML=StrSep[1];
+	
+	document.getElementById("lblnomerelation").innerHTML=SepratSecString[2];
+	document.getElementById("lblnomrdsex").innerHTML=StrSep[3];
+		// changed by arun
+	//document.getElementById("lblnomminor").innerHTML=StrSep[4];
+	document.getElementById("lblnomage").innerHTML=StrSep[5];
+	document.getElementById("lblnomDob").innerHTML=StrSep[6];
+	
+	document.getElementById("lblnomewitnessDetails").innerHTML=SepratSecString[7];
+	document.getElementById("lblnominationDate").innerHTML=StrSep[8];
+	document.getElementById("lblnomrdsexM").innerHTML=StrSep[9];
+	document.getElementById("lblnomrdsexF").innerHTML=StrSep[10];
+}
+function setMinorLabel(){
+	var nomMinor=document.getElementById("nomminor").value;
+	if(nomMinor!=""){
+	if (nomMinor=="Y"){
+		document.getElementById("minorLabel").disabled=false;	
+	}
+	else{
+		document.getElementById("minorLabel").disabled=true;	
+		}
+	}
+
+}
+function relFocus(){
+	var relFocus="";
+	
+}
+
+</script>
+
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='CobaSys' ;
+function getSecondLangWord(engWord)
+{
+	return region(engWord,'english') ; 
+	
+}
+function showMessage(sArg)
+{
+	getMessage(1,sArg,"errors");
+}
+function bmdatefill(){
+	var bmform = document.forms[0];
+	for(var i=0; i<bmform.elements.length; i++){
+		if(bmform.elements[i].title == "bmdate" && bmform.elements[i].value=="" ) {
+			bmform.elements[i].value = changeDateFormat('2016-07-01');
+		}
+	}
+}
+var todayDate=new Date();
+var calShortWeekNames="";
+var calLongMntNames="";
+/*
+shortcut.add("ALT+F1", function() {
+	 var er=window.event || arguments.callee.caller.arguments[0];
+	 var em = er.srcElement||er.target;
+	 var cc = er.keyCode;
+	var n = em;
+	do n = n.nextSibling;
+	while (n && n.nodeType != 1);
+	if(n!=null){
+		n.onclick(er);
+		return false ;
+	}
+});*/
+</script>
+
+
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- <link rel="stylesheet" href="CobaSys/css/normalize.css">
+    <link rel="stylesheet" href="CobaSys/css/main.css">
+    <script src="CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+</head>
+</html>
+<script>
+	//window.history.forward(1);//for disabling back button of browser.
+</script>
+<html>
+<head>
+    <title>
+        Nominee Detail
+    </title>
+
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" onload="abc(),getsession(),age()" bottommargin="0"  >
+<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+<tr >
+    <td colspan="3" height="25%" class="displayTitleacc">
+
+
+
+        <html class="no-js" lang="">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <title></title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="apple-touch-icon" href="apple-touch-icon.png">
+            <!-- Place favicon.ico in the root directory -->
+
+            <!-- <link rel="stylesheet" href="CobaSys/css/normalize.css">
+            <link rel="stylesheet" href="CobaSys/css/main.css">
+            <script src="CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+        </head>
+        </html>
+
+
+
+        <center>
+            <body>
+            <table border="0" width="100%" height="100%" >
+                <tr>
+                    <td colspan="6" align ="center">
+                        <label style = "font-weight:bold; font-size:14; color:#660000;" >
+                            <b>Nominee</b>
+                        </label>
+                    </td>
+                </tr>
+                <div>
+
+                    <script>
+
+
+function getsession(){
+
+document.getElementById("nomCustId").value=sessionStorage.getItem('nomCustId'+nominnisize);
+document.getElementById("nomename").value=sessionStorage.getItem('nomename'+nominnisize);
+document.getElementById("txtDate").value=sessionStorage.getItem('txtDate'+nominnisize);
+document.getElementById("txtDate1").value=sessionStorage.getItem('txtDate1'+nominnisize);
+document.getElementById("nomNicNo").value=sessionStorage.getItem('nomNicNo'+nominnisize);
+document.getElementById("nomage").value=sessionStorage.getItem('nomage'+nominnisize);
+document.getElementById("nomageM").value=sessionStorage.getItem('nomageM'+nominnisize);
+document.getElementById("nomageD").value=sessionStorage.getItem('nomageD'+nominnisize);
+document.getElementById("nomPercentage").value=sessionStorage.getItem('nomPercentage'+nominnisize);
+document.getElementById("nomregNO").value=sessionStorage.getItem('nomregNO'+nominnisize);
+document.getElementById("nomerelation").value=sessionStorage.getItem('nomerelation'+nominnisize);
+if(sessionStorage.nomrdsexM=="M"){
+  document.getElementById("nomrdsexM").checked=true;
+  }
+  else{
+  document.getElementById("nomrdsexF").checked=true;
+  }
+document.getElementById("txtDate01").value=sessionStorage.getItem('txtDate01'+nominnisize);
+document.getElementById("nomhwitnessDetails").value=sessionStorage.getItem('nomhwitnessDetails'+nominnisize);
+document.getElementById("nomewitnessDetails").value=sessionStorage.getItem('nomewitnessDetails'+nominnisize);
+
+
+}
+
+		function abc(){
+
+		var a=sessionStorage.getItem('cust');
+
+		 var textbox = document.getElementById('cst'); 
+	  textbox.innerHTML="Customer ID: "+a;
+	var GLCode=sessionStorage.getItem('glcode');
+	 var textbox = document.getElementById('glcode'); 
+	  textbox.innerHTML="GL Code: "+GLCode;
+	  var GLName=sessionStorage.getItem('glname');
+	 var textbox = document.getElementById('glname'); 
+	  textbox.innerHTML="GL Head: "+GLName;
+
+	  var cstname=sessionStorage.getItem('custname');
+	
+		 var textbox = document.getElementById('cstname'); 
+	  textbox.innerHTML=" Name: "+cstname;
+
+	   var currancy=sessionStorage.getItem('currency');
+	
+		 var textbox = document.getElementById('currency'); 
+	  textbox.innerHTML=" Currency: "+currancy;
+		}
+
+		</script>
+                    <tr>
+                        <!-- Customer ID -->
+
+                        <td >
+                            <b><label class="displayLabelBright" id="cst">
+                                Customer ID:
+                            </label></b>
+                        </td>
+                        <!-- CURRENCY -->
+                        <td>
+                            <b><label class="displayLabelBright" id="currency">
+                                Currency:
+                            </label></b>
+                        </td>
+                        <!-- Scheme Code -->
+                        <td>
+                            <b><label class="displayLabelBright" id="glcode">
+                                GL Code:
+                            </label></b>
+                        </td>
+                        <td >
+                            <b><label class="displayLabelBright" id="glname">
+                                GL Head:
+                            </label></b>
+                        </td> <!-- Added by Ashwani on 25.10.07 -->
+
+                    </tr>
+
+                    <tr>
+                        <!-- Customer Name -->
+                        <td colspan=4>
+                            <b><label class="displayLabelBright" id="cstname">
+                                Name:
+                            </label></b>
+                        </td>
+                    </tr>
+
+
+          </div>  </table>
+            </body>
+        </center>
+
+    </td>
+</tr>
+</div>
+<tr>
+    <td colspan="3" height="2%" align="center" style="color:yellow;">
+        <b>
+            Nominee
+            </b>
+    </td>
+</tr>
+
+
+
+<tr>
+<td colspan="3" valign="top" height="70%">
+
+<body onload="separateLabel(),setFocus(),setMinorLabel(),relFocus()"  >
+<form name="acOpenNomineeForm" method="post" >
+
+
+
+<table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+<!--  <tr style="background-color:#70718F;color:#ffffff;">
+   <td colspan="3" align="center"></td>
+ </tr> -->
+<tr>
+    <td>
+        Customer ID
+    </td>
+    <td><strong>:</strong>
+        <input type="text" name="nomCustId" maxlength="10" size="20" value="0"  id="nomCustId">
+    </td>
+</tr>
+<tr>
+    <td><label>Name</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" name="nomename" maxlength="50" size="30" tabindex="1" value=""   id="nomename">
+        <input type="hidden" name="nomhname" value="" id="nomhname">
+    </td>
+<tr>
+<tr>
+    <td><label>Date of Birth</label></td>
+    <td colspan="2"> <strong>:</strong>
+        <input type="text" placeholder="dd/mm/yyyy" name="txtDate" id="txtDate" onchange="age(this)"/>
+        <div id="cal_nomDob_display_year" style="display:none;position:absolute;top:158;left:345;">
+            <input type="text" name="nomDob_year" id="nomDob_year" value="" style="margin-left:-260;position:absolute" size="5" maxlength="4" tabindex="4" />
+        </div>
+        <div id="cal_nomDob_display" style="display:none;position:absolute;top:158;left:383; ">
+            <script type="text/javascript">
+		
+		
+function age(e){
+var textBox = document.getElementById('txtDate').value;
+
+var dateOfBirth = new Date(textBox);
+var today = new Date();
+
+var diff = new Date(today.getTime() - dateOfBirth.getTime());
+if(textBox!=""){
+var textBox1 = document.getElementById('nomage');
+textBox1.value= Number(diff.getUTCFullYear() - 1970);}
+
+if(textBox!=""){
+var textBox2 = document.getElementById('nomageM');
+textBox2.value=diff.getUTCMonth();}
+
+if(textBox!=""){
+var textBox3 = document.getElementById('nomageD');
+textBox3.value= Number(diff.getUTCDate() - 1);}
+
+("Age: " + Number(diff.getUTCFullYear() - 1970) + " years, " +diff.getUTCMonth() + " months, " + Number(diff.getUTCDate() - 1) + " days");
+
+
+if(textBox1.value>=18)
+{
+document.getElementById("btnGuar").disabled = true;
+}
+else
+{
+document.getElementById("btnGuar").disabled = false;
+
+}
+}
+
+	</script>
+
+
+
+            <!-- 	// changed by arun-->
+        </div><input type="text"  style ="background-color:activeborder;border:0px" value='Minor'   disabled="true"   tabindex='-1' name="minorLabel"   id="minorLabel" />
+    </td>
+</tr>
+<tr>
+    <td><label>NIC Issue Date</label></td>
+    <td colspan="2"> <strong>:</strong>
+        <input type="text" id="txtDate1"  name="nomIssueDate" maxlength="10" size="12" tabindex="-1" value="" readonly="readonly" id="nomIssueDate">
+        <!--  <input type="button" name="btnnomIssueDate" id="btnnomIssueDate"    onclick="showhide('NomIssuingDate')"  style="width:20px;background-image: url(/CobaSys/images/Calendar.gif);" tabindex="3" /> -->
+        <div id="cal_nomIssueDate_display_year" style="display:none;position:absolute;top:158;left:345;">
+            <input type="text" name="nomIssueDate_year" id="nomIssueDate_year" value="" style="margin-left:-260;position:absolute"size="5" maxlength="4" tabindex="7"/>
+        </div>
+        <div id="cal_nomIssueDate_display" onblur="futureDate()" style="display:none;position:absolute;top:158;left:383; ">
+            <!--<script type="text/javascript">
+                var issueDate = document.getElementById("nomIssueDate").value;
+                NomIssuingDate  = new Calendar ("NomIssuingDate", "nomIssueDate", getCalDate(changeDateFormat('2016-07-01')));
+                renderCalendar (NomIssuingDate );
+        //   document.getElementById("nomDob").value = "00/00/0000" ;
+                if(issueDate != ""){
+                     document.getElementById("nomIssueDate").value = issueDate;
+                }
+           </script>-->
+        </div></td>
+</tr>
+<!-- New addred for nominee Window Start -->
+<tr>
+    <td><label >NIC NO.</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" name="nomNicNo" maxlength="10" size="12" tabindex="4" value="0" id="nomNicNo">
+    </td>
+</tr>
+<tr>
+    </br><td><label id="lblnomage">Age(years)</label></td>
+    <td colspan="2"><strong>:</strong> <input type="text" name="nomage" maxlength="3" size="5" tabindex="-1" value="0"  readonly="readonly" class="TextDisable" id="nomage">
+        Months<strong>:</strong> <input type="text"  name="nomageM" maxlength="1" size="2" tabindex="-1" value="0" readonly="readonly" class="TextDisable" id="nomageM">
+        Days<strong>:</strong> <input type="text" name="nomageD" maxlength="3" size="5" tabindex="-1" value="0"  readonly="readonly" class="TextDisable" id="nomageD">
+
+</tr>
+<tr>
+    <td><label >Share Percentage</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" name="nomPercentage" maxlength="5" size="5" tabindex="5" value="100"  id="nomPercentage">
+    </td>
+</tr>
+
+<!--new Added For Nominee Window END -->
+<tr>
+    <td><label id="lblnomregNO">Reg. No.</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" name="nomregNO" maxlength="10" size="10" tabindex="-1" value=""  id="nomregNO">
+    </td>
+</tr>
+
+<tr> \
+    <td><label id="lblnomerelation">Relationship with depositor</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" name="nomerelation" maxlength="30" size="30" tabindex="6" value=""  id="nomerelation">
+        <input type="hidden" name="nomhrelation" value="" id="nomhrelation">
+    </td>
+</tr>
+<tr>
+    <td><label id="lblnomrdsex">Sex</label>
+    <td> <strong>:</strong> <input type="radio" name="nomrdsexM" tabindex="7" value="M"  id="nomrdsexM">
+        <label id="lblnomrdsexM">Male</label>
+        <strong>:</strong> <input type="radio" name="nomrdsexF" tabindex="7" value="F" id="nomrdsexF">
+        <label id="lblnomrdsexF">female</label> </td>
+</tr>
+<tr>
+    <td><input type="hidden" name="nomminor" value="Y" id="nomminor">
+
+</tr>
+<tr>
+    <td><label id="lblnominationDate">Nomination Date</label></td>
+    <td colspan="2"> <strong>:</strong> <input type="text" id="txtDate01" name="nominationDate" maxlength="10" size="12" tabindex="-1" value="" readonly="readonly" id="nominationDate">
+
+        <!--  <input type="button" name="btnNomDate" id="btnNomDate" onclick="showhide('nominationDatee')" style="width:20px;background-image: url(/CobaSys/images/Calendar.gif);"  tabindex="9"/> -->
+
+        <div id="cal_nominationDate_display_year" style="display:none;position:absolute;top:158;left:345;">
+            <input type="text" name="nominationDate_year" id="nominationDate_year" value="" style="margin-left:-260;position:absolute" size="5" maxlength="4"  tabindex="10"/>
+        </div>
+
+        <div id="cal_nominationDate_display" style="display:none;position:absolute;top:158;left:383;">
+            <script type="text/javascript">
+			/*	var nomDate = document.getElementById("nominationDate").value;
+//				nominationDatee = new Calendar ("nominationDatee", "nominationDate", new Date(gCalDate));
+			    nominationDatee = new Calendar ("nominationDatee", "nominationDate", getCalDate(changeDateFormat('2016-07-01')));
+				renderCalendar (nominationDatee);
+			    if(nomDate != ""){
+					document.getElementById("nominationDate").value = nomDate;
+				}
+//						document.getElementById("nominationDate").value = "00/00/0000" ;*/
+			</script>
+        </div></td>
+</tr>
+<tr>
+    <td><label id="lblnomhwitnessDetails">Witness-Others Details</label></td>
+    <td> &nbsp; <input type="text" name="nomhwitnessDetails" maxlength="100" size="30" tabindex="-1" value="" id="nomhwitnessDetails">
+    </td>
+
+    </td>
+</tr>
+<tr>
+    <td><label id="lblnomewitnessDetails"></label></td>
+    <td> &nbsp; <input type="text" name="nomewitnessDetails" maxlength="100" size="30" tabindex="11" value=""  id="nomewitnessDetails">
+    </td>
+
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center">
+        &nbsp;    &nbsp;    &nbsp;
+    </td>
+</tr>
+<tr>
+    <td colspan="2">&nbsp;</td>
+    <td>
+
+
+    </td>
+</tr>
+
+<script>
+
+
+ function sessionSet(){
+
+	sessionStorage.setItem('nomCustId'+nominnisize,document.getElementById("nomCustId").value);
+	
+	sessionStorage.setItem('nomename'+nominnisize,document.getElementById("nomename").value);
+	sessionStorage.setItem('txtDate'+nominnisize,document.getElementById("txtDate").value);
+	sessionStorage.setItem('txtDate1'+nominnisize,document.getElementById("txtDate1").value);
+	sessionStorage.setItem('nomNicNo'+nominnisize,document.getElementById("nomNicNo").value);
+	sessionStorage.setItem('nomage'+nominnisize,document.getElementById("nomage").value);
+	sessionStorage.setItem('nomageM'+nominnisize,document.getElementById("nomageM").value);
+	sessionStorage.setItem('nomageD'+nominnisize,document.getElementById("nomageD").value);
+	sessionStorage.setItem('nomPercentage'+nominnisize,document.getElementById("nomPercentage").value);
+	sessionStorage.setItem('nomregNO'+nominnisize,document.getElementById("nomregNO").value);
+	sessionStorage.setItem('nomerelation'+nominnisize,document.getElementById("nomerelation").value);
+	if(document.getElementById("nomrdsexM").checked){
+		sessionStorage.nomrdsexM=document.getElementById("nomrdsexM").value;
+	}
+	if(document.getElementById("nomrdsexF").checked){
+		sessionStorage.nomrdsexF=document.getElementById("nomrdsexF").value;
+	}sessionStorage.setItem('txtDate01'+nominnisize,document.getElementById("txtDate01").value);
+	sessionStorage.setItem('nomhwitnessDetails'+nominnisize,document.getElementById("nomhwitnessDetails").value);
+	sessionStorage.setItem('nomewitnessDetails'+nominnisize,document.getElementById("nomewitnessDetails").value);
+  }
+
+
+function serializeSchema(form) {
+    return [].map.call(form.elements, function(el) {
+        return {
+           
+           name:el.name,
+           value: el.value
+        };
+    });
+};
+function nominee(){
+		 var d=document.forms[0];
+		 var inputField;
+		
+		 sessionSet();
+		
+		 var jssondataadd="[{";
+		
+		 for(i=1;i<5;i++)
+		 {
+		 
+		 if(sessionStorage.getItem('nomCustId'+i)==null)
+		 {
+		 break;
+		 }
+		 jssondataadd+='"'+"Nominee"+'":'+"{";
+		 
+		jssondataadd+=' "'+document.getElementById("nomCustId").name+'" :'+'"'+sessionStorage.getItem('nomCustId'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomename").name+'" :'+'"'+sessionStorage.getItem('nomename'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomhname").name+'" :'+'"'+sessionStorage.getItem('nomename'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("txtDate").name+'" :'+'"'+sessionStorage.getItem('txtDate'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("txtDate1").name+'" :'+'"'+sessionStorage.getItem('txtDate1'+i)+'" ,';
+		jssondataadd+=' "nomIssueDate1" :'+'"'+sessionStorage.getItem('txtDate1'+i)+'" , ';
+		jssondataadd+=' "nomrdsex" :'+'"'+sessionStorage.getItem('nomrdsexM'+i)+'" , ';
+		jssondataadd+=' "nomrdsex1" :'+'"'+sessionStorage.getItem('nomrdsexF'+i)+'" , ';
+		jssondataadd+=' "nominationDate1" :'+'"'+sessionStorage.getItem('txtDate01'+i)+'" , ';
+		jssondataadd+=' "nomDob_year" :'+'"'+sessionStorage.getItem('txtDate'+i)+'" , ';
+		jssondataadd+=' "minorLabel" :'+'"'+sessionStorage.getItem('txtDate'+i)+'" , ';
+		jssondataadd+=' "nomhrelation" :'+'"'+sessionStorage.getItem('nomerelation'+i)+'" , ';
+		jssondataadd+=' "nomminor" :'+'"'+sessionStorage.getItem('nomrdsexM'+i)+'" , ';
+		jssondataadd+=' "'+document.getElementById("nomNicNo").name+'" :'+'"'+sessionStorage.getItem('nomNicNo'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomage").name+'" :'+'"'+sessionStorage.getItem('nomage'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomageM").name+'" :'+'"'+sessionStorage.getItem('nomageM'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomageD").name+'" :'+'"'+sessionStorage.getItem('nomageD'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomPercentage").name+'" :'+'"'+sessionStorage.getItem('nomPercentage'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomregNO").name+'" :'+'"'+sessionStorage.getItem('nomregNO'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomerelation").name+'" :'+'"'+sessionStorage.getItem('nomerelation'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomrdsexM").name+'" :'+'"'+sessionStorage.getItem('nomrdsexM'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomrdsexF").name+'" :'+'"'+sessionStorage.getItem('nomrdsexF'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("txtDate01").name+'" :'+'"'+sessionStorage.getItem('txtDate01'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomhwitnessDetails").name+'" :'+'"'+sessionStorage.getItem('nomhwitnessDetails'+i)+'" ,';
+		jssondataadd+=' "'+document.getElementById("nomewitnessDetails").name+'" :'+'"'+sessionStorage.getItem('nomewitnessDetails'+i)+'" ,';
+		jssondataadd+=' "mode" :'+'"'+sessionStorage.getItem('nomPercentage'+i)+'" , ';
+		jssondataadd+=' "focus" :'+'"'+sessionStorage.getItem('nomPercentage'+i)+'" , ';
+		 
+		 jssondataadd+="}";
+		 
+		 var llk=sessionStorage.getItem('Nominee_Addressform'+'NominiAdress'+i);
+		 var ddd=sessionStorage.getItem('Guardian_Addressform'+i);
+		 
+		 jssondataadd+=' , "'+"NomineeAddress"+'":'+sessionStorage.getItem('Nominee_Addressform'+'NominiAdress'+i)+' , "'+"Guardian"+'":'+sessionStorage.getItem('Guardian_Addressform'+i);
+		 
+		 
+		 }
+		 jssondataadd+="}]";
+ 	
+		sessionStorage.NandGdata=jssondataadd;
+	
+		location.href='AccountOpen.html';
+	
+}
+
+function guardian(){
+
+	sessionSet();
+	//sessionStorage.setItem('Guardianpage',null);
+	sessionStorage.setItem('Guardianpage',+nominnisize);
+	
+	location.href='GuardianPage.html';
+}
+	
+function address(){
+	sessionSet();
+	sessionStorage.setItem('nominnisize',nominnisize);
+	sessionStorage.setItem('AdressKnown',"NominiAdress"+nominnisize);
+	//sessionStorage.setItem('NextPage',null);
+	location.href='address.html';
+}
+
+	var nominnisize="";
+	if(sessionStorage.getItem("NextPage")=="null")
+	{
+	sessionStorage.setItem("NextPage","1");
+	
+	nominnisize="1";
+	}
+	else
+	{
+	nominnisize=sessionStorage.getItem("NextPage");
+	}
+	
+	function nextNominee(){
+	
+	sessionSet();
+	
+	var nominnisize="";
+	if(sessionStorage.getItem("NextPage")=="null")
+	{
+	sessionStorage.setItem("NextPage","1");
+	}
+	else
+	{
+	nominnisize=parseInt(sessionStorage.getItem("NextPage"))+1;
+	sessionStorage.setItem("NextPage",nominnisize);
+	}
+	
+	location.href='NomineePage.html';
+	
+	}
+ </script>
+  
+
+<tr>
+    <td colspan="3" align="center">
+        <input type="text" name="rCounterL" tabindex="-1" value="0    OF    0" readonly="readonly" id="rCounterL"></br>
+        <input name="btnNomAdd" type="button" id="btnNomAdd"  onclick="address('N') " value ="Address" tabindex="12" style="margin-top:10px" />
+        <input name="btnGuar" type="button" id="btnGuar"  onclick= "guardian()"   value ="Guardian" tabindex="13" style="margin-top:10px" />
+        </br>
+        &nbsp;</br>
+        <input type="button"  name="btnback" id="btnback" onClick="nominee()" value="OK" id="btn1" tabindex="16" />
+        <input type="button" name="next"  id="next" onClick="nextNominee()" value="NEXT" tabindex="17" /> 
+    </td>
+</tr>
+</table>
+
+
+<DIV id = "DivHotKey" style = "display:block;">
+    <script>
+	var ind = 0;
+
+	
+//	showErrorTab();
+</script>
+</DIV>
+
+
+<input type="hidden" name="mode" value="N" id="mode">
+<input type="hidden" name="focus" value="nomename" id="focus">
+
+
+<script>
+				/*if(document.getElementById('pre').type == "img" || 
+				document.getElementById('pre').type == "button" || document.getElementById('pre').type == "radio" ){
+					document.getElementById('pre').disabled=true;
+				}
+				else
+				{
+					document.getElementById('pre').readOnly=true;
+				}*/
+			</script>
+
+
+</form>
+<script>
+
+
+</script>
+</body>
+
+</td>
+</tr>
+
+</table>
+</body>
+</html>
+
+</html>

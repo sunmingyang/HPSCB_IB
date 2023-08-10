@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mBanking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	 <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+	function createRequestObject(){
+            var req;
+            if(window.XMLHttpRequest){
+                            Android.alert("http object created");
+                            req=new XMLHttpRequest();
+            }
+            else if(window.ActiveXObject){
+                            req=new ActiveXObject("Microsoft.XMLHTTP");
+            }else{
+                            Android.alert("Browser is not IE 5 or higher, or Firefox or Safari or Opera");
+            }
+            return req;
+	}
+ 
+	function authenticateJS(str) {
+		try{
+            var ran=parseInt(Math.random()*9999);
+	    var url = "";
+	    if(str === 'authenticate')
+			url = "http://192.168.1.72:8290/AccountInfoAction.do?action=userAuthenticate&userID=43860744&encPassword=bd5af1f610a12434c9128e4a399cef8a"+"&ran="+ran;
+	    else if(str === 'accounts')
+            url="http://192.168.1.72:8290/AccountInfoAction.do?action=fetchCustomerAccounts&custID=27479" +"&ran="+ran;
+	    else if(str === 'ministatement')
+			url="http://192.168.1.72:8290/AccountInfoAction.do?action=getMiniStatement&accNo=002010006515" +"&ran="+ran;
+	    else if(str === 'balance')
+			url="http://192.168.1.72:8290/AccountInfoAction.do?action=fetchAccountBalance&accNo=002010006515" +"&ran="+ran;
+        Android.alert(url);
+	    http.open("GET",url,false);
+	    if(str === 'authenticate')
+            http.onreadystatechange= function (){authenticateResponse()};
+	    else if(str === 'accounts')
+			http.onreadystatechange= function (){accountsResponse()};
+	    else if(str === 'ministatement')
+			http.onreadystatechange= function (){miniStatementResponse()};
+	    else if(str === 'balance')
+			http.onreadystatechange= function (){balanceResponse()};
+
+        http.send(null); 
+
+		}catch(err)
+			{
+				Android.alert(err);
+				//var response = "{'authorise':'Y','userType':'U','validUser':'Y','customerId':'25361'}";
+				//getAuthenticationData(response);
+
+				//var response ='{"accountList":[{"accountNo":"002018006582","accountType":"F","clearBalance":"5465.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006692","accountType":"F","clearBalance":"26673.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006581","accountType":"F","clearBalance":"5510.0000","customerName":"LAKSHAY SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006430","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006383","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006459","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH","underClgBalance":"0.0000"},{"accountNo":"002018006538","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH","underClgBalance":"0.0000"},{"accountNo":"002018006495","accountType":"F","clearBalance":"28264.0000","customerName":"LAKSHAY SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006496","accountType":"F","clearBalance":"28264.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006486","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASHSHARMA","underClgBalance":"0.0000"},{"accountNo":"002010003699","accountType":"S","clearBalance":"1448.0000","customerName":"Chandan Prakash s/o lekh Raj","underClgBalance":"0.0000"},{"accountNo":"002040000361","accountType":"D","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH S/O LEKH RAJ","underClgBalance":"0.0000"}]}';
+				//getAccountsData(response);
+				//var response = '{"tranList":[{"curbalance":"19143.0000","narration":"TO TRANSFER MIP#272","trdAmt":"250000.0000","trdDate":"2015-02-25 00:00:00.0","trdDrCr":"D"},{"curbalance":"19143.0000","narration":"BY CLG","trdAmt":"253375.0000","trdDate":"2015-02-25 00:00:00.0","trdDrCr":"C"},{"curbalance":"19143.0000","narration":"BY CASH","trdAmt":"15000.0000","trdDate":"2015-02-16 00:00:00.0","trdDrCr":"C"}]}';
+				//getMiniStatementData(response);
+
+			}             
+    }
+	function authenticateResponse(){
+         	if (http.readyState == 4)
+        	{
+            		// Check that a successful server response was received
+            		if (http.status == 200)
+            		{
+                		//{"authorise":"Y","userType":"U","validUser":"Y","customerId":"25361"}
+                		Android.alert(http.responseText);
+						getAuthenticationData(http.responseText);
+		    		}
+					else
+					{
+					// An HTTP problem has occurred
+							Android.alert("HTTP error: " + http.status);
+					}
+           }
+    }
+
+	function accountsResponse(){
+         	if (http.readyState == 4)
+        	{
+            		// Check that a successful server response was received
+            		if (http.status == 200)
+            		{
+                		Android.alert(http.responseText);	
+						getAccountsData(http.responseText);
+					}
+					else
+					{
+						// An HTTP problem has occurred
+						Android.alert("HTTP error: " + http.status);
+					}
+            }
+    }
+	function miniStatementResponse(){
+         	if (http.readyState == 4)
+        	{
+            		// Check that a successful server response was received
+            		if (http.status == 200)
+            		{
+                		//{"authorise":"Y","userType":"U","validUser":"Y","customerId":"25361"}
+                		Android.alert(http.responseText);
+						getMiniStatementData(http.responseText);
+					}
+					else
+					{
+						// An HTTP problem has occurred
+						Android.alert("HTTP error: " + http.status);
+					}
+			}
+    }
+	function balanceResponse(){
+         	if (http.readyState == 4)
+        	{
+            		// Check that a successful server response was received
+            		if (http.status == 200)
+            		{
+                		//{"authorise":"Y","userType":"U","validUser":"Y","customerId":"25361"}
+						Android.alert('balanceResponse response');
+						Android.alert(http.responseText);	
+					}
+					else
+					{
+						// An HTTP problem has occurred
+						Android.alert("HTTP error: " + http.status);
+					}
+            }
+	}
+
+	function getAuthenticationData(response)
+	{
+			eval('var obj='+response);
+			Android.alert(obj.authorise +"\n"+obj.userType+"\n"+obj.validUser+"\n"+obj.customerId);
+	}
+	function getAccountsData(response)
+	{
+			eval('var objArray='+response);
+			objArray.accountList.forEach(function(obj){
+					Android.alert(obj.customerName);
+			});
+	}
+	function getMiniStatementData(response)
+	{
+			eval('var objArray='+response);
+			objArray.tranList.forEach(function(obj){
+					Android.alert(obj.narration);
+			});
+	}
+
+
+
+     			
+
+
+	function authenticateJQ()
+	{
+		var ran=parseInt(Math.random()*9999);
+		var url = "http://192.168.1.72:8290/AccountInfoAction.do?action=userAuthenticate&userID=43860744&encPassword=bd5af1f610a12434c9128e4a399cef8a"+"&ran="+ran+'&callback=?';
+		Android.alert(url);
+		$.getJSON(url, null, function (data, status) {
+			Android.alert(status);
+				Android.alert(data);
+			});
+	}
+
+
+	var http=createRequestObject();
+</script>	
+		
+	
+  </head>
+
+ <body >
+ 
+  <button onClick="authenticateJS('authenticate')"> Authenticate JS</button>
+<br /><br />
+<button onClick="authenticateJS('accounts')"> Accounts JS</button>
+<br /><br />
+<button onClick="authenticateJS('ministatement')"> Mini Statement JS</button>
+<br /><br />
+<button onClick="authenticateJS('balance')"> Balance JS</button>
+<br /><br />
+ <button onClick="authenticateJQ()"> Authenticate JQ</button>
+
+  </body>
+
+</html>
+
+<!-- 
+
+http://truongtx.me/2014/06/16/cross-tab-communication-using-html5-dom-storage/ 
+
+-->
+
+<!--
+Authentication
+//{"authorise":"Y","userType":"U","validUser":"Y","customerId":"25361"}
+
+accounts
+
+{"accountList":[{"accountNo":"002018006582","accountType":"F","clearBalance":"5465.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006692","accountType":"F","clearBalance":"26673.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006581","accountType":"F","clearBalance":"5510.0000","customerName":"LAKSHAY SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006430","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006383","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006459","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH","underClgBalance":"0.0000"},{"accountNo":"002018006538","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH","underClgBalance":"0.0000"},{"accountNo":"002018006495","accountType":"F","clearBalance":"28264.0000","customerName":"LAKSHAY SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006496","accountType":"F","clearBalance":"28264.0000","customerName":"DHARYA SHARMA","underClgBalance":"0.0000"},{"accountNo":"002018006486","accountType":"F","clearBalance":"0.0000","customerName":"CHANDAN PRAKASHSHARMA","underClgBalance":"0.0000"},{"accountNo":"002010003699","accountType":"S","clearBalance":"1448.0000","customerName":"Chandan Prakash s/o lekh Raj","underClgBalance":"0.0000"},{"accountNo":"002040000361","accountType":"D","clearBalance":"0.0000","customerName":"CHANDAN PRAKASH S/O LEKH RAJ","underClgBalance":"0.0000"}]}
+
+ministatement
+
+{"tranList":[{"curbalance":"19143.0000","narration":"TO TRANSFER MIP#272","trdAmt":"250000.0000","trdDate":"2015-02-25 00:00:00.0","trdDrCr":"D"},{"curbalance":"19143.0000","narration":"BY CLG","trdAmt":"253375.0000","trdDate":"2015-02-25 00:00:00.0","trdDrCr":"C"},{"curbalance":"19143.0000","narration":"BY CASH","trdAmt":"15000.0000","trdDate":"2015-02-16 00:00:00.0","trdDrCr":"C"}]}
+
+balance
+{"accountNo":"002010006515","branchCode":"002","cityName":"MANDI","customerId":"25361","customerName":"MOTI RAM  SHARMA","dob":"1900-01-01","emailId":"","fatherName":"SARAN","houseDetail":"PADDLE MANDI","houseNo":"H. NO. 68/13","locality":"","mobileNo":"","nomineeName":"","nomineeRel":"","phoneNo":"","pinCode":""}
+-->

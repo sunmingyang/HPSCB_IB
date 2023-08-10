@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+		<head runat="server">
+    <title></title>
+	
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    </head>
+	</html>
+
+
+
+
+	<script>
+ 
+
+
+
+function getSenction(){
+var a=sessionStorage.getItem('limit');
+var limit=document.getElementById("firstSlab");
+limit.value=a;
+}
+
+function interestSessionGet(){
+document.getElementById("frmDate").value=sessionStorage.getItem('frmDate');
+document.getElementById("periodInMonth").value=sessionStorage.getItem('periodInMonth');
+document.getElementById("loanexpirydate").value=sessionStorage.getItem('loanexpirydate');
+//document.getElementById("fixtoflt").value=sessionStorage.getItem('fixtoflt');
+//document.getElementById("flttofix").value=sessionStorage.getItem('flttofix');
+if(sessionStorage.getItem('intrestRate')=="" || sessionStorage.getItem('intrestRate')==null)
+	document.getElementById("intrestRate").value="L"
+else
+	document.getElementById("intrestRate").value=sessionStorage.getItem('intrestRate');
+//document.getElementById("float").value=sessionStorage.getItem('float');
+document.getElementById("chkIntrstSchem").value=sessionStorage.getItem('chkIntrstSchem');
+document.getElementById("txtIntrstSchem").value=sessionStorage.getItem('txtIntrstSchem');
+document.getElementById("txtSchmPeriod").value=sessionStorage.getItem('txtSchmPeriod');
+if(sessionStorage.getItem('slabWise')=="" || sessionStorage.getItem('slabWise')==null)
+	document.getElementById("slabWise").value="N"
+else
+	document.getElementById("slabWise").value=sessionStorage.getItem('slabWise');
+//document.getElementById("multipleSlab").value=sessionStorage.getItem('multipleSlab');
+document.getElementById("linktoPtlr").value=sessionStorage.getItem('linktoPtlr');
+document.getElementById("lbllinktoPtlr").value=sessionStorage.getItem('lbllinktoPtlr');
+document.getElementById("marginDeviation").value=sessionStorage.getItem('marginDeviation');
+//document.getElementById("singleSlab").value=sessionStorage.getItem('singleSlab');
+//document.getElementById("multipleSlab").value=sessionStorage.getItem('multipleSlab');
+document.getElementById("linktoPtlr").value=sessionStorage.getItem('linktoPtlr');
+document.getElementById("lbllinktoPtlr").value=sessionStorage.getItem('lbllinktoPtlr');
+document.getElementById("marginDeviation").value=sessionStorage.getItem('marginDeviation');
+document.getElementById("firstROI").value=sessionStorage.getItem('firstROI');
+document.getElementById("secondSlab").value=sessionStorage.getItem('secondSlab');
+document.getElementById("secondROI").value=sessionStorage.getItem('secondROI');
+document.getElementById("thirdSlab").value=sessionStorage.getItem('thirdSlab');
+document.getElementById("thirdROI").value=sessionStorage.getItem('thirdROI');
+document.getElementById("fourthSlab").value=sessionStorage.getItem('fourthSlab');
+document.getElementById("fourthROI").value=sessionStorage.getItem('fourthROI');
+document.getElementById("fifthSlab").value=sessionStorage.getItem('fifthSlab');
+document.getElementById("fifthROI").value=sessionStorage.getItem('fifthROI');
+document.getElementById("penalRate").value=sessionStorage.getItem('penalRate');
+document.getElementById("emirate").value=sessionStorage.getItem('emirate');
+document.getElementById("applyOn").value=sessionStorage.getItem('applyOn');
+document.getElementById("applyOn1").value=sessionStorage.getItem('applyOn1');
+}
+</script>
+
+
+
+<html>
+
+<!-- <script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script>
+<script type="text/javascript" src="/CobaSys/account/acopen/script/loanLimitInterestDetail.js"></script> -->
+
+<body  onload=" getSenction(),interestSessionGet()">
+<center>
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:-5px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div  style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block; "  />
+		</div>
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+
+
+
+		<div class="tab-content" id="my-tab-content" style="height:90%;">
+		
+<h4> Interest</h4> </center><br><br>
+<form name="loanLimitInterestDetailForm" method="post" action="/CobaSys/account/acopen/loanLimitInterestDetailAction.do">
+<input type="hidden" name="sFlatRateAllow" value="N" id="sFlatRateAllow">
+<input type="hidden" name="repPayMode" value="" id="repPayMode">
+<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:90%;">
+
+    <table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+      <tr> 
+        <td colspan="4">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td width="29%"> <label>From Date</label> 
+        </td>
+        <td width="25%">
+   
+
+      <input type="text" name="fromDate" size="11" value="" id="frmDate"  >
+
+	  <script>
+function frmdate(){
+
+var date=document.getElementById("frmDate").value;
+
+}
+
+	  </script>
+          
+       
+        </td>
+		<td>
+       <label> Period in Months<font color="Red">* 
+       
+		<input type="text" name="periodInMonth" maxlength="5" size="5" value="" style="width:50px;"  id="periodInMonth"> 
+        </td>
+      </tr></label>
+
+	  <tr>
+	    <td width="29%"> <label>Expiry Date</label> 
+        </td>
+        <td width="25%"> 
+		
+
+		<input type="text"  id="loanexpirydate" name="loanExpiryDate" size="11" readonly="true" />
+          </div>
+		</td>
+	  </tr>
+	  <!--Shalaindra Saraswat-->
+	  <!-- <tr>
+	  <td> <label>Change Inst. Rate Type</label> </td>
+	  <td colspan="3"> 
+	  <table width="99%" height="14" border="0" cellpadding="0" cellspacing="0" Class="table">
+	  <input type="hidden" name="spriFixToFloat" value="D" id="spriFixToFloat">
+	  <input type="hidden" name="spriFltToFix" value="D" id="spriFltToFix">
+	  <tr align="center" valign="top"> 
+	  <td width="35%" align="left"> <input type="radio" property="sfTofInstChangeRate" name="sfTofInstChangeRate"  value='Y' Id="fixtoflt"
+		  onclick="SelIntrestRate('fixtoflt')"/> 
+	  <label>Fix To Float</label> 
+	  </td>
+	  <td width="65%" align="left"> <input type="radio" property="sfTofInstChangeRate1" name="sfTofInstChangeRate1" value='F' Id="flttofix"  onclick="SelIntrestRate('flttofix')"/> 
+	  <input type="hidden" name="sfTofInstChangeRate" value="" id="sfTofInstChangeRate">
+	  <label> Float To Fix</label>
+	  </td>
+	  </tr>
+	  </table>
+	  </td>
+	  </tr> -->
+	  <!--Shalaindra Saraswat-->
+	  <tr>
+        <td> <label>Int. Rate Type</label> </td>
+        <td colspan="3"> 
+		  <table width="99%" height="14" border="0" cellpadding="0" cellspacing="0" Class="table">
+		    <tr align="center" valign="top">
+			  <select name="intrestRate" id="intrestRate" value="L">
+                <option value="X">Fixed</option>
+                <option value="L">Floating</option>
+              </select>
+	        </tr>
+          </table>
+		</td>
+      </tr>
+      <!--Ajeet Yadav-->
+      <tr>
+          <td> <label>Interest subvension scheme</label> </td>
+          <td colspan="3"> 
+	          <table width="99%" height="14" border="0" cellpadding="0" cellspacing="0" Class="table">
+	          	<tr align="center" valign="top">
+	          		<td width="35%" align="left"> <input type="CheckBox" name="chkIntrstSchem" id="chkIntrstSchem" value='Y' onclick="selectIntrstSchem('0')" disabled="true"/>
+	          		</td>
+	          	</tr>
+	          </table>
+          </td>
+      </tr>
+      <tr> 
+       	<td height="22"> <label>Scheme Name</label> 
+        </td>
+        <td>
+        	<input type="text" name="txtIntrstSchem" maxlength="20" size="25" value="" onkeypress="return isValidNumber()" onchange=" " readonly="readonly" id="txtIntrstSchem"> 
+        	<input type="button" id="btnIntrstSchem"  onClick="openHelpPanelIntroducer('txtIntrstSchem','hdnIntrstSchem','lblIntrstSchem','hdnIntrstSchemroi','IntrstSchem','1','IntrstSchem','IntrstSchem');"
+        		name="btnIntrstSchem" value="    " Class="senction" disabled="true">
+        	<input type="hidden" name="hdnIntrstSchem" value="0" id="hdnIntrstSchem"> 
+        </td>
+    
+        <td height="22"> <label>Period</label>
+    
+        <input type="text" name="txtSchmPeriod" maxlength="4" size="5" value="0" style="width:50px;" readonly="readonly" id="txtSchmPeriod"> 
+        </td>
+      </tr>
+     <!--Ajeet Yadav-->
+      <tr> 
+        <td> <label>Slab Wise</label></td>
+        <td colspan="3">
+		  <table width="99%" height="14" border="0" cellpadding="0" cellspacing="0" Class="table">
+            <tr align="center" valign="top"> 
+              <select name="slabWise" id="slabWise">
+                <option value="N">Single Slab</option>
+                <option value="Y">Multiple Slab</option>
+              </select>
+            </tr>
+          </table>
+		</td>
+      </tr>
+      <tr> 
+        <td height="22"> <label>Link to PTLR</label> 
+        </td>
+		<td>
+		  <div id="dlinktoPtlr" style="display:block;">
+		    <input type="text" name="linktoPtlr" maxlength="10" size="11" value="" onkeypress="return isValidNumber()" onchange="getRespectiveValuesIntroducer(this.value,'hdnlinktoPtlr','lbllinktoPtlr','hdnlinktoPtlrroi','LinktoPtlr',BcfCntid)" onblur="fillRoi()" readonly="readonly" id="linktoPtlr"> 
+			<input type="button" id="cbslinktoPtlr"  onClick="openHelpPanelIntroducer('linktoPtlr','hdnlinktoPtlr','lbllinktoPtlr','hdnlinktoPtlrroi','LinktoPtlr','1','LinktoPtlr','LinktoPtlr');"
+			name="cbsnctionAutho" value="    " Class="senction">
+			<input type="CheckBox" name="toDselect" styleId="toDselect" value='Y' onclick="deSelectPTLR()"/>
+			<input type="text" name="lbllinktoPtlr" tabindex="-1" value="" readonly="readonly" style="width:70%;" class="labelText" id="lbllinktoPtlr"> 
+			<input type="hidden" name="hdnlinktoPtlr" value="" id="hdnlinktoPtlr"> 
+		  </div>
+		</td>
+       
+        <td> <label>Margin Deviation</label>
+        <input type="text" name="marginDeviation" maxlength="7" size="10" value="" style="width:100px" readonly="readonly" class="periodText" id="marginDeviation"> 
+        </td>
+      </tr>
+      <tr> 
+        <td colspan="3"> 
+		  <table width="95%" border="0" cellpadding="0" cellspacing="0" Class="table">
+            <tr align="left" valign="top"> 
+              <td> <label>Ist Slab</label> 
+              </td>
+              <td> <input type="text" name="firstSlab" maxlength="19" size="20" value=""  readonly="readonly" style="text-align:right;"  id="firstSlab">
+
+			
+             
+              <td align="left"><label>ROI</label> </td>
+              
+              <td> <input type="text" name="firstROI" maxlength="5" size="10" value="10"  style="text-align:right; width:50px" class="periodText" id="firstROI"> 
+				
+				
+
+
+              </td>
+            </tr>
+            <tr align="left" valign="top"> 
+              <td> <label>IInd Slab</label> 
+              </td>
+              <td> <input type="text" name="secondSlab" maxlength="19" size="20" value="0.0" onkeypress="if(document.getElementById('secondSlab').readOnly==false)isValidAmount(this.event,secondSlab)" onblur="checkSlab('secondSlab')" disabled="disabled" readonly="readonly" style="text-align:right;" class="periodText" id="secondSlab">
+              </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <label>ROI</label> 
+              </td>
+              <td> <input type="text" name="secondROI" maxlength="5" size="10" value="0.0"  disabled="disabled" readonly="readonly" style="text-align:right; width:50px" class="periodText" id="secondROI"> 
+              </td>
+            </tr>
+            <tr align="left" valign="top"> 
+              <td> <label>IIIrd Slab</label> 
+              </td>
+              <td> <input type="text" name="thirdSlab" maxlength="19" size="20" value="0.0"  readonly="readonly" style="text-align:right;" class="periodText" id="thirdSlab">
+              </td>
+              <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>ROI</label> 
+              </td>
+              <td> <input type="text" name="thirdROI" maxlength="5" size="10" value="0.0" readonly="readonly" style="text-align:right; width:50px" class="periodText" id="thirdROI"> 
+              </td>
+            </tr>
+            <tr align="left" valign="top"> 
+              <td> <label>IVth Slab</label> 
+              </td>
+              <td> <input type="text" name="fourthSlab" maxlength="19" size="20" value="0.0" onkeypress="if(document.getElementById('fourthSlab').readOnly==false)isValidAmount(this.event,fourthSlab)" onblur="checkSlab('fourthSlab')" onfocus="hideCalander()" disabled="disabled" readonly="readonly" style="text-align:right;" class="periodText" id="fourthSlab">
+              </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>ROI</label></td>
+              <td> <input type="text" name="fourthROI" maxlength="5" size="10" value="0.0" disabled="disabled" readonly="readonly" style="text-align:right; width:50px" class="periodText" id="fourthROI"> 
+              </td>
+            </tr>
+            <tr align="left" valign="top"> 
+              <td> <label>Vth Slab</label> 
+              </td>
+              <td> <input type="text" name="fifthSlab" maxlength="19" size="20" value="0.0" onkeypress="if(document.getElementById('fifthSlab').readOnly==false)isValidAmount(this.event,fifthSlab)" onblur="checkSlab('fifthSlab')" onfocus="hideCalander()" disabled="disabled" readonly="readonly" style="text-align:right;" class="periodText" id="fifthSlab">
+              </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>ROI</label> 
+              </td>
+              <td> <input type="text" name="fifthROI" maxlength="5" size="10" value="0.0"  disabled="disabled" readonly="readonly" style="text-align:right; width:50px" class="periodText" id="fifthROI"> 
+              </td>
+            </tr>
+          </table>
+		</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr> 
+        <td> <label>Penal Rate</label> </td>
+		<td><input type="text" name="penalRate" maxlength="5" size="10" value=""  class="periodText" id="penalRate"> 
+        </td>
+        <td> <label>EMI</label> &nbsp;&nbsp;&nbsp;<input type="text" name="emirate" maxlength="5" size="10" value=""  class="periodText" id="emirate">
+        </td>
+        <td>&nbsp;</td>
+		<td>&nbsp;</td>
+      </tr>
+      <tr> 
+        <td> <label>Apply on</label> </td>
+        <td> <input type="radio" name="applyOn" value="Y" checked="checked" id="applyOn"> <label>On Excess</label> 
+        </td>
+        <td> <input type="radio" name="applyOn" value="N" onclick="getIntapplyOnValue()" id="applyOn1"> 
+          <label>On whole</label> </td>
+        <td>&nbsp;</td>
+		<script language="JavaScript"> document.getElementById("applyOn").checked = true;</script>
+	  </tr>
+      <tr> 
+        <td colspan="4">&nbsp;</td>
+      </tr>
+	  
+	</table>
+
+	<table align="center">
+	  <tr> 
+	    <td>
+			<input type="button" id="gurDetailButton" class="btn btn-primary" value="Guarantor" onclick="goToGuarantor()" />
+		  <input type="button" id="collSecButton" class="btn btn-primary" value="Collateral Security" onclick="collateralSecurity()" />
+		  <input type="button" id="repaymentButton" class="btn btn-primary" value="Repayment Schedule" onclick="rPshedule()" />
+			<input type="button" class="btn btn-primary"  value="Installment's Payment" onclick="goToinstallment()"/>
+		  
+		 
+	    </td> 
+	  </tr>
+	  <tr> 
+	    <td align="center"> 
+		  <hr class="HeaderLabelAcOpen" size="2">
+		  <INPUT TYPE="button" class="btn btn-primary"  name="ok" id="ok" value="OK" onClick="saveallDeatail()"/>
+		  <INPUT TYPE="button" class="btn btn-primary" name="cancel" id="cancel" value="Cancel" onclick="precallBackPage()"/>
+		 
+	    </td>
+	  </tr>
+    </table>
+	</div></div>
+</div>
+</div>
+</div>
+<script>
+
+function interestSessionSet(){
+sessionStorage.setItem('frmDate',document.getElementById("frmDate").value);
+sessionStorage.setItem('periodInMonth',document.getElementById("periodInMonth").value);
+sessionStorage.setItem('loanexpirydate',document.getElementById("loanexpirydate").value);
+//sessionStorage.setItem('fixtoflt',document.getElementById("fixtoflt").value);
+//sessionStorage.setItem('flttofix',document.getElementById("flttofix").value);
+sessionStorage.setItem('intrestRate',document.getElementById("intrestRate").value);
+//sessionStorage.setItem('float',document.getElementById("float").value);
+sessionStorage.setItem('chkIntrstSchem',document.getElementById("chkIntrstSchem").value);
+sessionStorage.setItem('txtIntrstSchem',document.getElementById("txtIntrstSchem").value);
+sessionStorage.setItem('txtSchmPeriod',document.getElementById("txtSchmPeriod").value);
+sessionStorage.setItem('slabWise',document.getElementById("slabWise").value);
+//sessionStorage.setItem('multipleSlab',document.getElementById("multipleSlab").value);
+sessionStorage.setItem('linktoPtlr',document.getElementById("linktoPtlr").value);
+sessionStorage.setItem('lbllinktoPtlr',document.getElementById("lbllinktoPtlr").value);
+sessionStorage.setItem('marginDeviation',document.getElementById("marginDeviation").value);
+sessionStorage.setItem('firstSlab',document.getElementById("firstSlab").value);
+sessionStorage.setItem('firstROI',document.getElementById("firstROI").value);
+sessionStorage.setItem('secondSlab',document.getElementById("secondSlab").value);
+sessionStorage.setItem('secondROI',document.getElementById("secondROI").value);
+sessionStorage.setItem('thirdSlab',document.getElementById("thirdSlab").value);
+sessionStorage.setItem('thirdROI',document.getElementById("thirdROI").value);
+sessionStorage.setItem('fourthSlab',document.getElementById("fourthSlab").value);
+sessionStorage.setItem('fourthROI',document.getElementById("fourthROI").value);
+sessionStorage.setItem('fifthSlab',document.getElementById("fifthSlab").value);
+sessionStorage.setItem('fifthROI',document.getElementById("fifthROI").value);
+sessionStorage.setItem('penalRate',document.getElementById("penalRate").value);
+sessionStorage.setItem('emirate',document.getElementById("emirate").value);
+sessionStorage.setItem('applyOn',document.getElementById("applyOn").value);
+sessionStorage.setItem('applyOn1',document.getElementById("applyOn1").value);
+}
+
+function saveallDeatail(){
+var jssondataadd='"'+"Interest"+'":'+"{";
+
+
+jssondataadd+=' "'+document.getElementById("frmDate").name+'" :'+'"'+document.getElementById("frmDate").value+'" , ';
+jssondataadd+=' "'+document.getElementById("periodInMonth").name+'" :'+'"'+document.getElementById("periodInMonth").value+'" , ';
+jssondataadd+=' "'+document.getElementById("loanexpirydate").name+'" :'+'"'+document.getElementById("loanexpirydate").value+'" , ';
+//jssondataadd+=' "'+document.getElementById("fixtoflt").name+'" :'+'"'+document.getElementById("fixtoflt").value+'" , ';
+//jssondataadd+=' "'+document.getElementById("flttofix").name+'" :'+'"'+document.getElementById("flttofix").value+'" , ';
+jssondataadd+=' "'+document.getElementById("intrestRate").name+'" :'+'"'+document.getElementById("intrestRate").value+'" , ';
+jssondataadd+=' "'+document.getElementById("chkIntrstSchem").name+'" :'+'"'+document.getElementById("chkIntrstSchem").value+'" , ';
+jssondataadd+=' "'+document.getElementById("txtIntrstSchem").name+'" :'+'"'+document.getElementById("txtIntrstSchem").value+'" , ';
+jssondataadd+=' "'+document.getElementById("txtSchmPeriod").name+'" :'+'"'+document.getElementById("txtSchmPeriod").value+'" , ';
+//jssondataadd+=' "'+document.getElementById("singleSlab").name+'" :'+'"'+document.getElementById("singleSlab").value+'" , ';
+//jssondataadd+=' "'+document.getElementById("multipleSlab").name+'" :'+'"'+document.getElementById("multipleSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("slabWise").name+'" :'+'"'+document.getElementById("slabWise").value+'" , ';
+jssondataadd+=' "'+document.getElementById("linktoPtlr").name+'" :'+'"'+document.getElementById("linktoPtlr").value+'" , ';
+jssondataadd+=' "'+document.getElementById("lbllinktoPtlr").name+'" :'+'"'+document.getElementById("lbllinktoPtlr").value+'" , ';
+jssondataadd+=' "'+document.getElementById("marginDeviation").name+'" :'+'"'+document.getElementById("marginDeviation").value+'" , ';
+jssondataadd+=' "'+document.getElementById("firstSlab").name+'" :'+'"'+document.getElementById("firstSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("firstROI").name+'" :'+'"'+document.getElementById("firstROI").value+'" , ';
+jssondataadd+=' "'+document.getElementById("secondSlab").name+'" :'+'"'+document.getElementById("secondSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("secondROI").name+'" :'+'"'+document.getElementById("secondROI").value+'" , ';
+jssondataadd+=' "'+document.getElementById("thirdSlab").name+'" :'+'"'+document.getElementById("thirdSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("thirdROI").name+'" :'+'"'+document.getElementById("thirdROI").value+'" , ';
+jssondataadd+=' "'+document.getElementById("fourthSlab").name+'" :'+'"'+document.getElementById("fourthSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("fourthROI").name+'" :'+'"'+document.getElementById("fourthROI").value+'" , ';
+jssondataadd+=' "'+document.getElementById("fifthSlab").name+'" :'+'"'+document.getElementById("fifthSlab").value+'" , ';
+jssondataadd+=' "'+document.getElementById("fifthROI").name+'" :'+'"'+document.getElementById("fifthROI").value+'" , ';
+jssondataadd+=' "'+document.getElementById("penalRate").name+'" :'+'"'+document.getElementById("penalRate").value+'" , ';
+jssondataadd+=' "'+document.getElementById("emirate").name+'" :'+'"'+document.getElementById("emirate").value+'" , ';
+jssondataadd+=' "'+document.getElementById("applyOn").name+'" :'+'"'+document.getElementById("applyOn").value+'" , ';
+jssondataadd+=' "'+applyOn1+'" :'+'"'+document.getElementById("applyOn1").value+'" , ';
+jssondataadd+="}";
+interestSessionSet();
+var guarantordetail=sessionStorage.GuarantorDetail;
+var CollateralSecurity=sessionStorage.CollateralSecurity;
+var Repaymentshedule=sessionStorage.jssondataadd;
+var Installment=sessionStorage.InstallMent;
+var Loanlimit="{"+jssondataadd+' , "'+"GuarantorDetail"+'":'+guarantordetail+',"'+"CollateralSecurity"+'":'+CollateralSecurity+',"'+"RepaymentShedule"+'":'+Repaymentshedule+',"'+"Installment"+'":'+Installment+"}";
+sessionStorage.LoanLimitData=Loanlimit;
+window.location='AccountOpen.html';
+}
+
+
+
+function rPshedule(){
+var a=document.getElementById("periodInMonth").value;
+sessionStorage.setItem('month',a);
+var ROI=document.getElementById("firstROI").value
+	sessionStorage.setItem('roi',ROI);
+var panel=document.getElementById("penalRate").value
+	sessionStorage.setItem('penalrate',panel);
+var fromdate=document.getElementById("frmDate").value;
+sessionStorage.setItem('startDate',fromdate);
+interestSessionSet();
+window.location='RepayMent.html';
+}
+
+function goToGuarantor(){
+interestSessionSet();
+sessionStorage.setItem('NextPage',null);
+window.location='Guarantor.html';
+}
+
+function collateralSecurity(){
+interestSessionSet();
+sessionStorage.setItem('NextPage',null);
+window.location='ColletralSecurity.html';
+}
+
+function goToinstallment(){
+interestSessionSet();
+location.href='installment.html';
+
+}
+
+</script>
+
+
+	
+	
+<DIV id = "DivSubmit" class = "WarningTab" 
+	style = "display:none;FONT-SIZE: 8pt;HEIGHT:20px" >
+  <MARQUEE>
+    <!--Plz wait While ...-->
+	<B>Please Wait . . .</B>
+  </MARQUEE>
+</DIV>
+
+<DIV id = "DivHotKey" style = "display:block;">
+ 
+</DIV>
+<input type="hidden" name="focus" value="periodInMonth" id="focus">
+<input type="hidden" name="mode" value="" id="mode">
+<input type="hidden" name="loanLimit" value="100000.0" id="loanLimit">
+<input type="hidden" name="hdnlinktoPtlrroi" value="" id="hdnlinktoPtlrroi"> 
+<input type="hidden" name="matDtDemandLoan" value="" id="matDtDemandLoan">
+<input type="hidden" name="checkFDloan" value="N" id="checkFDloan">
+<input type="hidden" name="hdnlinktoPtlrroiOriginal" value="" id="hdnlinktoPtlrroiOriginal"> 
+
+  
+   
+</form>
+ 
+</body>
+
+
+</html>

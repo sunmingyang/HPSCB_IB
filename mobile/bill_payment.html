@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list).split(",");
+			
+			var s= document.getElementById('accounts');
+			var s2= document.getElementById('accounts2');
+			var s3= document.getElementById('accounts3');
+			if(s.options.length == 0)
+			{
+				for (var i in account_array) {
+					s.options[s.options.length]= new Option(account_array[i], account_array[i]);
+					s2.options[s2.options.length]= new Option(account_array[i], account_array[i]);
+					s3.options[s3.options.length]= new Option(account_array[i], account_array[i]);
+				}
+			}
+			
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+		
+	
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		function proceed()
+		{
+			alert("Processing...");
+		}
+		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+		 
+		<div class="container" style="margin-left: 20px;margin-top:30px;width:90%;" >
+		    <ul class="nav nav-tabs" style="font-size:18px;">
+		        <li class="nav active"><a href="#A" data-toggle="tab">Pending</a></li>
+		        <li class="nav"><a href="#B" data-toggle="tab">Payments</a></li>
+		        <li class="nav"><a href="#C" data-toggle="tab">Payment Bills</a></li>
+		    </ul>
+
+    		<!-- Tab panes -->
+		    <div class="tab-content">
+			    <div class="tab-pane fade in active" id="A">
+			    	<table style="border-collapse: collapse;">
+			
+			    		<tr><th style="padding: 6px;">Date<th/><th style="padding: 6px;">Amount<th/><th style="padding: 6px;">Biller<th/></tr>
+						<tr><td style="padding: 6px;">12-05-2015<td/><td style="padding: 6px;">3598<td/><td style="padding: 6px;">RRVUNL<td/></tr>
+						<tr><td style="padding: 6px;">14-05-2015<td/><td style="padding: 6px;">499<td/><td style="padding: 6px;">Dish TV<td/></tr>
+						<tr><td style="padding: 6px;">18-05-2015<td/><td style="padding: 6px;">10000<td/><td style="padding: 6px;">Home Loan<td/></tr>
+		
+					</table>
+					
+					<br/><br/><input type=button value="OK" onclick="ok();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+		
+			   </div>
+		        
+		        
+		         <div class="tab-pane fade" id="B">
+		         	<table style="border-collapse: collapse;">
+			
+			    		<tr><th style="padding: 6px;">Date<th/><th style="padding: 6px;">Amount<th/><th style="padding: 6px;">Biller<th/><th style="padding: 6px;">Account<th/></tr>
+						<tr><td style="padding: 6px;">12-04-2015<td/><td style="padding: 6px;">4489<td/><td style="padding: 6px;">RRVUNL<td/><td style="padding: 6px;">0120001100345<td/></tr>
+						<tr><td style="padding: 6px;">14-04-2015<td/><td style="padding: 6px;">499<td/><td style="padding: 6px;">Dish TV<td/><td style="padding: 6px;">0120001100345<td/></tr>
+						<tr><td style="padding: 6px;">18-04-2015<td/><td style="padding: 6px;">10000<td/><td style="padding: 6px;">HDFC<td/><td style="padding: 6px;">0120001100345<td/></tr>
+		
+					</table>
+					
+					<br/><br/><input type=button value="OK" onclick="ok();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+		
+			   </div>
+			   <div class="tab-pane fade" id="C">
+			    	<br/><div style="display:none" id="alert-div-payment" class="alert alert-danger col-sm-12"></div>
+			        
+			        <br/><div style="font-size:18px;color:#666666;">How much do you want to pay?</div>
+			        <br/><input type=text  id="bill_amount" />
+					
+					<br/><div style="font-size:18px;color:#666666;">From which account do you want to pay?</div>
+
+					<br/><select name="select" id="accounts" style="font-size:18px;"></select>
+					
+			        <br/><div style="font-size:18px;color:#666666;">Remarks (Optional)</div>
+			        <br/><input type=text  id="remarks" />
+			        
+			    
+			        <br/><br/><input type=button value="Proceed" onclick="proceed();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			        		  <input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			   </div>
+			   		    
+			</div>
+		    
+</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+

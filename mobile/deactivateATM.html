@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 30%;
+			bottom: 0;
+			height: 67%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list).split(",");
+            var account_array_fund_transfer = (sessionStorage.accounts_list_for_transfer).split(",");
+
+
+			var s= document.getElementById('from_accounts_self');
+
+
+
+			//var s4= document.getElementById('to_accounts_others');
+
+			if(s.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s.options[s.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+					
+				}
+			}
+
+
+
+			//$('#tabs').tab();
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+
+
+		 function getdeactivateAtminfo()
+		  {
+		  var userid=sessionStorage.userID;
+		  var brncode=userid.substring(0,3);
+		//  Android.alert(brncode);
+            var accNumber = $("#from_accounts_self").val();
+            var accNumber1=brncode+"-"+accNumber;
+			//Android.alert(accNumber1);
+            if (accNumber != null) {
+               getData("deactivateAtm", accNumber1);
+            }
+
+          }
+
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="/mobile/mobilemenu.jsp";
+		}
+
+
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+		<div  style="margin-left: 20px;margin-top:30px;width:90%;" >
+
+
+
+			<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:90%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:90%;">
+			<div class="tab-pane fade in active" id="A">
+				<br/><div style="display:none" id="alert-div-self" class="alert alert-danger col-sm-12"></div>
+
+				<br/><div style="font-size:18px;color:#666666;">Request for ATM Deactivation</div>
+
+				<br/><select name="select"  id="from_accounts_self" style="font-size:18px;"></select>
+
+
+			</div>
+	`			<input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+				<input type=button value="Proceed" onclick="getdeactivateAtminfo();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+
+			</div>
+
+
+			</div>
+
+		</div>
+		</div>
+		</div>
+
+	</body>
+
+	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+			<a  href="/mobile/mobilemenu.jsp">   <img src="/mobile/img/home.png" alt="..." class="img-responsive" ></a>
+	</div>
+</html>
+
+
+

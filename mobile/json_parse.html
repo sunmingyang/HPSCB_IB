@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mBanking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	 <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+	//var $ =jQuery.noConflict();
+		jQuery(document).ready( function(){
+		
+			//Android.alert("Account Screen Being Initialized");
+
+			try{
+			
+			
+
+
+alert(Math.random());
+
+		var url = "http://192.168.1.73:8290/AccountInfoAction.do?action=userAuthenticate&userID=43860744&encPassword=bd5af1f610a12434c9128e4a399cef8a"+"&ran="+Math.random();
+	//	var url = "http://192.168.1.73:8290/rest/AccountService/fetchCustomerAccounts/27479?t="+Math.random();
+		var request = new XMLHttpRequest();
+		request.open("GET", url,false);
+ 		//if (window.XMLHttpRequest) 
+			//alert("supported XMLHttpRequest");
+		request.setRequestHeader("Content-Type", "text/html");
+		//request.responseType = 'json';
+		request.onload = function()
+		{
+			alert("called" );
+			  if (request.readyState == 4 && request.status == 200) {
+				
+				alert("data received="+request.responseText);
+				
+    			}
+			
+				
+			
+		};
+
+		alert("Loading");
+		
+		request.send(null);
+		
+			/*
+
+			
+		// http://192.168.1.73:8290/AccountInfoAction.do?action=userAuthenticate&userID=43860744&encPassword=bd5af1f610a12434c9128e4a399cef8a"+"&ran=0.3725698934254361
+			$.getJSON('http://192.168.1.73:8290/AccountInfoAction.do?action=userAuthenticate&userID=43860744&encPassword=bd5af1f610a12434c9128e4a399cef8a"+"&ran=0.3725698934254361&callback=?', null, function (data, status) {
+      					alert(data);
+      			});
+	
+			
+			
+			
+				$.getJSON('http://echo.jsontest.com/key/value/one/two?callback=?', null, function (data, status) {
+      					alert(data.one);
+      			});
+      			*/
+				//Android.alert(simNumber);
+			}catch(err)
+			{
+			}
+		});
+		</script>	
+		
+	
+  </head>
+
+ <body >
+ 
+   
+  </body>
+
+</html>
+
+
+
+
+

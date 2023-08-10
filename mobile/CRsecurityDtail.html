@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+		<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" />
+
+		
+
+<script type="text/javascript">
+        $(function() {
+            $( "#RevalutionDate" ).datepicker({
+              
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+$(function() {
+            $( "#DateofInsurance" ).datepicker({
+             
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+$(function() {
+            $( "#ExpiryDateOfInsuarance" ).datepicker({
+             
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+		
+    </script>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #RevalutionDate
+        {
+            background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #DateofInsurance
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #ExpiryDateOfInsuarance
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		
+		</style>
+
+
+
+
+
+
+  
+
+
+
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script> -->
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+var serverIP = "192.168.1.116";		//"192.168.1.72";
+var serverPort = "8098";
+
+
+function getSecondLangWord(engWord)
+{
+	return region(engWord,'english') ; 
+	
+}
+function showMessage(sArg)
+{
+	getMessage(1,sArg,"errors");
+}
+/*function bmdatefill(){
+	var bmform = document.forms[0];
+	for(var i=0; i<bmform.elements.length; i++){
+		if(bmform.elements[i].title == "bmdate" && bmform.elements[i].value=="" ) {
+			bmform.elements[i].value = changeDateFormat('2016-06-30');
+		}
+	}
+}
+var todayDate=new Date();
+var calShortWeekNames="";
+var calLongMntNames="";
+
+shortcut.add("ALT+F1", function() {
+	 var er=window.event || arguments.callee.caller.arguments[0];
+	 var em = er.srcElement||er.target;
+	 var cc = er.keyCode;
+	var n = em;
+	do n = n.nextSibling;
+	while (n && n.nodeType != 1);
+	if(n!=null){
+		n.onclick(er);
+		return false ;
+	}
+});*/
+
+
+
+function sessionGet(){
+document.getElementById("securitycode").value=sessionStorage.getItem('securitycode'+securitysize);
+
+document.getElementById("REname").value=sessionStorage.getItem('REname'+securitysize);
+document.getElementById("SValue").value=sessionStorage.getItem('SValue'+securitysize);
+//document.getElementById("limit1").value=sessionStorage.getItem('limit1'+securitysize);
+document.getElementById("margin1").value=sessionStorage.getItem('margin1'+securitysize);
+document.getElementById("dp1").value=sessionStorage.getItem('dp1'+securitysize);
+document.getElementById("Totalsecurityamount").value=sessionStorage.getItem('Totalsecurityamount'+securitysize);
+document.getElementById("RevalutionDate").value=sessionStorage.getItem('RevalutionDate'+securitysize);
+document.getElementById("InsuranceCompany").value=sessionStorage.getItem('InsuranceCompany'+securitysize);
+document.getElementById("insAmt1").value=sessionStorage.getItem('insAmt1'+securitysize);
+document.getElementById("DateofInsurance").value=sessionStorage.getItem('DateofInsurance'+securitysize);
+document.getElementById("ExpiryDateOfInsuarance").value=sessionStorage.getItem('ExpiryDateOfInsuarance'+securitysize);
+document.getElementById("policyNumber1").value=sessionStorage.getItem('policyNumber1'+securitysize);
+document.getElementById("installmentAmount1").value=sessionStorage.getItem('installmentAmount1'+securitysize);
+document.getElementById("coverNote1").value=sessionStorage.getItem('coverNote1'+securitysize);
+document.getElementById("eremark1").value=sessionStorage.getItem('eremark1'+securitysize);
+
+
+
+}
+
+
+
+
+
+
+
+function getSenction(){
+
+//alert("hello");
+var a=sessionStorage.getItem('limit');
+//alert(a);
+
+var limit=document.getElementById("limit1");
+limit.value=a;
+
+var dp=document.getElementById("dp1");
+limit.value=a;
+}
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+
+
+<html>
+  <center>
+  
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+  <H4>Security Details</H4></center>
+  <body onLoad="getSenction(),sessionGet()">
+    <form name="acOpenCreditLimitSecurityDetailForm" method="post" action="/CobaSys/account/acopen/acOpenCreditLimitSecurityDetailAction.do">
+	  <input type="hidden" name="secBehave" value="0" id="secBehave">
+	  <input type="hidden" name="focus" value="cbsecurityCode" id="focus">
+	  <input type="hidden" name="mode" value="N" id="mode">
+	  <input type="hidden" name="hcreditTypeCode" value="8" id="hcreditTypeCode"> 
+	  <input type ="hidden" name="snctionLimit" id="snctionLimit" />
+      <input type="hidden" name="isCountL" id="isCountL" />
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:65%; ">
+
+	  <table cellpadding="0" cellspacing="0" border="0" width="150%">
+	    <tr> 
+		  <td>
+		     
+			<label>Security Code<font size="-1" color="#FF0000">*</font></label>
+			 
+		  </td>
+		  <td colspan="3">
+		     <select name="seccode" id="securitycode" <option value="1"></option></select> 
+ 
+  <script>
+var crtype=sessionStorage.crtype;
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster3&masterType=SecurityCode&Criteria1="+crtype+"&Criteria2=CreditTypeMaster&Criteria3=002"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("securitycode")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+	
+		  </td>
+        </tr>
+		<tr> 
+		  <td>
+		    <label>Revaluator Name </label> 
+		  </td>
+	      <td>
+		    <input type="text" name="revaluatorHname" maxlength="60" size="20" value="" readonly="readonly" class="hindicontrol">
+			  <input type="text" name="revaluatorEname" maxlength="50" size="20" value="" id="REname">
+	   	
+		  </td>
+		</tr> 
+		<tr> 
+		  <td>
+		    <label>Security Value<font size="-1" color="#FF0000">*</font></label> 
+		  </td>
+
+		  <td>
+		    <input type="text" name="securityValue" maxlength="20" size="20" value="0" style="TEXT-ALIGN: right" class="periodText" id="SValue" title="text" onchange="dpvalue()">
+			
+			<script>
+			function dpvalue(){
+
+			
+			
+			var b=document.getElementById("limit1").value;
+			var dp=document.getElementById("dp1");
+			dp.value=b;
+			
+			}
+
+			</script>
+		 
+		  
+		  </td>
+		  </tr>
+		  <tr>
+		  <td>
+     	    <label>limit<font size="-1" color="#FF0000">*</font></label> 
+		  </td>
+		  <td>
+		    <input type="text" name="limit" maxlength="20" size="20" value="" style="text-align:right;" id="limit1" title="text"> 
+		  </td>
+		</tr>
+        <tr> 
+		  <td>
+		    <label>Margin</label> 
+  		  </td>
+		  <td>
+		    <input type="text" name="margin" maxlength="2" size="20" value="0" style="TEXT-ALIGN: right" class="periodText" id="margin1"> 
+			<input type="hidden" name="lmtmargin" value="0" id="lmtmargin"> 
+    	  </td>
+		  </tr>
+		  <tr>
+		  <td>
+	        <label>DP</label> 
+		  </td>
+		  <td>
+		    <input type="text" name="dp" maxlength="20" size="20" value="0" style="TEXT-ALIGN: right" onkeypress="return isValidNumber()"  readonly="readonly" class="periodText" id="dp1" title="text"> 
+		  </td>
+		</tr>
+		<tr>
+		  <td> Total Security Value 
+		    <label>Total Amount</label>
+		  </td>
+		  <td>
+		    <input type="text" name="totalSecurity" maxlength="20" value="0" style="TEXT-ALIGN: right" readonly="readonly" class="periodText"id="Totalsecurityamount">
+		    <input type="hidden" name="totallimit" value="0" id="totallimit">
+		  </td>
+		</tr>
+		<input type="hidden" name="copiedCurrent" value="false">
+		<tr> 
+		  <td><label>Revaluation Period</label> </td>
+		  <td>
+		    <select name="revalPeriod" onchange="addDate(ddmmyyDate,'revalPeriod')" onfocus="hide()" style="width:150px;" id="revalPeriod1"><option value="N">Other</option>
+				<option value="M">Monthly</option>
+				<option value="Q">Quarterly</option>
+				<option value="H">Half-Yearly</option>
+				<option value="Y">Yearly</option></select>
+		  </td>
+		  </tr>
+		  <tr>
+		  <td>
+		    <label>Revaluation Date<font size="-1" color="#FF0000">*</font></label> 
+		  </td>
+		  <td colspan="3"> 
+		    <input type="text" name="revalDt" maxlength="10" size="11" value=""   id="RevalutionDate"> 
+			
+		    </div>
+	      </td>
+		</tr>
+		<tr> 
+		  <td>
+		    <div id="dInsComp1" style="display:block;">
+			   
+			  <label>Insurance Company</label> 
+			</div>
+	      </td>
+		  <td colspan="3">
+		    <div id="dInsComp2" style="display:block;"> 
+			<select name="InsCompany" id="InsuranceCompany" <option value="1"></option></select> 
+ 
+  <script>
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=InsuranceCompany"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("InsuranceCompany")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+			</div>
+		  </td>
+		</tr>
+	    <tr> 
+		  <td>
+		    <div id="dInsAmt1" style="display:block;"> 
+			  <label>Insurance Amount</label>
+			</div>
+		  </td>
+		  <td colspan="3">
+		    <div id="dInsAmt2" style="display:block;">
+			  <input type="text" name="insAmt" maxlength="20" size="20" value="0" onfocus="hide()" class="periodText" id="insAmt1" title="text"> 
+			</div>
+		  </td>
+		</tr>
+		<tr> 
+		  <td>
+		    <div id="dDtIns1" style="display:block;"> 
+			  <label>Date of Insurance</label>
+			</div>
+		  </td>
+		  <td> 
+		    <div id="dDtIns2" style="display:block;"> <input type="text" name="dtOfIns" maxlength="10" size="11" value=""  id="DateofInsurance"> 	 
+			
+		      
+			</div>
+	      </td>
+		  </tr>
+		  <tr>
+		  <td>
+		    <div id="dDtInsExp1" style="display:block;"> 
+			  <label>Expiry Date of Insurance</label>
+			</div>
+		  </td>
+		  <td> 
+		    <div id="dDtInsExp2" style="display:block;"> 
+			  <input type="text" name="dtOfInsExpiry" maxlength="10" size="11" value="" onblur="checkDtOfInsExp()" readonly="readonly" style="background-color: activeborder;" id="ExpiryDateOfInsuarance"> 
+              
+			  </div>
+		    </div>
+	      </td>
+		</tr>
+		<tr>
+		   <td>
+		    <label>Insurance Policy Number</label>
+		   </td>
+		   <td colspan="3">
+		    <input type="text" name="policyNumber" maxlength="20" size="20" value="" onfocus="hide()" id="policyNumber1" title="text"> 
+		   </td>
+		  </tr>
+		  <tr>
+		   <td>
+		    <label>Installment Amount</label>
+		   </td>
+		   <td colspan="3">
+		    <input type="text" name="installmentAmount" maxlength="20" size="20" value="0.0" onkeypress="return isValidNumber()" onfocus="hide()" class="periodText" id="installmentAmount1" title="bmamount"> 
+		   </td>
+		  </tr>
+		  <tr>
+		   <td>
+		     <label>Cover Note </label>
+		   </td>
+		   <td colspan="3">
+		    <textarea name="coverNote" onfocus="hide()" id="coverNote1" title="text"></textarea> 
+		   </td>
+		  </tr>
+		<tr> 
+		  <td> 
+		    <div id="dhRem1" style="display:block;"> 
+			  <label>Remarks</label>
+			</div>
+		  </td>
+		  <td colspan="3">
+		    <div id="dhRem2" style="display:block;">
+			  <input type="text" name="hremark" maxlength="100" size="50" value="" readonly="readonly" class="hindicontrol" id="hremark"> 
+			  <input type="text" name="eremark" maxlength="100" size="50" value="" onblur="javascript:hremark.value = region(eremark.value,sThirdLang);" id="eremark1"> 
+			</div>
+		  </td>
+		</tr>
+
+
+		<script>
+var securitysize="";
+
+
+
+
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+
+securitysize="1";
+}
+else
+{
+securitysize=sessionStorage.getItem("NextPage");
+}
+
+
+
+function goToNext(){
+
+sessionSet();
+
+
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+}
+else
+{
+securitysize=parseInt(sessionStorage.getItem("NextPage"))+1;
+sessionStorage.setItem("NextPage",securitysize);
+}
+
+location.href='CRsecurityDtail.html';
+
+
+}
+</script>
+
+
+<script>
+
+
+function sessionSet(){
+
+sessionStorage.setItem('securitycode'+securitysize,document.getElementById("securitycode").value);
+sessionStorage.setItem('REname'+securitysize,document.getElementById("REname").value);
+sessionStorage.setItem('SValue'+securitysize,document.getElementById("SValue").value);
+sessionStorage.setItem('limit1'+securitysize,document.getElementById("limit1").value);
+sessionStorage.setItem('margin1'+securitysize,document.getElementById("margin1").value);
+sessionStorage.setItem('dp1'+securitysize,document.getElementById("dp1").value);
+sessionStorage.setItem('Totalsecurityamount'+securitysize,document.getElementById("Totalsecurityamount").value);
+sessionStorage.setItem('revalPeriod1'+securitysize,document.getElementById("revalPeriod1").value);
+sessionStorage.setItem('RevalutionDate'+securitysize,document.getElementById("RevalutionDate").value);
+sessionStorage.setItem('InsuranceCompany'+securitysize,document.getElementById("InsuranceCompany").value);
+sessionStorage.setItem('insAmt1'+securitysize,document.getElementById("insAmt1").value);
+sessionStorage.setItem('DateofInsurance'+securitysize,document.getElementById("DateofInsurance").value);
+sessionStorage.setItem('ExpiryDateOfInsuarance'+securitysize,document.getElementById("ExpiryDateOfInsuarance").value);
+
+sessionStorage.setItem('policyNumber1'+securitysize,document.getElementById("policyNumber1").value);
+sessionStorage.setItem('installmentAmount1'+securitysize,document.getElementById("installmentAmount1").value);
+sessionStorage.setItem('coverNote1'+securitysize,document.getElementById("coverNote1").value);
+sessionStorage.setItem('eremark1'+securitysize,document.getElementById("eremark1").value);
+
+
+
+}
+
+
+
+
+
+function saveSecurityDetail(){
+sessionSet();
+var jssondataadd="[";
+for(i=1;i<5;i++)
+{
+
+if(sessionStorage.getItem('securitycode'+i)==null)
+{
+break;
+}
+
+jssondataadd+=""+''+"{";
+jssondataadd+='"'+document.getElementById("securitycode").name+'":'+'"'+sessionStorage.getItem('securitycode'+i)+'",';
+jssondataadd+='"'+document.getElementById("REname").name+'":'+'"'+sessionStorage.getItem('REname'+i)+'",';
+jssondataadd+='"'+document.getElementById("SValue").name+'":'+'"'+sessionStorage.getItem('SValue'+i)+'",';
+jssondataadd+='"'+document.getElementById("limit1").name+'":'+'"'+sessionStorage.getItem('limit1'+i)+'",';
+jssondataadd+='"'+document.getElementById("margin1").name+'":'+'"'+sessionStorage.getItem('margin1'+i)+'",';
+jssondataadd+='"'+document.getElementById("dp1").name+'":'+'"'+sessionStorage.getItem('dp1'+i)+'",';
+jssondataadd+='"'+document.getElementById("Totalsecurityamount").name+'":'+'"'+sessionStorage.getItem('Totalsecurityamount'+i)+'",';
+jssondataadd+='"'+document.getElementById("revalPeriod1").name+'":'+'"'+sessionStorage.getItem('revalPeriod1'+i)+'",';
+jssondataadd+='"'+document.getElementById("RevalutionDate").name+'":'+'"'+sessionStorage.getItem('RevalutionDate'+i)+'",';
+jssondataadd+='"'+document.getElementById("InsuranceCompany").name+'":'+'"'+sessionStorage.getItem('InsuranceCompany'+i)+'",';
+jssondataadd+='"'+document.getElementById("insAmt1").name+'":'+'"'+sessionStorage.getItem('insAmt1'+i)+'",';
+jssondataadd+='"'+document.getElementById("DateofInsurance").name+'":'+'"'+sessionStorage.getItem('DateofInsurance'+i)+'",';
+jssondataadd+='"'+document.getElementById("ExpiryDateOfInsuarance").name+'":'+'"'+sessionStorage.getItem('ExpiryDateOfInsuarance'+i)+'",';
+jssondataadd+='"'+document.getElementById("policyNumber1").name+'":'+'"'+sessionStorage.getItem('policyNumber1'+i)+'",';
+jssondataadd+='"'+document.getElementById("installmentAmount1").name+'":'+'"'+sessionStorage.getItem('installmentAmount1'+i)+'",';
+jssondataadd+='"'+document.getElementById("coverNote1").name+'":'+'"'+sessionStorage.getItem('coverNote1'+i)+'",';
+jssondataadd+='"'+document.getElementById("eremark1").name+'":'+'"'+sessionStorage.getItem('eremark1'+i)+'",';
+jssondataadd+="},";
+}
+jssondataadd+="]";
+sessionStorage.CrSecuritydetail=jssondataadd;
+var CrSecuritydetail=sessionStorage.CrSecuritydetail;
+var secvalue=document.getElementById("SValue").value;
+var c=document.getElementById("limit1").value;	
+			if(secvalue<c){
+			alert("security value can't be less then limit");
+			return;
+			}
+			else{
+			sessionSet();
+            window.location='CRdetail.html';
+			}
+}
+
+function callBackPage(){
+window.location='CRdetail.html';
+}
+</script>
+
+
+		<tr> 
+		
+		  <td colspan="4" align="left">                                          
+		  
+		  </td>
+		</tr>
+		<tr> 
+		  <td colspan="4" align="center"> 
+		    <hr class="HeaderLabelAcOpen" size="2">
+			
+			<INPUT TYPE="button" class="btn btn-primary" name="ok" value="OK" ONCLICK="saveSecurityDetail()"/>
+			<INPUT TYPE="button" class="btn btn-primary" name="cancel"  value="Cancel" ONCLICK="callBackPage()"/><br><br>
+			<INPUT TYPE="button" class="btn btn-primary" name="next"  value="NEXT" ONCLICK="goToNext()"/>
+
+			
+		  </td>
+		</tr>
+      </table>
+	  <input type="hidden" name="focus" value="cbsecurityCode" id="focus">
+	  <input type="hidden" name="mode" value="N" id="mode">
+	  <input type="hidden" name="fdKid" value="" id="fdKid">
+		
+			
+			       
+			
+		
+</form>
+<DIV id = "DivSubmit" class = "WarningTab" 	style = "display:none;FONT-SIZE: 8pt;HEIGHT:20px" >
+  <MARQUEE>
+    <!--Plz wait While ...-->
+    <B>Please Wait . . .</B>
+  </MARQUEE>
+</DIV>
+<DIV id = "DivHotKey" style = "display:block;">
+ 
+</DIV>
+<br><br><br><br><br><br><br><br>
+</body>
+</html>

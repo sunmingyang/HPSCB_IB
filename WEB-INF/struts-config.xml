@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config
+  PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+  
+<struts-config>
+<form-beans>
+	<!-- Login Window -->
+	<form-bean name="dayendform"  type="easycbs.webservice.actionform.DayEndActionForm"/>
+	
+	<form-bean name="login"  type="easycbs.bancmateib.login.actionform.LoginForm"/> 
+	<form-bean name="user_detail"  type="easycbs.bancmateib.accforib.actionform.AccforibForm"/> 
+	<form-bean name="account_sum"  type="easycbs.bancmateib.accsum.actionform.AccsumForm"/> 
+	<form-bean name="chkreq"  type="easycbs.bancmateib.request.actionform.RequestForm"/>
+	<form-bean name="forpass"  type="easycbs.bancmateib.login.actionform.ForpassForm"/>
+	<form-bean  name="transferform" type="easycbs.bancmateib.fundtransfer.actionform.TransferForm" />
+    <form-bean name="authform" type="easycbs.bancmateib.fundtransfer.actionform.AuthForm" />
+    <form-bean name="fundform" type="easycbs.bancmateib.fundtransfer.actionform.FundForm" />
+    <form-bean name="transanyform" type="easycbs.bancmateib.fundtransfer.actionform.TransAnyForm" />
+    <form-bean name="addpayeeform" type="easycbs.bancmateib.fundtransfer.actionform.AddpayeeForm" />
+
+	<form-bean name="viewpayeeform" type="easycbs.bancmateib.fundtransfer.actionform.ViewpayeeActionForm" />
+	<form-bean name="ibreq"  type="easycbs.bancmateib.ibuserrequest.actionform.IbUsrRequestForm" />
+	<form-bean name="UserInfoAdminForm" type="easycbs.bancmateib.userinfo.actionform.UserInfoForm"/>
+	<form-bean name="AdminCreation" type="easycbs.bancmateib.accforib.actionform.AdminCreationForm"/>
+	<form-bean name="navigateform" type="easycbs.bancmateib.common.NavigateForm"/>
+	<form-bean name="activateform" type="easycbs.bancmateib.accforib.actionform.ActivationForm"/>
+	<form-bean name="ibopenform" type="easycbs.bancmateib.common.IbOpenForm"/>
+	<form-bean name="StatusLogform" type="easycbs.bancmateib.reports.actionform.StatusLogReportForm"/>
+    <!--for ABB Fund Transfer-->
+	<form-bean name="ABBOpenForm" type="easycbs.bancmateib.common.ABBOpenForm" />
+	<form-bean name="ABBFundTransForm" type="easycbs.bancmateib.fundtransfer.actionform.ABBFundTransForm" />
+	<!--For ABB Enquiry-->
+	<form-bean name="ABBEnquiry"  type="easycbs.bancmateib.abbenquiryview.actionform.AbbEnquiryForm"/>
+
+
+	<!--EMI Calculation Hotkey -->
+	<form-bean name = "EMICalForm"
+		type = "easycbs.bancmateib.hotkey.actionform.EMICalculateForm"/>
+
+	<!--Graduated EMI Hotkey -->
+	<form-bean name = "GradEMIForm"
+		type = "easycbs.bancmateib.hotkey.actionform.GraduatedEMIForm"/>
+
+	<!--Amortization Schedule-->
+	<form-bean name = "AmortizationSchdForm"
+		type = "easycbs.bancmateib.hotkey.actionform.AmortizationScheduleForm"/>
+
+	<!-- ADDED BY MADHAVAN-->
+	<form-bean name="ABBEnquiry"  type="easycbs.bancmateib.abbenquiryview.actionform.AbbEnquiryForm"/>
+	<form-bean name="FdRequest"  type="easycbs.bancmateib.request.actionform.FdRequestForm"/>
+	<form-bean name="DDRequest"  type="easycbs.bancmateib.request.actionform.DDRequestForm"/>
+	<form-bean name="TransactionAction"  type="easycbs.bancmateib.bankerlogin.actionform.TransactionForm"/>
+	
+	<forward name="MBRequest" path="/request/MBRequest.jsp"/>
+	<form-bean name="bulktransfer"  type="easycbs.webservice.actionform.BulkTransferActionForm"/>
+	<!--Menu Freezing-->
+	<form-bean name="addFavoriteClass" type="easycbs.bancmateib.common.menu.actionform.MenuSearchActionForm" /> 
+	<form-bean name = "addcorporateusr" type="easycbs.bancmateib.corporatebanking.actionform.AddNewUserActionForm"/>
+        <!--IEC-->
+   <form-bean name="IECLogForm" type="easycbs.bancmateib.accforib.actionform.IECLoginActionForm" />
+   
+</form-beans>
+
+	
+<action-mappings>
+
+
+<!--ABB Cash/Transfer Transaction
+
+
+<action path= "/abb/abbCashTransaction" type="easycbs.bancmateib.common.ABBOpenAction" 
+		scope="request" name="ABBOpenForm">
+	<forward name="abbCashTransferForward" path="/abb/abbCashTransaction.jsp"/>
+</action>
+
+ -->
+
+<action path= "/TransactionAction" type="easycbs.webservice.action.TransactionAction" 
+	scope="request" name="dayendform"  parameter="action" > 
+	<forward name="failure" path="/fundtransfer/fund.do?action=fetchPayee"/>
+	<forward name="success" path="/fundtransfer/fund.do?action=fetchPayee"/>
+	<forward name="fundtransfer" path="/fundtransfer/FtranWithinBank.jsp"/>	
+	<forward name="fund_success" path="/fundtransfer/FtranWithinBank.jsp"/>	
+	<forward name="fund_failure" path="/fundtransfer/FtranWithinBank.jsp"/>	
+	<forward name="holdTran" path="/fundtransfer/holdTrn.jsp?holdTran=true"/>
+ 	<forward name="NoHoldTran" path="/fundtransfer/holdTrn.jsp?holdTran=false"/>
+	<forward name="failedTran" path="/fundtransfer/refundFailed.jsp?failTran=true"/>
+  	<forward name="NofailedTran" path="/fundtransfer/holdTrn.jsp?failTran=false"/>
+	<forward name="feeCollection" path="/collection/feeCollection.jsp"/>
+	<forward name="feeCollectionRtn" path="/collection/feeCollectionRtn.jsp"/>
+	<!--New Added By Ritu V. for Fund Tran CIB authorization
+	openFor=A define opening file purpose is AUTHORIZATION 	-->
+	<forward name="SameBank" path = "/corpfundtransfer/corpFundTrnAuth.jsp?openFor=A"/>   
+	<forward name="acsList" path = "/TransactionAction.doaction=getACSList"/>  
+	<forward name="tranList" path = "/corpfundtransfer/unauthTransaction.jsp?openFor=A"/> 
+	<forward name= "tranDetail" path = "/corpfundtransfer/qerybyRefNo.jsp"/>  
+	<forward name="cbFundTrAuth" path="/corpfundtransfer/cbFundTransferAuth.jsp"/>
+	<forward name="cbFundTr" path="/corpfundtransfer/cbFundTransfer.jsp"/>
+	<forward name="corpfundtransfer" path="/corpfundtransfer/CorpFtran.jsp"/>	     
+	<forward name="fundtransferWith" path="/fundtransfer/FtranWithinBank2.jsp"/> 
+</action>
+
+<action path= "/OtherAppLogin" type="easycbs.webservice.action.OtherAppLogin" 
+	scope="request" name="dayendform"  parameter="action" > 
+	<forward name="fundTrfPage" path="/fundtransfer/FundTransferOtherApp.jsp"/>
+	<forward name="LoginPage" path="/jsp/loginform.jsp"/>
+</action>
+
+
+<action path= "/AccountInfoAction" type="easycbs.webservice.action.AccountInfoAction" 
+	scope="request" name="dayendform"  parameter="action" > 
+	<forward name="adminJsp" path="/productLaunch/admin.jsp"/>
+	<forward name="success" path="/abb/abbCashTransaction.jsp"/>
+	<forward name="adharSuccess" path="/request/adharUpdate.jsp"/>
+</action>
+
+<action path= "/jsp/login" type="easycbs.bancmateib.login.action.LoginWinAction" name="login"  parameter="action" scope="request" >
+
+
+	<forward name="sessionOut" path="/jsp/loginform.jsp?errno=1"/>
+	<forward name="successAbb" path="/abb/abb_loginform.jsp"/>
+	<forward name="successfulAbbLogin" path="/abb/abb_home.jsp"/> 
+	<forward name="abbBranchLoginFailed" path="/common/ConnectionTooSlow.jsp"/> 
+	<forward name="notAuthorizedBrnUser" path="/abb/errorPage.jsp"/>
+	<forward name="success_notfirst" path="/IBMenu.do?action=getMenu_Tab"/>
+	<forward name="success_notfirst_mobile" path="/IBMenu.do?action=getMenu_Tab"/>
+    <forward name="success_Activate" path="/jsp/loginform.jsp"/>
+    <forward name="activate_account" path="/jsp/Activate_Account.jsp"/>
+    <forward name="success_admin" path="/IBMenu.do?action=getMenu_Tab"/>
+	<forward name="success_HO" path="/jsp/tran_At_HO.jsp"/>
+	<forward name="failure_login" path="/jsp/loginform.jsp"/>
+	<forward name="close" path="/jsp/close.jsp"/>
+	<forward name="passChg_login" path="/jsp/change_pass.jsp?process=login"/>
+	<forward name="passChg_trans" path="/jsp/change_pass.jsp?process=trans"/>
+	<forward name="success" path="/jsp/loginform.jsp"/>
+	<forward name="goToPassChange" path="/jsp/change_pass.jsp"/>
+	<forward name="success_first" path="/jsp/PasswdPolicy.jsp"/>
+	<forward name="success_first_mobile" path="/jsp/PasswdPolicy.jsp"/>
+	<forward name="changeUsrId" path="/accsum/UseridChange.jsp"/>
+	<forward name="logOutIdChange" path="/jsp/login.do?action=ibUsrLogout" />
+	<forward name="PassWordChange" path="/accsum/PassWordChange.jsp"/>
+	<forward name="OtherApp" path="/fundtransfer/FundTransferOtherApp.jsp"/>
+	<forward name="vleLogin_success" path="/IBMenu.do?action=getMenu_Tab"/>
+ 	<forward name="vleLogin_Failure" path="/jsp/vleLogin.jsp"/>
+ 	<forward name="failure_login_newui" path="/new_ui/loginPage.jsp"/>
+ 	<forward name="CorpBanking" path="/accsum/PassWordChange.jsp?sMode=CorpBanking"/> 
+	 	<forward name="Corpfailure_login" path="/new_ui/corploginPage.jsp"/> 
+	
+		<forward name="CorpBanking" path="/accsum/PassWordChange.jsp?sMode=CorpBanking"/> 
+		<forward name="newLogin" path="/jsp/loginNew.jsp"/>
+ 	
+	<!--added by priyanka for new login jsp page-->
+	<forward name="dashboard" path="/dashBoard/dashboard.jsp"/> 
+	
+</action>
+ 
+<action path= "/LoginWinAction" type="easycbs.bancmateib.login.action.LoginWinAction" name="forpass"  parameter="action">
+<forward name="success" path="/jsp/loginform.jsp"/>
+<forward name="failure" path="/jsp/forget_pass.jsp?process=invalid"/>
+</action>
+
+
+<!-- IB open action & Branch Status -->
+<action path="/openaction" type="easycbs.bancmateib.common.IbOpenAction" 
+	scope="request" name="ibopenform">
+
+	<forward name="ActivatePage" path="/accforib/UserActivation.jsp"/>
+	<forward name="DeactivatePage" path="/accforib/UserActivation.jsp"/>
+	<forward name="AutoUnlock" path="/accforib/AutoUnlock.jsp"/>
+	<forward name="DeactivateAdminUser" path="/accforib/UserActivation.jsp"/>
+	<forward name="AutoUnlock" path="/accforib/AutoUnlock.jsp"/>
+	<forward name="StatusPage" path="/accforib/activate.do?action=firstExecute"/>
+	<forward name="CreatePage" path="/accforib/admin_form.jsp"/>
+	<forward name="StatuslogPage" path="/reports/StatusLogReport.jsp"/>
+	<forward name="ActivitylogPage" path="/reports/StatusLogAction.do?action=openActivityPage"/>
+	<forward name="BranchStatus" path="/jsp/BranchStatus.jsp"/>
+	<forward name="CreatePageExt" path="/accforib/UserCreateExt.jsp"/>
+	<forward name="TrnOperation" path="/reports/TransactionReport.jsp"/>
+	<forward name="AbbBranches" path="/jsp/AbbEnquiry.jsp"/>
+	<forward name="AbbminiStmtview" path="/accsum/miniStmt.jsp"/>
+	<forward name="UseridChange" path="/accsum/UseridChange.jsp"/>
+	<forward name="addeditbranch" path="/common/AddEditBranch.jsp"/>
+	<forward name="reprintpass" path="/accforib/RePrintPasswd.jsp"/>
+	<forward name="debCard" path="/request/debCard.jsp"/>
+	<forward name="newChk" path="/request/newChk.jsp"/>
+	<forward name="stopChk" path="/request/stopChk.jsp"/>
+	<forward name="chkStatus" path="/request/chkStatus.jsp"/>
+	<forward name="ldebcard" path="/request/ldebcard.jsp"/>
+	<forward name="AddrChangeReq" path="/request/AddrChangeReq.jsp"/>	
+	<forward name="toptentransaction" path="/jsp/tran_At_HO.jsp"/>
+	<forward name="SuspectTranRept" path="/reports/SuspectedTransactionReport.jsp"/>
+	<forward name="dayendoperation" path="/jsp/Dayendoperation.jsp"/>
+	<!--  ADDED BY MADHVAN FOR ABB -->
+	<forward name="AbbfailRept" path="/abb/AbbTranFailRept.jsp"/>
+	<forward name="AbbsucessRept" path="/abb/AbbTranSucessRept.jsp"/>
+	<forward name="AbbBranches" path="/abb/AbbEnquiry.jsp"/>
+	<forward name="abbchequebook" path="/abb/AbbCBEnquiry.jsp"/>
+	<forward name="abbchequebookSingle" path="/abb/AbbCBSingleLeaf.jsp"/>
+	<forward name="AbbminiStback" path="/abb/AbbEnquiry.jsp"/>
+	<!--  ADDED BY MADHVAN FOR ABB -->
+
+	<forward name="showerror" path="/common/ErrorCode.jsp"/>
+	<forward name="FdRequest" path="/request/FdRequest.jsp"/>
+	<forward name="DDRequest" path="/request/DDRequest.jsp"/>
+	<forward name="ReqAtAdmin" path="/IBReqProcess/IbreqProcess.jsp"/>
+	
+			<!--   in web.xml  -->
+<!-- by Ashish Varma for adding zo ro-->
+	<forward name="zoroentry" path="/accforib/ZoRoMaster.jsp"/>
+	<forward name="addzoroentry" path="/accforib/addingZo.jsp"/>
+	<forward name="addroentry" path="/accforib/addingRo.jsp"/>
+	<forward name="rovalue" path="/jsp/home.jsp"/>
+	<forward name="onhome" path="/jsp/home.jsp"/>
+<!-- Add on 10/07/2008 for Brn code at Admin usr creation-->
+    <forward name="onAdminUsr" path="/jsp/AdminCreation.jsp"/>
+	<!--  Done	 -->
+	<forward name="DayWiseUserReport" path="/reports/DayWiseUserReport.jsp"/>	
+	<forward name="adminJsp" path="/productLaunch/admin.jsp"/>
+	<forward name="CreateUserByAdminPage" path="/reports/StatusLogAction.do?action=CreateUserByAdminPage"/>
+	<forward name="PassWordChange" path="/accsum/PassWordChange.jsp"/>
+</action>
+
+<!-- Day End action -->
+<action path= "/dayendaction" type="easycbs.bancmateib.dayendopr.action.DayEndAction" scope="request" name="ibopenform" >
+<forward name="DayEndSuccessfull" path="/jsp/Dayendoperation.jsp"/>
+
+</action>
+<!-- Day End action -->
+
+<!-- navigate action -->
+<action path= "/navigate" type="easycbs.bancmateib.common.NavigateAction" scope="request" name="navigateform"  parameter="action">
+<forward name="useropr" path="/jsp/UserOperations.jsp"/>
+<forward name="adminHome" path="/jsp/home.jsp"/>
+<forward name="reportopr" path="/reports/ReportOperations.jsp"/>
+<forward name="homepage" path="/jsp/main_page.jsp"/>
+
+</action>
+
+<!-- activate user -->
+<action path= "/accforib/activate" type="easycbs.bancmateib.accforib.action.ActivationAction" scope="request" name="activateform" parameter="action">
+<forward name="success" path="/accforib/UserActivation.jsp"/>
+<forward name="success_status" path="/accforib/UserStatus.jsp"/>
+<forward name="AutoUnlock" path="/accforib/AutoUnlock.jsp"/>
+<forward name="successbrn" path="/common/AddEditBranch.jsp"/>
+<forward name="successadd" path="/common/BranchAddConfirm.jsp"/>
+<forward name="successadd" path="/common/BranchAddConfirm.jsp"/>
+<forward name="reprintpass" path="/accforib/RePrintPasswd.jsp"/>
+<forward name="reprintpass2" path="/accforib/RePrintPasswd2.jsp"/>
+<forward name="open_status" path="/accforib/UserStatus.jsp"/>
+
+
+</action>
+
+<!-- Admin User Registration-->
+<action path= "/accforib/user_info" type="easycbs.bancmateib.accforib.action.AccforibAction" scope="request" name="user_detail"  parameter="action">
+<forward name="success" path="/accforib/admin_form.jsp"/>
+<forward name="success_save" path="/accforib/user_info.do?action=getUserInfo"/>
+<forward name="successExt" path="/accforib/UserCreateExt.jsp"/>
+<forward name="success_saveExt" path="/accforib/user_info.do?action=getUserInfoDiffBrn"/>
+<forward name="admin_logout" path="/jsp/home.jsp"/>
+</action>
+
+<!-- Admin Creation -->
+<action path= "/accforib/AdminCreate" type="easycbs.bancmateib.accforib.action.AdminCreationAction" scope="request" name="AdminCreation"  parameter="action">
+	<forward name="success" path="/jsp/AdminCreation.jsp"/>
+</action>
+
+
+
+<!--ABB Cash/Transfer Transaction -->
+<action path= "/abb/abbCashTransfer" type="easycbs.bancmateib.common.ABBOpenAction" 
+		scope="request" name="ABBOpenForm">
+
+	<forward name="abbCash" path="/abb/abbCashTransaction.jsp"/>
+	<forward name="abbTransfer" path="/abb/abbFundTransfer.jsp"/>
+
+
+</action>
+
+
+
+
+<!-- status Log Report -->
+<action path= "/reports/StatusLogAction" type="easycbs.bancmateib.reports.action.StatusLogReportAction" scope="request" name="StatusLogform" parameter="action">
+	<forward name="success" path="/reports/StatusLogReport.jsp"/>
+	<forward name="activitysuccess" path="/reports/ActivityLogReport.jsp"/>
+	<forward name="successtrnReport" path="/reports/TransactionReport.jsp"/>
+	<forward name="suspecttrnReport" path="/reports/SuspectedTransactionReport.jsp"/>
+	<forward name="successmsg" path="/common/ErrorCode.jsp"/>
+	<forward name="msgconf" path="/common/MsgPage.jsp"/>
+	<forward name="CreateUserByAdminPage" path="/reports/CreateUserByAdmin.jsp"/>
+	<forward name="DayWiseUserReport" path="/reports/DayWiseUserReport.jsp"/>
+</action>
+
+
+<!-- Admin User Information-->
+
+<action path= "/UserInfoForAdmin" type="easycbs.bancmateib.userinfo.action.UserInfoAction" scope="session" name="UserInfoAdminForm"  parameter="action">
+	<forward name="success_userlist" path="/jsp/LoginInfo.jsp"/>
+	<forward name="admin_logout" path="/jsp/home.jsp"/>
+</action>
+<!-- Admin User information End-->
+
+
+<action path= "/accsum/acc_sum" type="easycbs.bancmateib.accsum.action.AccsumAction"  name="account_sum"  parameter="action" >
+	<forward name="success_mini" path="/accsum/miniStmt.jsp?success=mini"/>
+	<forward name="faluire_mini" path="/accsum/miniStmt.jsp?mini=failed"/>
+	
+	<!-- <forward name="detail_stmt" path="/accsum/detailStmt.jsp"/>  -->
+	 
+	
+	<!-- <forward name="same_page" path="/accsum/detailStmt.jsp"/> -->
+	 
+	
+	<!-- <forward name="failure_detail_stmt" path="/accsum/failure.jsp"/> -->
+	
+	
+	<!-- <forward name="success_detail" path="/accsum/detailStmt.jsp?success=detail"/> -->
+	
+	
+	<forward name="failure" path="/accsum/miniStmt.jsp?success=detail"/>
+	<forward name="AccountDetail" path="/accsum/AccountDetails1.jsp"/>
+	<forward name="failure_AccountDetail" path="/accsum/failure.jsp"/>
+<!--added by priyanka for getting account summary details in new login-->
+	<forward name="accSummary" path="/accDetails/accSummary.jsp"/>
+	
+	<!-- added by Ajay for getting detail statement-->	
+	<!-- <forward name="detail_stmt" path="/accDetails/06_account_statement.jsp"/>  -->
+	<forward name="detail_stmt" path="/accDetails/06_account_statement.jsp"/> 
+	
+	<!-- <forward name="success_detail" path="/accDetails/06_account_statement.jsp?success=detail"/> -->
+	<forward name="success_detail" path="/accDetails/06_account_statement.jsp?success=detail"/>
+	
+	<!-- <forward name="failure_detail_stmt" path="/accsum/failure.jsp"/> -->
+	<forward name="failure_detail_stmt" path="/accDetails/06_account_statement.jsp"/>
+	
+	<!-- <forward name="same_page" path="/accsum/detailStmt.jsp"/> -->
+	<forward name="same_page" path="/accDetails/06_account_statement.jsp"/>
+	
+	
+	
+	
+	
+	<!-- Tomar for refresh details -->
+	<forward name="RefreshDetail" path="/accsum/accSum.jsp"/>
+
+	<forward name="accsummary_success" path="/accsum/accSum.jsp"/>
+
+	<forward name="failure" path="/accsum/failure.jsp"/>
+ 
+	<!---By Mady for ABB Mini St-->
+	<forward name="abbsuccess_mini" path="/abb/AbbminiStmt.jsp?success=mini"/>
+	<forward name="abbfaluire_mini" path="/accsum/abbfailure.jsp"/>
+	<forward name="benList" path="/accsum/downloadBnf.jsp"/>
+	<forward name="fav_acc" path="/accsum/favouriteAcc.jsp"/>
+	<forward name="showmnu" path="/accsum/showAllMnu.jsp"/>
+	<forward name="TdsShow" path="/accsum/tds_Certificat.jsp"/>
+	<forward name="DepositInt" path="/accsum/depositInt.jsp"/>
+	<forward name="LoanLmt" path="/accsum/loanInt.jsp"/>
+	<forward name="EchequeStats" path="/accsum/rptWithechqueNo.jsp"/>
+	<forward name="trnStats" path="/accsum/transactionStatus.jsp"/>
+	<forward name="trnRpt" path="/accsum/transactionReport.jsp"/>
+	<forward name="tdscertificate" path="/accDetails/tdscertificate.jsp"/>
+	<forward name="interestCr" path="/accDetails/InterestCertificate.jsp"/>
+	<forward name="userRegister" path="/accDetails/NewUserRegistration.jsp"/>
+</action>
+
+
+
+<action path= "/request/reqchk" type="easycbs.bancmateib.request.action.RequestAction" 
+		scope="request" name="chkreq"  parameter="action">
+	<forward name="success" path="/jsp/tran_pass.jsp?success=true"/><!--change by Vijay-->
+	<forward name="valid_cheque" path="/request/reqchk.do?action=executeSetSession"/>
+	<forward name="to_trans_pass" path="/jsp/OtpConfirm.jsp"/>
+	<forward name="debCard" path="/request/reqchk.do?action=executeDebitCard"/>
+	<forward name="newChk" path="/request/reqchk.do?action=newChequeBookRequest"/>
+	<forward name="stopChk" path="/request/reqchk.do?action=executeStopCheque"/>
+	<forward name="chkStatus" path="/request/reqchk.do?action=executeChequeStatus"/>
+	<forward name="ldebcard" path="/request/reqchk.do?action=executeLostAtmCard"/>
+	<forward name="fdReq" path="/request/reqchk.do?action=executeFixDeposit"/>
+	<forward name="rdReq" path="/request/reqchk.do?action=executeRecurrDeposit"/>
+	<forward name="flexFd" path="/request/reqchk.do?action=executeFlexiDeposit"/>
+	<forward name="mobcomm" path="/request/reqchk.do?action=executeMobComm"/>
+	<forward name="failure_tran" path="/jsp/tran_pass.jsp?error=invalid"/>
+	<forward name="failure_ideb" path="/request/ldebcard.jsp"/>
+	<forward name="failure_stopcheque" path="/request/stopChk.jsp"/>
+	<forward name="success_chkstatus" path="/request/chkStatus.jsp"/>
+	<forward name="success_dd" path="/request/payorder.jsp"/>
+	<forward name="AddrChangeReq" path="/request/AddrChangeReq.jsp"/>	
+	<forward name="addressRequest" path="/request/AddrChangeReq.jsp"/>	
+</action>
+
+<action path= "/IBReqProcess/ibreqProcess" type="easycbs.bancmateib.ibuserrequest.action.IbUsrRequestAction" scope="request"  name="ibreq" parameter="action">
+	<forward name="success" path="/IBReqProcess/IbreqProcess.jsp"/>
+	<forward name="success_save" path="/IBReqProcess/ibreqProcess.do?action=fetchRequests"/>
+</action>
+
+<!--EMI Calculation Hotkey-->
+	<action path="/hotkey/EMICalc"
+			type="bancmate.bancmateib.hotkey.action.EMICalculateAction"
+			name="EMICalForm"
+			scope="request"  parameter="action">
+		<forward name="success" path="/hotkey/EMICalculator.jsp"/>
+		<forward name="successopen" path="/hotkey/AmortSchedule.do"/>
+		<forward name="successGraduateOpen" path="/hotkey/GraduatedEMI.do?action=executeOpen"/>
+		<forward name="hotkey" path= "/hotkey/HotKey.jsp"/>
+	</action>
+
+<!--Graduated EMI Hotkey-->
+	<action path="/hotkey/GraduatedEMI"
+			type="easycbs.bancmateib.hotkey.action.GraduatedEMIAction"
+			name="GradEMIForm" scope="request" parameter="action">
+		<forward name="success" path="/hotkey/GraduatedEMI.jsp"/>
+		<forward name="openemi" path="/hotkey/EMICalc.do?action=executeGradToEmiOpen"/>
+
+	</action>
+<!--Amortization Schedule Hotkey-->
+	<action path="/hotkey/AmortSchedule"
+			type="easycbs.bancmateib.hotkey.action.AmortizationScheduleAction"
+			name="AmortizationSchdForm" scope="request">
+		<forward name="success" path="/hotkey/AmortizationSchedule.jsp"/>
+	</action>
+<!--Amortization Schedule Hotkey back-->
+	<action path="/hotkey/BackAction"
+			type="easycbs.bancmateib.hotkey.action.BackAction"
+			name="AmortizationSchdForm" scope="request" >
+		<forward name="success" path="/hotkey/HotKey.jsp"/>
+	</action>
+
+<!-- For Sign and Photo -->
+	<action path = "/signPhoto/SignPhoto" type = "easycbs.bancmateib.signPhoto.action.SignPhotoAction"
+			name="ABBFundTransForm" scope = "request">
+			<forward name="success" path="/signPhoto/SignPhoto.jsp"/>
+			<forward name="failure" path="/signPhoto/SignPhoto.jsp"/>
+	</action>
+	<action path = "/signPhoto/SignPhotoDelete" type = "easycbs.bancmateib.signPhoto.action.SignPhotoDeleteAction"
+			name="ABBFundTransForm" scope = "request">
+	</action>
+<!-- End For Sign and Photo -->
+
+<!-- For ABB Enquiry -->
+	<action path= "/jsp/enqlogin" type="easycbs.bancmateib.abbenquiryview.action.ABBEnquiryAction" 
+		name="ABBEnquiry"  
+		parameter="action" scope="request" >
+		<forward name="AbbvalidAccount" path="/jsp/AbbEnquiry.jsp"/>
+		<forward name="AbbinValidAccount" path="/jsp/AbbEnquiry.jsp"/>
+		<forward name="AbbBranchUnavailable" path="/jsp/AbbEnquiry.jsp"/>
+		<forward name="AbbFailureUserInfo" path="/jsp/AbbEnquiry.jsp"/>
+	</action>
+<!-- For ABB Enquiry -->
+
+<action path= "/request/FdRequest" type="easycbs.bancmateib.request.action.FdRequestAction" 
+		name="FdRequest"  
+		parameter="action" scope="request" >
+		<forward name="fdSucess" path="/request/FdRequest.jsp"/>
+		<forward name="success" path="/request/accOpen.jsp?success=true"/>
+</action>
+
+<action path= "/request/DDRequest" type="easycbs.bancmateib.request.action.DDRequestAction" 
+		name="DDRequest"  
+		parameter="action" scope="request" >
+		<forward name="DDSucess" path="/request/DDRequest.jsp"/>
+		<forward name="success" path="/request/reqChk.jsp?success=true"/>
+</action>
+
+	<!--  Updated BY Nirmal FOR  ABB -->
+
+<action path= "/abb/enquiry" type="easycbs.bancmateib.abbenquiryview.action.ABBEnquiryAction" 
+		name="ABBEnquiry"  
+		parameter="action" scope="request" >
+		<forward name="chkStatuSucess" path="/abb/AbbCBEnquiry.jsp"/>
+		<forward name="chkStatusFail" path="/abb/AbbCBEnquiry.jsp"/>
+		<forward name="chkSingleSucess" path="/abb/ChkBookStatus.jsp"/>
+		<forward name="chkSingleFail" path="/abb/AbbCBSingleLeaf.jsp"/>
+		<forward name="chkSingleSucess" path="/abb/AbbCBSingleLeaf.jsp"/>
+		<forward name="AbbEnq" path="/abb/AbbEnquiry.jsp"/>
+		<forward name="AbbEnqfail" path="/abb/AbbEnquiry.jsp"/>
+		<forward name="transFail" path="/abb/AbbTranFailRept.jsp"/>
+		<forward name="abbtoptrans" path="/jsp/tran_At_HO.jsp"/>
+		<forward name="SucessRept" path="/abb/AbbTranFailRept.jsp"/>
+		<forward name="transSucess" path="/abb/AbbTranSucessRept.jsp"/>
+		<forward name="transSucessf" path="/abb/AbbTranSucessRept.jsp"/>
+		
+</action>
+<!-- Updated By Yogesh-->
+ <action path ="/jsp/TransactionAction"		
+	type = "easycbs.bancmateib.bankerlogin.action.TransactionAction" name = "TransactionAction" parameter="action">
+	<forward name="success" path="/jsp/transaction.jsp"/>
+	<forward name="failure" path="/jsp/bankerlogin.jsp"/>
+	<forward name="openJsp" path="/jsp/transaction.jsp"/>
+	
+</action>
+
+<action path= "/verifyToken" type="easycbs.webservice.action.VerifyToken" 
+	scope="request" name="dayendform"  parameter="action" >
+	 
+</action>
+
+<action path= "/request/MBRequest" type="easycbs.bancmateib.request.action.MBRequestAction"
+  name="MBRequest"  
+  parameter="action" scope="request" >
+  <forward name="mbsuccess" path="/request/MBRequest.jsp"/>
+  
+</action>
+
+<!--Ritu Vashistha Menu freezing -->
+<action path="/menu/AddFavoriteClassProcess"	parameter="cancel"
+			type="easycbs.bancmateib.common.menu.action.AddFavoriteClassProcess"
+			name="addFavoriteClass" >
+			<forward name="success" path="/menu/FormOpen.do?from=cancel" />
+			<forward name="failure" path="/menu/FormOpen.do?from=cancel" />
+	</action>
+
+<action path="/menu/AddFavoriteClass"
+			type="easycbs.bancmateib.common.menu.action.AddFavoriteClass" scope="request" >
+			<forward name="success" path="/favorite/tree.jsp"/>     
+			<forward name="failure" path="/favorite/tree.jsp"/>
+</action>  
+
+<action path ="/BulkAccountFundTransferAction"	type = "easycbs.webservice.action.BulkAccountFundTransferAction" 
+ scope="session" name="bulktransfer" parameter="action">
+	<forward name="success" path="/fundtransfer/fund.jsp"/>
+	<forward name="fileNotFound" path="/bulktransfer/fileNotFound.jsp"/>
+	<forward name="duplicate" path="/bulktransfer/duplicateerror.jsp"/>
+	<forward name="uploadSuccess" path="/bulktransfer/uploadSuccess.jsp"/>
+	<forward name="errorInAmount" path="/bulktransfer/errorInAmount.jsp"/>
+	<forward name="nonxlsfile" path="/bulktransfer/NotProperFormat.jsp"/>
+	<forward name="showdata" path="/bulktransfer/authrise_excelData.jsp"/> 
+	<forward name="noPayeeData" path="/bulktransfer/errorpayee.jsp"/> 	
+	<forward name="failure" path="/bulktransfer/NotProperFormat.jsp"/> 
+	
+</action>  
+
+<!-- For New Menu-->
+<action path= "/IBMenu" type="easycbs.bancmateib.common.menu.action.IBMenuAction" name="ibmenu"  parameter="action">
+	<forward name="success" path="/jsp/main_page.jsp"/>
+	<forward name="success_user" path="/jsp/main_page.jsp"/>
+ 	<forward name="success_admin" path="/jsp/home.jsp"/>
+</action>
+
+<action path="/corporatebanking/AddNewUserAction"     
+			type="easycbs.bancmateib.corporatebanking.action.AddNewUserAction" scope="request"   
+			name="addcorporateusr" parameter="action"> 
+			<forward name="success" path="/usrlimit/addnewUser.jsp"/>       
+			<forward name="fail" path="/usrlimit/addnewUser.jsp"/> 
+			<forward name="dactive" path="/usrlimit/delcorpUser.jsp"/> 
+</action> 
+	<!--IEC-->
+	<action path="/IECLogin" type="easycbs.bancmateib.accforib.action.IECLoginAction"
+           	name="IECLogForm" parameter="action">
+   			<forward name="success" path="/jsp/LoginToIEC.jsp"/>
+			<forward name="failure" path="/jsp/main_page.jsp"/>
+    </action>
+    
+
+	<!--   Updated BY Nirmal FOR  ABB -->
+  </action-mappings>
+<message-resources key="hindi" parameter = "easycbs.bancmateib.common.res.ApplicationResources"/>
+
+<message-resources key="error" parameter = "easycbs.bancmateib.common.res.errors"/>
+
+<message-resources key="hindierror" parameter = "easycbs.bancmateib.common.res.errors"/>
+<message-resources key="gujrati" parameter = "easycbs.bancmateib.common.res.ApplicationResources2"/>
+
+<message-resources key="org.apache.struts.action.MESSAGE" 
+					parameter = "easycbs.bancmateib.common.res.errors"/>
+
+<message-resources key="errors" parameter = "easycbs.bancmateib.common.res.errors"/>
+</struts-config>
+

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 30%;
+			bottom: 0;
+			height: 67%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+
+		</style>
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/mobile/CobaSys/normalize.css">
+        <link rel="stylesheet" href="/mobile/CobaSys/main.css">
+        <script src="/mobile/CobaSys/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+<!-- <script type="text/javascript" src="/mobile/CobaSys/acOpenCommon.js"></script>
+<script type="text/javascript" src="/mobile/CobaSys/acOpenMain.js"></script> -->
+
+<script>
+
+
+var empCode=[],empName=[];
+var mnunext = '1101';
+var argument = "sglCode";
+ if(mnunext=="15160"){
+  argument = "GoldSglCode";
+ }
+ else{
+  argument = "sglCode";
+ }
+
+
+function resetField(){
+
+
+	 
+}
+
+function setValueOfCust()//new function added by shaielndra
+{
+
+
+
+/* if(document.getElementById("category").value=="")
+    document.forms[0].customerId.focus();
+ 
+  if(document.getElementById("sglCode").value=="")  // new added by shailendra point no 342
+  document.getElementById("new").disabled = true; 
+ 
+  var grpKid=document.getElementById("isGrpKid").value;
+  if(grpKid !="")
+   document.getElementById("customerId").readOnly=true;
+  else
+   document.getElementById("customerId").readOnly=false;*/
+}
+
+
+function showErrorMessage(errNo)
+{
+	//alert(errNo)
+	switch(errNo){
+		case 1904:  
+			alert("Pls fill the Required fields");
+			break;
+		case 70174: 
+		   alert("Membership No. required");
+		   break;
+	}
+}
+function goBack()
+{
+ var sCustId ='';
+ if(sCustId!= "") 
+  goBackPage('CustId');
+ else
+  goBackPage('1101');
+}
+function backPage()
+		{
+			window.location.href="/request/LoanInterview.jsp";
+		}
+function getActBehave()
+{
+ if(document.getElementById("sglCode").value!=""){
+  group.style.display="block"
+  document.forms[0].action = "/CobaSys/account/acopen/acOpenMain.do?action=forActBehave";
+  document.forms[0].submit();
+
+ }
+}
+function getSglCode(){
+ var mnunext = '1101';
+ if(mnunext=="15160"){
+  openHelpPanel('sglCode','sglKid','heSglCode','GoldSglCode','002')
+ }
+ else{
+  openHelpPanel('sglCode','sglKid','heSglCode','sglcode','002');
+ }
+}
+var msg="Are You Sure ?";
+</script>
+<html>
+
+<head>
+	<title>
+	Normal
+	</title>		
+</head>
+
+<body  style="margin:0" onload="custChecked(),resetField(),getitemA(),setValueOfCust()" > <br>
+<form name="acOpenMainForm" method="post" >
+
+
+
+<!-- Table for display the title new a/c open  --> <!-- change by Ashwani on 25.10.07 -->
+<table width="100%" cellpadding="0" cellspacing="0">
+		<tr>
+			 <td align="center" >
+					  <label style = "font-weight:bold; font-size:14; color:#660000;">
+						<b>New Account Open</b>
+					  </label>
+			 </td>	 
+		</tr>
+		</table> <br>
+<!-- change by Ashwani on 25.10.07 -->
+
+
+<script>
+
+function getitemA()
+{
+document.getElementById("branchCode").value=sessionStorage.getItem('branchCode');
+document.getElementById("heBrnCode").value=sessionStorage.getItem('heBrnCode');
+
+document.getElementById("accountNo").value=sessionStorage.getItem('accountNo');
+document.getElementById("isGrpNumber").value=sessionStorage.getItem('isGrpNumber');
+document.getElementById("customerId").value=sessionStorage.getItem('customerId');
+document.getElementById("heCustId").value=sessionStorage.getItem('heCustId');
+
+document.getElementById("sglcode").value=sessionStorage.getItem('sglcode');
+document.getElementById("category").value=sessionStorage.getItem('category');
+document.getElementById("categoryLabel").value=sessionStorage.getItem('categoryLabel');
+
+
+
+document.getElementById("isGrpKid").value=sessionStorage.getItem('isGrpKid');
+document.getElementById("sglKid").value=sessionStorage.getItem('sglKid');
+document.getElementById("sglBehave").value=sessionStorage.getItem('sglBehave');
+document.getElementById("loanType").value=sessionStorage.getItem('loanType');
+document.getElementById("groupCode").value=sessionStorage.getItem('groupCode');
+document.getElementById("groupLabel").value=sessionStorage.getItem('groupLabel');
+document.getElementById("groupKid").value=sessionStorage.getItem('groupKid');
+document.getElementById("categoryKid").value=sessionStorage.getItem('categoryKid');
+//document.getElementById("curCode").value=sessionStorage.getItem('curCode');
+//document.getElementById("currencyLabel").value=sessionStorage.getItem('currencyLabel');
+document.getElementById("currencyKid").value=sessionStorage.getItem('currencyKid');
+document.getElementById("nicno").value=sessionStorage.getItem('nicno');
+document.getElementById("nicissdt").value=sessionStorage.getItem('nicissdt');
+processAccount16();
+
+}
+</script>
+
+<div style="height:155px; width:100%;">
+	<!-- New A/C Div -->
+	<div id="divToNewAc" style="display:block;">
+		<table  width = "100%" align="center" valign="top" cellpadding="0" cellspacing="0" border="1"> <!--MDCB -->
+		<tr>
+		<td width = "10%" ></td>
+ 		<td > <input type="radio" name="ExistNew" value="E"  id="existCustID"> Exist CustID  </td>
+        <td > <input type="radio" name="ExistNew" onclick="registCustid()" value="N"  id="registerNewCustID"> New CustID  </td>
+		  </tr>
+		  <tr>
+		  <td width = "10%" ></td>
+			<td > 
+				<input type="radio" name="rdNormalAccount" value="C"  id="rdNormalAccount1"> Normal </td>
+			<td > <input type="radio" name="rdNormalAccount" value="T" id="rdNormalAccount2"> By Transfer </td>
+		 </tr>
+		</table>
+		
+	<table width="100%"  border="1" cellpadding="0" cellspacing="0">
+		<tr>
+			<!-- <td width="5%"> -->
+				
+			<!-- </td> -->
+			<td width="100%">
+				<table width="100%"  cellpadding="0" cellspacing="0">
+				<tr>
+					<td width = "20%">
+				<!-- branch Code -->
+					
+						Branch code
+						<font class = MandatoryColor  color="red">*</font>
+									
+				</td>		
+				<td width = "60%">
+					<input type="text" name="branchCode" maxlength="10" size="15" tabindex="-1" value="" readonly="readonly" class="TextDisable" id="branchCode">
+					<input type="text" name="heBrnCode" size="27" tabindex="-1" value="" readonly="readonly" class="labelText" id="heBrnCode">
+				</td>	
+			</tr>
+					<!-- for show Customer Id Dive-->
+					<!-- <div id="divToAccountNo" style="display:none;"> -->
+			 <tr>
+			   <td >
+						
+						  Account Number
+						  
+			   </td>
+			   <td >
+						<input type="text" name="accountNo" size="15" tabindex="5" value="" id="accountNo">
+						<!--<input type="text" name="isaccountName" size="27" tabindex="-1" value="" readonly="readonly" class="labelText" id="isaccountName">-->
+
+						<input type="hidden" name="memberNo" value="" id="memberNo">
+						<input type="hidden" name="memberType" value="" id="memberType">
+			   </td>
+			 </tr>
+
+			 			 
+<tr>
+      <td colspan = 2>
+      <div id="divToGrpDetails" style="display:block;">
+      <table width="100%"   cellpadding="0" cellspacing="0">
+	      <tr>
+		      <td width = "20%">
+			       
+			        Group Name
+			       
+		       </td>
+		       <td width = "60%">
+			        <input type="text" name="isGrpNumber" size="15" tabindex="5" value=""  id="isGrpNumber">
+          			
+          			<!--<input type="text" name="isGrpLabel" maxlength="10" size="21" tabindex="-1" value="" readonly="readonly" class="labelText" id="isGrpLabel">-->
+			        <input type="hidden" name="isGrpKid" value="" id="isGrpKid">
+		       </td>
+	       </tr>
+       </table>
+        </div>
+     </td> 
+ </tr>
+		
+					  <!-- for show Customer Id Dive-->
+			 
+						<tr><td width = "20%">
+						 
+						  Customer ID
+						
+						 <font class = MandatoryColor color="red" >*</font>
+						 </td><td width = "60%">
+							 <input type="text" name="customerId" size="15" tabindex="5" value=""  onblur="openFrom('CC')"  onchange="customer()" id="customerId">
+
+							<!-- <input type="button" onclick="customer()">-->
+							
+
+
+
+   
+
+  <script>
+ 
+ 
+
+	 function customer()
+  {
+  
+
+var x= document.getElementById("customerId").value;
+
+   document.getElementById("customerId").innerHTML = x;  
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/AccountInfoAction.do?action=getCustomerInfo&custID="+x;
+		http.onreadystatechange= function (){processAccount5("customerId")};
+		
+		
+	    http.open("POST",URL1,false);
+		http.send(null);
+
+		
+  }
+   function processAccount5()
+{	
+
+	if((http.readyState == 4) && (http.status == 200)){
+	var resArray1=http.responseText;
+	
+	var jsonData = JSON.parse(resArray1);
+
+	var cust_ename=jsonData["cust_ename"];
+
+	//alert(jsonData["cust_ename"]);
+	
+	var cat_code=jsonData["cat_Code"];
+	//alert(jsonData["cat_Code"]);
+	
+	var cat_ename=jsonData["cat_Ename"];
+	//alert(jsonData["cat_Ename"]);
+	  var textbox = document.getElementById('heCustId'); 
+	  textbox.value=cust_ename;
+
+	 var textbox = document.getElementById('category'); 
+	  textbox.value=cat_code;
+
+	  var textbox = document.getElementById('categoryLabel'); 
+	  textbox.value=cat_ename;
+
+
+	  var textbox = document.getElementById('branchCode'); 
+	  textbox.value=jsonData["cust_brancode"];;
+
+		document.getElementById('heBrnCode').value =  jsonData["brn_ename"];
+
+	   }
+     }
+	
+
+		</script>
+
+
+						 
+						 <input type="text" name="heCustId" maxlength="10" size="21" tabindex="-1" value="" readonly="readonly" class="labelText" id="heCustId">
+						 <input type="hidden" id="hiddenaccountopenkid">
+						 
+					</td>
+			   </tr>
+				<tr>
+					<td >
+							
+								SGL Code
+							
+							<font class = MandatoryColor color="red">*</font>
+					</td>
+					<td >
+
+
+
+
+		<select name="SGL Code" Id="sglcode" onchange="atp(this)">
+		<option value="1">SGLCODE</option></select> 
+
+
+
+<script>
+
+
+      var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster1&masterType=sglcode&Criteria1=002";
+	 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount15("sglcode")};
+		http.send(null);
+	  
+
+function processAccount15(e)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		
+
+	   var jsonData = JSON.parse(resArray);
+	   
+	   var select= document.getElementById(e);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[0].length; i++){
+		
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];			
+			opt.innerHTML = jsonData[2][i];
+		    select.appendChild(opt);
+		}
+       
+	   }
+	
+	
+     }   
+
+	function atp(e) {
+
+		var GLCode1=e.value;
+		sessionStorage.setItem('code',GLCode1);
+		var URL1 ="http://"+cbsserver+":"+cbsserverPort+"/CobaSys/common/HelpPanelAjax.do?action=getMasterDataWithCode&masterType=ACCTYPE&mstCode="+GLCode1;
+		 
+		
+		http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount16("sglcode")};
+		http.send(null);
+		
+	}
+	function processAccount16(e)
+	{
+		
+		if((http.readyState == 4) && (http.status == 200)){
+		 	var resArray=http.responseText;
+		
+		 	var jsonData = JSON.parse(resArray);
+			var atp=null;
+			var show=null;
+			show=sessionStorage.getItem("crlimitk");
+			if(show!=null){
+				atp=show;
+			}
+			else{
+				atp=jsonData[2];
+			}
+			
+			if(atp=="E")
+			 {
+				sessionStorage.setItem("crlimitk","E");
+				document.getElementById("rdAcc").style.visibility="visible";
+		
+			 }
+			 else
+			 {
+				document.getElementById("rdAcc").style.visibility="hidden";
+			 }
+		
+		 	if(atp=="T")
+			{
+			 	sessionStorage.setItem("crlimitk","T");
+				document.getElementById("Crlimit").style.visibility="visible";
+				document.getElementById("loanlimit").style.visibility="visible";
+		
+			}
+			else
+			{
+				document.getElementById("Crlimit").style.visibility="hidden";
+				document.getElementById("loanlimit").style.visibility="hidden";
+			 }	
+
+		}
+	}
+</script>
+
+
+							<input type="hidden" name="sglKid" value="" id="sglKid">
+						   <input type="hidden" name="sglBehave" value="" id="sglBehave">
+						   <input type="hidden" name="loanType" value="" id="loanType">
+					</td>
+				</tr>
+										<!-- jai 24/11 -->
+					<tr id = "group" style="display:none">
+						  <td>
+						   
+							Group Code 
+						   
+						  </td>
+						  <td >
+						   <input type="text" name="groupCode" size="15" value="" id="groupCode"> 
+						   <input type ="button" class="button" name="btnGroupCode" id="btnGroupCode" onclick="openHelpPanel('groupCode','groupKid','groupLabel','GroupCode',document.getElementById('sglKid').value,'002')" style="background-image: url('/CobaSys/images/TRFFC01.jpg');width:20px"/>
+						   <input type="text" name="groupLabel" size="21" tabindex="-1" value="" readonly="readonly" class="labelText" id="groupLabel"> 
+						   <input type="hidden" name="groupKid" value="" id="groupKid"> 
+						  </td>    
+					</tr>
+			<tr> 
+				<td>
+					
+						Category 
+					
+					<font class = MandatoryColor color="red">*</font>
+					</td>
+				<td >
+					<input type="text" name="category" maxlength="15" size="15" value="" id="category"> 
+					 
+
+
+
+
+					
+					<input type="text" name="categoryLabel" size="21" tabindex="-1" value="" readonly="readonly" class="labelText" id="categoryLabel"> 
+					<input type="hidden" name="categoryKid" value="" id="categoryKid"> 
+				</td>				
+		  </tr>
+
+					
+			<tr>
+				<td>
+							
+							Currency Code
+							
+							<font class = MandatoryColor color="red">*</font> 
+				</td>
+				<td >
+							<input type="text" name="curCode" maxlength="10" size="15" tabindex="10" value="2"  id="curCode">
+							  
+							 <input type="text" name="currencyLabel" size="21.5" tabindex="-1" value="RUPEE" readonly="readonly" class="labelText" id="currencyLabel">	 	 
+							 <input type="hidden" name="currencyKid" value="" class="labelText" id="currencyKid">	 	  
+				</td>
+			</tr>
+			<tr>
+						 <!--changed by arun -->
+				<td>
+						NIC NO.</td>
+				<td>
+						<input type="text" name="nicno" maxlength="12" size="21" value="" readonly="readonly" class="textDisable" id="nicno"> 
+						<!--changed by arun -->
+				</td>
+				</tr> <tr>
+						<td >
+						 NIC Issue Date</td>
+						<td>
+							<input type="text" name="nicissdt" size="21" value="" readonly="readonly" class="textDisable" id="nicissdt"> 
+						</td>	
+				</tr>
+			</table>
+			</td>
+			
+		</tr>
+		<tr>
+
+<script>
+
+function set(){
+sessionStorage.setItem('accountNo',document.getElementById("accountNo").value);
+sessionStorage.setItem('isGrpNumber',document.getElementById("isGrpNumber").value);
+sessionStorage.setItem('customerId',document.getElementById("customerId").value);
+sessionStorage.setItem('heCustId',document.getElementById("heCustId").value);
+sessionStorage.setItem('sglcode',document.getElementById("sglcode").value);
+sessionStorage.setItem('category',document.getElementById("category").value);
+sessionStorage.setItem('categoryLabel',document.getElementById("categoryLabel").value);
+sessionStorage.setItem('branchCode',document.getElementById("branchCode").value);
+sessionStorage.setItem('heBrnCode',document.getElementById("heBrnCode").value);
+var openType=get('purpose');
+if(openType!=null){
+sessionStorage.setItem('openType',openType);
+}
+}
+
+function serializeSchema(form) {
+    return [].map.call(form.elements, function(el) {
+        return {
+           
+           name:el.name,
+            value:el.value
+        };
+    });
+};
+
+function validateInputForm(){
+//var f="";
+var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+
+jssondataadd+='"'+document.getElementById("rdNormalAccount1").name+'":'+'"'+document.getElementById("rdNormalAccount1").value+'",';
+//jssondataadd+='"'+document.getElementById("rdNormalAccount2").name+'":'+'"'+document.getElementById("rdNormalAccount2").value+'",';
+jssondataadd+='"'+document.getElementById("branchCode").name+'":'+'"'+document.getElementById("branchCode").value+'",';
+jssondataadd+='"'+document.getElementById("heBrnCode").name+'":'+'"'+document.getElementById("heBrnCode").value+'",';
+jssondataadd+='"'+document.getElementById("accountNo").name+'":'+'"'+document.getElementById("accountNo").value+'",';
+jssondataadd+='"'+document.getElementById("isGrpNumber").name+'":'+'"'+document.getElementById("isGrpNumber").value+'",';
+jssondataadd+='"'+document.getElementById("customerId").name+'":'+'"'+document.getElementById("customerId").value+'",';
+jssondataadd+='"'+document.getElementById("heCustId").name+'":'+'"'+document.getElementById("heCustId").value+'",';
+jssondataadd+='"'+document.getElementById("sglcode").name+'":'+'"'+document.getElementById("sglcode").value+'",';
+jssondataadd+='"'+document.getElementById("category").name+'":'+'"'+document.getElementById("category").value+'",';
+jssondataadd+='"'+document.getElementById("categoryLabel").name+'":'+'"'+document.getElementById("categoryLabel").value+'",';
+jssondataadd+='"'+document.getElementById("curCode").name+'":'+'"'+document.getElementById("curCode").value+'",';
+jssondataadd+='"'+document.getElementById("currencyLabel").name+'":'+'"'+document.getElementById("currencyLabel").value+'",';
+jssondataadd+='"'+document.getElementById("nicno").name+'" :'+'"'+document.getElementById("nicno").value+'" ,';
+jssondataadd+='"'+document.getElementById("nicissdt").name+'":'+'"'+document.getElementById("nicissdt").value+'",';
+
+jssondataadd+='"'+document.getElementById("isGrpKid").name+'":'+'"'+document.getElementById("isGrpKid").value+'",';
+jssondataadd+='"'+document.getElementById("sglKid").name+'":'+'"'+document.getElementById("sglKid").value+'",';
+jssondataadd+='"'+document.getElementById("sglBehave").name+'":'+'"'+document.getElementById("sglBehave").value+'",';
+jssondataadd+='"'+document.getElementById("loanType").name+'":'+'"'+document.getElementById("loanType").value+'",';
+jssondataadd+='"'+document.getElementById("groupCode").name+'":'+'"'+document.getElementById("groupCode").value+'",';
+jssondataadd+='"'+document.getElementById("groupLabel").name+'":'+'"'+document.getElementById("groupLabel").value+'",';
+jssondataadd+='"'+document.getElementById("groupKid").name+'":'+'"'+document.getElementById("groupKid").value+'",';
+jssondataadd+='"'+document.getElementById("categoryKid").name+'":'+'"'+document.getElementById("categoryKid").value+'",';
+jssondataadd+='"'+document.getElementById("currencyKid").name+'":'+'"'+document.getElementById("currencyKid").value+'",';
+
+
+jssondataadd+="}";
+
+var form = document.querySelector('form'),
+    schema = serializeSchema(form);
+
+//Accountopen data
+var Accountjson=jssondataadd;
+sessionStorage.personalform =jssondataadd;
+
+//RD Account data
+var Rdaccountjson=sessionStorage.RdAccountjson;
+
+//Nomini and Guardian data
+var Nominee_Guardian_data=sessionStorage.NandGdata;
+var CreditLimitData=sessionStorage.alldata;
+var LoanLimitData=sessionStorage.LoanLimitData;
+
+//if Atptype T and credit limit  Then DAta Will not sent to the url
+
+if((document.getElementById("Crlimit").style.visibility!="hidden") && CreditLimitData==null )
+{
+	alert("Please fill the Detail of CreditLimit");
+	return;
+}
+
+var url = "http://"+cbsserver+":"+cbsserverPort+"/CobaSys/custid/AddressDetail.do?action=saveAccountOpenData&Source=TABBANKING&custRole=A&custID="+ sessionStorage.customerId +"&JSONAccount="+Accountjson+"&JSONNominee="+Nominee_Guardian_data+"&JSONCreditLimit="+CreditLimitData+"&JSONLOANLimit="+LoanLimitData+
+"&OpenType="+sessionStorage.openType;
+http.open("POST", url, true);
+http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+	var res=http.responseText;
+		 var json=JSON.parse(res);
+		 if(json.accountNo=="" || json.accountNo==null)
+			alert("Account Not Created");
+		else{
+		alert("Account id Created Your Account No. is :"+json.accountNo);
+		sessionStorage.clear();
+		 //alert(json.accountNo);
+		 //alert(json.accKid);
+ 		}
+		clearAll();
+    }
+};
+http.send(null);
+
+//location.href='frm1';
+
+}
+
+function goToNomini()
+{
+	
+	var dsvd =document.getElementById('customerId').value;
+	var cname =document.getElementById('heCustId').value;
+	var curcode=document.getElementById('currencyLabel').value;
+	var cat_code=document.getElementById('category').value;
+	var sel=document.getElementById("sglcode");
+	var GLCode=sel.value;
+	var GLName=sel.options[sel.selectedIndex].text;
+	sessionStorage.setItem('cust',dsvd);
+	sessionStorage.setItem('custname',cname);
+	sessionStorage.setItem('currency',curcode);
+	sessionStorage.setItem('glcode',GLCode);
+	sessionStorage.setItem('glname',GLName);
+	sessionStorage.setItem('category',cat_code);
+	
+	set();
+	
+	//sessionStorage.setItem('NomineeNew',"nominee");
+	sessionStorage.setItem('NextPage',null);
+	window.location.href='NomineePage.html';
+}
+function registCustid(){
+	window.location.href="./CMMPersonal.html";
+}
+function custChecked(){
+	document.getElementById('existCustID').checked=true;
+}
+function goToRD(){
+
+	var dsvd =document.getElementById('customerId').value;
+	
+	
+	var cname =document.getElementById('heCustId').value;
+	
+	var curcode=document.getElementById('currencyLabel').value;
+	
+	
+	var sel=document.getElementById("sglcode");
+	var GLCode=sel.value;
+	var GLName=sel.options[sel.selectedIndex].text;
+	
+	sessionStorage.setItem('cust',dsvd);
+	sessionStorage.setItem('custname',cname);
+	sessionStorage.setItem('currency',curcode);
+	sessionStorage.setItem('glcode',GLCode);
+	sessionStorage.setItem('glname',GLName);
+	set();
+	
+	window.location.href='RDAccount.html';
+}
+function goToCRLimit(){
+
+	set();
+	window.location='CReditlimit.html';
+}
+
+
+
+function goToLoanLimit(){
+	var dsvd =document.getElementById('customerId').value;
+	var cname =document.getElementById('heCustId').value;
+	var curcode=document.getElementById('currencyLabel').value;
+	var sel=document.getElementById("sglcode");
+	var GLCode=sel.value;
+	var GLName=sel.options[sel.selectedIndex].text;
+	sessionStorage.setItem('cust',dsvd);
+	sessionStorage.setItem('custname',cname);
+	sessionStorage.setItem('currency',curcode);
+	sessionStorage.setItem('glcode',GLCode);
+	sessionStorage.setItem('glname',GLName);
+	set();
+	window.location='LoanlimitInterest.html';
+}
+function goToJointAccount(){
+
+	var dsvd =document.getElementById('customerId').value;
+	
+	
+	var cname =document.getElementById('heCustId').value;
+	
+	var curcode=document.getElementById('currencyLabel').value;
+	
+	
+	var sel=document.getElementById("sglcode");
+	var GLCode=sel.value;
+	var GLName=sel.options[sel.selectedIndex].text;
+	
+	sessionStorage.setItem('cust',dsvd);
+	sessionStorage.setItem('custname',cname);
+	sessionStorage.setItem('currency',curcode);
+	sessionStorage.setItem('glcode',GLCode);
+	sessionStorage.setItem('glname',GLName);
+	set();
+	
+	window.location.href='jointAccount.html';
+}
+function get(name){
+   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+      return decodeURIComponent(name[1]);
+}
+</script>
+
+		<td width="15%" align="center">
+			<input name="creditlimit" type="button" style="width:120px;" id="Crlimit" tabindex="12" value="CREDIT LIMIT" onClick="goToCRLimit()" />
+			<input name="LoanLimit" type="button" style="width:120px;" id="loanlimit" tabindex="12" value="LOAN LIMIT" onClick="goToLoanLimit()" />
+		
+					<input name="save" type="button" style="width:100px;" id="save" tabindex="12" value="Save" onClick= "return validateInputForm(this,msg)"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<input name="Nominee" id="Nominee" tabindex="13" style="width:100px;"  type="button" value="Nominee" onClick="goToNomini()">
+					<br><br>
+					<input name="RD" id="rdAcc" tabindex="13" style="width:100px;"  type="button" value="RD" onClick="goToRD()">
+					<input name="JointAccount" id="JAcc" tabindex="13" style="width:120px;"  type="button" value="JOINT ACCOUNT" onClick="goToJointAccount()">
+					<input name="cancel" id="cancel" tabindex="13" style="width:100px;"  type="button" value="cancel" onClick="backPage()">
+					<div id="divErr" style="display:none;">
+						<input name="err" type="button" id="err" tabindex="15" value="Error" onClick="showError()" style="width:100px;background-color: #FF0000; color: #000000;">
+					</div> 
+			</td>
+			</tr>
+	</table>
+</table>
+	</div>
+</div>
+
+</form>
+
+</body>

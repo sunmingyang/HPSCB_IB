@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		#container-div {
+  position: absolute;
+  top: 23%;
+  bottom: 0;
+  height: 67%;
+  width: 100%;
+  overflow-y: auto;
+  border-top: 0px solid #2E2E2E;
+ 
+
+}
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+		//	$('#mobile_number').text("1111111111");
+		//$('#name').text("aaaa");
+		//$('#nick_name').text("bbb");
+		//$('#account_number').text("cccc");
+
+
+		s = sessionStorage.mobileNo;
+			var result = s.split('');
+			for( i = 0; i<result.length -3;i++)
+				result[i]='*';
+			s = result.join('');
+			$('#mobile_number').val(s);
+		//$('#mobile_number').val(sessionStorage.mobileNo);
+			
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+		
+	
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		function next()
+		{
+			if($("#payee_name").val().length == 0 )
+				showAlert("alert-div","Error :", "Please Enter Payee Name");
+			else if($("#nick_name").val().length == 0 )
+				showAlert("alert-div","Error :", "Please Enter Nick Name");
+			else if($("#account_number").val().length == 0 )
+				showAlert("alert-div","Error :", "Please Enter Account Number");
+			else if($("#confirm_account_number").val().length == 0 )
+				showAlert("alert-div","Error :", "Please Enter Confirm Account Number");
+			else if($("#account_number").val() !=  $("#confirm_account_number").val())
+				showAlert("alert-div","Error :", "Account Number Mismatched");
+			else if($("#ifsc_code").val().length ==  0)
+				showAlert("alert-div","Error :", "Please Enter IFSC Code");
+			else
+			location.href="add_payee_other_bank_confirm.html?nickName="+$("#nick_name").val()+"&payeeName="+$("#payee_name").val()+"&accountNo="+$("#account_number").val()+"&ifsc_code="+$("#ifsc_code").val();
+			
+				//location.href="add_payee_other_bank_confirm.html";
+			
+			$('#container-div').scrollTop($('#container-div').scrollTop()+"px");
+		}
+		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+		 
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:30px;overflow-y: auto; " >
+		   
+
+    		
+			    
+			    	<br/><div style="display:none" id="alert-div" class="alert alert-danger col-sm-12"></div>
+			        
+			        <br/><div style="font-size:18px;color:#666666;">Payee Name</div>
+					<br/><input type=text  id="payee_name" />
+					<br/><div style="font-size:18px;color:#666666;">Nick Name </div>
+					<br/><input type=text  id="nick_name" maxlength="5" />
+					<br/><div style="font-size:18px;color:#666666;">Account No.</div>
+					<br/><input type=text  id="account_number" />
+					<br/><div style="font-size:18px;color:#666666;">Confirm Account No.</div>
+					<br/><input type=text  id="confirm_account_number" />
+					<br/><div style="font-size:18px;color:#666666;">IFSC Code </div>
+					<br/><input type=text  id="ifsc_code" />
+					
+			
+			        <br/><div style="font-size:18px;color:#666666;">* Payee registration alert to be sent on mobile number</div>
+			        <br/><input type=text  id="mobile_number" value="" readonly />
+			        
+			        
+			        <br/><br/><input type=button value="Next" onclick="next();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			        <br/>
+			   
+			   
+		   
+	</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+

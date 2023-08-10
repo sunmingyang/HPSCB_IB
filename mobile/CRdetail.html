@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" />
+
+		
+
+<script type="text/javascript">
+         $(function() {
+            $( "#PronoteDate" ).datepicker({
+              
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+			   
+            });
+         });
+
+          $(function() {
+            $( "#AODDate" ).datepicker({
+             
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+		  $(function() {
+            $( "#AODDueDate" ).datepicker({
+             
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+		
+    </script> -->
+ <!--    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #PronoteDate
+        {
+            background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #AODDate
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #AODDueDate
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		
+		</style> -->
+
+
+
+
+  
+
+
+
+
+<!-- <link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script> -->
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+
+
+
+
+function sessionGet(){
+
+
+document.getElementById("CreditTypeMaster").value=sessionStorage.getItem('CreditTypeMaster');
+document.getElementById("pronoteNo").value=sessionStorage.getItem('pronoteNo');
+document.getElementById("PronoteDate").value=sessionStorage.getItem('PronoteDate');
+document.getElementById("AODDate").value=sessionStorage.getItem('AODDate');
+document.getElementById("AODDueDate").value=sessionStorage.getItem('AODDueDate');
+}
+
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+
+
+<html>
+
+<script>
+function getSenction(){
+var a=sessionStorage.getItem('limit');
+var limit=document.getElementById("subCrType");
+limit.value=a;
+}
+</script>
+  <body onload="getSenction(),sessionGet()">
+    <center>
+	
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+	<h4> Credit Details</h4> </center>
+    <form name="acOpenCreditLimitCreditDetailForm" method="post" action="/CobaSys/account/acopen/acOpenCreditLimitCreditDetailAction.do">
+    <input type="hidden" name="ihCrType" value="" id="ihCrType"> 
+    <input type="hidden" name="ihLblcrType" value="" id="ihLblcrType"> 
+    <input type="hidden" name="ihHdncrType" value="" id="ihHdncrType"> 
+    <input type="hidden" name="ihSubCrType" value="" id="ihSubCrType"> 
+	<input type="hidden" name="ihPronoteNo" value="" id="ihPronoteNo"> 
+	<input type="hidden" name="ihPronoteDt" value="" id="ihPronoteDt"> 
+	<input type="hidden" name="ihBcDate" value="" id="ihBcDate"> 
+	<input type="hidden" name="ihBcExpDate" value="" id="ihBcExpDate"> 
+	<input type="hidden" name="isDeletedL" value="" id="isDeletedL">
+	<input type="hidden" name="isCountL" id="isCountL" />
+
+ 	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:60%; ">
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr> 
+        <td>
+		  
+		  Credit Type
+		  
+		</td>
+        <td colspan="3"> 
+	  <select name="Crtype" id="CreditTypeMaster" onclick="abd()()"><option value="1"></option></select> 
+ 
+  <script>
+
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster3&masterType=CreditTypeMaster&Criteria1=292&Criteria2=CreditTypeMaster&Criteria3=002";
+		
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("CreditTypeMaster")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+	  function abd(){
+	 
+	 if(document.getElementById("CreditTypeMaster").value=="6"){
+document.getElementById("secDtl").disabled=true;
+	 }else{
+document.getElementById("secDtl").disabled=false;
+	 }
+	 }
+		</script>
+        </td>
+      </tr>
+        
+	  <tr> 
+        <td><label>Sub Credit Limit<font size="-1" color="#FF0000">*</font></label> 
+        </td>
+        <td> <input type="text" name="subCrType" maxlength="20" size="20" value="" onfocus="hide()" class="periodText" id="subCrType" title="text"> 
+        </td>
+        <td> <div id="dPrntNo1" style="display:block;"> 
+          <label>Pronote No.</label>
+          </div>
+		</td>
+        <td> <div id="dPrntNo2" style="display:block;"> 
+		    <input type="text" name="pronoteNo" maxlength="10" size="20" value="0" onfocus="hide()" id="pronoteNo"> 
+          </div>
+		</td>
+      </tr>
+        
+	  <tr> 
+        <td><div id="dPrntdt1" style="display:block;"> 
+            <label>Pronote Date</label>
+          </div>
+		</td>
+        <td>
+		  <div id="dPrntdt2" style="display:block;"> 
+			<input type="text" name="pronoteDt" maxlength="10" size="11" value=""   id="PronoteDate">
+			
+            </div>
+          </div>
+		</td>
+        <td> 
+		  <div id="dBcDt1" style="display:block;"> 
+			<label>AOD Date</label>
+		  </div>
+		</td>
+        <td> <div id="dBcDt2" style="display:block;"> <input type="text" name="bcDate" maxlength="10" size="11" value=""  id="AODDate"> 
+          
+            </div>
+          </div>
+        </td>
+      </tr>
+        
+	  <tr> 
+        <td>&nbsp; <div id="divBcExp1" style="display:block;"> 
+            <label>AOD Due Date</label>
+          </div>
+		</td>
+        <td> <div id="divBcExp2" style="display:block;"> 
+		    <input type="text" name="bcExpDate" maxlength="10" size="11" value="" id="AODDueDate"> 
+
+			
+            </div>
+          </div>
+		</td>
+
+		<script>
+
+
+function sessionSet(){
+
+
+sessionStorage.setItem('CreditTypeMaster',document.getElementById("CreditTypeMaster").value);
+sessionStorage.setItem('subCrType',document.getElementById("subCrType").value);
+sessionStorage.setItem('pronoteNo',document.getElementById("pronoteNo").value);
+sessionStorage.setItem('PronoteDate',document.getElementById("PronoteDate").value);
+sessionStorage.setItem('AODDate',document.getElementById("AODDate").value);
+sessionStorage.setItem('AODDueDate',document.getElementById("AODDueDate").value);
+
+
+}
+
+
+
+            	 
+				  
+function securitydetail(){
+var Cr=document.getElementById("CreditTypeMaster");
+var CreditType=Cr.value;		
+var a=sessionStorage.crtype=CreditType;
+sessionSet();
+sessionStorage.setItem('NextPage',null);
+window.location='CRsecurityDtail.html';
+}
+
+				
+function creditDetails(){
+var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+jssondataadd+='"'+document.getElementById("CreditTypeMaster").name+'":'+'"'+document.getElementById("CreditTypeMaster").value+'",';
+jssondataadd+='"'+document.getElementById("subCrType").name+'":'+'"'+document.getElementById("subCrType").value+'",';
+jssondataadd+='"'+document.getElementById("pronoteNo").name+'":'+'"'+document.getElementById("pronoteNo").value+'",';
+jssondataadd+='"'+document.getElementById("PronoteDate").name+'":'+'"'+document.getElementById("PronoteDate").value+'",';
+jssondataadd+='"'+document.getElementById("AODDate").name+'":'+'"'+document.getElementById("AODDate").value+'",';
+jssondataadd+='"'+document.getElementById("AODDueDate").name+'":'+'"'+document.getElementById("AODDueDate").value+'",';
+jssondataadd+="}";
+sessionStorage.Crdetail=jssondataadd;
+var Crdetail =sessionStorage.Crdetail;
+var CrSecuritydetail=sessionStorage.CrSecuritydetail;
+var json=Crdetail.concat(CrSecuritydetail);
+sessionStorage.dtail=json;
+var hghh=Crdetail+' , "'+"SecurityDetail"+'":'+CrSecuritydetail;
+sessionStorage.bothdata=hghh;
+var bothdata=sessionStorage.bothdata;
+sessionSet();
+window.location='CReditlimit.html';
+}
+		
+				
+function callBackPage(){
+window.location='CReditlimit.html';
+}
+</script>
+		
+      
+	  <tr> 
+        <td> 
+        </td>
+        <td > 
+          <input type="button"  name ="secDtl" class="btn btn-default" id="secDtl" value="SECURITY DETAILS" onClick="securitydetail()" /> 
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        </td>
+		  <tr> 
+		<td colspan="4" align="center"> 
+		  <hr class="HeaderLabelAcOpen" size="2">
+		  <INPUT TYPE="button" class="btn btn-primary"   name="ok" id="ok" value="OK" ONCLICK="creditDetails()" />
+		  <INPUT TYPE="button" class="btn btn-primary"   name="cancel" id="cancel" value="Cancel" ONCLICK="callBackPage()" />
+		 
+		</td>
+      </tr>
+        <td>
+		</td>
+      </tr>
+	
+	
+	  <input type="hidden" name="checkFlagL" value="true" id="checkFlagL">
+	  <input type="hidden" name="blankcheckL" value="false" id="blankcheckL">
+	  <input type="hidden" name="vv" value="0" id="vv">
+	  <input type="hidden" name="totalCust" value="1" id="totalCust">
+	  <input type="hidden" name="currentCust" value="1" id="currentCust">
+	  <input type="hidden" name="focus" value="crType" id="focus">
+	  <input type="hidden" name="mode" value="N" id="mode">
+    </table>
+    	
+  </form>
+  <DIV id = "DivSubmit" class = "WarningTab" class= "div2" >
+  </DIV>
+  <DIV id = "DivHotKey" style = "display:block;">
+   
+  </DIV>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+  

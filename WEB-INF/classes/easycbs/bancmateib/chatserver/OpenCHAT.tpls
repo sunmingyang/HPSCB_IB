@@ -1,0 +1,265 @@
+[Template * Comment/README]
+
+ This is OpenCHAT.tpls conf file. This file defines master, domain and/or room
+ specific templates for all OpenCHAT Domains and rooms. You can use also the 
+ <DOMAIN>.tpls files to define domain and room specific skins, if you want.
+
+ As this file contains many independent HTML template files,
+ the [Template <DOMAIN> <roomType>/<roomName>/templateType] TAG is used to separate different
+ templates, where:
+
+  o  <DOMAIN>        Is the DOMAIN name, or "*" for all domains (mandatory). When <DOMAIN>
+                     is specifyed, it overrides the "*" entries.
+
+  o  <roomType>      Is the room type, like "preOpened" (mandatory). "preOpened" is, by now,
+                     the only room type avaiable in OpenCHAT.
+
+  o  <roomName>      Is the domain room name (optional).
+                       o  When not specifyed, all domain rooms assumes this template as a master.
+                       o  When specifyed and the <DOMAIN> is "*", all rooms named <roomName> assumes
+                          this template, even the rooms which belongs to domains with spacific templates
+                          defined. This overrides the domain master template (option above) as well.
+                       o  When specifyed and the <DOMAIN> is denifed as a real domain (not "*"),
+                          only the rooms which belongs to the specifyed domain assumes the template,
+                          overriden all other options above.
+
+  o  <templateType>  Is the tempate type, like: "Index, ""Login", "Top", "Reader" and "Writer" (mandatory).
+
+ Examples:
+  o  [Template * preOpened/Top]
+     Assumes the template as a master template for the "Top" page type on all domains.
+
+  o  [Template SISTEMICA.INFO preOpened/Top]
+     Assumes the template as a master template for the "Top" page type on SISTEMICA.INFO domain
+     (overrides obove template definition only on the SISTEMICA.INFO domain).
+
+  o  [Template * preOpened/Demo%20Room/Top]
+     Assumes the template for the "Top" page of the "Demo Room" on all domains
+     (overrides all obove template definitions on all "Demo Room" rooms of any domain).
+
+  o  [Template SISTEMICA.INFO preOpened/Demo%20Room/Top]
+     Assumes the template only for the "Top" page of the "Demo Room" on SISTEMICA.INFO domain
+     (overrides all obove template definitions only on "Demo Room" at SISTEMICA.INFO domain).
+
+  o  [Template * preOpened//Top]
+     Illegal! You must remove the slash or define the room name.
+
+  o  [TeMpLaTe * preOpEnEd/ToP]
+     Illegal! Names ARE case sensitive.
+
+ This tag must be placed in a single line, alone, whith no other data beyond the "[]"
+ caracters. If you write anything alfer or before the "[]", the OpenCHAT parser will
+ interpret it as text/html from previewsly defined template, and not as a new template name space.
+
+ When difining master templates, use "*" on the <DOMAIN> section. When defining
+ domain specific templates, use the domain name in upper case, like: "SISTEMICA.INFO".
+ You can deffine all server and domain specific templates here if you prefer, or use
+ the <DOMAIN>.tpls file. Which one to use for defining domain specific skins is up to you.
+ If you are running OpenCHAT on a shared server, like with Apache <VirtualHost>, for example,
+ and many independent users, you will probably want to define master templates here and the
+ user/domain specific templates on separate files. This files can be simbolic linked to files
+ in your users' home directories, allowing them to manage and edit their skins by their own.
+
+ The domain spefific definitions allways overrides the "*" domain template definitions.
+
+ Each template type has special <OpenCHAT:*> targs, used to insert OpenCHAT forms perts on
+ your skins. Some tags simply MUST be used on their correspondig Template types to make page
+ suitable for OpenCHAT correct operation. If they are not present, OpenCHAT
+ will have several operation problems, as forms will send incorrect informations.
+
+ Beyond that, OpenCHAT has HTML form params on each template type which MUST be respected.
+ Otherwise, even with the page being shown correctly in the browser, an error will be thrown
+ and OpenCHAT will not be able to run correctly. Please observe the HTML form examples here.
+
+ To prevent this kind of problems, OpenCHAT has internal HTML default templates, used when no
+ template is found in this file or the <DOMAIN>.tpls is not found at all.
+
+ Template specific tags:
+
+  o [Template <DOMAIN> preOpened/Index]
+
+     <OpenCHAT:selectRoomOptions>
+
+       This tag is replaced on the fly by "<option>RoomDesc</option>"
+       tags of each opened room in the domain (mandatory).
+
+  o [Template <DOMAIN> preOpened/Login]
+
+    <OpenCHAT:topFrameURL>
+
+      The OpenCHAT generated URL for the Top Frame (optional). You can use your own URL.
+
+    <OpenCHAT:readerFrameURL>
+
+      The OpenCHAT gernerated URL for the Reader Frame (mandatory).
+
+    <OpenCHAT:writerFrameURL>
+
+      The OpenCHAT generated URL for the Writer Frame (mandatory).
+
+  o [Template <DOMAIN> preOpened/Top]
+
+     No special tag avaiable.
+
+  o [Template <DOMAIN> preOpened/Reader]
+
+    No special tag avaiable.
+
+  o [Template <DOMAIN> preOpened/Writer]
+
+    <OpenCHAT:selectActionOptions>
+
+      Replaced by the "<option>Action</option>..." text to be put in the
+      "<select name=action>" tag (mandatory).
+
+    <OpenCHAT:selectUserOptions
+
+      Replaced by the "<option>UserName</option>..." text to be put in the
+      "<select name=to>" tag (mandatory).
+
+    <OpenCHAT:checkboxPrivateChecked>
+
+      Replaced by the "checked" or null text, to be put inside the
+      "<input type=checkbox name=privado >" tag, set when last message was prived
+      (mandatory).
+
+    <OpenCHAT:hiddenFormInputs>
+
+      Replaced by some "<input type=hidden ...>" tags, used for user authentication (mandatory).
+
+  o [Template <DOMAIN> errorPage/]
+
+    <OpenCHAT:errorMessage>
+
+      Replaced by the OpenCHAT short error message (optional).
+
+    <OpenCHAT:errorDescription>
+
+      Replaced by the OpenCHAT long error message/description (when avaiable) (optional).
+
+
+
+
+
+
+
+
+ From now on these are all real templates...
+
+
+
+[Template * preOpened/Index]
+
+ <!-- This is OpenCHAT main index page Template -->
+
+ <HTML>
+  <!-- OpenCHAT (www.Sistemica.info) -->
+  <HEAD>
+   <TITLE>OpenCHAT</TITLE>
+  </HEAD>
+  <BODY>
+   <center><br><br>
+   <form method=get action=/Login>
+   <table border=0 cellpadding=5 cellspacing=2 width=300>
+    <tr bgcolor=5B7DA7><td align=center><font color=ffffff size=2 face=arial><b>Welcome to OpenCHAT</b></font></td></tr>
+    <tr><td bgcolor=cccccc>
+     <font face=arial size=2>
+     Nick name:<br><input name=u size=12><br><br>
+     Room:<br><select name=room><OpenCHAT:selectRoomOptions></select><br><br>
+     <input type=submit value=Login>
+     <input type=hidden name=type value="preOpened">
+     </td>
+    </tr>
+    <tr><td align=center><a href="http://sistemica.info"><img src="http://sistemica.info/img/logo_sis_cool.png" border=0></a></td></tr>
+   </table>
+   </form>
+  </BODY>
+ </HTML>
+
+
+[Template * preOpened/Login]
+
+ <!-- This is OpenCHAT Login/Frames Template -->
+
+ <HTML>
+ <!-- OpenCHAT (www.Sistemica.info) -->
+ <HEAD>
+ <TITLE>OpenCHAT</TITLE>
+ <FRAMESET rows="27,*,70">
+<FRAME name=TOP    src="<OpenCHAT:topFrameURL>">
+<FRAME name=READER src="<OpenCHAT:readerFrameURL>">
+<FRAME name=WRITER src="<OpenCHAT:writerFrameURL>">
+</FRAMESET>
+<NOFRAMES><h2>Your browser does not support frames!</h2></NOFRAMES>
+</HEAD>
+</HTML>
+
+
+[Template * preOpened/Top]
+
+ <!-- OpenCHAT chat window top frame template -->
+
+ <HTML>
+  <HEAD>
+   <TILE>OpenCHAT</TITLE>
+  </HEAD>
+
+  <BODY leftmargin=0 topmargin=0 margineidth=0 marginheight=0 bgcolor=000000>
+   <FONT FACE=Arial SIZE=4 color=ffffff><b><i>OpenCHAT</b> <font color=777777>Sistemica.info</font>
+  </BODY>
+ </HTML>
+
+[Template * preOpened/Reader]
+
+ <!-- This is OpenCHAT chat window reader frame Template. -->
+
+ <HTML>
+  <!-- OpenCHAT (www.sistemica.info) -->
+  <HEAD>
+   <TITLE>OpenCHAT</TITLE>
+  </HEAD>
+  <BODY bgcolor=FFFFFF>
+
+[Template * preOpened/Writer]
+
+ <!-- This is OpenCHAT chat window writer frame Template. -->
+
+ <HTML>
+  <!-- OpenCHAT (www.Sistemica.info) -->
+  <HEAD>
+   <TITLE>OpenCHAT</TITLE>
+  </HEAD>
+  <BODY BGCOLOR=#F7DBC6><font face=arial><b>
+   <form method=get name=writer>
+   <OpenCHAT:hiddenFormInputs>
+   <select name=action><option value="talks to">Talk</option></select>
+   <input name=msg size=35>
+   to <select name=to><OpenCHAT:selectUserOptions></select>
+   <input type=checkbox name=privado value=true <OpenCHAT:checkboxPrivateChecked>>
+   <font size=2>Private</font>
+   <input type=submit value=send>
+   </form>
+  </BODY>
+ </HTML>
+
+ <SCRIPT NAME=\"JavaScript\">document.writer.msg.focus();</SCRIPT>
+
+[Template * errorPage/]
+
+ <!-- This is OpenCHAT error page Template. -->
+
+ <!-- Not implemented yet -->
+
+ <HTML>
+  <HEAD>
+   <TILE>OpenCHAT</TITLE>
+  </HEAD>
+
+  <BODY leftmargin=0 topmargin=0 margineidth=0 marginheight=0 bgcolor=ffffff>
+   <FONT FACE=Arial SIZE=5 color=ffffff><b><OpenCHAT:errorMessage></b></FONT><br><br>
+   <FONT FACE=Arial SIZE=2 color=666666><OpenCHAT:errorDescription></FONT>
+  </BODY>
+ </HTML>
+
+
+

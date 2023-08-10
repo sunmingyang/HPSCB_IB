@@ -1,0 +1,25 @@
+			.dataTableTH{ 
+					font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 8pt;
+				padding-left:3;
+				padding-right:3;
+
+				font-weight: bold;
+				color: #092771;
+				text-decoration: none;
+				background-color:#BFBFBF;
+				text-align:center;
+
+				}
+				.dataTableTD{
+					font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 8pt;
+				padding-left:3;
+				padding-right:3;
+				text-decoration: none;
+				background-color:#EFEFEF;
+				text-align: justify;
+
+
+				} 
+			

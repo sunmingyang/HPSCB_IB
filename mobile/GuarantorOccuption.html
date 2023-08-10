@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+
+
+
+
+
+
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+
+<html>
+
+<script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script>
+
+<script type="text/javascript" src="/CobaSys/account/acopen/script/loanLimitGuarantorOccupationDetail.js"></script>	
+
+<script>
+//var gCalDate=changeDate('2016-09-15');
+var sThirdLang='english'
+var sGurBehave=''
+
+	function separateField()
+	{
+		var gurOcpEmpNameMsg = " Issuing Authority";
+		Temp = gurOcpEmpNameMsg.split("/");
+		document.getElementById("gurOcpEmpNameH").innerHTML = Temp[0];
+		document.getElementById("gurOcpEmpNameE").innerHTML = Temp[1];
+
+		var gurOcpDesgMsg = " Designation";
+		Temp = gurOcpDesgMsg.split("/");
+		document.getElementById("gurOcpDesgH").innerHTML = Temp[0];
+		document.getElementById("gurOcpDesgE").innerHTML = Temp[1];
+
+		var gurOcpActivMsg = " Activity";
+		Temp = gurOcpActivMsg.split("/");
+		document.getElementById("gurOcpActivH").innerHTML = Temp[0];
+		document.getElementById("gurOcpActivE").innerHTML = Temp[1];
+
+
+		var gurOcpOccupation = " Occupation";
+		Temp = gurOcpOccupation.split("/");
+		document.getElementById("gurOcpOcpH").innerHTML = Temp[0];
+		document.getElementById("gurOcpOcpE").innerHTML = Temp[1];
+
+		var gueOcpNoOfYearMsg = " No of Years in Business-Profession";
+		Temp = gueOcpNoOfYearMsg.split("/");
+		document.getElementById("gueOcpNoOfYear").innerHTML = Temp[1] +" / "+Temp[2] ;
+	}
+	
+	function checkUnCheckStatus(){    
+	 var ocpType= sGurBehave;	
+		//alert("ABHI---ocpType "+ocpType+"-------");
+	    if(trim(sGurBehave) == "" || sGurBehave == "null" ){			
+			ocpType = document.getElementById("occupationDetailType").value;			
+		}
+ 	
+		if(trim(ocpType)=="N"){//ABH				
+		    callBackPage()
+		}else if(trim(ocpType)=="S"){//ABH
+			document.getElementById("occupationDetailTypeSal").click(); 
+			document.getElementById("occupationDetailTypeSelf").disabled = true;
+			document.getElementById("occupationDetailTypeOth").disabled = true;
+		}
+		else if(trim(ocpType)=="B"){//ABH		    
+			document.getElementById("occupationDetailTypeSelf").click(); 
+            document.getElementById("occupationDetailTypeSal").disabled = true;
+			document.getElementById("occupationDetailTypeOth").disabled = true;
+	    }		
+		else{
+			document.getElementById("occupationDetailTypeOth").click();
+		    document.getElementById("occupationDetailTypeSal").disabled = true;
+			document.getElementById("occupationDetailTypeSelf").disabled = true;
+		}
+		 
+			if(document.getElementById("mode").value=="A"){
+				document.getElementById("btnyearWithCurrEmployeerFrom").disabled = true;
+				document.getElementById("btnyearWithPrevEmployeerFrom").disabled = true;
+				document.getElementById("btnShowyearWithPrevEmployeerTo").disabled = true;
+				document.getElementById("btnretirementDate").disabled = true;
+			} 
+ 
+}
+
+	function openHelpWindow()
+	{
+		if(document.getElementById("mode").value=="A")
+		{
+			openHelp("/CobaSys/account/acopen/help/pages/loanLimitGuarantorOccupationDetail1.html");
+		}
+		else
+			openHelp("/CobaSys/account/acopen/help/pages/loanLimitGuarantorOccupationDetail.html");
+	}
+</script>
+
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+<script>
+	//window.history.forward(1);//for disabling back button of browser.
+</script>
+<html>
+  <head>
+	<title>
+	  General Detail
+	</title>
+	 
+  </head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" " >
+	<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+		<tr >
+			<td colspan="3" height="25%" class="displayTitleacc">		  
+				
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+
+
+	<script>
+
+	function abc(){
+
+		
+		var a=sessionStorage.getItem('cust');
+		
+		 var textbox = document.getElementById('cst'); 
+	  textbox.innerHTML="Customer ID: "+a;
+
+	var GLCode=sessionStorage.getItem('glcode');
+	 var textbox = document.getElementById('glcode'); 
+	  textbox.innerHTML="GL Code: "+GLCode;
+
+	  var GLName=sessionStorage.getItem('glname');
+	 var textbox = document.getElementById('glname'); 
+	  textbox.innerHTML="GL Head: "+GLName;
+
+	  var cstname=sessionStorage.getItem('custname');
+	
+		 var textbox = document.getElementById('cstname'); 
+	  textbox.innerHTML=" Name: "+cstname;
+
+	   var currancy=sessionStorage.getItem('currency');
+	
+		 var textbox = document.getElementById('currency'); 
+	  textbox.innerHTML=" Currency: "+currancy;
+		}
+	</script>
+
+
+
+<center>
+
+
+<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px; " >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block "  />
+		</div>
+
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:90%;" >
+		
+  <body >
+	<table border="0" width="100%" height="100%" >
+ 
+
+	<!-- Added by Ashwani on 25.10.07 -->
+	<tr>
+			 <td colspan="6" align ="center">
+					  <label style = "font-weight:bold; font-size:14; color:#660000;" >
+						<b>New Account Open<b>
+					  </label>
+			 </td>	 
+	</tr>
+
+	<tr>
+		<!-- Customer ID -->
+		<td >
+			<b><label class="displayLabelBright" id="cst">
+				Customer ID:
+			</label><b>
+		</td>
+		<!-- CURRENCY -->
+		<td>		 
+			<b><label class="displayLabelBright"id="currency">
+				Currency:
+			</label><b>
+		</td>
+		<!-- Scheme Code -->
+		<td>
+			<b><label class="displayLabelBright"id="glcode">
+				GL Code: 
+			</label><b>
+		</td>
+		<td >
+			<b><label class="displayLabelBright"id="glname">
+				GL Head: 
+			</label><b>
+		</td> <!-- Added by Ashwani on 25.10.07 -->
+
+	</tr>
+	<tr>
+	 <!-- Customer Name -->
+	  <td colspan=4>
+	   <b><label class="displayLabelBright"id="cstname">
+		Name: 
+	   </label><b>
+	  </td>
+	</tr>
+
+	
+	</table>
+	</body>
+</center>
+ 
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" height="2%" align="center" style="color:yellow;">		  
+				  <b>
+	Occupation
+<b>
+			</td>
+		</tr>
+
+
+		
+		<tr>
+			<td colspan="3" valign="top" height="70%">		 
+			  <Body onload=" abc(),sessionGetGo()">
+	<form name="loanLimitGuarantorOccupationDetailForm" method="post" action="/CobaSys/account/acopen/loanLimitGuarantorOccupationDetailAction.do">
+	<input type="hidden" name="occupationDetailType" value="" id="occupationDetailType"> 
+    
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:55%;width:98% ">
+
+
+      <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="30%"> <input type="radio" name="occupationDetailType" disabled="" id="occupationDetailTypeSal" value="S" onclick="guarantorOccupation('salaried')"  onfocus="hide()"/> 
+            Salaried </td>
+          <td width="50%"> <input type="radio" name="occupationDetailType" disabled="" id="occupationDetailTypeSelf" value="B" onclick="guarantorOccupation('selfEmployeed')" onfocus="hide()"/> 
+            Self Employed-Professional </td>
+          <td width="20%"> <input type="radio" name="occupationDetailType"  id="occupationDetailTypeOth" value="O"   checked="checked"/> 
+            Others </td></tr>
+
+			 <tr> 
+          <td width="40%"> Occupation<label id="gurOcpOcpH"></label> </td>
+          <td> <strong>:</strong>
+		  <input type="text" name="occupationH" size="25" value="" readonly="readonly" class="hindicontrol" id="occupationH"> 
+          </td>
+        </tr>
+        <tr> 
+          <td>Undefined <label id="gurOcpOcpE"></label> </td>
+          <td> <strong>:</strong> 
+			<input type="text" name="occupationE" maxlength="50" size="25" value="" onchange="occupation()" id="occupationE"> 
+          </td>
+        </tr>
+<script>
+function occupation(){
+var a=document.getElementById("occupationE").value;
+var b=a.toUpperCase();
+document.getElementById("occupationH").value=b;
+}
+
+
+function grossIncome(){
+var gIncome=document.getElementById("annualGrossIncomeOth").value;
+document.getElementById("annualDeductionOth").value=gIncome;
+}
+
+
+
+function annualNetIncome(){
+var netIncome=parseInt(document.getElementById("annualNetIncomeOth").value);
+var anDed=document.getElementById("annualDeductionOth").value;
+var totalIncome=anDed-netIncome;
+document.getElementById("annualDeductionOth").value=totalIncome;
+}
+
+</script>
+
+        <tr> 
+          <td> An. Gross Income </td>
+          <td> <strong>:</strong>
+			<input type="text" name="annualGrossIncomeOth" maxlength="10" size="20" onchange="grossIncome()" style="text-align:right" id="annualGrossIncomeOth" > 
+          </td>
+        </tr>
+
+
+        <tr> 
+          <td> Annual Net Income </td>
+          <td> <strong>:</strong>
+			<input type="text" name="annualNetIncomeOth" maxlength="10" size="20" onchange="annualNetIncome()" style="text-align:right" id="annualNetIncomeOth" > 
+          </td>
+        </tr>
+        <tr> 
+          <td> Annual Ded. </td>
+          <td> <strong>:</strong> 
+			<input type="text" name="annualDeductionOth" maxlength="10" size="20"   value="0.0" readonly="readonly" style="text-align:right" id="annualDeductionOth" title="bmamount"> 
+          </td>
+        </tr>
+        <tr> 
+          <td> Avg. Saving(6 Months) </td>
+          <td> <strong>:</strong> 
+			<input type="text" name="avgSavingOth" maxlength="10" size="20"  style="text-align:right" id="avgSavingOth" title="bmamount"> 
+          </td>
+        </tr>
+
+      </table>
+      <BR> <BR><BR><center>
+		
+		<INPUT TYPE="button" class="btn btn-primary"   name="ok" value="OK" ONCLICK="saveGuarantorOccupationDetail()"/>
+		<INPUT TYPE="button"class="btn btn-primary" name="cancel"  value="Cancel" ONCLICK="callBackPage()"/>
+		
+		</center>      <BR> <BR><BR><BR><BR><BR><BR>
+
+
+	  			
+		
+		
+
+    </div>
+	
+<script>
+var Occuption=sessionStorage.getItem("Occuption");
+
+	function sessionGetGo(){
+
+document.getElementById("occupationH").value=sessionStorage.getItem(Occuption+'occupationH');
+document.getElementById("occupationE").value=sessionStorage.getItem(Occuption+'occupationE');
+document.getElementById("annualGrossIncomeOth").value=sessionStorage.getItem(Occuption+'annualGrossIncomeOth');
+document.getElementById("annualNetIncomeOth").value=sessionStorage.getItem(Occuption+'annualNetIncomeOth');
+document.getElementById("annualDeductionOth").value=sessionStorage.getItem(Occuption+'annualDeductionOth');
+document.getElementById("avgSavingOth").value=sessionStorage.getItem(Occuption+'avgSavingOth');
+
+
+}
+
+function sessionSetGo(){
+
+
+sessionStorage.setItem(Occuption+'occupationH',document.getElementById("occupationH").value);
+sessionStorage.setItem(Occuption+'occupationE',document.getElementById("occupationE").value);
+sessionStorage.setItem(Occuption+'annualGrossIncomeOth',document.getElementById("annualGrossIncomeOth").value);
+sessionStorage.setItem(Occuption+'annualNetIncomeOth',document.getElementById("annualNetIncomeOth").value);
+sessionStorage.setItem(Occuption+'annualDeductionOth',document.getElementById("annualDeductionOth").value);
+
+sessionStorage.setItem(Occuption+'avgSavingOth',document.getElementById("avgSavingOth").value);
+
+
+
+}
+
+function saveGuarantorOccupationDetail(){
+var jssondataadd="{";
+jssondataadd+='"'+document.getElementById("occupationH").name+'":'+'"'+document.getElementById("occupationH").value+'",';
+jssondataadd+='"'+document.getElementById("occupationE").name+'":'+'"'+document.getElementById("occupationE").value+'",';
+jssondataadd+='"'+document.getElementById("annualGrossIncomeOth").name+'":'+'"'+document.getElementById("annualGrossIncomeOth").value+'",';
+jssondataadd+='"'+document.getElementById("annualNetIncomeOth").name+'":'+'"'+document.getElementById("annualNetIncomeOth").value+'",';
+jssondataadd+='"'+document.getElementById("annualDeductionOth").name+'":'+'"'+document.getElementById("annualDeductionOth").value+'",';
+jssondataadd+='"'+document.getElementById("avgSavingOth").name+'":'+'"'+document.getElementById("avgSavingOth").value+'",';
+jssondataadd+="}";
+sessionSetGo();
+var i=sessionStorage.getItem("Occuption");
+var occuption=jssondataadd;
+sessionStorage.setItem('Occuption'+i,occuption);
+location.href='Guarantor.html';
+}
+
+function callBackPage(){
+location.href='Guarantor.html';
+}
+	</script>
+				
+		
+	<input type="hidden" name="focus" value="" id="focus">
+	<input type="hidden" name="mode" value="" id="mode">	
+		
+</form>
+</Body>
+
+			</td>
+		</tr>
+		 
+	 
+	</table>
+</body>
+</html>
+
+</html>

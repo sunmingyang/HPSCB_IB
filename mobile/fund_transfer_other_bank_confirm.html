@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		#container-div {
+  position: absolute;
+  top: 15%;
+  bottom: 0;
+  height: 76%;
+  width: 100%;
+  overflow-y: auto;
+  border-top: 0px solid #2E2E2E;
+ 
+
+}
+		
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+
+			try{
+				var vars = [], hash;
+				var decodedURIString = decodeURI(document.URL);
+				var q = decodedURIString.split('?')[1];
+				if(q != undefined){
+				 	q = q.split('&');
+				 	for(var i = 0; i < q.length; i++){
+						 hash = q[i].split('=');
+						 vars.push(hash[1]);
+						 vars[hash[0]] = hash[1];
+                 	}
+				}
+			
+			
+				$("#from").text(vars['from']);
+				$("#to").text(vars['to']);
+				$("#amount").text(vars['amount']);
+				$("#remarks").text(vars['remarks']);
+			sessionStorage.from=vars['from'];
+			sessionStorage.to=vars['to'];
+			sessionStorage.amount=vars['amount'];
+			sessionStorage.remarks=vars['remarks'];
+				
+				//Android.alert(imeiNumber+"\n"+simNumber);
+
+			showAlert("alert-div","OTP Sent To Mobile Number ", vars['mobileNo']);
+					
+			}catch(err)
+			{
+				alert(err);
+				$('#spinner').hide();
+				return false;
+				
+			}
+			
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+		
+
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function submit()
+		{
+			otp = $('#otp').val();
+			if(otp.length == 0)
+				showAlert("alert-div","Error", "Please Enter OTP");
+			else
+			{
+				getData("fundTransferOther",otp);//
+			}	
+			
+			//location.href="manage_payee.html";
+		}
+		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+		 
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:90%;" >
+		   
+
+    		
+			    
+			    	<br/><div style="margin-top:10px;" id="alert-div" class="alert alert-danger col-sm-12"></div>
+			        
+			        <div style="margin-top:-20px;font-size:18px;color:#000000;background: #bdbdbd;min-height: 50px;width: 1200px;height: 50px;display: table-cell;vertical-align: middle;"><span style="margin-left:15px;">Confirm Details</span> </div>
+			        
+				        <br/><br/><div style="margin-left:15px;font-size:18px;color:#000000;">From<span style="margin-left:120px;color:#666666;" id="from"></span></div>
+				        <br/><div style="margin-left:15px;font-size:18px;color:#000000;">To<span style="margin-left:140px;color:#666666;" id="to"></span></div>
+				        <br/><div style="margin-left:15px;font-size:18px;color:#000000;">Amount<span style="margin-left:100px;color:#666666;" id="amount"></span></div>
+						<br/><div style="margin-left:15px;font-size:18px;color:#000000;">Remarks<span style="margin-left:90px;color:#666666;" id="remarks"></span></div>
+					
+						<br/><br/><div style="font-size:18px;color:#666666;">Please enter One Time Password(OTP) received on registered mobile. </div>
+						<br/><input type=password  id="otp" />
+							        
+			        
+			        <br/><br/><input type=button value="Back" onclick="back();" style="margin-left:0px;min-height:40px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			        <input id='fund_transfer_submit'  type=button value="Submit" onclick="submit();" style="margin-left:20px;min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			        <br/>
+			   
+			   
+		   
+	</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+

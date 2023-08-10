@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config
+  PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+<form-beans>
+	<!--For Mail Module start-->
+		<form-bean 	name="mailComposeForm" type="bancmate.bancmateib.mail.actionform.ComposeForm"/> 
+		<form-bean 	name="mailInBoxForm" type="bancmate.bancmateib.mail.actionform.InBoxForm"/> 
+		<form-bean 	name="mailOutBoxForm" type="bancmate.bancmateib.mail.actionform.OutBoxForm"/> 
+		<form-bean 	name="mailSentFolderForm" type="bancmate.bancmateib.mail.actionform.SentFolderForm"/>
+	<!--For Mail Module end-->
+</form-beans>
+<action-mappings>
+	<!--For Mail Module start-->
+	<action path="/mail/mailComposeAction"
+				type="bancmate.bancmateib.mail.action.ComposeAction"
+				name="mailComposeForm" scope="request" parameter="action">
+				
+				<forward name="failure" path="/Mail/compose.jsp"/>
+				<forward name="success" path="/Mail/compose.jsp"/>
+				<forward name="ReadingMail" path="/Mail/compose.jsp"/>
+				<forward name="MailSent" path="/Mail/MailComposeResult.jsp"/>
+				<forward name="deletemail" path="/mail/mailInBoxAction.do?action=executeonLoad"/>
+	 </action>
+	<action path="/mail/mailInBoxAction"
+				type="bancmate.bancmateib.mail.action.InBoxAction"
+				name="mailInBoxForm" scope="request" parameter="action">
+				<forward name="failure" path="/Mail/inbox.jsp"/>
+				<forward name="success" path="/Mail/inbox.jsp"/>
+				<forward name="readmail" path="/mail/mailComposeAction.do?action=executeOnBeforeReading"/>
+				<forward name="deletemail" path="/mail/mailInBoxAction.do?action=executeonLoad"/>
+	 </action>
+
+	 <!--added by ramesh on 27/10/2006 for outbox action  -->
+	<action path="/mail/mailOutBoxAction"
+				type="bancmate.bancmateib.mail.action.OutBoxAction"
+				name="mailOutBoxForm" scope="request" parameter="action">
+				<forward name="failure" path="/Mail/outbox.jsp"/>
+				<forward name="success" path="/Mail/outbox.jsp"/>
+	 </action>
+	<action path="/mail/mailSentFolderAction"
+				type="bancmate.bancmateib.mail.action.SentFolderAction"
+				name="mailSentFolderForm" scope="request" parameter="action">
+				<forward name="failure" path="/Mail/SentFolder.jsp"/>
+				<forward name="success" path="/Mail/SentFolder.jsp"/>
+				<forward name="sentItemsReadMail" path="/mail/mailComposeAction.do?action=executeOnSentItemsReading"/>
+	 </action>
+
+
+	<!--For Mail Module end-->
+</action-mappings>
+
+
+</struts-config>

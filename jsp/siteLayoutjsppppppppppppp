@@ -1,0 +1,487 @@
+<%@ include file="/common/Include.jsp" %>
+<script language="JavaScript" src="/bancmateib/jsp/scripts/chng_pass.js"></script>
+
+<tiles:insert page="/common/siteLayout.jsp" flush="true">
+<!-- tiles:put name="title" value="Login Page"/ -->
+<tiles:put name="header" value="/common/header.jsp"/>
+<tiles:put name="header_marquee" value="/common/header_marquee.jsp"/>
+<tiles:put name="menu" value="/common/login_leftHyperlink.jsp"/>
+<tiles:put name="footer_jsp" value="/common/footer.jsp"/>
+
+<!-- tiles:put name="line" value="/common/line.html" /-- >
+
+<!-- tiles:put name="add" value="/Advertisement/add.jsp" -->
+	<tiles:put name="page_header" type="String" >							
+				<bean:message bundle="hindi" key="7007" />
+	</tiles:put>
+<tiles:put name="content" type="String">
+
+<body onkeyDown="StopKeyHandler()" onload="onLoad()" topmargin=0 leftmargin=0 ><br>
+<html:form action= "/jsp/login">
+
+<%	if(request.getParameter("errno")!=null)
+	{%><table>
+		
+		<tr>
+			<td style="padding-left:80px" class="heading">
+				Your Session is Expired, Please Login Again !!!
+			</td>
+		</tr>
+		</table>   
+<%}%>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align=left>
+<%	if(request.getParameter("errno")!=null)
+	{	%>
+		<br><br>
+		<tr>
+			<td style="padding-left:80px" class="heading">
+				<bean:message bundle='<%=lang%>' key='7419'/>!!!
+			</td>
+		</tr>
+<%	}	%>
+  
+
+
+
+
+
+
+
+	
+
+              
+        
+    
+ 
+
+
+
+                                  
+
+
+</html:form>
+
+
+<script language="JavaScript">
+
+//var bankAppUrl = "https://10.15.1.129:8080/bancmateib/";
+//var flag=true;
+//function MM_openBrWindow(theURL,winName,features) { //v2.0
+
+//window.open(theURL,winName,features);
+
+//}
+	function onLoad()
+	{
+		document.getElementById("sIbUsr_LogId").focus();
+		<logic:messagesPresent property="Deactive">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+
+		<logic:messagesPresent property="Locked">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+
+		<logic:messagesPresent property="alreadyLogin">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+
+
+		<logic:messagesPresent property="WrongPass">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+
+		<logic:messagesPresent property="NoServer">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+
+		<logic:messagesPresent property="LogOut">
+		document.getElementById("diverrmessage").style.display ="block";
+		</logic:messagesPresent>
+	}
+ function virtualKey(){
+
+		 if(document.forms[0].virtualpassword.checked){
+
+			 var firstNewRowSplit   = document.forms[0].charFirstRowhidden.value;
+	         var secondNewRowSplit  = document.forms[0].charSecondRowhidden.value;
+	         var thirdNewRowSplit   = document.forms[0].charThirdRowhidden.value;
+             var fourthNewRowSplit  = document.forms[0].numFirstRowhidden.value;
+			 var fifthNewRowSplit   = document.forms[0].numSecondRowhidden.value;
+			 var sixthNewRowSplit   = document.forms[0].numThirdRowhidden.value;
+			 var seventhNewRowSplit = document.forms[0].speFirstRowhidden.value;
+			 var eigthNewRowSplit   = document.forms[0].numFourthRowhidden.value;
+
+			 var ninthNewRowSplit   = document.forms[0].speSecondRowhidden.value;
+             var tenthNewRowSplit   = document.forms[0].speThirdRowhidden.value;
+
+
+			 document.forms[0].sIbUsr_LogPass.readOnly=true;
+		 	 document.forms[0].sIbUsr_LogPass.value="";
+
+			 firstNewRow=firstNewRowSplit.split("|");
+
+			 for(i=0;i<firstNewRow.length-1;i++){
+	       	   document.forms[0].button1[i].className='type1';
+	         }
+
+			 secondNewRow =secondNewRowSplit.split("|");
+		      for(i=0;i<secondNewRow.length-1;i++){
+	       		   document.forms[0].button2[i].className='type1';
+	          }
+			 thirdNewRow =thirdNewRowSplit.split("|");
+		     for(i=0;i<thirdNewRow.length-1;i++){
+	       		   document.forms[0].button3[i].className='type1';
+	         }
+			 fourthNewRow =fourthNewRowSplit.split("|");
+		     for(i=0;i<fourthNewRow.length-1;i++){
+	       		   document.forms[0].number1[i].className='type1';
+	         }
+
+			 fifthNewRow =fifthNewRowSplit.split("|");
+		     for(i=0;i<fifthNewRow.length-1;i++){
+	       		  document.forms[0].number2[i].className='type1';
+	         }
+
+			 sixthNewRow =sixthNewRowSplit.split("|");
+		     for(i=0;i<sixthNewRow.length-1;i++){
+	       		   document.forms[0].number3[i].className='type1';
+	         }
+
+			 seventhNewRow =seventhNewRowSplit.split("|");
+		      for(i=0;i<seventhNewRow.length-1;i++){
+
+				document.forms[0].button4[i].className='type1';
+
+              }
+			  eigthNewRow =eigthNewRowSplit.split("|");
+		      document.forms[0].number4.className='type1';
+
+			 ninthNewRow =ninthNewRowSplit.split("|");
+			 for(i=0;i<ninthNewRow.length-1;i++){
+
+				document.forms[0].button5[i].className='type1';
+	         }
+
+			 tenthNewRow =tenthNewRowSplit.split("|");
+		     for(i=0;i<tenthNewRow.length-1;i++){
+	       	   document.forms[0].button10[i].className='type1';
+	         }
+
+
+		    document.forms[0].button6.className="type2";
+			document.forms[0].button7.className="type3";
+            document.forms[0].button8.className="type2";
+           // document.forms[0].button9.className="type3 shift";
+
+
+
+
+			  for(var i=0;i<10;i++)
+			  {
+				  document.forms[0].button1[i].disabled=false;
+
+
+			  }
+
+			  for(var i=0;i<9;i++)
+			  {
+				  document.forms[0].button2[i].disabled=false;
+			  }
+
+			  for(var i=0;i<7;i++)
+			  {
+				 document.forms[0].button3[i].disabled=false;
+			  }
+
+			  for(var i=0;i<3;i++)
+			  {
+                 document.forms[0].number1[i].disabled=false;
+
+			  }
+		 	  for(var i=0;i<3;i++)
+			  {
+                document.forms[0].number2[i].disabled=false;
+
+			  }
+		      for(var i=0;i<3;i++)
+			  {
+                document.forms[0].number3[i].disabled=false;
+
+			  }
+
+			  for(var i=0;i<10;i++)
+			 {
+
+                document.forms[0].button4[i].disabled=false;
+		 	 }
+              for(var i=0;i<11;i++)
+			 {
+
+                document.forms[0].button5[i].disabled=false;
+			 }
+             for(var i=0;i<11;i++)
+			 {
+
+				document.forms[0].button10[i].disabled=false;
+			 }
+
+
+
+            document.forms[0].number4.disabled=false;
+		    document.forms[0].button6.disabled=false;
+			document.forms[0].button7.disabled=false;
+            document.forms[0].button8.disabled=false;
+            //document.forms[0].button9.disabled=false;
+
+
+	     }else{
+
+
+var test=confirm("Virtual keyboard is recommended to protect your password. Are you sure you want to use normal keyboard?");
+    if(test)
+	{
+
+
+			 var firstNewRowSplit   = document.forms[0].charFirstRowhidden.value;
+	         var secondNewRowSplit  = document.forms[0].charSecondRowhidden.value;
+	         var thirdNewRowSplit   = document.forms[0].charThirdRowhidden.value;
+             var fourthNewRowSplit  = document.forms[0].numFirstRowhidden.value;
+			 var fifthNewRowSplit   = document.forms[0].numSecondRowhidden.value;
+			 var sixthNewRowSplit   = document.forms[0].numThirdRowhidden.value;
+			 var seventhNewRowSplit = document.forms[0].speFirstRowhidden.value;
+			 var eigthNewRowSplit   = document.forms[0].numFourthRowhidden.value;
+			 var ninthNewRowSplit   = document.forms[0].speSecondRowhidden.value;
+             var tenthNewRowSplit   = document.forms[0].speThirdRowhidden.value;
+
+			 document.forms[0].sIbUsr_LogPass.value="";
+			 document.forms[0].sIbUsr_LogPass.readOnly=false;
+
+			 flag='false';
+			 firstNewRow=firstNewRowSplit.split("|");
+
+			 for(i=0;i<firstNewRow.length-1;i++){
+	       	   document.forms[0].button1[i].className='type1d';
+	         }
+
+			 secondNewRow =secondNewRowSplit.split("|");
+		      for(i=0;i<secondNewRow.length-1;i++){
+	       		   document.forms[0].button2[i].className='type1d';
+	          }
+			 thirdNewRow =thirdNewRowSplit.split("|");
+		     for(i=0;i<thirdNewRow.length-1;i++){
+	       		   document.forms[0].button3[i].className='type1d';
+	         }
+			 fourthNewRow =fourthNewRowSplit.split("|");
+		     for(i=0;i<fourthNewRow.length-1;i++){
+	       		   document.forms[0].number1[i].className='type1d';
+	         }
+
+			 fifthNewRow =fifthNewRowSplit.split("|");
+		     for(i=0;i<fifthNewRow.length-1;i++){
+	       		  document.forms[0].number2[i].className='type1d';
+	         }
+
+			 sixthNewRow =sixthNewRowSplit.split("|");
+		     for(i=0;i<sixthNewRow.length-1;i++){
+	       		   document.forms[0].number3[i].className='type1d';
+	         }
+
+			 seventhNewRow =seventhNewRowSplit.split("|");
+		      for(i=0;i<seventhNewRow.length-1;i++){
+
+				document.forms[0].button4[i].className='type1d';
+
+              }
+
+			  eigthNewRow =eigthNewRowSplit.split("|");
+		      document.forms[0].number4.className='type1d';
+
+
+			 ninthNewRow =ninthNewRowSplit.split("|");
+		     for(i=0;i<ninthNewRow.length-1;i++){
+	       	    document.forms[0].button5[i].className='type1d';
+	         }
+
+			 tenthNewRow =tenthNewRowSplit.split("|");
+		     for(i=0;i<tenthNewRow.length-1;i++){
+	       	   document.forms[0].button10[i].className='type1d';
+	         }
+
+			document.forms[0].button6.className="type2d";
+			document.forms[0].button7.className="type3d";
+            document.forms[0].button8.className="type2d";
+            
+
+
+
+		      for(var i=0;i<10;i++)
+			  {
+           	     document.forms[0].button1[i].disabled=true;
+			  }
+			  for(var i=0;i<9;i++){
+                 document.forms[0].button2[i].disabled=true;
+			  }
+
+			   for(var i=0;i<7;i++){
+                 document.forms[0].button3[i].disabled=true;
+			  }
+
+		      for(var i=0;i<3; i++)
+			  {
+                document.forms[0].number1[i].disabled=true;
+
+			  }
+		      for(var i=0;i<3;i++)
+			  {
+                document.forms[0].number2[i].disabled=true;
+			  }
+		      for(var i=0;i<3;i++)
+			  {
+                document.forms[0].number3[i].disabled=true;
+		  	  }
+              for(var i=0;i<10;i++)
+			  {
+               document.forms[0].button4[i].disabled=true;
+
+			 }
+              for(var i=0;i<11;i++)
+			 {
+                 document.forms[0].button5[i].disabled=true;
+
+			 }
+               for(var i=0;i<11;i++)
+			 {
+
+				 document.forms[0].button10[i].disabled=true;
+
+			 }
+
+               document.forms[0].number4.disabled=true;
+               document.forms[0].button6.disabled=true;
+			   document.forms[0].button7.disabled=true;
+               document.forms[0].button8.disabled=true;
+		       //document.forms[0].button9.disabled=true;
+		  }else{
+
+               document.forms[0].virtualpassword.checked=true;
+
+	      }
+
+	}
+
+}
+var isSpace=true;
+function func_spaceBarProhibit(event)
+{
+
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+    
+	if((keyCode=="32") || (keyCode=="13"))
+	{
+			alert("Please use mouse only for virtual keybord!!!");
+			 isSpace=false;
+			 return false;
+	}
+		isSpace=true;
+		return true;
+}
+ var flag ='false';
+   function func_clear()
+   {
+       document.forms[0].sIbUsr_LogPass.value="";
+   }
+
+   function func_capslock(obj)
+  {
+
+		var firstRowSplit  = document.forms[0].charFirstRowhidden.value;
+		var secondRowSplit = document.forms[0].charSecondRowhidden.value;
+		var thirdRowSplit = document.forms[0].charThirdRowhidden.value;
+
+		if( flag=='true' ){
+	        flag='false';
+	       obj.className ='type2';
+			firstRow = firstRowSplit.split("|");
+
+			for(i=0;i<firstRow.length-1;i++){
+	       	   document.forms[0].button1[i].value=firstRow[i].toLowerCase();
+	        }
+	   	    secondRow =secondRowSplit.split("|");
+		      for(i=0;i<secondRow.length-1;i++){
+	       		   document.forms[0].button2[i].value=secondRow[i].toLowerCase();
+	          }
+			thirdRow =thirdRowSplit.split("|");
+		    for(i=0;i<thirdRow.length-1;i++){
+	       		   document.forms[0].button3[i].value=thirdRow[i].toLowerCase();
+	         }
+	}else{
+
+			  flag='true';
+
+	          obj.className='type2caps';
+
+			  firstRow = firstRowSplit.split("|");
+	          for(i=0;i<firstRow.length-1;i++){
+	       		   document.forms[0].button1[i].value=firstRow[i];
+	          }
+
+			  secondRow =secondRowSplit.split("|");
+		      for(i=0;i<secondRow.length-1;i++){
+	       		   document.forms[0].button2[i].value=secondRow[i];
+	          }
+
+			  thirdRow =thirdRowSplit.split("|");
+		      for(i=0;i<thirdRow.length-1;i++){
+	       		   document.forms[0].button3[i].value=thirdRow[i];
+	          }
+
+           }
+
+  }
+
+ function func_back(){
+     var j=document.forms[0].sIbUsr_LogPass.value;
+     document.forms[0].sIbUsr_LogPass.value=j.substring(0,j.length-1);
+
+}
+function func_click(obj)
+{
+	if(obj=='sQuot'){
+       obj=obj.replace(/sQuot/,'\'');
+	}
+	if(obj=='dQuot'){
+       obj=obj.replace(/dQuot/,'\"');
+	}
+	if(obj=='bslash'){
+       obj=obj.replace(/bslash/,'\\');
+
+	}
+
+
+    var i= obj;
+	
+	if(flag=='true' ){
+	   var j = document.forms[0].sIbUsr_LogPass.value+i.toUpperCase();
+       document.forms[0].sIbUsr_LogPass.value=j;
+
+
+		
+
+
+	}else{
+
+	   var j = document.forms[0].sIbUsr_LogPass.value+i.toLowerCase();
+       document.forms[0].sIbUsr_LogPass.value=j;
+
+	 }
+
+}
+
+</script>
+</body>
+
+</tiles:put>
+<!--  -->
+</tiles:insert>

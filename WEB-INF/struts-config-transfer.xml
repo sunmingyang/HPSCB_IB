@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config
+  PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+  
+<struts-config>
+<form-beans>
+
+ <form-bean name="fundform" type="easycbs.bancmateib.fundtransfer.actionform.FundForm" />
+ 
+ <form-bean name="abbFundTransForm" 
+	type="easycbs.bancmateib.fundtransfer.actionform.ABBFundTransForm" />
+
+
+
+<!-- ABB Transfer Tx. by Tomar -->
+ <form-bean name="abbTxForm"
+	 type="easycbs.bancmateib.fundtransfer.actionform.ABBTransferForm" />
+
+ <!--  NeftForm  by Rohit-->
+ <form-bean name="NeftForm" type = "easycbs.bancmateib.sfmsneft.actionform.NeftTransForm"/>
+
+
+
+</form-beans>
+
+
+<action-mappings>
+
+
+
+
+<!-- ABB Cash Tx. by Ashish -->
+<action path="/abbfundtransfer/fund" type="easycbs.bancmateib.fundtransfer.action.ABBFundTransAction" 
+													name="abbFundTransForm"	scope="request" parameter="action">
+
+	<forward name="abbCashValidationFailed" path="/abb/abbCashTransaction.jsp"/>     
+	<forward name="abbCashValidationSuccessful" path="/abb/abbCashTransaction.jsp"/> 
+	<forward name="success" path="/abb/VoucherSuccess.jsp"/>    
+ 	<forward name="urlsuccess" path="/fundtransfer/fundTransReg.jsp"/>    
+</action>
+
+
+
+
+<!-- ABB Transfer Tx. by Tomar -->
+
+<action path="/abbtransfer" type="easycbs.bancmateib.fundtransfer.action.ABBTransferAction" 
+		name="abbTxForm"	scope="request" parameter="action">
+
+	<forward name="validationFailed" path="/fundtransfer/fund.do?action=performABBTransAction"/>
+	<forward name="validationSuccessful" path="/abb/abbFundTransfer.jsp"/>
+	<forward name="success" path="/abb/abbTransferSuccess.jsp"/>
+	<forward name="failure" path="/abb/abbFundTransfer.jsp"/>
+
+</action>
+
+
+
+	<!-- Common Cancel Action -->
+<action path="/CommonCancelAction"  
+	type="bancmate.bancmateib.common.CommonCancelAction">
+	<forward name="success" path="/abb/abb_home.jsp"/>	
+	<forward name="ZRmaster" path="/accforib/ZoRoMaster.jsp"/>	
+	<forward name="bactoUsrOprtion" path="/jsp/UserOperations.jsp"/>	
+</action>
+
+
+
+<action path="/fundtransfer/fund"
+	        type="easycbs.bancmateib.fundtransfer.action.FundAction"
+			name="fundform"
+			scope="request" parameter="action">
+			
+
+	<forward name="success_tran" path="/fundtransfer/IdPwd.jsp"/>          
+	<forward name="back_tran" path="/fundtransfer/fund.jsp"/>
+	<forward name="matched_tran" path="/fundtransfer/auth.jsp"/>
+	<forward name="failed_tran" path="/fundtransfer/IdPwd.jsp"/>
+	
+	
+	<forward name="failure_tran" path="/fundtransfer/transfer.jsp"/>
+	<forward name="failure_auth" path="/fundtransfer/transfer.jsp"/>   
+	<!-- called from page where two radio buttons are used to select the own branch or other branch -->
+	<forward name="success_fund" path="/fundtransfer/transfer.jsp"/>          
+	<forward name="success_payee" path="/fundtransfer/Addpayee.jsp"/>
+	<forward name="failure_payee" path="/fundtransfer/Otherpayee.jsp"/>
+
+	
+	<forward name="same" path="/fundtransfer/add_payee.jsp"/>
+	<!-- end fund -->
+
+	<forward name="errorsOnPage" path="/fundtransfer/ErrorsTran.jsp"/>
+	<forward name="fundsummary_success" path="/fundtransfer/confirmPayee.jsp"/>
+	<!--Ritu Vashistha CIB Authorization -->
+	<forward name="AddPayeeSB" path="/fundtransfer/Addpayee.jsp?openFor=A"/>  
+	<forward name="AddPayeeOB" path="/fundtransfer/Otherpayee.jsp?openFor=A"/>  
+	<forward name="confirmBeneficiary" path="/addPayee/confirmBeneficiary.jsp"/>
+	
+	<forward name="updateBeneficiary" path="/addPayee/updateBeneficiary.jsp"/>
+	
+	<forward name="deActiveBeneficiary" path="/addPayee/deActiveBenificiary.jsp"/>
+	</action>
+
+
+
+	<!-- neft/RTGS transaction Rohit -->
+	 <action path = "/sfmsneft/SaveNeft"  name = "NeftForm"
+		  	type = "easycbs.bancmateib.sfmsneft.action.NeftTransAction" parameter="action">
+			<!-- <forward name = "success" path = "/fundtransfer/NEFT.jsp"/>  --> 
+			<forward name = "success" path = "/fundTransferNeftNew/Neft_fund_transferNew.jsp"/>
+				<forward name = "Othe-Ac-Within-HPSCB" path = "/fundTransferNeftNew/Othe-Ac-Within-HPSCB.jsp"/>
+		
+			
+	</action>
+
+</action-mappings>
+<message-resources key="hindi" parameter = "easycbs.bancmateib.common.res.ApplicationResources"/>
+
+</struts-config>

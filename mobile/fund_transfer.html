@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+			#container-div {
+			position: absolute;
+			top: 30%;
+			bottom: 0;
+			height: 67%;
+			width: 100%;
+			overflow-y: auto;
+			border-top: 0px solid #2E2E2E;
+			}
+
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list).split(",");
+			var account_array_fund_transfer = (sessionStorage.accounts_list_for_transfer).split(",");
+			var account_array_fund_transfer_to = (sessionStorage.accounts_list_for_transfer_to).split(",");
+
+
+			var s= document.getElementById('from_accounts_self');
+			var s2= document.getElementById('to_accounts_self');
+
+
+			//var s4= document.getElementById('to_accounts_others');
+
+			if(s.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s.options[s.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+					
+				}
+			}
+
+			if(s2.options.length == 0)
+			{
+
+				for (var i in account_array_fund_transfer_to) {
+					s2.options[s2.options.length]= new Option(account_array_fund_transfer_to[i], account_array_fund_transfer_to[i]);
+				}
+			}
+
+
+	var s3= document.getElementById('from_accounts_others');
+			if(s3.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s3.options[s3.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+
+				}
+			}
+var s5= document.getElementById('from_accounts_IMPS');
+			if(s5.options.length == 0)
+			{
+				for (var i in account_array_fund_transfer) {
+
+					s5.options[s5.options.length]= new Option(account_array_fund_transfer[i], account_array_fund_transfer[i]);
+
+				}
+			}
+
+			
+			// This should be listed when getting confirmed payee list or transfering to same bank but other's accounts
+			getData("confirmedPayee",sessionStorage.userID);
+
+			//$('#tabs').tab();
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    		
+			
+		});
+
+
+		 function getaccinfo() {
+            var accNumber = $("#to_accounts_others").val();
+			//Android.alert("hrllo");
+            if (accNumber != null) {
+
+                getData("accinfo", accNumber);
+            }
+
+        }
+function getIMPSinfo() {
+		var accNumber= $("#to_accounts_IMPS").val();
+		 if (accNumber != null) {
+
+                getData("accinfoIMPS", accNumber);
+
+          }
+	}
+		
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="/mobile/mobilemenu.jsp";
+		}
+		function self_proceed()
+		{
+			from = $('#from_accounts_self').val();
+			to = $('#to_accounts_self').val();
+			amount = $('#self_transfer_amount').val();
+			remarks = $('#self_transfer_remark').val();
+			
+			//Android.alert("fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks);
+			if(amount.length == 0)
+				showAlert("alert-div-self","Error", "Please Enter Amount");
+			/////else if(remarks.length == 0)
+			/////	showAlert("alert-div-self","Error", "Please Enter Remark");
+			else	
+			{
+				//sessionStorage.beneficiaryAccNo = from;
+				sessionStorage.beneficiaryAccNo = to;
+				getData("sendOTP",sessionStorage.userID);//custID
+				//Android.alert("mob="+sessionStorage.mobileNo);
+				/////////////location.href="fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks;
+			
+			}
+		}
+		function IMPS_proceed()
+		{
+       		from = $('#from_accounts_IMPS').val();
+			to = $('#to_accounts_IMPS').val();
+			amount = $('#IMPS_transfer_amount').val();
+			remarks = $('#IMPS_transfer_remark').val();
+			benificiarymobileno=$('#mob_no_IMPS').val();
+			var accNumber= $("#to_accounts_IMPS").val();
+		    IFSCcode=$('#ifsc_code_IMPS').val();
+		    if (accNumber != null &&  ifscode!= null)
+			{
+			var mode1 = "P2A";
+			sessionStorage.mode=mode1;
+			}
+			else if(accNumber = null &&  ifscode = null && mobileno != null)
+			{
+			var mode1 = "P2P";
+			sessionStorage.mode=mode1;
+			}
+			else{}
+            if(amount.length == 0)
+				showAlert("alert-div-others","Error", "Please Enter Amount");
+			else
+			{
+				//sessionStorage.beneficiaryAccNo = from;
+				sessionStorage.beneficiaryAccNo = to;
+				sessionStorage.benemobile=benificiarymobileno;
+				sessionStorage.ifsc=IFSCcode;
+				getData("sendOTPotherbank",sessionStorage.userID);//custID
+				//Android.alert("mob="+sessionStorage.mobileNo);
+				////////////////location.href="fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks;
+		}
+			}
+
+		function others_proceed()
+		{
+			from = $('#from_accounts_others').val();
+			to = $('#account_number').val();
+			amount = $('#others_transfer_amount').val();
+			remarks = $('#others_transfer_remark').val();
+
+			//Android.alert("fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks);
+			if(amount.length == 0)
+				showAlert("alert-div-others","Error", "Please Enter Amount");
+			else if(to.length == 0)
+			{
+			showAlert("alert-div-others","Error", "Please Enter Account Number");
+			}
+			else
+			{
+				//sessionStorage.beneficiaryAccNo = from;
+				sessionStorage.beneficiaryAccNo = to;
+				getData("sendOTP",sessionStorage.userID);//custID
+				//getData("sendOTPotherbank",sessionStorage.userID);//custID
+				//Android.alert("mob="+sessionStorage.mobileNo);
+				////////////////location.href="fund_transfer_same_bank_confirm.html?from="+from+"&to="+to+"&amount="+amount+"&remarks="+remarks;
+
+			}
+		}
+
+
+	function formatamt(val,id)
+	{
+  		processAmountData(val,id);
+    }
+
+	</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+		<div  style="margin-left: 20px;margin-top:30px;width:90%;" >
+
+			<ul id="tabs" class="nav nav-tabs" style="font-size:18px;" >
+				<li class="active"><a href="#A" data-toggle="tab" style="font-weight: bold;">Self</a></li>
+				<li><a href="#B" data-toggle="tab" style="font-weight: bold;">Intrabank</a></li>
+			<!--	<li><a href="#C" data-toggle="tab" style="font-weight: bold;">Interbank</a></li>-->
+
+
+			</ul>
+
+			<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:90%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:90%;">
+			<div class="tab-pane fade in active" id="A">
+				<br/><div style="display:none" id="alert-div-self" class="alert alert-danger col-sm-12"></div>
+
+				<br/><div style="font-size:18px;color:#666666;">From</div>
+
+				<br/><select name="select"  id="from_accounts_self" style="font-size:18px;"></select>
+
+				<br/><div style="font-size:18px;color:#666666;">To
+				<a href="manage_payee.html" style="margin-left:80px;font-size:14px;">Manage Payee</a>
+			</div>
+
+				<br/><select name="select" id="to_accounts_self" style="font-size:18px;"></select>
+
+
+
+				<br/><div style="font-size:18px;color:#666666;">How much do you want to transfer?</div>
+				<br/><input type=text  id="self_transfer_amount" onchange="formatamt(this.value,id);" />
+
+				<br/><div style="font-size:18px;color:#666666;">Remarks (Optional)</div>
+				<br/><input type=text  id="self_transfer_remark" />
+				<br/><a href="charges.html" style="margin-left:80px;">View Limits & Charges</a>
+				<br/><br/>
+				<input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+				<input type=button value="Proceed" onclick="self_proceed();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+
+			</div>
+			<div class="tab-pane fade" id="B">
+				<br/><div style="display:none" id="alert-div-others" class="alert alert-danger col-sm-12"></div>
+				<h4>Any Other Account of Same Bank</h4>
+				<br/><div style="font-size:18px;color:#666666;">From</div>
+				<br/><select name="select" id="from_accounts_others" style="font-size:14px;"></select>
+				<br/><div style="font-size:18px;color:#666666;">To
+				<a href="manage_payee.html" style="margin-left:80px;font-size:14px;">Manage Payee</a>
+			</div>
+				<br/><select name="select" id="to_accounts_others"  style="font-size:14px;"  onchange="getaccinfo()"><option value="select" style="font-size:10px" >Select from added payee</option> </select>
+				<br/><div style="font-size:18px;color:#666666;">(For Instant Payment,Please fill below details directly)</div>
+
+				<br/><div style="font-size:18px;color:#666666;">Payee Name</div>
+				<br/><input type=text id="payee_name"   />
+				<br/><div style="font-size:18px;color:#666666;">Nick Name </div>
+				<br/><input type=text id="nick_name" maxlength="5"  />
+				<br/><div style="font-size:18px;color:#666666;">Account No.</div>
+				<br/><input type=text id="account_number"  />
+				<br/><div style="font-size:18px;color:#666666;">IFSC Code </div>
+				<br/><input type=text id="ifsc_code"  />
+				<br /><div style="font-size:18px;color:#666666;">Mobile Number </div>
+				<br/><input type=text id="mob_no" />
+				<br/><div style="font-size:18px;color:#666666;">How much do you want to transfer?</div>
+				<br/><input type=text  id="others_transfer_amount" onchange="formatamt(this.value,id);" />
+
+				<br/><div style="font-size:18px;color:#666666;">Remarks (Optional)</div>
+				<br/><input type=text  id="others_transfer_remark"/>
+				<br/><a href="charges.html" style="margin-left:80px;">View Limits & Charges</a>
+				<br/><br/>
+				<input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+				<input type=button value="Proceed" onclick="others_proceed();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+
+			</div>
+			<div class="tab-pane fade" id="C">
+				<br/><div style="display:none" id="alert-div-IMPS" class="alert alert-danger col-sm-12"></div>
+				<br/><div style="font-size:18px;color:#666666;">From</div>
+				<br/><select name="select" id="from_accounts_IMPS" style="font-size:14px;"></select>
+				<br/><div style="font-size:18px;color:#666666;">To
+				<a href="manage_payee.html" style="margin-left:80px;font-size:14px;">Manage Payee</a>
+			</div>
+                <br/><select name="select" id="to_accounts_IMPS"  style="font-size:14px;"  onchange="getIMPSinfo()"><option value="select" style="font-size:10px" >Select from added payee</option> </select>
+
+				<div style="font-size:18px;color:#666666;">(For Instant Payment,Please fill below details directly)</div>
+				<br/><div style="font-size:18px;color:#666666;">Payee Name</div>
+				<br/><input type=text id="payee_name_IMPS"   />
+				<br/><div style="font-size:18px;color:#666666;">Nick Name </div>
+				<br/><input type=text id="nick_name_IMPS" maxlength="5"  />
+				<br/><div style="font-size:18px;color:#666666;">Account No.</div>
+				<br/><input type=text id="account_number_IMPS"  />
+				<br/><div style="font-size:18px;color:#666666;">IFSC Code </div>
+				<br/><input type=text id="ifsc_code_IMPS"  />
+				<br /><div style="font-size:18px;color:#666666;">Mobile Number </div>
+				<br/><input type=text id="mob_no_IMPS"  />
+
+				<br/><div style="font-size:18px;color:#666666;">How much do you want to transfer?</div>
+				<br/><input type=text  id="IMPS_transfer_amount"/>
+
+				<br/><div style="font-size:18px;color:#666666;">Remarks (Optional)</div>
+				<br/><input type=text  id="IMPS_transfer_remark"/>
+				<br/><a href="charges.html" style="margin-left:80px;">View Limits & Charges</a>
+				<br/><br/>
+				<input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+				<input type=button value="Proceed" onclick="IMPS_proceed();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+
+			</div>
+
+		</div>
+		</div>
+		</div>
+
+	</body>
+
+	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+			<a  href="/mobile/mobilemenu.jsp">   <img src="/mobile/img/home.png" alt="..." class="img-responsive" ></a>
+	</div>
+</html>
+
+
+

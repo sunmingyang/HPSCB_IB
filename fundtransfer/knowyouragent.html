@@ -1,0 +1,147 @@
+<%@ include file="/common/Include.jsp" %>
+<%
+
+%>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			
+			
+		});
+		
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+		function searchagent()
+		{
+		$("#agent_table").empty();
+		if($("#pincode").val().length == 0 )
+		{
+			alert("Please Enter Pin Code");
+		}
+		var pincode=$("#pincode").val();
+		var ran=parseInt(Math.random()*9999);
+	    var url="/AccountInfoAction.do?action=agentPincodeData&pinCode="+pincode+"&ran="+ran;
+		http.open("POST",url,false);
+		http.onreadystatechange= function (){searchagentresponse()};
+		http.send(null);
+
+		}
+		function searchagentresponse()
+		{
+			if (http.readyState == 4)
+            	{
+                		// Check that a successful server response was received
+                		if (http.status == 200)
+                		{
+                			if(debug_version)
+                    			alert(http.responseText);
+
+                    		eval('var objArray='+http.responseText);
+
+
+    						for (var i=0; i < objArray.length; i++)
+    						{
+
+    							$('#agent_table').append("<tr><td>"+objArray[i].acsName+"</td></tr>");
+
+    						}
+
+    					}
+    					else
+    					{
+    						// An HTTP problem has occurred
+    						alert("HTTP error: " + http.status);
+    					}
+    					$('#spinner').hide();
+                }
+	}		
+		
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+	<div id="spinner" class="spinner" style="display:none;">
+		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+	</div>
+
+
+
+	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	</div>
+	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+
+	</div>
+	<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+
+
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:0px;overflow-y: auto; " >
+
+
+
+
+		<br/><div style="display:none" id="alert-div" class="alert alert-danger col-sm-12"></div>
+
+		<br/><div ><span style="font-size:24px;color:#d9534f;">*</span> <span style="font-size:18px;color:#666666;">Pin Code</span> </div>
+		<input type=text  id="pincode" value="" />
+
+		<br/><input type=button value="Search Agent" onclick="searchagent();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/>
+		<table id="agent_table" style="border-collapse: separate; border-spacing: 10px;" border="0">
+			<tr>
+
+				<th align="center">Agent Name</th>
+
+			</tr>
+
+		</table>
+
+	</div>
+
+	</body>
+	  
+</html>
+
+
+
+
+
+
+
+

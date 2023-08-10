@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+    <title>custid_address</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/mobile/jquery/jquery.min.js"></script>
+    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+    <script src="/mobile/mbanking_js/mbanking.js"></script>
+    <link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+            type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+          rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+    </script>
+    <style type="text/css">
+        body
+        {
+        font-family: Arial;
+        font-size: 10pt;
+        }
+        #txtDate
+        {
+        padding-left: 25px;
+        background-image: url(http://i988.photobucket.com/albums/af3/mudassarkhan/calender.png);
+        background-repeat: no-repeat;
+        }
+        #txtDate1
+        {
+        padding-left: 25px;
+        background-image: url(http://i988.photobucket.com/albums/af3/mudassarkhan/calender.png);
+        background-repeat: no-repeat;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $('#txtDate').datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+		 $(function () {
+            $('#txtDate1').datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+    </script>
+    <style>
+        img {
+        max-width: 100%;
+        }
+        #container-div {
+        position: absolute;
+        top: 30%;
+        bottom: 0;
+        height: 67%;
+        width: 100%;
+        overflow-y: auto;
+        border-top: 0px solid #2E2E2E;
+        }
+    </style>
+    <script>
+var AmtinGrp = '3';
+var todayDate=new Date();
+var calShortWeekNames="";
+var calLongMntNames="";
+</script>
+    <script>
+	var personalFlag=false;
+	var Dob="25/05/1978";
+	var sDate="";
+	var paramlang,total='9';
+	var flag="";
+	var  femaleMinor= "18"; 
+	var  maleMinor="21"   
+	var  AddressCertificationL=new Array();
+	var	tCountL=-1;
+	var  rCountL=-1;
+	var checkFlagL=true;
+	var blankcheckL=false;
+	var  AddressCertificationP=new Array();
+	var	tCountP=-1;
+	var  rCountP=-1;
+	var checkFlagP=true;
+	var blankcheckP=false;
+	var rL=0;
+	var cL=0;
+	var rP=0;
+	var cP=0;
+	var fromAcc="";
+	var sAdrCerFirm = 'N';
+	var sizeL=0;var sizeP=0;var cMode="";
+	var sOpen='null';
+			sDate='05/04/2016';
+			paramlang='english';
+			var flag="L";
+
+var flag=false;
+var checkAuthorization=false;
+
+var AddressKnown=sessionStorage.getItem("AdressKnown");
+
+	checkAuthorization=true;
+function disableField()
+{
+	var custId='null';
+	if(custId=="custID")
+	{
+		makeDisableForAuthorization();
+		document.getElementById("Cancel").disabled=false;
+	}
+}
+function showMessage(code,type)
+{
+	if(type=="error")
+	{
+		getMessage(1,code,"errors");
+	}else {
+		getMessage(1,code,"ApplicationResources");
+	}
+	return false;
+}
+var http=createRequestObject();
+function checkResYear(resId){
+	var sCmmAge ="";
+	var sJspOpenedMode="";
+	 sJspOpenedMode=''; 
+	if(sJspOpenedMode==""){
+		if(document.getElementById(resId).value!=""){
+			var sResYear=parseFloat(document.getElementById(resId).value);
+		}
+			sCmmAge = '38';
+		
+		if(sResYear >0 && parseFloat(sCmmAge) >0 && (sResYear > sCmmAge)){
+			Android.alert("Year At Residence can't Greater than Age");
+			document.getElementById(resId).value="0";
+		}
+	}
+}
+function copyLocal()
+{
+	document.getElementById("LocalAddress").value='';
+}
+
+function copyPermanent()
+{
+	document.getElementById("PermanentAddress").value='';
+}
+
+function copyWork()
+{ 
+	document.getElementById("WorklAddress").value='';
+}
+function autoResizeDiv()
+{
+        document.getElementById('main').style.height = window.innerHeight +'px';
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+}                                                                                      
+</script>
+</head>
+<body onload="getval()"  marginheight="0"   topmargin="0" onhelp="return false">
+<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:-5px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div  style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block; "  />
+		</div>
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; height:60%; width:95%;" >
+<form  id="frm2" name="CmmAddressForm" method="post" action="CMMPersonal.html">
+<center>
+<div id="tabdiv" style="border:0; thin ridge #CCCCCC; width:100%" >
+<font size=2 color="'#003399'">
+    <label id="isAddressType"><u><b>
+
+    </b></u></label>
+</font>
+<table><tr><td>&nbsp;</td></tr></table>
+
+<fieldset style="
+border:Solid 2 #3366FF;padding:10px">
+    <legend>
+        <div id=div0  >
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" align="center"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5>Present Address</h5>
+
+                </tr>
+            </table>
+        </div>
+    </legend>
+</fieldset>
+
+<div id="Work_field"  style="position:relative; display:none; overflow:auto;" >
+
+
+    <table width="10%" border="0" cellpadding="1"  cellspacing="0" bordercolor="green">
+        <br>
+        <tr>
+            <td width="21.3%">
+                <label>Office/Inst. Name</label>  &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+        </tr>
+        <tr>
+            <td width="21.3%">
+                <label>Dept./Sec.</label>  &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+        </tr>
+
+        <tr>
+            <td width="21.3%">
+                <label>Designation</label>  &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+        </tr>
+    </table>
+</div>
+<div id="div_block1"  style="position:relative; display:block; overflow:auto;">
+<table width="90%" border="0" cellpadding="1"  cellspacing="0" bordercolor="red">
+<br>
+<tr>
+    <td >
+        <label>House Number-Name.
+            <font size="2" color="red">*</font></label> </td>
+    <td nowrap >
+        <b>:&nbsp;</b>
+
+        <input type="text" name="isEHouseNoLocal" maxlength="50" size="33" tabindex="1" value="" onkeypress="isValidAlphaBrackets(this),alphaNumChat(this)" onchange="" onblur="validatetext(this)" id="isEHouseNoLocal">
+</tr>
+<tr>
+    <td>
+        <label>Street No</label> &nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+
+        <input type="text" name="isEStreetNoLocal" maxlength="50" size="33" tabindex="2" value="" onkeypress="isValidAlphaBrackets(this)" onblur="validatetext(this)" id="isEStreetNoLocal">
+</tr>
+<tr>
+    <td>
+        <label>Locality/Locallity</label> &nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+
+        <input type="text" name="isELocalityLocal" maxlength="50" size="33" tabindex="3" value="" onkeypress="isValidAlphaBrackets(this)" onblur="validatetext(this)" id="isELocalityLocal">
+</tr>
+<tr>
+    <td>
+        <label>
+            Country
+        </label>&nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+        <select name="Country" Id="CountryMaster"></select>
+
+        <script>
+
+function processAccountcountry(f)
+{
+if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resCountry=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	}
+	
+     }
+		</script></td>
+    <td>
+
+    </td>
+
+</tr>
+
+<tr>
+    <td>
+        <label>State</label>&nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+        <select name="state" onchange='processAccount10()' Id="StateMaster"> </select>
+        <script>
+function processAccountstate(f)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resState=resArray1;
+		var jsonData = JSON.parse(resArray1);
+
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	
+	}
+     }
+		</script>
+
+</tr>
+<tr>
+    <td>
+        <label>
+            District
+        </label>&nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+        <select name="district" Id="districtcode" ></select></td>
+    <script>
+	function processAccount10(){	
+	var stateId = document.getElementById('StateMaster').value;
+	var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster1&masterType=districtcode&Criteria1="+stateId; 
+	 	http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount5("districtcode")};
+		http.send(null);
+	}
+
+	function processAccount5(f)
+	{	
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resDistrict=resArray1;
+		var jsonData = JSON.parse(resArray1);	   
+		
+	   var select= document.getElementById(f); 
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+
+			if (jsonData != null) {
+		for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+     }
+		</script>
+
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <label>
+
+            City
+
+            <font size="2" color="red">*</font></label> &nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+        <input type="hidden" name="isCityLocalCode" value="" onkeypress="alphaNumChat(this),isValidPhone(id)" onblur="getRespectiveValues(isCityLocalCode.value,'isCityLocalKid','CityLocalLabel','CityLocation ',isStateLocalKid.value,'error') , fillCityLabel('CityLocalLabel','isHCityLocal','isECityLocal'),callAjax(isCityLocalKid.value,'isStateLocal','isStateLocalLabel','isStateLocalKid','isDistrictLocal','isDistrictLocalLabel','isDistrictLocalKid','isCountryLocal','isCountryLocalLabel','isCountryLocalKid','validDistrictLocalKid','validStateLocalKid','validCountryLocalKid')" id="isCityLocalCode">
+
+
+        <input type="text" name="isECityLocal" maxlength="50" size="20" tabindex="7" value="" onkeypress="isValidNumAlpha()" onchange="blankcitycodeandHindi(paramlang)" id="isECityLocal">
+
+        <input type="hidden" name="isCityLocalKid" value="" id="isCityLocalKid">
+        <input type="hidden" name="CityLocalLabel" Id="CityLocalLabel" /></td>
+
+</tr>
+
+<tr>
+    <td>
+        <lable>Post </lable></td>
+    <td>
+        <b>:&nbsp;</b>
+
+        <select name="post" id="postMaster"> <option value="1"></option></select>
+
+        <script>
+
+		function processAccountpost(f)
+		{
+			if((http.readyState == 4) && (http.status == 200)){
+			var resArray1=http.responseText;
+			sessionStorage.resPost=resArray1;
+			var jsonData = JSON.parse(resArray1);
+		    var select= document.getElementById(f);
+			var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+			if (jsonData != null) {
+				 for (var i = 0; i < jsonData[2].length; i++){
+					var opt = document.createElement('option');
+					opt.value = jsonData[0][i];
+					opt.innerHTML = jsonData[2][i];
+					select.appendChild(opt);
+				}
+			}
+		 }
+	    }
+		</script></td>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <label>Pin Code<font size="2" color="red">*</font></label> </td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isPinCodeLocal" maxlength="6" size="17" tabindex="9" value="" onkeypress="isValidPINNumber(id)" onblur="onblurPIN(id)" id="isPinCodeLocal">
+</tr>
+
+<tr>
+    <td>
+        <label>Phone</label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isPhoneLocal" maxlength="20" size="17" tabindex="10" value="" onkeypress="isValidPhone(id)" id="isPhoneLocal">
+</tr>
+
+<tr>
+    <td>
+        <label>Mobile<font size="2" color="red">*</font></label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isMobileLocal" maxlength="10" size="17" tabindex="11" value="" onkeypress="isValidPhone(id)" id="isMobileLocal"></td>
+</tr>
+
+<tr>
+    <td>
+        <label>Off. Phone</label> &nbsp;</td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isOfficePhoneLocal" maxlength="20" size="17" tabindex="12" value="" onkeypress="isValidPhone(id)" id="isOfficePhoneLocal"></td>
+</tr>
+<tr>
+    <td>
+        <label >Taluka</label></td>
+    <td>
+        <b>:&nbsp;</b>
+
+        <select name="CustTalukaMaster" Id="CustTalukaMaster"> <option value="1">country</option></select>
+
+
+        <script>
+		function processAccountTaluka(f)
+		{
+			if((http.readyState == 4) && (http.status == 200)){
+				var resArray1=http.responseText;
+				sessionStorage.resTaluka=resArray1;
+				var jsonData = JSON.parse(resArray1);
+				var select= document.getElementById(f);
+				var opt = document.createElement('option');
+				opt.value =0;
+				opt.innerHTML = " -- please Select --";
+				select.appendChild(opt);
+				if (jsonData != null) {
+				for (var i = 0; i < jsonData[2].length; i++){
+				var opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+				}
+				}
+			}
+		}
+		</script>
+
+        <input type="hidden" name="istalukakid" value="" id="istalukakid"></td>
+</tr>
+<tr>
+    <td>
+        <label >Village</label></td>
+    <td>
+        <b>:&nbsp;</b>
+
+        <select name="Custvillagemaster" Id="Custvillagemaster"> <option value="1">country</option></select>
+        <script>
+		function processAccountvillage(f)
+		{if((http.readyState == 4) && (http.status == 200)){
+			var resArray1=http.responseText;
+			sessionStorage.resvillage=resArray1;
+			var jsonData = JSON.parse(resArray1);
+			var select= document.getElementById(f);
+			var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+			if (jsonData != null) {
+				for (var i = 0; i < jsonData[2].length; i++){
+				var opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+				}
+			}
+	     }
+	   }
+		</script>
+        <input type="hidden" name="isvillagekid" value="" id="isvillagekid"></td>
+</tr>
+<tr>
+    <td>
+        <label >Amsom</label></td>
+    <td>
+        <b>:&nbsp;</b>
+
+        <select name="amsom" Id="CustAmsomDesomMaster"> <option value="1">amson</option></select>
+        <script>
+
+		function processAccountAmsom(f)
+		{
+
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.amsomdesom=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+     }
+		</script>
+        <input type="hidden" name="amsomDesomKid" value="" id="amsomDesomKid"></td>
+</tr>
+<tr>
+    <td>
+        <label >Desom</label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="desomCode" maxlength="7" size="17" tabindex="16" value="" onkeypress="alphaNumWithoutSpace()" id="desomCode"></td>
+</tr>
+
+<tr>
+    <td>
+        <label >Ward No</label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="wardno" maxlength="10" size="17" tabindex="17" value="" onkeypress="alphaNumWithoutSpace()" id="wardno"></td>
+</tr>
+<tr>
+    <td>
+        <label >./Block</label></td>
+    <td>
+        <b>:&nbsp;</b>
+
+
+        <select name="Block" Id="CustBlockMaster"> <option value="1">Block</option></select>
+        <script>
+		function processAccountBlock(f)
+		{
+		if((http.readyState == 4) && (http.status == 200)){
+				var resArray1=http.responseText;
+				sessionStorage.resblock=resArray1;
+				var jsonData = JSON.parse(resArray1);
+				var select= document.getElementById(f);
+				var opt = document.createElement('option');
+				opt.value =0;
+				opt.innerHTML = " -- please Select --";
+				select.appendChild(opt);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+	    }
+		}
+		</script>
+
+        <input type="hidden" name="blockKid" value="0" id="blockKid"></td>
+</tr>
+
+<tr>
+    <td>
+        <label >Panchayat</label></td>
+    <td>
+        <b>:&nbsp;</b>
+
+        <select name="Panchayat" Id="CustPanchyatMaster"> <option value="1">Panchayat</option></select>
+        <script>
+
+function processAccountPanchyat(f)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resPanchyat=resArray1;
+	
+		var jsonData = JSON.parse(resArray1);
+		   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+	     }
+		</script>
+
+        <input type="hidden" name="ispanchayatkid" value="" id="ispanchayatkid"></td>
+</tr>
+<tr>
+    <td>
+        <label>E-mail</label> &nbsp;</td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isMailLocal" maxlength="50" size="53" tabindex="20" value="" onblur="validEMail(id)" style="text-transform:none;" class="Lowerinput" id="isMailLocal"></td>
+</tr>
+<tr>
+    <td>
+        URL Name</label>&nbsp;</td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isURLLocal" maxlength="50" size="53" tabindex="21" value="" onblur="validUrl(id)" style="text-transform:none;" class="Lowerinput" id="isURLLocal">
+</tr>
+<tr>
+    <td>
+        <label>Year At Cur. Resi.</label> &nbsp;</td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" name="isYrsAtResLocal" maxlength="3" size="17" tabindex="22" value="" onkeypress="isValidNumber(id)" onblur="checkResYear('21')" id="isYrsAtResLocal"></td>
+</tr>
+<tr>
+    <td>
+        <label>Resi.OwnerShip
+        </label>&nbsp;</td>
+    <td>
+        <b>:&nbsp;</b>
+        <select name="Resi.OwnerShip" Id="ResidentOwnership"> <option value="1">Resi.OwnerShip</option></select>
+
+        <script>
+
+		function processAccountResident(f)
+		{
+		if((http.readyState == 4) && (http.status == 200)){
+				var resArray1=http.responseText;
+				sessionStorage.resResident=resArray1;
+				var jsonData = JSON.parse(resArray1);
+				var select= document.getElementById(f);
+				var opt = document.createElement('option');
+				opt.value =0;
+				opt.innerHTML = " -- please Select --";
+				select.appendChild(opt);
+			if (jsonData != null) {
+				for (var i = 0; i < jsonData[2].length; i++){
+				var opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+				}
+			   }
+			   }
+		}
+		</script></td>
+    &nbsp;
+    <input type="hidden" name="isResOwnershipLocalKid" value="" id="isResOwnershipLocalKid"></td>
+</tr>
+</table>
+<br>
+
+<div id="Addressdiv1" style="border:Solid 0 red; width:90%" >
+    <table width="100%" border="0" cellpadding="1"  cellspacing="0" bordercolor="red">
+        <tr>
+            <td colspan="2" height="40">
+                <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                        <td>
+                            <hr  style="color:#3366FF"></td>
+                        <td align="center" style="color:#3366FF" width="370px">
+                            <b>Address Proof</b></td>
+                        <td>
+                            <hr  style="color:#3366FF"></td>
+                    </tr>
+                </table></td>
+        </tr>
+        <tr>
+            <td nowrap>
+                <label>Address Proof</label>
+                &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+                <!--<input type="text" name="isAddressProofLocal" maxlength="5" size="18" tabindex="24" value="" onkeydown="callMasterHelp('adrProofLocal')" onkeypress="alphaNumWithoutSpace()" onchange="getRespectiveValuesIntroducer(this.value, 'isAddressProofLocalKid', 'isAddressProofLocalLabel','isAddressProofWithoutExpDate','AddressCertificationMaster')" id="isAddressProofLocal"> -->
+
+                <select name="Address Proof" Id="AddressCertificationMaster"></select>
+                <script>
+		function processAccountCertification(f)
+		{
+		if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resAddress=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	    var select= document.getElementById(f);
+	    var opt = document.createElement('option');
+		opt.value =0;
+		opt.innerHTML = " -- please Select --";
+		select.appendChild(opt);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+        }
+	    }
+	   }
+		</script>
+                <!-- <input type="text" name="isAddressProofLocalLabel" size="30" tabindex="-1" value="" readonly="readonly" style="background-color:activeborder;border:0px" id="isAddressProofLocalLabel"> -->
+                &nbsp; <input type="hidden" name="isAddressProofLocalKid" value="" id="isAddressProofLocalKid"><td>
+        </tr>
+        <tr>
+            <td nowrap>
+                <label>Document No.</label></td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+                <input Type="text"  name="isDocNoLocal" tabindex='25' Id="isDocNoLocal"   size="18" maxlength="25" ></td>
+        </tr>
+        <tr>
+            <td nowrap>
+                <label size="30">Doc.Issuing Auth.</label>&nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+
+                <input type="text" name="isEAuthorityLocal" maxlength="50" size="29" tabindex="26" value=""  id="isEAuthorityLocal">
+        </tr>
+        <tr>
+            <td nowrap>
+                <label>Doc.Issue Place</label> &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+
+                <input type="text" name="isEPlaceLocal" maxlength="50" size="29" tabindex="27" value=""  id="isEPlaceLocal">
+        </tr>
+        <tr>
+            <td nowrap>
+                <label>Issuing Date</label> &nbsp;</td>
+            <td nowrap>
+                <b>:&nbsp;</b>
+                <input type="text" id="txtDate" name="isIssueDateLocal" maxlength="10" size="12" tabindex="-1" value="" readonly="readonly" id="isIssueDateLocal">
+</div>
+<div id="cal_isIssueDateLocal_display" style="display:none;position:ab`solute;top:600px;left:420px;">
+</div>&nbsp; </td>
+</tr>
+<tr>
+    <td>
+        <label>Expiry Date</label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <input type="text" id="txtDate1" name="isExpiryDateLocal" maxlength="10" size="12" tabindex="-1" value="" readonly="readonly" id="isExpiryDateLocal">
+
+</div>
+<div id="cal_isExpiryDateLocal_display" style="display:none;position:absolute;top:600px;left:420px;">
+
+</div></td>
+</tr>
+
+<td align="center" colspan="2"></td>
+
+</tr>
+</table><br>
+</div>
+
+<div id="div_block"  style="position:relative; display:block; overflow:auto;" >
+
+</div>
+
+<hr>
+
+<table>
+<tr>
+<td>
+<script>
+				function focusSet()
+				{
+					
+							if(flag=="L")
+								document.forms[0].isEHouseNoLocal.focus();
+							else if(flag=="P")
+								document.forms[0].isEHouseNoPermanent.focus();
+							else if(flag=="O")
+								document.forms[0].einstNameW.focus();
+						
+				}
+	
+</script>
+<script>
+var sOpenedForAdr='';
+if(sOpenedForAdr == "Occp")
+{
+
+	var msg1=	'Are You Sure ?';
+
+}
+else
+{
+	var msg='Updation starts ! Do you want to continue?';
+	var msg1='Are You Sure ?';
+}
+
+function serializeSchema(form) {
+    return [].map.call(form.elements, function(el) {
+        return {
+
+            name: el.name,
+            value:el.value
+        };
+    });
+};
+
+function validateInputForm(){
+var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+jssondataadd+='"'+document.getElementById("isEHouseNoLocal").name+'":'+'"'+document.getElementById("isEHouseNoLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isEStreetNoLocal").name+'":'+'"'+document.getElementById("isEStreetNoLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isELocalityLocal").name+'":'+'"'+document.getElementById("isELocalityLocal").value+'",';
+jssondataadd+='"'+document.getElementById("CityLocalLabel").name+'":'+'"'+document.getElementById("isELocalityLocal").value+'",';
+jssondataadd+='"'+document.getElementById("StateMaster").name+'":'+'"'+document.getElementById("StateMaster").value+'",';
+jssondataadd+='"'+document.getElementById("CountryMaster").name+'":'+'"'+document.getElementById("CountryMaster").value+'",';
+jssondataadd+='"'+document.getElementById("districtcode").name+'":'+'"'+document.getElementById("districtcode").value+'",';
+jssondataadd+='"'+document.getElementById("isECityLocal").name+'":'+'"'+document.getElementById("isECityLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isCityLocalKid").name+'":'+'"'+document.getElementById("isCityLocalKid").value+'",';
+jssondataadd+='"'+document.getElementById("isCityLocalCode").name+'":'+'"'+document.getElementById("isCityLocalCode").value+'",';
+jssondataadd+='"'+document.getElementById("postMaster").name+'":'+'"'+document.getElementById("postMaster").value+'",';
+jssondataadd+='"'+document.getElementById("isPinCodeLocal").name+'":'+'"'+document.getElementById("isPinCodeLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isPhoneLocal").name+'":'+'"'+document.getElementById("isPhoneLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isMobileLocal").name+'":'+'"'+document.getElementById("isMobileLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isOfficePhoneLocal").name+'":'+'"'+document.getElementById("isOfficePhoneLocal").value+'",';
+jssondataadd+='"'+document.getElementById("CustTalukaMaster").name+'":'+'"'+document.getElementById("CustTalukaMaster").value+'",';
+jssondataadd+='"'+document.getElementById("istalukakid").name+'":'+'"'+document.getElementById("CustTalukaMaster").value+'",';
+jssondataadd+='"'+document.getElementById("Custvillagemaster").name+'":'+'"'+document.getElementById("Custvillagemaster").value+'",';
+jssondataadd+='"'+document.getElementById("isvillagekid").name+'":'+'"'+document.getElementById("isvillagekid").value+'",';
+jssondataadd+='"'+document.getElementById("CustAmsomDesomMaster").name+'":'+'"'+document.getElementById("CustAmsomDesomMaster").value+'",';
+jssondataadd+='"'+document.getElementById("amsomDesomKid").name+'":'+'"'+document.getElementById("amsomDesomKid").value+'",';
+jssondataadd+='"'+document.getElementById("desomCode").name+'":'+'"'+document.getElementById("desomCode").value+'",';
+jssondataadd+='"'+document.getElementById("wardno").name+'":'+'"'+document.getElementById("wardno").value+'",';
+jssondataadd+='"'+document.getElementById("CustBlockMaster").name+'":'+'"'+document.getElementById("CustBlockMaster").value+'",';
+jssondataadd+='"'+document.getElementById("blockKid").name+'":'+'"'+document.getElementById("blockKid").value+'",';
+jssondataadd+='"'+document.getElementById("CustPanchyatMaster").name+'":'+'"'+document.getElementById("CustPanchyatMaster").value+'",';
+jssondataadd+='"'+document.getElementById("ispanchayatkid").name+'":'+'"'+document.getElementById("ispanchayatkid").value+'",';
+jssondataadd+='"'+document.getElementById("isResOwnershipLocalKid").name+'":'+'"'+document.getElementById("isResOwnershipLocalKid").value+'",';
+jssondataadd+='"'+document.getElementById("isMailLocal").name+'":'+'"'+document.getElementById("isMailLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isURLLocal").name+'":'+'"'+document.getElementById("isURLLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isYrsAtResLocal").name+'":'+'"'+document.getElementById("isYrsAtResLocal").value+'",';
+jssondataadd+='"'+document.getElementById("ResidentOwnership").name+'":'+'"'+document.getElementById("CustAmsomDesomMaster").value+'",';
+jssondataadd+='"'+document.getElementById("AddressCertificationMaster").name+'":'+'"'+document.getElementById("AddressCertificationMaster").value+'",';
+jssondataadd+='"'+document.getElementById("isAddressProofLocalKid").name+'":'+'"'+document.getElementById("isAddressProofLocalKid").value+'",';
+jssondataadd+='"'+document.getElementById("isDocNoLocal").name+'":'+'"'+document.getElementById("isDocNoLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isEAuthorityLocal").name+'":'+'"'+document.getElementById("isEAuthorityLocal").value+'",';
+jssondataadd+='"'+document.getElementById("isEPlaceLocal").name+'":'+'"'+document.getElementById("isEPlaceLocal").value+'",';
+jssondataadd+='"'+document.getElementById("txtDate").name+'":'+'"'+document.getElementById("txtDate").value+'",';
+jssondataadd+='"'+document.getElementById("txtDate1").name+'":'+'"'+document.getElementById("txtDate1").value+'",';
+jssondataadd+="}";
+
+var form = document.querySelector('form'),
+    schema = serializeSchema(form);
+
+ 	if(AddressKnown.indexOf("GarduianAdress") > -1){
+		sessionStorage.setItem("Guardian_Addressform"+AddressKnown,jssondataadd);
+		location.href='GuardianPage.html';
+	}
+
+	if(AddressKnown.indexOf("NominiAdress") > -1){
+		sessionStorage.setItem("Nominee_Addressform"+AddressKnown,jssondataadd);
+		location.href='NomineePage.html';
+	}
+	if(AddressKnown=="CMMAddress") {
+	sessionStorage.adressform=jssondataadd;
+		location.href='CMMPersonal.html';
+	}
+
+	if(AddressKnown.indexOf("Guarantor") > -1){
+		sessionStorage.setItem("Guarantor_Addressform"+AddressKnown,jssondataadd);
+		location.href='Guarantor.html';
+	}
+
+}
+
+function getval() {
+var isAddressType=sessionStorage.getItem("AdressKnown");
+var a = sessionStorage.isPhoneLocal;
+var b = sessionStorage.length;
+var nominnisize=sessionStorage.getItem("nominnisize");
+	if (isAddressType=="NominiAdress"+nominnisize){
+    	document.getElementById("isAddressType").innerHTML ="Nominee  Address Details";
+    } else{
+    	document.getElementById("isAddressType").innerHTML ="Guardian  Address Details";
+     }
+   if (isAddressType=="CMMAddress"){
+    document.getElementById("isAddressType").innerHTML ="CustomerID Address Details";
+    }
+if (typeof(sessionStorage.country) !== "undefined")
+{
+
+var select= document.getElementById('CountryMaster');
+select.innerHTML = '';
+opt = document.createElement('option');
+opt.innerHTML="--please select--";
+opt.value="0";
+select.appendChild(opt);
+if(sessionStorage.resCountry!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resCountry);
+	if (jsonData != null) {
+		for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("CountryMaster").value=sessionStorage.getItem(AddressKnown+'CountryMaster');
+document.getElementById("isEHouseNoLocal").value=sessionStorage.getItem(AddressKnown+'isEHouseNoLocal');
+document.getElementById("isEStreetNoLocal").value=sessionStorage.getItem(AddressKnown+'isEStreetNoLocal');
+document.getElementById("isELocalityLocal").value=sessionStorage.getItem(AddressKnown+'isELocalityLocal');
+select= document.getElementById('StateMaster');
+select.innerHTML = '';
+opt = document.createElement('option');
+opt.innerHTML="--please select--";
+opt.value="0";
+select.appendChild(opt);
+if(sessionStorage.resState!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resState);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("StateMaster").value=sessionStorage.getItem(AddressKnown+'StateMaster');
+
+var select= document.getElementById('districtcode');
+select.innerHTML = '';
+opt = document.createElement('option');
+opt.innerHTML="--please select--";
+opt.value="0";
+select.appendChild(opt);
+if(sessionStorage.resDistrict!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resDistrict);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("districtcode").value=sessionStorage.getItem(AddressKnown+'districtcode');
+
+document.getElementById("isECityLocal").value=sessionStorage.getItem(AddressKnown+'isECityLocal');
+document.getElementById("CityLocalLabel").value=sessionStorage.getItem(AddressKnown+'CityLocalLabel');
+document.getElementById("isCityLocalKid").value=sessionStorage.getItem(AddressKnown+'isCityLocalKid');
+document.getElementById("isCityLocalCode").value=sessionStorage.getItem(AddressKnown+'isCityLocalCode');
+
+select= document.getElementById('postMaster');
+select.innerHTML = '';
+opt = document.createElement('option');
+opt.innerHTML="--please select--";
+opt.value="0";
+select.appendChild(opt);
+if(sessionStorage.resPost!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resPost);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("postMaster").value=sessionStorage.getItem(AddressKnown+'postMaster');
+document.getElementById("isPinCodeLocal").value=sessionStorage.getItem(AddressKnown+'isPinCodeLocal');
+document.getElementById("isPhoneLocal").value=sessionStorage.getItem(AddressKnown+'isPhoneLocal');
+document.getElementById("isMobileLocal").value=sessionStorage.getItem(AddressKnown+'isMobileLocal');
+document.getElementById("isOfficePhoneLocal").value=sessionStorage.getItem(AddressKnown+'isOfficePhoneLocal');
+		select= document.getElementById('CustTalukaMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+if(sessionStorage.resTaluka!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resTaluka);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("CustTalukaMaster").value=sessionStorage.getItem(AddressKnown+'CustTalukaMaster');
+document.getElementById("istalukakid").value=sessionStorage.getItem(AddressKnown+'istalukakid');
+
+select= document.getElementById('Custvillagemaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+if(sessionStorage.resvillage!=undefined){
+	var  jsonData = JSON.parse(sessionStorage.resvillage);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("Custvillagemaster").value=sessionStorage.getItem(AddressKnown+'Custvillagemaster');
+document.getElementById("isvillagekid").value=sessionStorage.getItem(AddressKnown+'isvillagekid');
+
+
+select= document.getElementById('CustAmsomDesomMaster');
+select.innerHTML = '';
+opt = document.createElement('option');
+opt.innerHTML="--please select--";
+opt.value="0";
+select.appendChild(opt);
+if(sessionStorage.amsomdesom!=undefined){
+var  jsonData = JSON.parse(sessionStorage.amsomdesom);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	}
+}
+document.getElementById("CustAmsomDesomMaster").value=sessionStorage.getItem(AddressKnown+'CustAmsomDesomMaster');
+
+document.getElementById("desomCode").value=sessionStorage.getItem(AddressKnown+'desomCode');
+document.getElementById("amsomDesomKid").value=sessionStorage.getItem(AddressKnown+'amsomDesomKid');
+
+document.getElementById("wardno").value=sessionStorage.getItem(AddressKnown+'wardno');
+select= document.getElementById('CustBlockMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		if(sessionStorage.resblock!=undefined){
+		var  jsonData = JSON.parse(sessionStorage.resblock);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+		}
+document.getElementById("CustBlockMaster").value=sessionStorage.getItem(AddressKnown+'CustBlockMaster');
+
+
+select= document.getElementById('CustPanchyatMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		if(sessionStorage.resPanchyat!=undefined){
+		var  jsonData = JSON.parse(sessionStorage.resPanchyat);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+		}
+document.getElementById("CustPanchyatMaster").value=sessionStorage.getItem(AddressKnown+'CustPanchyatMaster');
+		document.getElementById("ispanchayatkid").value=sessionStorage.getItem(AddressKnown+'ispanchayatkid');
+
+document.getElementById("isMailLocal").value=sessionStorage.getItem(AddressKnown+'isMailLocal');
+document.getElementById("isURLLocal").value=sessionStorage.getItem(AddressKnown+'isURLLocal');
+document.getElementById("isYrsAtResLocal").value=sessionStorage.getItem(AddressKnown+'isYrsAtResLocal');
+select= document.getElementById('ResidentOwnership');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		if(sessionStorage.resResident!=undefined){
+		var  jsonData = JSON.parse(sessionStorage.resResident);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+		}
+document.getElementById("ResidentOwnership").value=sessionStorage.getItem(AddressKnown+'ResidentOwnership');
+
+
+select= document.getElementById('AddressCertificationMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		if(sessionStorage.resAddress!=undefined){
+		var  jsonData = JSON.parse(sessionStorage.resAddress);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+		}
+document.getElementById("AddressCertificationMaster").value=sessionStorage.getItem(AddressKnown+'AddressCertificationMaster');
+		document.getElementById("isResOwnershipLocalKid").value=sessionStorage.getItem(AddressKnown+'isResOwnershipLocalKid');
+
+document.getElementById("isDocNoLocal").value=sessionStorage.getItem(AddressKnown+'isDocNoLocal');
+document.getElementById("isEAuthorityLocal").value=sessionStorage.getItem(AddressKnown+'isEAuthorityLocal');
+document.getElementById("isEPlaceLocal").value=sessionStorage.getItem(AddressKnown+'isEPlaceLocal');
+document.getElementById("txtDate").value=sessionStorage.getItem(AddressKnown+'txtDate');
+document.getElementById("txtDate1").value=sessionStorage.getItem(AddressKnown+'txtDate1');
+document.getElementById("isAddressProofLocalKid").value=sessionStorage.getItem(AddressKnown+'isAddressProofLocalKid');
+
+}
+ else {
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=AddressCertificationMaster";
+		http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountCertification("AddressCertificationMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=ResidentOwnership";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountResident("ResidentOwnership")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CustPanchyatMaster";
+		http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountPanchyat("CustPanchyatMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CustBlockMaster";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountBlock("CustBlockMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CustAmsomDesomMaster";
+		http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountAmsom("CustAmsomDesomMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=Custvillagemaster";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountvillage("Custvillagemaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CustTalukaMaster";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountTaluka("CustTalukaMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=postMaster";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountpost("postMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=StateMaster";
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountstate("StateMaster")};
+		http.send(null);
+
+		var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CountryMaster";
+		http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccountcountry("CountryMaster")};
+		http.send(null);
+		document.getElementById("isPhoneLocal").value="";;
+	}
+}
+
+function SessionSet() {
+sessionStorage.setItem(AddressKnown+'CountryMaster',document.getElementById("CountryMaster").value);
+var country = document.getElementById('CountryMaster').options[document.getElementById('CountryMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'CountryMaster',document.getElementById("CountryMaster").value);
+sessionStorage.country=country;
+sessionStorage.setItem(AddressKnown+'isEHouseNoLocal',document.getElementById("isEHouseNoLocal").value);
+sessionStorage.setItem(AddressKnown+'isEStreetNoLocal',document.getElementById("isEStreetNoLocal").value);
+sessionStorage.setItem(AddressKnown+'isCityLocalKid',document.getElementById("isCityLocalKid").value);
+sessionStorage.setItem(AddressKnown+'CityLocalLabel',document.getElementById("CityLocalLabel").value);
+sessionStorage.setItem(AddressKnown+'isCityLocalCode',document.getElementById("isCityLocalCode").value);
+
+
+sessionStorage.setItem(AddressKnown+'isELocalityLocal',document.getElementById("isELocalityLocal").value);
+//var state = document.getElementById("StateMaster").options[document.getElementById("StateMaster").selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'StateMaster',document.getElementById("StateMaster").value);
+//sessionStorage.state=state;
+//var district = document.getElementById('districtcode').options[document.getElementById('districtcode').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'districtcode',document.getElementById("districtcode").value);
+//sessionStorage.district=district;
+sessionStorage.setItem(AddressKnown+'isECityLocal',document.getElementById("isECityLocal").value);
+//var post = document.getElementById('postMaster').options[document.getElementById('postMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'postMaster',document.getElementById("postMaster").value);
+//sessionStorage.post=post;
+sessionStorage.setItem(AddressKnown+'isPinCodeLocal',document.getElementById("isPinCodeLocal").value);
+sessionStorage.setItem(AddressKnown+'isPhoneLocal',document.getElementById("isPhoneLocal").value);
+sessionStorage.setItem(AddressKnown+'isMobileLocal',document.getElementById("isMobileLocal").value);
+sessionStorage.setItem(AddressKnown+'isOfficePhoneLocal',document.getElementById("isOfficePhoneLocal").value);
+//var taluka = document.getElementById('CustTalukaMaster').options[document.getElementById('CustTalukaMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'istalukakid',document.getElementById("istalukakid").value);
+sessionStorage.setItem(AddressKnown+'CustTalukaMaster',document.getElementById("CustTalukaMaster").value);
+//sessionStorage.taluka=taluka;
+//var village = document.getElementById('Custvillagemaster').options[document.getElementById('Custvillagemaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'isvillagekid',document.getElementById("isvillagekid").value);
+
+sessionStorage.setItem(AddressKnown+'Custvillagemaster',document.getElementById("Custvillagemaster").value);
+//sessionStorage.village=village;
+//var amsom = document.getElementById('CustAmsomDesomMaster').options[document.getElementById('CustAmsomDesomMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'CustAmsomDesomMaster',document.getElementById("CustAmsomDesomMaster").value);
+//sessionStorage.amsom=amsom;
+sessionStorage.setItem(AddressKnown+'desomCode',document.getElementById("desomCode").value);
+sessionStorage.setItem(AddressKnown+'amsomDesomKid',document.getElementById("amsomDesomKid").value);
+
+sessionStorage.setItem(AddressKnown+'wardno',document.getElementById("wardno").value);
+//var block = document.getElementById('CustBlockMaster').options[document.getElementById('CustBlockMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'CustBlockMaster',document.getElementById("CustBlockMaster").value);
+//sessionStorage.block=block;
+//var panchayat = document.getElementById('CustPanchyatMaster').options[document.getElementById('CustPanchyatMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'ispanchayatkid',document.getElementById("ispanchayatkid").value);
+
+sessionStorage.setItem(AddressKnown+'CustPanchyatMaster',document.getElementById("CustPanchyatMaster").value);
+//sessionStorage.panchayat=panchayat;
+sessionStorage.setItem(AddressKnown+'isMailLocal',document.getElementById("isMailLocal").value);
+sessionStorage.setItem(AddressKnown+'isURLLocal',document.getElementById("isURLLocal").value);
+sessionStorage.setItem(AddressKnown+'isYrsAtResLocal',document.getElementById("isYrsAtResLocal").value);
+//var resident = document.getElementById('ResidentOwnership').options[document.getElementById('ResidentOwnership').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'isResOwnershipLocalKid',document.getElementById("isResOwnershipLocalKid").value);
+
+sessionStorage.setItem(AddressKnown+'ResidentOwnership',document.getElementById("ResidentOwnership").value);
+//sessionStorage.resident=resident;
+//var addressproof = document.getElementById('AddressCertificationMaster').options[document.getElementById('AddressCertificationMaster').selectedIndex].text;
+sessionStorage.setItem(AddressKnown+'isAddressProofLocalKid',document.getElementById("isAddressProofLocalKid").value);
+
+sessionStorage.setItem(AddressKnown+'AddressCertificationMaster',document.getElementById("AddressCertificationMaster").value);
+//sessionStorage.addressproof=addressproof;
+sessionStorage.setItem(AddressKnown+'isDocNoLocal',document.getElementById("isDocNoLocal").value);
+sessionStorage.setItem(AddressKnown+'isEAuthorityLocal',document.getElementById("isEAuthorityLocal").value);
+sessionStorage.setItem(AddressKnown+'isEPlaceLocal',document.getElementById("isEPlaceLocal").value);
+sessionStorage.setItem(AddressKnown+'txtDate',document.getElementById("txtDate").value);
+sessionStorage.setItem(AddressKnown+'txtDate1',document.getElementById("txtDate1").value);
+
+//if(AddressKnown=="GarduianAdress") {
+// location.href='GuardianPage.html';
+//}
+//if(AddressKnown=="NominiAdress") {
+//location.href='NomineePage.html';
+//}
+if(AddressKnown=="CMMAddress") {
+location.href='CMMPersonal.html';
+}
+}
+
+function fnvalidation() {
+/*
+     if ((document.getElementById("CountryMaster").value).length == 0) {
+             Android.alert("The Country should not be empty");
+    }else
+    */
+     if ((document.getElementById("isEHouseNoLocal").value).length == 0) {
+             Android.alert("The HouseNoLocal should not be empty");
+    }
+    /*
+    else
+     if ((document.getElementById("isEStreetNoLocal").value).length == 0) {
+             Android.alert("The StreetNoLocal should not be empty");
+    }else
+     if ((document.getElementById("isELocalityLocal").value).length == 0) {
+             Android.alert("The LocalityLocal should not be empty");
+    }else
+     if ((document.getElementById("districtcode").value).length == 0) {
+             Android.alert("The district should not be empty");
+    }*/
+    else
+     if ((document.getElementById("isECityLocal").value).length == 0) {
+             Android.alert("The City should not be empty");
+    }else
+     if ((document.getElementById("isPinCodeLocal").value).length == 0) {
+             Android.alert("The PinCode should not be empty");
+    }/*else
+     if ((document.getElementById("isPhoneLocal").value).length == 0) {
+             Android.alert("The Phone should not be empty");
+    }*/else
+     if ((document.getElementById("isMobileLocal").value).length == 0) {
+             Android.alert("The Mobile should not be empty");
+    }
+    /*else
+     if ((document.getElementById("isOfficePhoneLocal").value).length == 0) {
+             Android.alert("The OfficePhone should not be empty");
+    }else
+     if ((document.getElementById("desomCode").value).length == 0) {
+             Android.alert("The desom should not be empty");
+    }else
+     if ((document.getElementById("wardno").value).length == 0) {
+             Android.alert("The wardno should not be empty");
+    }else
+     if ((document.getElementById("isMailLocal").value).length == 0) {
+             Android.alert("Mail should not be empty");
+    }else
+     if ((document.getElementById("isURLLocal").value).length == 0) {
+             Android.alert("URL should not be empty");
+    }else
+     if ((document.getElementById("ResidentOwnership").value).length == 0) {
+             Android.alert("The ResidentOwnership should not be empty");
+    }else
+     if ((document.getElementById("AddressCertificationMaster").value).length == 0) {
+             Android.alert("The AddressCertification should not be empty");
+    }else
+     if ((document.getElementById("isDocNoLocal").value).length == 0) {
+             Android.alert("The DocNo should not be empty");
+    }else
+     if ((document.getElementById("isEAuthorityLocal").value).length == 0) {
+             Android.alert("The Authority should not be empty");
+    }else
+     if ((document.getElementById("isEPlaceLocal").value).length == 0) {
+             Android.alert("The issue Place should not be empty");
+    }
+    */
+
+}
+
+</script>
+</td>
+<td>
+    <input type="button" class = "form-control input-lg btn btn-info" onclick="SessionSet(),fnvalidation(),validateInputForm(this,msg)"  name = "submit1"
+           id="submit1"tabindex="33"  value="OK">
+</td>
+<td colspan="2">
+</td>
+</tr>
+</table>
+<hr>
+</center>
+
+<center>
+    <table>
+        <tr><td align="left" valign="bottom" ><div id ="errorhead" style="display:none;">
+            <label ><u><font color='red'>Errors</font></u></label></div></td></tr>
+        <tr><td><div id="diverrmessage" style="display:none;">
+            </select></div></td></tr></table>
+    <DIV style="BACKGROUND-COLOR: activeborder">
+        <TABLE width="100%">
+            <TR>
+
+            </TR>
+        </TABLE>
+
+    </DIV>
+</center>
+</form>
+</body>
+</html>

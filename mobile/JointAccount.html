@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+<title>Custid</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="mbanking_js/mbanking.js"></script>
+<link rel="stylesheet" href="mbanking_css/style.css">
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script>
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+</script>
+
+
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="/CobaSys/css/normalize.css">
+	<link rel="stylesheet" href="/CobaSys/css/main.css">
+	<script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+</html>
+
+<script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script>
+<script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenDetail.js"></script>
+<script type="text/javascript" src="/CobaSys/js/jquery/jquery-1.9.1.js"></script>
+<script src="/CobaSys/js/jquery/jquery.hotkeys.js"></script>
+
+<script>
+var thirdLng='english'
+function openGoldDetailPage()
+{  
+document.forms[0].action = "/CobaSys/account/acopen/acOpenCreditLimitSecurityDetailAction.do?action=openCreditLimitSecurityDetailAgainstSecType";
+document.forms[0].submit();
+}
+function relFocus(){
+var relFocus="";
+
+ if( document.getElementById("mode").value != "A"){
+	 document.getElementById("eremarks").focus();
+ }
+	
+	
+}
+function HotKeyMethod()
+{
+$(document).bind('keydown', 'ALT+Q', function(){
+	openDirectorDetails();
+
+});
+
+$(document).bind('keydown', 'ALT+F2', function() {
+openCustomerDetails();
+});
+}
+jQuery(document).ready(HotKeyMethod);
+</script>
+<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script>
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+</script>
+
+
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="/CobaSys/css/normalize.css">
+	<link rel="stylesheet" href="/CobaSys/css/main.css">
+	<script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+</html>
+<script>
+//window.history.forward(1);//for disabling back button of browser.
+</script>
+<html>
+<head>
+<title>
+  New A/C
+</title>
+ 
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" onkeyDown="StopKeyHandler()" >
+<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+	<tr >
+		<td colspan="3" height="25%" class="displayTitleacc">		  
+			
+
+
+
+
+
+
+
+
+
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script>
+
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+
+function abc(){
+	
+	var a=sessionStorage.getItem('cust');
+	
+	 var textbox = document.getElementById('cst'); 
+  textbox.innerHTML="Customer ID: "+a;
+
+  var CustId=document.getElementById("custid").value=a;
+  
+  
+
+var GLCode=sessionStorage.getItem('glcode');
+ var textbox = document.getElementById('glcode'); 
+  textbox.innerHTML="GL Code: "+GLCode;
+
+  var GLName=sessionStorage.getItem('glname');
+ var textbox = document.getElementById('glname'); 
+  textbox.innerHTML="GL Head: "+GLName;
+
+  var cstname=sessionStorage.getItem('custname');
+
+	 var textbox = document.getElementById('cstname'); 
+  textbox.innerHTML=" Name: "+cstname;
+   
+   var CustName=document.getElementById("custEName").value=cstname;
+
+
+   var currancy=sessionStorage.getItem('currency');
+
+	 var textbox = document.getElementById('currency'); 
+  textbox.innerHTML=" Currency: "+currancy;
+	}
+</script>
+
+
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="/CobaSys/css/normalize.css">
+	<link rel="stylesheet" href="/CobaSys/css/main.css">
+	<script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+</html>
+
+
+
+<center>
+<body >
+<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	</div> 
+	
+	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:-5px;min-height: 30px; ">
+		<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	</div> 
+	
+	<div  style="margin-top:60px;" >
+	<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block; "  />
+	</div>
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; height:60%; width:95%;" >
+<table border="0" width="100%" height="100%" >
+
+<!--	<tr>
+	 GL Code 
+	<td colspan="3" align="center">
+		<label >
+			<b><font style="font-weight:bold;color:white;FONT-size:14PX;"> ./BASIC SAVING BANK DEP OP A/C</font><b>
+		</label>
+	</td>
+</tr>  -->
+<!-- Added by Ashwani on 25.10.07 -->
+<tr>
+		 <td colspan="6" align ="center">
+				  <label style = "font-weight:bold; font-size:14; color:#660000;" >
+					<b>New Account Open<b>
+				  </label>
+		 </td>	 
+</tr>
+
+<tr>
+	<!-- Customer ID -->
+	<td >
+		<b><label class="displayLabelBright"  id="cst">
+			Customer ID:
+		</label><b>
+	</td>
+	<!-- CURRENCY -->
+	<td>		 
+		<b><label class="displayLabelBright" id="currency">
+			Currency:
+		</label><b>
+	</td>
+	<!-- Scheme Code -->
+	<td>
+		<b><label class="displayLabelBright" id="glcode" >
+			GL Code:
+		</label><b>
+	</td>
+	<td >
+		<b><label class="displayLabelBright" id="glname">
+			GL Head:
+		</label><b>
+	</td> <!-- Added by Ashwani on 25.10.07 -->
+
+</tr>
+<tr>
+ <!-- Customer Name -->
+  <td colspan=4>
+   <b><label class="displayLabelBright" id="cstname">
+	Name:
+   </label><b>
+  </td>
+</tr>
+
+
+</table>
+</body>
+</center>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3" height="2%" align="center" style="color:yellow;">		  
+			  <b>
+Customer
+<b>
+		</td>
+	</tr>
+
+
+	
+	<tr>
+		<td colspan="3" valign="top" height="70%">		  
+				
+<body style="margin:0" onload="Sessionget(),abc()" onkeypress="escapeKey(event)">
+
+<form name="acOpenDetailForm" method="post" action="/CobaSys/account/acopen/acOpenDetail.do">
+<table cellpadding="0" cellspacing="0" width="80%" align="center" border="1">
+
+<!-- relation type -->
+<tr> 
+	<td>Relation type</td>
+	<td colspan="2">
+		<SELECT NAME="relationType" id="relationType" tabindex="1" > 
+			<option value="1"> Main customer</option> 
+			<option value="2"> Joint holder 
+		</select> 
+	</td>
+</tr>
+<!-- Customer Id -->
+<tr> 
+	<td nowrap>
+		
+			Customer ID
+		
+	</td>
+
+	
+	<td colspan="2">
+	<input type="text" name="custid" maxlength="15" size="20" tabindex="2" value="65694" onkeypress="isValidNumber(id),escapeKey(event)" onblur="customerInfo()" id="custid" onchange="customer()">
+		
+		
+		<input type="text"  name="custIdLabel" id="custIdLabel" class="labelText" tabindex="-1" readonly="true"/>
+		<input type="hidden" id="hiddenCustId">
+	</td>
+</tr>
+<!-- Cust Name -->
+<tr> 
+	<td>Cust.Name</td>
+	<td colspan="3">
+		<input type="text" name="salutation" tabindex="-1" value="./Mr." readonly="readonly" style="width=70px;" class="textDisable" id="salutation">	 
+		<input type="text" name="custHName" size="30" tabindex="-1" value="." onkeypress="escapeKey(event)" readonly="readonly" class="textDisable" id="custHName">
+		<input type="text" name="custEName" maxlength="100" size="50" tabindex="-1" value="AJAY KAPOOR" onkeypress="escapeKey(event)" readonly="readonly" class="textDisable" id="custEName"> 
+
+	</td>
+</tr>
+ <tr> 
+	<td>Remark</td>
+	<td>
+		<input type="text" name="hremarks" maxlength="50" size="38" tabindex="-1" value="" readonly="readonly" class="textDisable" id="hremarks">
+		<input type="text" name="eremarks" maxlength="50" size="38" tabindex="8" value="" onchange="remark()" id="eremarks">
+	</td>
+ </tr>
+	
+
+   <tr>
+	<td > To Make Joint Account</td>
+   <td align="center" colspan="2">
+  <!-- <input type="text" name="recordCounter" size="10" value="2 OF 2" readonly="readonly" style="text-align:center;" id="recordCounter">
+
+		<input type="button" name="btnrcprev" id="btrelcustNewPrev"  class="btn btn-primary"  style="width:110px" value="Previous"  tabindex="11" onClick="moveBackCustomerDetail()"/>
+		<input type ="checkBox" name="chrcprev" id="chrcprev" tabindex="13">-->
+		<input type="button" name="btnrcback" id="btnrcback" class="btn btn-primary"  style="width:80px" value="Next"  tabindex="12" onClick="moveNextCustomerDetail()" />
+		
+		<input type="hidden" name="totalCust" value="2" id="totalCust">
+		<input type="hidden" name="currentCust" value="2" id="currentCust">
+	</td>
+  </tr>
+  <tr>
+	<td>
+		 <input type="hidden" name="checkFlagL" value="true" id="checkFlagL">
+		<input type="hidden" name="blankcheckL" value="true" id="blankcheckL">
+		<input type="hidden" name="vv" value="0" id="vv">
+	</td>
+  </tr>
+<input type="hidden" name="focus" value="dispatchmode" id="focus">
+<input type="hidden" name="mode" value="N" id="mode">
+<input type="hidden" name="cmmmode" id="cmmmode">
+<input type="hidden" name="cmmeditdeletecustid" id="cmmeditdeletecustid">
+<input type="hidden" name="firm_ind" value="" id="firm_ind">
+<input type="hidden" name="custidlastpageinfo" id="custidlastpageinfo">
+<input type="hidden" name="page" id="page">
+<!-- Open mode is taken for account, this will be used in address screen , we will set it to Account here --> 
+<input type="hidden" name="openMode" id="openMode">		
+<input type="hidden" name="sCustType" value="M" id="sCustType">
+</table>
+
+<br>
+<br>
+
+<script>
+
+
+function customer()
+{
+
+
+var x= document.getElementById("custid").value;
+
+document.getElementById("custid").innerHTML = x;  
+  
+	var URL1 ="http://192.168.1.101:8290/AccountInfoAction.do?action=getCustomerInfo&custID="+x;
+	
+	http.onreadystatechange= function (){processAccount5("customerId")};
+	http.open("POST",URL1,false);
+	http.send(null);
+
+	
+}
+function processAccount5()
+{	
+
+
+if((http.readyState == 4) && (http.status == 200)){
+var resArray1=http.responseText;
+
+var jsonData = JSON.parse(resArray1);
+var cust_ename=jsonData["cust_ename"];
+var cust_ettl=jsonData["cust_ettl"];
+var textbox = document.getElementById('custEName').value=cust_ename; 
+var textbox = document.getElementById('salutation').value=cust_ettl; 
+ }
+ }
+
+function remark(){
+
+var a=document.getElementById("eremarks").value;
+
+var b=a.toUpperCase();
+document.getElementById("hremarks").value=b;
+
+}
+
+
+
+function Sessionget(){
+
+document.getElementById("relationType").value=sessionStorage.getItem('relationType'+customersize);
+document.getElementById("custid").value=sessionStorage.getItem('custid'+customersize);
+document.getElementById("custIdLabel").value=sessionStorage.getItem('custIdLabel'+customersize);
+document.getElementById("salutation").value=sessionStorage.getItem('salutation'+customersize);
+//document.getElementById("custHName").value=sessionStorage.getItem('custHName'+customersize);
+document.getElementById("custEName").value=sessionStorage.getItem('custEName'+customersize);
+document.getElementById("hremarks").value=sessionStorage.getItem('hremarks'+customersize);
+document.getElementById("eremarks").value=sessionStorage.getItem('eremarks'+customersize);
+
+
+}
+
+
+
+function sessionSet(){
+sessionStorage.setItem('relationType'+customersize,document.getElementById("relationType").value);
+sessionStorage.setItem('custid'+customersize,document.getElementById("custid").value);
+sessionStorage.setItem('custIdLabel'+customersize,document.getElementById("custIdLabel").value);
+sessionStorage.setItem('salutation'+customersize,document.getElementById("salutation").value);
+//sessionStorage.setItem('custHName'+customersize,document.getElementById("custHName").value);
+sessionStorage.setItem('custEName'+customersize,document.getElementById("custEName").value);
+sessionStorage.setItem('hremarks'+customersize,document.getElementById("hremarks").value);
+sessionStorage.setItem('eremarks'+customersize,document.getElementById("eremarks").value);
+}
+
+
+
+var customersize="";
+
+
+
+
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+
+customersize="1";
+}
+else
+{
+customersize=sessionStorage.getItem("NextPage");
+}
+
+
+function moveNextCustomerDetail(){
+sessionSet();
+
+//var securitysize="";
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+}
+else
+{
+customersize=parseInt(sessionStorage.getItem("NextPage"))+1;
+sessionStorage.setItem("NextPage",customersize);
+}
+
+location.href='JointAccount.html';
+
+}
+
+function saveJointAccountDetail(){
+//debugger; 
+sessionSet();
+var jssondataadd="[";
+for(i=1;i<5;i++)
+{
+alert('relationType'+i);
+if(sessionStorage.getItem('relationType'+i)==null)
+{
+break;
+}
+
+jssondataadd+=" "+'"'+"Jointaccount"+'":'+"{";
+
+jssondataadd+=' "'+document.getElementById("relationType").name+'" :'+'"'+sessionStorage.getItem('relationType'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("custid").name+'" :'+'"'+sessionStorage.getItem('custid'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("custIdLabel").name+'" :'+'"'+sessionStorage.getItem('custIdLabel'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("salutation").name+'" :'+'"'+sessionStorage.getItem('salutation'+i)+'" , ';
+//jssondataadd+=' "'+document.getElementById("custHName").name+'" :'+'"'+sessionStorage.getItem('custHName'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("custEName").name+'" :'+'"'+sessionStorage.getItem('custEName'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("hremarks").name+'" :'+'"'+sessionStorage.getItem('hremarks'+i)+'" , ';
+jssondataadd+=' "'+document.getElementById("eremarks").name+'" :'+'"'+sessionStorage.getItem('eremarks'+i)+'" , ';
+
+jssondataadd+="}";
+}
+
+jssondataadd+="]";
+alert(jssondataadd);
+
+var GeneralDetail=sessionStorage.genDetail;
+alert(GeneralDetail);
+
+location.href='AccountOpen.html';
+}
+
+function goBack(){
+location.href='AccountOpen.html';
+}
+function goToGeneralDetail(){
+sessionSet();
+location.href='GeneralDetail.html';
+}
+</script>
+
+<table align="center" width="90%"   cellpadding="0" cellspacing="0" border="0">
+<tr> 
+	<td align="center">
+		<INPUT TYPE="BUTTON" class="btn btn-primary" name="genDtl" ID="genDtl"  VALUE='Gen. Det.' onClick="goToGeneralDetail()" tabindex="14"> 
+		
+		<INPUT TYPE="BUTTON" class="btn btn-primary" ID="intDtl" VALUE="OK"  tabindex="16" onclick="saveJointAccountDetail()">
+		<INPUT TYPE="BUTTON" class="btn btn-primary" VALUE="Cancel" ID="cancel"  onClick="goBack()" tabindex="24"/>
+		
+			 
+		
+	</td>
+</tr>
+
+<tr> 
+	<td align="center">
+
+	
+
+
+
+
+
+	</td>
+</tr>
+</table>
+&nbsp;
+
+<DIV id = "DivSubmit" class = "WarningTab" 
+style = "display:none;FONT-SIZE: 8pt;HEIGHT:20px" >
+<MARQUEE>
+<!--Plz wait While ...-->
+<B>Please Wait . . .</B>
+</MARQUEE>
+</DIV>
+
+<DIV id = "DivHotKey" style = "display:block;">
+<script>
+var ind = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	
+	
+</script>
+</DIV>
+
+<table>
+<tr><td>		
+<A style = "FONT-SIZE:7pt;text-decoration:none;CURSOR:HAND;color:#5E4F1C;" onclick = "javascript:openCustomerDetails()" tabindex = -1>
+	Alt+F2-Customer Detail
+</A>
+</td></tr>
+</table>
+<!-- End Scrollable Table  Pending Application List-->
+&nbsp;
+
+
+
+
+
+</form>  
+
+
+		</td>
+	</tr>
+	 
+ 
+</table>
+</body>
+</html>
+

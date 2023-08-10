@@ -1,0 +1,1 @@
+function getMessage(e){errCodeMap.size()||createMessageMap();var a=errCodeMap.get(e),l=alertMap.get(a);if(null!=l){null==langID&&(langID="001");var r=l[langID];return null==r&&(r=l["001"]),r}}

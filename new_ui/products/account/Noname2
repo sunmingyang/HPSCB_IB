@@ -1,0 +1,628 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<%
+	String newUserName = "";
+%>
+<title>Internet Banking | HPSCB Bank</title>
+<script
+	src="<%=request.getContextPath()%>/new_ui/IB_UI/js/js-image-slider.js"
+	type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/new_ui/IB_UI/js/jquery.js"></script>
+<script src="<%=request.getContextPath()%>/scripts/common.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/style-1.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/app.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/ApplyNow.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/products/account/newUser.css" />
+<link
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/js-image-slider.css"
+	rel="stylesheet" type="text/css" />
+
+<script>
+function isNumberKey(evt)
+{
+	   
+	   var keyCode = (evt.which) ? evt.which : evt.keyCode;
+	   if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57))
+       return false;
+
+   return true;
+}
+	function setField(id,val1)
+	{
+		var val=document.getElementById(id).value;
+		if(val=="")
+		{
+			document.getElementById(id).value=val1;
+			/*document.getElementById(id+"Div").style.display="block";
+			document.getElementById(id+"Div").style.opacity="5";*/
+		}
+		else if(val==val1)
+		{
+			document.getElementById(id).value="";
+			/*document.getElementById(id+"Div").style.display="none";
+			document.getElementById(id+"Div").style.opacity="0";*/
+		
+		}
+		else
+		{
+			/*document.getElementById(id+"Div").style.display="none";
+			document.getElementById(id+"Div").style.opacity="0";*/
+		}
+	}
+function validateForm(){
+	var mobile=document.getElementById("mobile").value;
+	var email=document.getElementById("email").value;
+	var firstName=document.getElementById("firstName").value;
+	var middleName=document.getElementById("middleName").value;
+	var lastName=document.getElementById("lastName").value;
+	var iagree=document.getElementById("agree").checked;
+	if(mobile=="" || mobile=="Mobile Number*"){
+		document.getElementById("mobileDiv").style.display="block";
+		document.getElementById("mobileDiv").style.opacity="5";
+		document.getElementById("mobile").focus();
+		return false;
+	}
+	else{
+		document.getElementById("mobileDiv").style.display="none";
+		document.getElementById("mobileDiv").style.opacity="0";
+	}
+	if(email=="" || email=="E-Mail ID*"){
+		document.getElementById("emailDiv").style.display="block";
+		document.getElementById("emailDiv").style.opacity="5";
+		document.getElementById("email").focus();
+		return false;
+	}
+	else{
+		document.getElementById("emailDiv").style.display="none";
+		document.getElementById("emailDiv").style.opacity="0";
+	}
+	if(firstName=="" || firstName=="First Name*"){
+		document.getElementById("firstNameDiv").style.display="block";
+		document.getElementById("firstNameDiv").style.opacity="5";
+		document.getElementById("firstName").focus();
+		
+		return false;
+	}
+	else{
+		document.getElementById("firstNameDiv").style.display="none";
+		document.getElementById("firstNameDiv").style.opacity="0";
+	}
+	if(lastName==""|| lastName=="Last Name*")
+	{
+		document.getElementById("lastNameDiv").style.display="block";
+		document.getElementById("lastNameDiv").style.opacity="5";
+		document.getElementById("lastName").focus();
+		return false;
+	}
+	else{
+		document.getElementById("lastNameDiv").style.display="none";
+		document.getElementById("lastNameDiv").style.opacity="0";
+	}
+	if(middleName=="" || middleName=="Middle Name"){
+		middleName="-";
+	}
+	if(iagree==false)
+	{
+		alert("Select Check Box");
+		document.getElementById("agree").focus();
+		return false;
+	}
+	document.getElementById("step1").style.display="none";
+	document.getElementById("step2").style.display="block";
+
+}
+
+</script>
+</head>
+<body
+	onload='/*document.getElementById("step1").style.display="none";document.getElementById("step2").style.display="block";*/'>
+	<div class="clearfix">
+		<div id="main-container" style="height: 1000px;">
+			<div id="sub-container">
+				<div class="top-bar" style="height: 55px;">
+					<img
+						src="<%=request.getContextPath()%>/new_ui/IB_UI/images/animation_new.jpg"
+						alt="bank_Logo" style="float: left;" /> The H.P. STATE
+					CO-OPERATIVE BANK LTD.
+				</div>
+				<!-- <div id="content"></div>  -->
+			</div>
+			<!--class="clearfix" id="main" role="main"-->
+			<div class="leftpanel">
+
+				<div class="middleContainer clearfix" style="height: 800px;">
+					<div class="row content-account all-steps auto-padding">
+						<div class="large-3 small-12 medium-3 show-for-small tell-us-text">
+							<div class="menu-item-descrip menu-frst-item">TELL US ABOUT
+								YOURSELF</div>
+							<div class="progress-bar-wrap clearfix">
+								<div class="progress-bar">
+									<div class="progress-steps progress-steps-active"></div>
+									<div class="progress-steps progress-steps-active"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+									<div class="progress-steps"></div>
+								</div>
+								<div class="progress-end"></div>
+							</div>
+						</div>
+						<div
+							class="large-3 small-12 medium-3 columns padding0 left-accnt-menu hide-for-small">
+							<div class="row menu-wrap">
+								<div
+									class="large-12 small-12 medium-12 columns padding0 menu-item-name-wrap">
+									<div class="progress-bar-wrap">
+										<div class="progress-bar">
+											<div class="progress-steps progress-steps-active"></div>
+											<div class="progress-steps progress-steps-active"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+											<div class="progress-steps"></div>
+										</div>
+										<div class="progress-end"></div>
+									</div>
+									<ul class="menu-item-list-wrap">
+										<li class="menu-item clearfix menu-item1 menu-item-selcted">
+											<div class="menu-item-descrip menu-frst-item">Tell us
+												about yourself</div> <i class="icon-angle-right right-arrow"></i>
+										</li>
+										<li class="menu-item clearfix menu-item2">
+											<div class="menu-item-descrip menu-second-item">Choose
+												your account</div> <i class="icon-angle-right right-arrow"></i>
+										</li>
+										<li class="menu-item clearfix menu-item3">
+											<div class="menu-item-descrip">Start saving now</div> <i
+											class="icon-angle-right right-arrow"></i>
+										</li>
+										<li class="menu-item clearfix menu-item4">
+											<div class="menu-item-descrip">Grow your savings</div> <i
+											class="icon-angle-right right-arrow"> </i>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="step1"
+							class="large-9 small-12 medium-9 columns padding0 content-spacing">
+							<div class="about-you-option aadhar-form">
+								<div class="about-you-step-head-wrap clearfix">
+									<div class="girl-boy-img-wrap girl-boy-img-wrap-mob">
+										<img
+											src="<%=request.getContextPath()%>/new_ui/IB_UI/images/About You.png"
+											class="boy-img">
+									</div>
+									<div class="about-you-step-head">
+										<div class="step-descrip-head step-descrip-head-mob">TELL
+											US ABOUT YOURSELF</div>
+										<div class="step-descrip hide-for-small">Start saving
+											with HPSCB Bank in 4 easy steps. To start with, please
+											provide your contact details.</div>
+									</div>
+								</div>
+								<div class="grey-wrap">
+									<div class="page-task-heading promt-to-enter">Enter your
+										Aadhaar Number &amp; click on 'Verify' to prefill the details</div>
+									<form id="aadharform" name="aadharform" action="" method="post">
+										<div class="row form-field-frst-row mob-view">
+											<div class="large-4 small-12 medium-4 columns padding0">
+												<span class="input input--yoshiko"> <!--  Aadhaar Number -->
+													<input type="text" name="userForm.adharId" maxlength="12"
+													value="Aadhar Number" id="aadharNo"
+													class="input__field input__field--yoshiko adhar-no-input input-style num-only adhar-num"
+													autocomplete="off"
+													onfocus="setField('aadharNo','Aadhar Number')"
+													onblur="setField('aadharNo','Aadhar Number')"
+													onkeyPress="return isNumberKey(event)" />
+													<div class="error-message" id="aadharNoDiv">Please
+														enter your Aadhaar number</div>
+												</span>
+											</div>
+											<div
+												class="large-4 small-12 medium-4 columns padding0 end margin-for-mob">
+												<div
+													class="next-button-wrap next-back-btn clearfix submit-btn-wrap">
+													<input type="submit" id="aadharVerifyNo_btn" value="VERIFY"
+														class="back-button verify-button adhaar-verify"
+														onclick="return false;" />
+												</div>
+											</div>
+										</div>
+										<div class="otp-enter mr-hide">
+											<div class="otp-statemnt">Enter OTP which has been sent
+												to the mobile number registered with Aadhaar</div>
+											<div
+												class="row form-field-otp-input form-field-set-for-mob mob-view">
+												<div class="large-4 small-12 medium-4 columns padding0">
+													<span class="input input--yoshiko"> <input
+														type="text" name="userForm.adharOtp" maxlength="10"
+														value="" id="aadharOtp"
+														class="input__field input__field--yoshiko adhar-no-input input-style num-only mandatory adhar-otp"
+														autocomplete="off">
+														<div class="error-message">Please enter a valid OTP</div>
+														<label class="input__label input__label--yoshiko"><span
+															data-content="OTP*"
+															class="input__label-content input__label-content--yoshiko">OTP*</span></label></span>
+												</div>
+												<div class="large-4 small-12 medium-4 columns padding0 end">
+													<div
+														class="next-button-wrap next-back-btn clearfix submit-btn-wrap">
+														<button type="submit" id="aadharVerifyOtp_btn"
+															value="SUBMIT" class="back-button back2 submit-button"
+															onclick="return false;">SUBMIT</button>
+
+
+													</div>
+												</div>
+											</div>
+											<div class="otp-resend-link-wrp">
+												<a
+													href="https://savingsaccount.icicibank.com/SBAOF/newcustomer.action#"
+													id="resendOtp" class="link-to-resend">Click here</a><span
+													class="resend-text">to resend OTP</span>
+											</div>
+
+
+											<div
+												class="row form-field-stp1-frst-row captcha-row mr-hide form-field-set-for-mob mob-view">
+												<div class="large-4 small-12 medium-4 columns padding0">
+													<span class="input input--yoshiko existing-fields">
+														<input type="text" id="captchaDisplay"
+														oncopy="return false" ondrag="return false"
+														ondrop="return false" onpaste="return false"
+														autocomplete="off"
+														style="background-image: url(images/captcha_retype.jpg); text-align: center; border: none; font-weight: bold; font-size: large; width: 180px"
+														readonly=""> <input type="hidden"
+														name="captchaText" readonly="" id="captchaText"> <img
+														border="0" style="cursor: pointer" id="btnrefresh"
+														src="./APPLY ONLINE __ ACCOUNT OPENING __ ICICI BANK_files/captcha_refresh.jpg">
+													</span>
+												</div>
+												<div class="large-4 small-12 medium-4 columns padding0">
+													<span class="input input--yoshiko existing-fields">
+														<input type="text" name="captchaEnter" maxlength="10"
+														value="" id="captchaEnter"
+														class="input__field input__field--yoshiko input-style relation-style-cc mandatory"
+														autocomplete="off">
+														<div class="error-message">Please enter the captcha
+															code</div> <label class="input__label input__label--yoshiko"><span
+															data-content="Captcha*"
+															class="input__label-content input__label-content--yoshiko">Captcha*</span></label>
+													</span>
+												</div>
+
+												<div class="large-4 small-12 medium-4 columns padding0">
+													<span class="input input--yoshiko existing-fields"></span>
+												</div>
+
+											</div>
+
+
+
+										</div>
+
+
+									</form>
+
+
+
+
+								</div>
+								<div class="error-message-select aadhar-message mr-hide"></div>
+
+
+								<div class="or-wrap or-new-spacing">
+									<div class="or-spacing"></div>
+									<div
+										class="page-task-heading or-mid-spacing or-new-text-spacing">OR</div>
+									<div class="or-spacing"></div>
+								</div>
+
+
+								<form id="userform" name="userform" action="" method="post">
+
+									<input type="hidden" name="adharId" value="" id="adharId"
+										class="input__field input__field--yoshiko adhar-no-input input-style num-only adhar-num-userform"
+										readonly="true">
+
+
+									<div class="page-task-heading promt-to-enter">In case you
+										do not remember your Aadhaar number, you can enter the below
+										details yourself.</div>
+									<div class="row form-field-secnd-row mob-view margin-spacing">
+										<div class="large-4 small-12 medium-4 columns padding0">
+											<span class="input input--yoshiko"> <input type="text"
+												name="mobile" maxlength="10" value="Mobile Number*"
+												id="mobile"
+												class="input__field input__field--yoshiko mobile-no-input input-style num-only mobile-error mandatory"
+												autocomplete="off"
+												onfocus="setField('mobile','Mobile Number*')"
+												onblur="setField('mobile','Mobile Number*')"
+												onkeyPress="return isNumberKey(event)" />
+												<div class="error-message" id="mobileDiv">Please enter
+													your Mobile Number</div>
+											</span>
+
+										</div>
+										<div
+											class="large-4 small-12 medium-4 columns padding0 end user-email mob-view">
+											<span class="input input--yoshiko"> <input type="text"
+												name="email" maxlength="50" value="E-Mail ID*" id="email"
+												class="input__field input__field--yoshiko email-id-input input-style validate mandatory"
+												autocomplete="off" onfocus="setField('email','E-Mail ID*')"
+												onblur="setField('email','E-Mail ID*')"
+												onchange="return isValidEMail('email')">
+												<div class="error-message" id="emailDiv">Please enter
+													your Email</div>
+											</span>
+										</div>
+									</div>
+									<div class="row form-field-third-row mob-view">
+										<div
+											class="large-4 small-12 medium-4 columns padding0 user-first-name mob-view">
+											<span class="input input--yoshiko"> <input type="text"
+												name="firstName" maxlength="50" id="firstName"
+												class="input__field input__field--yoshiko first-name-input first-name-error input-style mandatory"
+												autocomplete="off" value="First Name*"
+												onfocus="setField('firstName','First Name*')"
+												onblur="setField('firstName','First Name*')" />
+												<div class="error-message" id="firstNameDiv">Please
+													enter your first name</div>
+											</span>
+										</div>
+										<div
+											class="large-4 small-12 medium-4 columns padding0 user-mid-name mob-view">
+											<span class="input input--yoshiko"> <input type="text"
+												name="middleName" maxlength="50" id="middleName"
+												class="input__field input__field--yoshiko middle-name-input input-style"
+												autocomplete="off" value="Middle Name"
+												onfocus="setField('middleName','Middle Name')"
+												onblur="setField('middleName','Middle Name')" />
+										</div>
+										<div
+											class="large-4 small-12 medium-4 columns padding0 user-mid-name mob-view">
+											<span class="input input--yoshiko"> <input type="text"
+												name="lastName" maxlength="50" id="lastName"
+												class="input__field input__field--yoshiko last-name-input input-style mandatory"
+												autocomplete="off" value="Last Name*"
+												onfocus="setField('lastName','Last Name*')"
+												onblur="setField('lastName','Last Name*')" />
+
+
+											</span>
+											<div class="error-message" id="lastNameDiv">Please
+												enter your last name</div>
+										</div>
+										<i class="info mob-view">Name should be exactly same as
+											mentioned in the Identity proof.</i>
+										<div class="agree-check mob-view">
+
+
+											<input type="checkbox" value="agree" id="agree" name="agree"
+												class="accnt-start-agree authorize-check"> <label
+												class="agree-statement">I accept the <a href=""
+												target="_self" class="read-tnc link-to-resend"><u>Terms
+														and Conditions</u></a> and agree to be contacted by HPSCB Bank*.
+											</label>
+										</div>
+										<div class="authorize-error-statemnt mr-hide">Please
+											click on the checkbox to proceed</div>
+
+										<i class="info mob-view">This application is for resident
+											Indians only.<br>* mandatory fields
+										</i>
+
+
+
+										<div class="next-button-wrap clearfix">
+											<input type="button" id="userform__preForm" value="NEXT"
+												class="next-button aadharform-next"
+												onclick="return validateForm()" />
+
+
+										</div>
+								</form>
+
+							</div>
+						</div>
+
+
+					</div>
+					<div id="step2" style="display: none;"
+						class="large-9 small-12 medium-9 columns padding0 content-spacing">
+						<div class="about-you-option about-you-steps">
+							<div class="about-you-step-head-wrap clearfix">
+								<div class="girl-boy-img-wrap girl-boy-img-wrap-mob">
+									<img
+										src="<%=request.getContextPath()%>/new_ui/IB_UI/images/About You.png"
+										class="boy-img">
+								</div>
+								<div class="about-you-step-head">
+									<div class="step-descrip-head step-descrip-head-mob">
+										TELL US ABOUT YOURSELF</div>
+									<div class="step-descrip hide-for-small">
+										Thanks
+										<%=newUserName%>
+										for providing us with your contact details. Please enter your
+										personal,communication and document detail.
+									</div>
+								</div>
+							</div>
+							<div class="section-heading">Personal Details</div>
+							<!-- 						class="row form-field-stp1-frst-row form-field-name form-field-set-for-mob mob-view name-wrap input-field-spacing"
+ -->
+							<div style="width: 100%;">
+							
+							<!--   <div class="message">&nbsp;</div>
+									 -->
+							 <table width="100%">
+									<tr>
+										<td>
+										 <table width="100%" style="border:none">
+											<tr>
+												<td>
+													&nbsp;
+													<select name="manualUserInfo.salutation" tabindex="1"
+													id="salutation"
+													class="pan-num-select type-of-cust-select salutation-sel state-city-select">
+														<option value="">Salutation*</option>
+														<option value="411">Mr</option>
+														<option value="451">Mrs</option>
+														<option value="452">Ms</option>
+														<option value="453">Dr</option>
+														<option value="454">Prf</option>
+													</select>
+												</td>
+												<td class="message">
+													First Name*
+													<input type="text"
+														name="manualUserInfo.firstName" maxlength="50"
+														value="geetika" tabindex="2" id="firstName"
+														class="input__field input__field--yoshiko first-name-input input-style mandatory"
+														autocomplete="off" readonly="true">
+												</td>
+												<td class="message">
+													Middle Name
+													<input type="text"
+														name="manualUserInfo.middleName" maxlength="50" value=""
+														tabindex="3" id="middleName"
+														class="input__field input__field--yoshiko middle-name-input input-style"
+														autocomplete="off" readonly="true">
+												</td>
+												<td class="message">
+													Last Name*
+													<input type="text"
+														name="manualUserInfo.lastName" maxlength="50" value="walia"
+														tabindex="4" id="lastName"
+														class="input__field input__field--yoshiko last-name-input input-style mandatory"
+														autocomplete="off" readonly="true">
+												</td>
+											</tr>
+										</td>
+									</table>
+									</tr>
+									<tr>
+										<td colspan="1"><i>Name should be exactly same as
+										mentioned in the Identity proof.</i>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											 <table width="100%" style="border:none">
+												<tr>
+													<td class="radio-btn-type">
+														Gender:
+													</td>
+													<td>
+														<select id="gender" name="gender"
+															class="pan-num-select type-of-cust-select salutation-sel state-city-select">
+															<option value="">Gender*</option>
+															<option value="">Male</option>
+															<option value="">Female</option>
+														</select>
+													</td>
+													<td class="radio-btn-type">
+														Marital Status:
+													</td>
+													<td>
+														<select id="maritalStatus" name="maritalStatus"
+															class="pan-num-select type-of-cust-select salutation-sel state-city-select">
+															<option value="">Martal Status*</option>
+															<option value="">Single</option>
+															<option value="">Married</option>
+														</select>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											 <table width="100%" style="border:none">
+												<tr>
+													<td class="radio-btn-type">
+														Date of Birth<input type="text"
+															name="dob" maxlength="50" tabindex="4" id="dob"
+															class="input__field input__field--yoshiko input-style date-calendr mandatory hasDatepicker" 
+															autocomplete="off">	
+															<input type="button" style="background-image:<%=request.getContextPath()%>/new_ui/IB_UI/images/calendar.gif"/>
+													</td>
+													<td class="radio-btn-type">
+														Father's Name
+														<input type="text"
+														name="fatherName" maxlength="50" value="" tabindex="2"
+														id="fatherName"
+														class="input__field input__field--yoshiko first-name-input input-style mandatory"
+														autocomplete="off" readonly="false">
+													</td>
+													<td class="radio-btn-type">
+														Mother's Maiden Name
+														<input
+															type="text" name="motherName" maxlength="50" value=""
+															tabindex="3" id="motherName"
+															class="input__field input__field--yoshiko middle-name-input input-style"
+															autocomplete="off" readonly="true">
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+								</table>
+
+							</div>
+							<div class="next-button-wrap clearfix">
+								<input type="button" id="userform__preForm" value="NEXT"
+									class="next-button aadharform-next"
+									onclick="return validateForm()" />
+
+
+							</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+	<footer>
+		<div class="middleContainer"></div>
+	</footer>
+
+</body>
+</html>

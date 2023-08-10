@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+
+
+<script>
+
+var serverIP = "192.168.1.116";		//"192.168.1.72";
+var serverPort = "8098";
+
+
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+<script>
+
+function capitalPart(){
+var capAcc=document.getElementById("captAccNo1").value;
+var URL1 ="http://"+serverIP+":"+serverPort+"/AccountInfoAction.do?action=fetchAccountBalance&accNo="+capAcc;
+http.open("POST",URL1,false);
+http.onreadystatechange= function (){processAccount1("captAccNo1")};
+http.send(null);
+function processAccount1(f)
+{
+if((http.readyState == 4) && (http.status == 200)){
+var resArray1=http.responseText;
+var jsonData = JSON.parse(resArray1);
+var customername=jsonData["customerName"];
+var textbox = document.getElementById('captAccName1'); 
+	  textbox.value=customername;
+}
+}
+}
+function interestpart(){
+var capAcc=document.getElementById("intAccNo1").value;
+var URL1 ="http://"+serverIP+":"+serverPort+"/AccountInfoAction.do?action=fetchAccountBalance&accNo="+capAcc;
+http.open("POST",URL1,false);
+http.onreadystatechange= function (){processAccount1("intAccNo1")};
+http.send(null);
+function processAccount1(f)
+{
+if((http.readyState == 4) && (http.status == 200)){
+var resArray1=http.responseText;
+var jsonData = JSON.parse(resArray1);
+var customername=jsonData["customerName"];
+var textbox = document.getElementById('intAccName1'); 
+	  textbox.value=customername;
+}
+}
+}
+
+
+function abc(){
+var a=sessionStorage.getItem('cust');
+		
+		 var textbox = document.getElementById('cst'); 
+	  textbox.innerHTML="Customer ID: "+a;
+
+	var GLCode=sessionStorage.getItem('glcode');
+	 var textbox = document.getElementById('glcode'); 
+	  textbox.innerHTML="GL Code: "+GLCode;
+
+	  var GLName=sessionStorage.getItem('glname');
+	 var textbox = document.getElementById('glname'); 
+	  textbox.innerHTML="GL Head: "+GLName;
+
+	  var cstname=sessionStorage.getItem('custname');
+	
+		 var textbox = document.getElementById('cstname'); 
+	  textbox.innerHTML=" Name: "+cstname;
+
+	   var currancy=sessionStorage.getItem('currency');
+	
+		 var textbox = document.getElementById('currency'); 
+	  textbox.innerHTML=" Currency: "+currancy;
+		}
+</script>
+<html>
+  <head>
+	<title>
+	  Install Payment
+	</title>
+	 
+  </head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" onkeyDown="StopKeyHandler()" >
+
+
+	<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+		<tr >
+			<td colspan="3" height="25%" class="displayTitleacc">		  
+				
+<center>
+  <body >
+   
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+
+	<table border="0" width="100%" height="100%" >
+ 
+
+	<!-- Added by Ashwani on 25.10.07 -->
+	<tr>
+			 <td colspan="6" align ="center">
+					  <label style = "font-weight:bold; font-size:14; color:#660000;" >
+						<b>New Account Open<b>
+					  </label>
+			 </td>	 
+	</tr>
+
+	<tr>
+		<!-- Customer ID -->
+		<td >
+			<b><label class="displayLabelBright" id="cst">
+				Customer ID:
+			</label><b>
+		</td>
+		<!-- CURRENCY -->
+		<td>		 
+			<b><label class="displayLabelBright" id="currency">
+				Currency:
+			</label><b>
+		</td>
+		<!-- Scheme Code -->
+		<td>
+			<b><label class="displayLabelBright" id="glcode">
+				GL Code:
+			</label><b>
+		</td>
+		<td >
+			<b><label class="displayLabelBright" id="glname">
+				GL Head:
+			</label><b>
+		</td> <!-- Added by Ashwani on 25.10.07 -->
+
+	</tr>
+	<tr>
+	 <!-- Customer Name -->
+	  <td colspan=4>
+	   <b><label class="displayLabelBright" id="cstname">
+		Name:
+	   </label><b>
+	  </td>
+	</tr>
+
+	
+	</table>
+	</body>
+</center>
+ 
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" height="2%" align="center" style="color:yellow;">		  
+				  <b>
+	Installment's Payment
+<b>
+			</td>
+		</tr>
+
+
+		
+		<tr>
+			<td colspan="3" valign="top" height="70%">		  
+				  
+<body onkeypress="escapeKey(event)" onload="abc(),Sessionget()">
+<form name="loanLimitInstPayForm" method="post" action="/CobaSys/loanLimitInstallPaymentAction.do">
+	
+
+<BR>
+<div id="loanacc" style="display:none">
+<table  align="center" border="0" width="100%" height="100%" >
+<table align="center">
+<TR>
+	<TD>
+				<label>Account no.<font size="-1" color="#FF0000">*</font></label>
+			</TD>
+	<TD>&nbsp;<input type="text" name="accNo" maxlength="19" value="">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>Account Holder Name&nbsp;</TD>
+	<TD>&nbsp;<input type="text" name="accName" tabindex="-1" value="" readonly="readonly" style="width:250px;" class="labelText">&nbsp;</TD>
+</TR>
+</table>
+</div>
+
+<CENTER><div id="tabdiv"  ><BR>
+
+<TABLE  align="center">
+
+<TR>
+	<TD>
+				<label>Capital Part Recovering Account<font size="-1" color="#FF0000" >*</font></label>
+			</TD>
+	<TD>&nbsp;<input type="text" name="captAccNo" maxlength="19" value="" id="captAccNo1" onchange="capitalPart()">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>Account Holder Name&nbsp;</TD>
+	<TD>&nbsp;<input type="text" name="captAccName" tabindex="-1" value="" readonly="readonly" style="width:250px;" class="labelText" id="captAccName1">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>Acc Type&nbsp;</TD>
+	<TD>&nbsp;<input type="text" name="captAccType" tabindex="-1" value="" readonly="readonly" style="width:250px;" class="labelText">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>
+			<label>Interest Part Recovering Account<font size="-1" color="#FF0000">*</font></label> 
+			</TD>
+	<TD>&nbsp;<input type="text" name="intAccNo" maxlength="19" value="" id="intAccNo1"  onchange="interestpart()">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>Account Holder Name&nbsp;</TD>
+	<TD>&nbsp;<input type="text" name="intAccName" tabindex="-1" value="" readonly="readonly" style="width:250px;" class="labelText" id="intAccName1">&nbsp;</TD>
+</TR>
+<TR>
+	<TD>Acc Type&nbsp;</TD>
+	<TD>&nbsp;<input type="text" name="intAccType" tabindex="-1" value="" readonly="readonly" style="width:250px;" class="labelText">&nbsp;</TD>
+</TR>
+</TABLE><BR></DIV></CENTER>
+
+<script>
+
+
+function Sessionget(){
+
+
+document.getElementById("captAccNo1").value=sessionStorage.getItem('captAccNo1');
+document.getElementById("captAccName1").value=sessionStorage.getItem('captAccName1');
+document.getElementById("intAccNo1").value=sessionStorage.getItem('intAccNo1');
+document.getElementById("intAccName1").value=sessionStorage.getItem('intAccName1');
+
+
+}
+
+function sessionSet(){
+
+
+
+sessionStorage.setItem('captAccNo1',document.getElementById("captAccNo1").value);
+
+
+sessionStorage.setItem('captAccName1',document.getElementById("captAccName1").value);
+sessionStorage.setItem('intAccNo1',document.getElementById("intAccNo1").value);
+sessionStorage.setItem('intAccName1',document.getElementById("intAccName1").value);
+
+                        
+
+}
+
+
+function saveDetail()
+{
+
+sessionSet();
+var jssondataadd="{";
+
+
+jssondataadd+='"'+document.getElementById("captAccNo1").name+'":'+'"'+document.getElementById("captAccNo1").value+'",';
+jssondataadd+='"'+document.getElementById("captAccName1").name+'":'+'"'+document.getElementById("captAccName1").value+'",';
+jssondataadd+='"'+document.getElementById("intAccNo1").name+'":'+'"'+document.getElementById("intAccNo1").value+'",';
+
+jssondataadd+='"'+document.getElementById("intAccName1").name+'":'+'"'+document.getElementById("intAccName1").value+'",';
+jssondataadd+="}";
+
+//alert(jssondataadd);
+
+sessionStorage.InstallMent=jssondataadd;
+location.href='LoanlimitInterest.html';
+}
+
+
+
+function goBack(){
+
+location.href='LoanlimitInterest.html';
+
+
+}
+
+</script>
+
+<BR>
+<TABLE align="center">
+<TR>
+	<TD><INPUT TYPE="button" class="btn btn-primary"   name="valid" value="Validate" ONCLICK="validDetail()" style="width:110px;"/></TD>
+	<TD><INPUT TYPE="button" class="btn btn-primary"   name="ok" value="OK" style="width:110px;"ONCLICK="saveDetail()" /></TD>
+	<TD><INPUT TYPE="button" class="btn btn-primary"  name="cancel" value="Cancel" style="width:110px;"ONCLICK="goBack()"/></TD>
+	
+</TR>
+</TABLE>
+<div name = "NotValidAcc" id = "NotValidAcc" style = "display:none"> 
+<font color = red >Installment Payment CustID is different than Loan Account CustId</font>
+<marquee height="8" width="0" color="navy" bgcolor="blue" scrolldelay="0" scrollamount = "0"></marquee>
+</div>
+
+
+<input type="hidden" name="focus" value="">
+<input type="hidden" name="mode" value="N">
+<input type="hidden" name="captAccKid" value="0">
+<input type="hidden" name="intAccKid" value="0">
+<input type="hidden" name="openAcckid" value="">
+<input type="hidden" name="fetchAccDet" value="">
+<input type="hidden" name="warerr" value="">
+<input type="hidden" name="sopencustKid" value="66405">
+<input type="hidden" name="sMode" value="">
+<input type="hidden" name="sFrom" value="">
+
+</form>
+</body>
+
+			</td>
+		</tr>
+		 
+	 
+	</table>
+</body>
+</html>
+
+</html>

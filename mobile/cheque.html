@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>mBanking</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="mbanking_css/style.css">
+		<style>
+		
+		img {
+		    max-width: 100%;
+		}
+		
+		</style>
+		
+		<script type="text/javascript">
+		jQuery(document).ready( function(){
+		
+			var account_array = (sessionStorage.accounts_list_for_transfer).split(",");
+			
+			var s= document.getElementById('accounts');
+			var s2= document.getElementById('accounts2');
+			var s3= document.getElementById('accounts3');
+			if(s.options.length == 0)
+			{
+				for (var i in account_array) {
+					s.options[s.options.length]= new Option(account_array[i], account_array[i]);
+					s2.options[s2.options.length]= new Option(account_array[i], account_array[i]);
+					s3.options[s3.options.length]= new Option(account_array[i], account_array[i]);
+				}
+			}
+			
+			
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+			    
+    			//$('#spinner').show();
+    			
+    			
+
+
+			/*
+			$('.dropdown-menu').click(function(e) {
+			Android.alert("clicked");
+			           e.preventDefault();
+			            e.stopPropagation();
+			            e.stopImmediatePropagation();
+			    });
+        
+			$(".dropdown-menu li a").click(function(){
+				Android.alert($(this).text()+ "&nbsp<span class='caret'></span>" );
+				$("#dropdownMenu1").html($(this).text()+ "&nbsp<span class='caret'></span>"); 
+				
+			});
+			*/
+			
+			
+		});
+		
+		function chequeBookRequest()
+		{
+			selected_account = $('#accounts3 option:selected').val();
+			//Android.alert(selected_account);
+			
+			getData('cheque_book_order', selected_account);
+		}
+		function stopPaymentRequest()
+		{
+			selected_account = $('#accounts2 option:selected').val();
+			chq_no = document.getElementById('stop_payment_cheque_number').value ;
+			if(chq_no.length > 0)
+			{
+				sessionStorage.chequeNo = chq_no;
+				getData('cheque_stop_payment', selected_account);
+			}
+			else
+				showAlert("alert-div-stop-payment","Error", "Please Enter Cheque No.");
+		}
+		function enquiryRequest()
+		{
+			selected_account = $('#accounts option:selected').val();
+			chq_no = document.getElementById('enquiry_cheque_number').value ;
+			if(chq_no.length > 0)
+			{
+				sessionStorage.chequeNo = chq_no;
+				getData('cheque_enquiry', selected_account);
+			}
+			else
+				showAlert("alert-div-cheque-enquiry","Error", "Please Enter Cheque No.");
+		}
+		function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+			
+			//$("#alert_dialogue").show();
+			//$('.alert').show();	
+		}
+		function cancel()
+		{
+			location.href="/mobile/mobilemenu.jsp";
+		}
+		</script>	
+
+
+  	</head>
+
+ 	<body>
+ 	
+ 	
+ 		<div id="spinner" class="spinner" style="display:none;">
+    		<img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+		</div>
+
+
+  
+	  	<div style="position:fixed; width:100%; background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      		<a  href="/mobile/mobilemenu.jsp">   <img src="/mobile/img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+		 
+		 
+		 
+		 
+		<div class="container" style="margin-left: 20px;margin-top:30px;width:90%;" >
+		    <ul class="nav nav-tabs" style="font-size:18px;">
+		        <li class="nav active"><a href="#A" data-toggle="tab">Enquiry</a></li>
+		        <li class="nav"><a href="#B" data-toggle="tab">Stop</a></li>
+		        <li class="nav"><a href="#C" data-toggle="tab">Order</a></li>
+		    </ul>
+
+    		<!-- Tab panes -->
+		    <div class="tab-content">
+			    <div class="tab-pane fade in active" id="A">
+			    	<br/><div style="display:none" id="alert-div-cheque-enquiry" class="alert alert-danger col-sm-12"></div>
+			        
+			        <br/><div style="font-size:18px;color:#666666;">From which account did you issue the cheque?</div>
+
+					<br/><select name="select" id="accounts" style="font-size:18px;">
+						  
+					</select>
+			
+			        <br/><div style="font-size:18px;color:#666666;">Please type the cheque number here</div>
+			        <br/><input type=text  id="enquiry_cheque_number" />
+			        <br/><br/><input type=button value="Enquiry Status" onclick="enquiryRequest();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/><input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			   </div>
+		        
+		        
+		         <div class="tab-pane fade" id="B">
+		         	<br/><div style="display:none" id="alert-div-stop-payment" class="alert alert-danger col-sm-12"></div>
+			        <br/><div style="font-size:18px;color:#666666;">From which account did you issue the cheque?</div>
+
+					<br/><select name="select" id="accounts2" style="font-size:18px;">
+						  
+					</select>
+			
+			        <br/><div style="font-size:18px;color:#666666;">Please type the cheque number here</div>
+			        <br/><input type=text  id="stop_payment_cheque_number" name="stop_payment_cheque_number"/>
+			        <br/><br/><input type=button value="Stop Cheque" onclick="stopPaymentRequest();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/><input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			   </div>
+			   
+			   <div class="tab-pane fade" id="C">
+			   		<br/><div style="display:none" id="alert-div-cheque-book" class="alert alert-danger col-sm-12"></div>
+			        <br/><div style="font-size:18px;color:#666666;">For which account would you like to request a cheque book?</div>
+
+					<br/><select name="select" id="accounts3" style="font-size:18px;">
+					</select>
+					
+			        <br/><br/><input type=button value="Proceed" onclick="chequeBookRequest();" style="min-height:40px;background: #696969;color:#ffffff;min-width: 125px;font-size:18px;"/><input type=button value="Cancel" onclick="cancel();" style="min-height:40px;margin-left:20px;background: #bdbdbd;color:#ffffff;min-width: 125px;font-size:18px;"/>
+			   </div>
+		        
+		        
+
+		        <div class="tab-pane fade" id="C">Content inside tab C</div>
+		    </div>
+</div>
+   
+   
+   
+   
+   
+  	</body>
+  
+	  
+</html>
+
+
+
+
+
+<!--
+		       <br/><div class="dropdown">
+				   <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+				      data-toggle="dropdown">
+				      Accounts
+				      <span class="caret"></span>
+				   </button>
+				   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				      <li role="presentation">
+				         <a role="menuitem" tabindex="-1" href="#">0001200005001</a>
+				      </li>
+				      <li role="presentation">
+				         <a role="menuitem" tabindex="-1" href="#">0001200005002</a>
+				      </li>
+				      <li role="presentation">
+				         <a role="menuitem" tabindex="-1" href="#">0001200005003</a>
+				      </li>
+				     <li role="presentation" class="divider"></li>
+				      <li role="presentation">
+				         <a role="menuitem" tabindex="-1" href="#">Separated link</a>
+				      </li>
+				      
+				   </ul>
+				</div>
+				-->
+
+
+

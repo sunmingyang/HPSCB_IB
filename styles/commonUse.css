@@ -1,0 +1,20 @@
+.breadcrumb-container {
+    max-height: 36px;
+background-color: #f8f9fa;
+padding: 4px 15px;
+margin-bottom: 10px;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Custom styles for breadcrumb items */
+.normalHeadText{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.box-sec{
+-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
+
+}

@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Custid</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/mobile/jquery/jquery.min.js"></script>
+    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+    <script src="/mobile/mbanking_js/mbanking.js"></script>
+    <link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+       $(function() {
+            $( "#date" ).datepicker({
+              
+               dateFormat:"dd/mm/yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });  
+		
+		
+    </script>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #date
+        {
+            background-image: url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		
+		</style>
+
+<style>
+
+    img {
+    max-width: 100%;
+    }
+    #container-div {
+    position: absolute;
+    top: 30%;
+    bottom: 0;
+    height: 67%;
+    width: 100%;
+    overflow-y: auto;
+    border-top: 0px solid #2E2E2E;
+    }
+
+</style> -->
+
+<script>
+
+var AmtinGrp = '3';
+var appcontext ='CobaSys' ;
+function getSecondLangWord(engWord)
+{
+	return region(engWord,'english') ; 
+	
+}
+function showMessage(sArg)
+{
+	getMessage(1,sArg,"errors");
+}
+var todayDate=new Date();
+var calShortWeekNames="";
+var calLongMntNames="";
+
+</script>
+
+
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+</html>
+
+
+<script>
+	var femaleMinor="18";
+	var maleMinor="21"
+	var Dob="25/05/1978";
+	var sDate="";
+	var categoryList=new Array();
+	var personalFlag=false;
+	var brnCode='002';
+	var i=0;
+	var spouceDetailYN = "N" ;
+	var cmMode = "";
+	var retailMode = "";
+	var tdsAtCust = "N";
+	var OccupationReqdYN='N' ; 
+	
+	sDate='05/04/2016';
+	retailMode = '';
+	femaleMinor='18'; 
+	maleMinor='18'; 
+	spouceDetailYN='Y'
+	tdsAtCust ='N';
+	
+	</script>
+<html>
+<head>
+    <!-- <script src="CobaSys/custid/CmmPersonalsJS.js"> </script>
+    <script src="CobaSys/custid/customerId.js"> </script>
+    <link href="CobaSys/style/margin.css" rel="stylesheet" type="margin/css"/> -->
+	
+    <title>Personal  Details</title>
+    <script>
+	var paramlang="";
+	var bCancel=false;
+	var preOcpBehave = "";
+
+	function getval()
+	{
+			
+
+		var a = sessionStorage.isEFirstName;
+        var b = sessionStorage.length;
+		if (typeof(sessionStorage.isEFirstName) !== "undefined")
+		{
+		document.getElementById("isEFirstName").value=sessionStorage.isEFirstName;
+		
+		var select= document.getElementById('CustIdPersonalCategory');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.value='0';
+		opt.innerHTML='--please select--';
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resArrayPersonal);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+		}
+		document.getElementById("CustIdPersonalCategory").value=sessionStorage.CustIdPersonalCategory;
+	
+		document.getElementById("isESaluation").value=sessionStorage.isESaluation;
+		document.getElementById("isEMiddleName").value=sessionStorage.isEMiddleName;
+		document.getElementById("isELastName").value=sessionStorage.isELastName;
+		document.getElementById("isRelationShip").value=sessionStorage.isRelationShip;
+		document.getElementById("isEFSaluation").value=sessionStorage.isEFSaluation;
+		document.getElementById("isEFName").value=sessionStorage.isEFName;
+		document.getElementById("isSEName").value=sessionStorage.isSEName;
+		
+		select= document.getElementById('CBSBranchMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resArrayCBS);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("CBSBranchMaster").value=sessionStorage.CBSBranchMaster;
+		
+
+		select= document.getElementById('creditMaster');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resArrayCredit);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+	    document.getElementById("creditMaster").value=sessionStorage.creditMaster;
+		if(sessionStorage.sexm=="Male"){
+			document.getElementById("sexm").checked=true;
+		}
+		if(sessionStorage.sexf=="Female") {
+			document.getElementById("sexf").checked=true;
+		}
+		document.getElementById("isAge").value=sessionStorage.isAge;
+		document.getElementById("minorLabel").value=sessionStorage.minorLabel;
+		document.getElementById("date").value=sessionStorage.date;
+		
+		
+		select= document.getElementById('NatureOfCustomer');
+		select.innerHTML = '';
+	    opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resArrayCustomer);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+			}
+		document.getElementById("NatureOfCustomer").value=sessionStorage.NatureOfCustomer;
+		
+		var select= document.getElementById('PersonalOccupation');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		if(sessionStorage.resOccupation!=undefined){
+			var  jsonData = JSON.parse(sessionStorage.resOccupation);
+			if (jsonData != null) {
+			    for (var i = 0; i < jsonData[2].length; i++){
+					opt = document.createElement('option');
+					opt.value = jsonData[0][i];
+					opt.innerHTML = jsonData[2][i];
+					select.appendChild(opt);
+				}
+			}
+		}
+		document.getElementById("PersonalOccupation").value=sessionStorage.PersonalOccupation;
+		
+		var select= document.getElementById('PersonalConstitution');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resConstitution);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("PersonalConstitution").value=sessionStorage.PersonalConstitution;
+
+		
+		var select= document.getElementById('ReligionMaster');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resReligion);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("ReligionMaster").value=sessionStorage.ReligionMaster;
+
+		var select= document.getElementById('CastMaster');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resCast);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("CastMaster").value=sessionStorage.CastMaster;
+
+	    var	select= document.getElementById('Classmaster');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resClass);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("Classmaster").value=sessionStorage.Classmaster;
+
+		var select= document.getElementById('EducationMaster');
+		select.innerHTML = '';
+	    var opt = document.createElement('option');
+		opt.innerHTML="--please select--";
+		opt.value="0";
+		select.appendChild(opt);
+		var  jsonData = JSON.parse(sessionStorage.resEducation);
+		if (jsonData != null) {
+		    for (var i = 0; i < jsonData[2].length; i++){
+				opt = document.createElement('option');
+				opt.value = jsonData[0][i];
+				opt.innerHTML = jsonData[2][i];
+				select.appendChild(opt);
+			}
+		}
+		document.getElementById("EducationMaster").value=sessionStorage.EducationMaster;
+	
+		
+		document.getElementById("isPANno").value=sessionStorage.isPANno;
+		document.getElementById("MaritalST").value=sessionStorage.MaritalST;
+		document.getElementById("isCreditcardNo").value=sessionStorage.isCreditcardNo;
+		} else {
+		var URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=creditMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountCredit("creditMaster")};
+		http.send(null);
+		sessionStorage.creditMaster=document.getElementById("creditMaster").value;
+
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CBSBranchMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountCBS("CBSBranchMaster")};
+		http.send(null);
+		
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CustIdPersonalCategory";
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountPersonal("CustIdPersonalCategory")};
+		http.send(null);
+
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=EmployeeCode"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountEmpCode("EmployeeCode")};
+		http.send(null);
+		
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=NatureOfCustomer"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountCustomer("NatureOfCustomer")};
+		http.send(null);
+	
+		URL="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster2&masterType=PersonalConstitution&Criteria1=I&Criteria2=B";
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountConstitution("PersonalConstitution")};
+		http.send(null);
+		
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=ReligionMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountReligion("ReligionMaster")};
+		http.send(null);
+		
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=CastMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountClass("Classmaster")};
+		http.send(null);
+		
+		URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=ClassMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountCast("CastMaster")};
+		http.send(null);
+
+		var URL ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=EducationMaster"; 
+	    http.open("POST",URL,false);
+		http.onreadystatechange= function (){processAccountEducation("EducationMaster")};
+		http.send(null);
+	}
+ }
+
+function showMessage(code,type) {
+	if(type=="error"){
+	getMessage(1,code,"errors");
+	}
+	else
+		getMessage(1,code,"ApplicationResources");
+}
+</script>
+    <script language="JavaScript1.2">
+	var msg="Updation starts ! Do you want to continue?";
+	</script>
+</head>
+<body onhelp="return false"   marginheight="0"   topmargin="0" onLoad="getval()">
+<center>
+
+	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:-5px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div  style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block; "  />
+		</div>
+		<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; height:60%; width:95%;" >
+<div id="tabdiv" style="border:0; ridge #CCCCCC;" >
+<font size=2 color="'#003399'">
+    <label><u><b>Customer Id Generation</b></u></label>
+</font>
+<HR>
+<center>
+
+
+<table  CELLPADDING =0 cellspacing=0  width="10%">
+
+
+    <tr >
+        <td class="horizontal"></td><td class="horizontal"></td><td class="horizontal"></td><td class="horizontal"></td>
+    </tr>
+</table>
+
+<table width="05%" border="0" cellpadding="0" cellspacing=0>
+<form id="frm1" name="CmmPersonalJsp" method="post"action="">
+<table  CELLPADDING =0 cellspacing=0 >
+<!--helppanel-->
+
+<!--help panel-->
+<tr><td colspan="4" align="center"></td></tr>
+
+
+<tr>
+    <td width="34%"><label>Salutation</label> &nbsp;</td>
+    <td><b >:</b>
+        <select name="isESaluation" Id="isESaluation" onchange="titleChanged()" style="width:90px;" tabindex="10" >
+
+            <option  Id='MRS.' value='./MRS.'>
+                ./MRS.
+            </option>
+
+            <option  Id='DR.' value='./DR.'>
+                ./DR.
+            </option>
+
+            <option  Id='MISS.' value='./MISS.'>
+                ./MISS.
+            </option>
+
+            <option  Id='SIR' value='./SIR'>
+                ./SIR
+            </option>
+
+            <option  Id='MR.' value='./MR.'>
+                ./MR.
+            </option>
+
+            <option  Id='MASTR' value='./MASTR'>
+                ./MASTR
+            </option>
+
+            <option  Id='BABY' value='./BABY'>
+                ./BABY
+            </option>
+
+            <option  Id='SMT.' value='./SMT.'>
+                ./SMT.
+            </option>
+
+        </select>
+        <script>
+	   document.getElementById("isESaluation").selectedIndex=5;
+	  </script>
+    </td>
+</tr>
+<tr>
+    <td>
+        Customer Name
+    </td>
+
+    <td><b >:&nbsp;</b><input type="text" name="isEFirstName" maxlength="33" size="30" tabindex="20" value=""  id="isEFirstName">
+    </td>
+    <td>
+    </td>
+</tr>
+<tr>
+    <td>
+        Middle Name
+    </td>
+    <td>
+        <b >:</b>
+        <input type="text" name="isEMiddleName" maxlength="33" size="30" tabindex="30" value=""  id="isEMiddleName">
+    </td>
+    <td>
+
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Last Name
+    </td>
+    <td>
+        <b >:</b>
+        <input type="text" name="isELastName" maxlength="33" size="30" tabindex="40" value="" onkeypress="alphaNumChat(this),isValidAlpha()" onblur="convertLanguage('isELastName','isHLastName',paramlang) ,validatetext(this),concatName()" id="isELastName">
+    </td>
+    <td>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <label>Relationship</label> &nbsp;</td>
+
+    <td nowrap="nowrap"> <b>:</b>
+        <select name="isRelationShip" tabindex="50" id="isRelationShip" style="width:65px"><option value="S">S/O</option>
+            <option value="D">D/O</option>
+            <option value="W">W/O</option>
+            <option value="F">F/O</option>
+            <option value="M">M/O</option>
+            <option value="C">C/O</option></select>
+        <select name="isEFSaluation" Id="isEFSaluation"  style="width:90px;" tabindex="60">
+
+            <option Id="DR." value='./DR.'>./DR.</option>
+
+            <option Id="SIR" value='./SIR'>./SIR</option>
+
+            <option Id="MR." value='./MR.'>./MR.</option>
+
+            <option Id="MASTR" value='./MASTR'>./MASTR</option>
+
+            <option Id="BABY" value='./BABY'>./BABY</option>
+
+            <option Id="SMT." value='./SMT.'>./SMT.</option>
+        </select>
+        <script>
+			   document.getElementById("isEFSaluation").value='';
+		</script></td>
+<tr>
+    <td><label>Father's Name</label>
+    <td><b>:</b><input type="text" name="isEFName" maxlength="100" size="30" tabindex="70" value="" onkeypress="alphaNumChat(this)" onblur="convertLanguage('isEFName','isHFName',paramlang),validatetext(this)" id="isEFName"></td>
+    </td>
+
+</tr>
+<!--Code added by arvind for LDB for sort name, nic no and nic issue date-->
+<tr>
+    <td nowrap><label>Short Name<font size="3" color='red'>*</font></label></td>
+    <td><b>:</b><input type="text" name="isSEName" maxlength="40" size="25" tabindex="-1" value="" onkeypress="" onblur="" id="isSEName"></td>
+
+    <!--add the code for the LDB for national identity card by arvind ends-->
+
+<tr>
+    <td><label>Category<font size="3" color='red'>*</font></label></td>
+    <td width="7%" nowrap>
+        <b>:&nbsp;</b>
+
+        <select name="Category" Id="CustIdPersonalCategory"
+
+        <option value="1">category</option></select>
+
+        <script>
+
+function processAccountPersonal(e)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		sessionStorage.resArrayPersonal=resArray;
+	   var jsonData = JSON.parse(resArray);
+	   var select= document.getElementById(e);
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+  if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	   }
+	}
+  }      
+</script>
+
+
+
+    </td>
+    <td colspan="2" align="left">
+
+    </td>
+</tr>
+
+<tr>
+    <td><label>PrimaryBranch <font size="3" color='red'>*</font></label>&nbsp;</td>
+    <td nowrap>
+        <b>:&nbsp;</b>
+
+        <select name="primarybranch" Id="CBSBranchMaster">
+
+            <option value="1">primarybranch</option></select>
+
+        <script>
+function processAccountCBS(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	sessionStorage.resArrayCBS=resArray1;
+	var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+  if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	}
+}
+</script>
+    </td>
+    <td colspan="2" align="left">
+</tr>
+<tr>
+    <td><label>Sex <font size="3" color='red'>*</font></label>&nbsp;</td>
+    <td colspan="3">
+
+        <b>:&nbsp;</b><input type="radio" name="isSex" tabindex="100" value="Male"id="sexm" >  Male &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="isSex" tabindex="100" value="Female"id="sexf" >
+        Female &nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+</tr>
+
+<tr>
+    <td><label>Date of  Birth<font size="3" color='red'>*</font>
+        <td nowrap colspan="3">
+            <b>:&nbsp;</b><input type="text" placeholder="dd/mm/yyyy" style="width:80px" id="date" onchange="age(this)" name="birthdate" maxlength="10"  />
+            <script type="text/javascript">
+function age(e){
+var textBox = document.getElementById('date').value;
+var dateOfBirth = new Date(textBox);
+var today = new Date();
+
+var diff = new Date(today.getTime() - dateOfBirth.getTime());
+
+var textBox1 = document.getElementById('isAge');
+textBox1.value= Number(diff.getUTCFullYear() - 1970);
+
+("Age: " + Number(diff.getUTCFullYear() - 1970) + " years, " +diff.getUTCMonth() + " months, " + Number(diff.getUTCDate() - 1) + " days");
+}
+</script>
+            <input type="text"  style ="background-color:activeborder;border:0px;width:50px" value='Minor'   disabled="true"   tabindex='-1' name="minorLabel"   id="minorLabel" /><label>Age (Years)<font size="3" color='red'>*</font></label>
+            <b>:&nbsp;</b><input type="text" name="isAge" tabindex="-1" value="" readonly="readonly" style="width:50px" id="isAge"> </td></label><!--new changes by arvind for LDB-->
+        <div id="isMinorDiv" style="display:none;position:absolute;top:140px;left:400px;">
+
+        </div>
+</tr>
+<tr>
+
+    <script>
+			function doSameValue(evt)
+			{
+				if(evt.checked==true)
+					evt.checked=false;
+				else
+						evt.checked=true;
+			}
+		</script>
+</tr>
+
+<tr>
+    <td>
+        <label>
+            <label>Customer Credit Rating</label>
+    </td>
+
+    <td><b>:&nbsp;</b>
+        <select name="CustCRating" Id="creditMaster" >
+            <option value="1">primarybranch</option></select>
+
+        <script>
+function processAccountCredit(f)
+{	
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resArrayCredit=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	    var select= document.getElementById(f);
+	    var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	  }	
+	}
+}
+		</script>
+    </td>
+    <td>
+    </td>
+</tr>
+
+<tr valign="top">
+    <td ><label>Nature Of Customer<font size="3" color='red'>*</font></label></td>
+    <td><b>:&nbsp;</b>
+        <select name="Nature Of Customer" onchange='processAccount0()' Id="NatureOfCustomer"> </select>
+        <script>
+function processAccountCustomer(f)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;	
+		sessionStorage.resArrayCustomer=resArray1;
+		var jsonData = JSON.parse(resArray1);
+		var select= document.getElementById(f);
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	   }
+	}
+}
+</script>
+</td>
+</tr>
+<tr>
+<tr>
+    <td><label>Occupation</label>
+    </td>
+    <td><b>:&nbsp;</b>
+
+        <select name="occuption" Id="PersonalOccupation"/ >
+        <script>
+function processAccount0(){	
+	var natureId = document.getElementById('NatureOfCustomer').value;
+	var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getDependentMaster1&masterType=PersonalOccupation&Criteria1="+natureId; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount5("PersonalOccupation")};
+		http.send(null);
+     }
+
+function processAccount5(f)
+{	
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resOccupation=resArray1;
+		var jsonData = JSON.parse(resArray1);
+		var select= document.getElementById(f);
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+}
+</script>
+</td>
+</tr>
+<tr>
+    <td><label>Constitution<font size="3" color='red'>*</font></label></td>
+    <td><b>:&nbsp;</b>
+        <select name="Constitution" Id="PersonalConstitution"
+        <option value="1">Constitution</option></select>
+        <script>
+function processAccountConstitution(e)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		sessionStorage.resConstitution=resArray;
+		var jsonData = JSON.parse(resArray);
+		var select= document.getElementById(e);
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+	if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		} 
+	}
+    }
+}      
+</script>
+</td>
+</tr>
+
+
+	<tr>
+		<td><label>Religion</label></td>
+		<td><b>:&nbsp;</b>
+        <select name="Religion" Id="ReligionMaster">
+<script>
+function processAccountReligion(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resReligion=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+  if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+	
+  }
+		</script>
+
+        </select></td>
+
+</tr>
+<tr>
+    <td><label>Caste</label> &nbsp;</td>
+    <td><b>:&nbsp;</b>
+        <select name="cast" Id="CastMaster"
+                >
+
+            <script>
+function processAccountCast(f)
+{
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resCast=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	    var select= document.getElementById(f);
+	    var opt = document.createElement('option');
+		opt.value =0;
+		opt.innerHTML = " -- please Select --";
+		select.appendChild(opt);
+		if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+	   }}	
+     }
+		</script>
+        </select>  
+	</td>
+</tr>
+
+<tr>
+    <td><label>Class</label> &nbsp;</td>
+    <td><b>:&nbsp;</b>
+
+        <select name="Class" Id="Classmaster"   >
+		<script>
+
+function processAccountClass(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resClass=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+  if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+	
+	
+     }
+		</script>
+
+
+        </select></td>
+
+</tr>
+<tr>
+    <td><label>Education</label></td>
+    <td>
+        <b>:&nbsp;</b>
+        <select name="Education" Id="EducationMaster" onchange="myfunction(this)">
+            <script>
+function processAccountEducation(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		sessionStorage.resEducation=resArray1;
+		var jsonData = JSON.parse(resArray1);
+	   
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+  if (jsonData != null) {
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       }
+	   }
+	
+	
+     }
+		</script>
+    </td>
+
+
+
+</tr>
+
+    <td><label>PAN No.</label>
+    <td><b>:&nbsp;</b><input type="text" name="isPANno" maxlength="10" size="15" tabindex="311" value="" onkeypress="isValidPanNo(this)" onblur="isValidPanLength(this)" id="isPANno"></td>
+</tr>
+<tr>
+    <td><label>Credit Card No.</label></td>
+    <td><b>:&nbsp;</b><input type="text" name="isCreditcardNo" maxlength="20" size="26" tabindex="320" value="" onkeypress="isValidNumber()" id="isCreditcardNo"></td>
+
+    <td width="5%">&nbsp;</td>
+</tr>
+<tr>
+    <td><label>Marital Status<font size="3" color='red'>*</font></label> &nbsp;</td>
+    <td ><b>:&nbsp;</b>
+
+        <select name="MaritalST" Id="MaritalST" >
+            <option value="NA">Please Select</option>
+            <option value="S">SINGLE</option>
+            <option value="M">MARRIED</option>
+
+
+
+        </select>
+
+
+</tr>  </table>
+<div id ="Tr_Group" style="display:none">
+    <table width="100%">
+        <tr>
+            <td><label>Group Name</label>
+            </td>
+            <td colspan="2"><b>:&nbsp;</b>
+            <td colspan="2" width="20%" align="left" ></td>
+
+        </tr>
+</div>
+</table>
+</div>
+<td colspan="2" width="20%" align="Right">
+	<input type="button" name="address" class = "form-control input-lg btn btn-info" Id="Address" value='Address' onclick="openAddress()"  tabindex="340" />
+    <input type="button" class = "form-control input-lg btn btn-info" onclick="openIntroducer()"   Id="Other-IntroDucer" value='Introducer' tabindex ="360"/>
+</td>
+
+<HR>
+<table width="80%" border="0" cellpadding="0">
+    <script>
+	msg1='Are You Sure ?';
+	var msgForAcOpen='Customer Entries are blank, Do u want to Open Account with Last Saved Customers Id';
+	  </script>
+</table>
+<table>
+    <tr>
+        <td  colspan="3" align="right">
+
+            <script>
+function openAddress() { 
+
+
+
+ SessionSet() ;
+ sessionStorage.setItem("AdressKnown","CMMAddress") ;  
+ window.location.href = "./address.html";
+}
+
+function openIntroducer() { 
+ SessionSet() ; 
+ window.location.href = "./Introducer.html";
+}
+
+function SessionSet() {
+
+sessionStorage.isEFirstName=document.getElementById("isEFirstName").value;
+
+var CustIdPersonal = document.getElementById('CustIdPersonalCategory').options[document.getElementById('CustIdPersonalCategory').selectedIndex].text;
+sessionStorage.CustIdPersonalCategory=document.getElementById("CustIdPersonalCategory").value;
+sessionStorage.CustIdPersonal=CustIdPersonal;
+
+sessionStorage.isESaluation=document.getElementById("isESaluation").value;
+sessionStorage.isEMiddleName=document.getElementById("isEMiddleName").value;
+sessionStorage.isELastName=document.getElementById("isELastName").value;
+sessionStorage.isRelationShip=document.getElementById("isRelationShip").value;
+sessionStorage.isEFSaluation=document.getElementById("isEFSaluation").value;
+sessionStorage.isEFName=document.getElementById("isEFName").value;
+sessionStorage.isSEName=document.getElementById("isSEName").value;
+
+
+var CBSBranch = document.getElementById('CBSBranchMaster').options[document.getElementById('CBSBranchMaster').selectedIndex].text;
+sessionStorage.CBSBranchMaster=document.getElementById("CBSBranchMaster").value;
+sessionStorage.CBSBranch=CBSBranch;
+
+
+if(document.getElementById("sexm").checked){
+	sessionStorage.sexm=document.getElementById("sexm").value;
+}
+if(document.getElementById("sexf").checked){
+	sessionStorage.sexf=document.getElementById("sexf").value;
+}
+
+
+//sessionStorage.input_date='';
+sessionStorage.date=document.getElementById("date").value;
+sessionStorage.isAge=document.getElementById("isAge").value;
+sessionStorage.minorLabel=document.getElementById("minorLabel").value;
+
+
+
+
+var creditMasterName = document.getElementById('creditMaster').options[document.getElementById('creditMaster').selectedIndex].text;
+sessionStorage.creditMaster=document.getElementById("creditMaster").value;
+sessionStorage.creditMasterName=creditMasterName;
+
+
+
+var NOC = document.getElementById('NatureOfCustomer').options[document.getElementById('NatureOfCustomer').selectedIndex].text;
+sessionStorage.NatureOfCustomer=document.getElementById("NatureOfCustomer").value;
+sessionStorage.NOC=NOC;
+
+
+sessionStorage.PersonalOccupation=document.getElementById("PersonalOccupation").value;
+
+var PC = document.getElementById('PersonalConstitution').options[document.getElementById('PersonalConstitution').selectedIndex].text;
+sessionStorage.PersonalConstitution=document.getElementById("PersonalConstitution").value;
+sessionStorage.PC=PC;
+
+
+
+
+var RM = document.getElementById('ReligionMaster').options[document.getElementById('ReligionMaster').selectedIndex].text;
+sessionStorage.ReligionMaster=document.getElementById("ReligionMaster").value;
+sessionStorage.RM=RM;
+
+var CM = document.getElementById('CastMaster').options[document.getElementById('CastMaster').selectedIndex].text;
+sessionStorage.CastMaster=document.getElementById("CastMaster").value;
+sessionStorage.CM=CM;
+
+var CLSM = document.getElementById('Classmaster').options[document.getElementById('Classmaster').selectedIndex].text;
+sessionStorage.Classmaster=document.getElementById("Classmaster").value;
+sessionStorage.CLSM=CLSM;
+
+var EM = document.getElementById('EducationMaster').options[document.getElementById('EducationMaster').selectedIndex].text;
+sessionStorage.EducationMaster=document.getElementById("EducationMaster").value;
+sessionStorage.EM=EM;
+
+
+sessionStorage.isPANno=document.getElementById("isPANno").value;
+sessionStorage.isCreditcardNo=document.getElementById("isCreditcardNo").value;
+sessionStorage.MaritalST=document.getElementById("MaritalST").value;
+
+}
+
+function serializeSchema(form) {
+    return [].map.call(form.elements, function(el) {
+        return {
+           
+           name:el.name,
+            value:el.value
+        };
+    });
+};
+
+function validateInputForm()
+{
+
+var d=document.forms[0];
+var inputField;
+var jssondataadd="{";
+for(var i=0;i<d.length;i++)
+{
+inputField=d[i];
+jssondataadd+='"'+inputField.name+'" : ';
+jssondataadd+='"'+inputField.value+'" ,  ';
+}
+//Android.alert(jssondataadd);
+
+jssondataadd+="}";
+
+//alert(jssondataadd);
+var form = document.querySelector('form'),
+    schema = serializeSchema(form);
+
+
+//cmmpersonal data
+var formjson=jssondataadd;
+//Android.alert(jssondataadd);
+
+sessionStorage.personalform =jssondataadd;
+var addressjson=sessionStorage.adressform;
+var introducerjson=sessionStorage.introducerform;
+
+var url = "http://"+cbsserver+":"+cbsserverPort+"/CobaSys/custid/AddressDetail.do?action=saveCustomerIdData&Source=TABBANKING&custRole=A&custID="+ sessionStorage.customerID +"&JSONPersonal="+formjson+"&JSONAddress="+addressjson+"&JSONIntroducer="+introducerjson;
+
+
+
+http.open("POST", url, true);
+http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+        var json = JSON.parse(http.responseText);
+        if (json[0]=="success") { 
+			Android.alert("Customer id Created:" + json[1] );
+			document.getElementById('frm1').reset();
+		}else  { 
+			Android.alert("Error In Customer ID Creation:" + json[1] );
+		}
+    }
+}
+http.send(null);
+//location.href='frm1';
+}
+
+function fnvalidation() {
+
+    if ((document.getElementById("isSEName").value).length == 0) {
+             Android.alert("The Short Name should not be empty");
+
+    }else
+
+         if ((document.getElementById("CustIdPersonalCategory").value).length == 0) {
+              Android.alert("The Category should not be empty");
+    } else
+         if ((document.getElementById("CBSBranchMaster").value).length == 0) {
+              Android.alert("The Branch should not be empty");
+    } else
+         if ((document.getElementById("sexm").value).length == 0) {
+              Android.alert("The sexm should not be empty");
+    } else
+         if ((document.getElementById("NatureOfCustomer").value).length == 0) {
+              Android.alert("The NatureOfCustomer should not be empty");
+    }  else
+         if ((document.getElementById("PersonalConstitution").value).length == 0) {
+              Android.alert("The Constitution should not be empty");
+    }
+	else
+         if ((document.getElementById("MaritalST").value).length == 0) {
+              Android.alert("The MaritalST should not be empty");
+    }else {
+  		return validateInputForm(this,msg);
+    }
+
+}
+
+</script>
+            <input type="button" class = "form-control input-lg btn btn-info" id="submit1" onclick="fnvalidation()"  tabindex="450" value='Save'>
+            <input type="button"  class = "form-control input-lg btn btn-info" tabindex="460" name="cancel" id ="cancel" value="Cancel"  onclick="home();">
+
+
+    </tr>
+</table>
+<table><tr>
+
+</tr>
+</table>
+
+<HR>
+<DIV style="BACKGROUND-COLOR: activeborder">
+    <TABLE width="100%">
+        <TR>
+            <TD>
+            </TD>
+        </TR>
+    </TABLE>
+</DIV>
+<div id = "DivSubmit" class = "WarningTab"
+     style = "display:none;FONT-SIZE: 8pt;HEIGHT:20px" >
+    <marquee>
+        <!--Plz wait While ...-->
+        <b>Please Wait . . .</b>
+    </marquee>
+</div>
+</form>
+</center>
+</body>
+</html>
+<script>
+function home()
+{
+window.location.href = "/mobile/AccountOpen.html";
+}
+ </script>
+
+ 

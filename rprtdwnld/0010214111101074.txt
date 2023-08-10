@@ -1,0 +1,20 @@
+BANK NAME :                           MAIWAND BANK
+BRANCH NAME :                         KABUL MAIN BRANCH                  
+ACCOUNT NUMBER :                      0010214111101074
+ACCOUNT TYPE :                        CURRENT DEPOSITS [AFN]
+ACCOUNT CURRENCY :                    AFN
+ACCOUNT HOLDER'S NAME :               AFGHAN MULTI INTERIOR COMPANY LTD
+REQUEST DATE:                         15/02/2009
+__________________________________________________________________________________________
+SR.NO    DATE          DESC.                         CREDIT        DEBIT       BALANCE              
+__________________________________________________________________________________________
+  1    24/01/2009  TO CASH TO AHMAD SHAH MAHMOODI               113000.00            429.00
+  2    24/01/2009  CASH DEPOSIT BY SELF            35000.00                       113429.00
+  3    22/01/2009  BY CASH BY SELF                 78000.00                        78429.00
+  4    17/01/2009  TO CASH TO SELF                              160071.00            429.00
+  5    17/01/2009  DEPOSIT BY AHMAD                  500.00                       160500.00
+__________________________________________________________________________________________
+
+   Cr. Total                                       113500.0
+   Dr. Total                                                   273071.0
+   Balance Total                                                                     429.00

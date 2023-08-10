@@ -1,0 +1,33 @@
+.grid-960 {
+    width: 100%;
+    margin: 0 auto;
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+}	
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+}
+newUserLeftDiv{
+	position: relative; 
+	bottom: -21px; 
+	background-color: #f4f4f4;  
+	-webkit-box-shadow: -1px 0px 5px 5px rgba(244, 244, 244, 0.76);
+	-moz-box-shadow: -1px 0px 5px 5px rgba(244, 244, 244, 0.76);
+	box-shadow: -1px 0px 5px 5px rgba(244, 244, 244, 0.76);
+	height:100%;
+}

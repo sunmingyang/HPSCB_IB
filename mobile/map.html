@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+  <script type="text/javascript" src="mbanking_js/json.js"></script>
+  <script type="text/javascript" src="mbanking_js/mbanking.js"></script>
+	<script src="js/jquery.min.js"></script>
+  <style>
+
+    img {
+    max-width: 100%;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+		jQuery(document).ready( function(){
+debugger;
+			$("#spinner").bind("ajaxSend", function() {
+			        $(this).show();
+			    }).bind("ajaxStop", function() {
+			        $(this).hide();
+			    }).bind("ajaxError", function() {
+			        $(this).hide();
+			    });
+
+		});
+
+				function showAlert(div_name, title, message)
+		{
+			$("#"+div_name).show();
+			$("#"+div_name).html("<strong>"+title+"  </strong>"+message);
+
+			//$("#alert_dialogue").show();
+			//$('.alert').show();
+		}
+		function cancel()
+		{
+			location.href="home.html";
+		}
+			function searchlocation()
+            		{
+            		 Android.alert("Searching Near By Location:");
+            			getData('searchlocation', '');
+
+            		}
+
+		</script>
+
+</head>
+
+<body onload=" getLocation();setTimeout(searchlocation,4000);">
+  <div id="map" style="width: 500px; height: 600px;"></div>
+
+
+</body>
+</html>

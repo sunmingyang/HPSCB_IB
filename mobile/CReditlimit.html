@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Credit Limit</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+
+		<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" /> -->
+
+		
+<!-- 
+<script type="text/javascript">
+       $(function() {
+            $( "#ExpiryDate" ).datepicker({
+              
+               dateFormat:"dd-mm-yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+            $(function() {
+            $( "#SenctionDate" ).datepicker({
+             
+               dateFormat:"dd-mm-yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+		 $(function() {
+            $( "#ApplicationDate" ).datepicker({
+             
+               dateFormat:"dd-mm-yy",
+               altField: "#datepicker-4",
+               altFormat: "DD, d MM, yy"
+            });
+         });
+
+		
+    </script> 
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #ExpiryDate
+        {
+            background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #SenctionDate
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #ApplicationDate
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		
+		</style>
+
+
+		
+  
+
+
+
+ <link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script>
+ -->
+<script>
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+
+
+
+
+function sessionGet(){
+document.getElementById("snctionLimit").value=sessionStorage.getItem('snctionLimit');
+
+document.getElementById("SenctionDate").value=sessionStorage.getItem('SenctionDate');
+document.getElementById("tdp").value=sessionStorage.getItem('tdp');
+document.getElementById("ExpiryDate").value=sessionStorage.getItem('ExpiryDate');
+document.getElementById("snctionRefNo").value=sessionStorage.getItem('snctionRefNo');
+document.getElementById("Sanction").value=sessionStorage.getItem('Sanction');
+document.getElementById("SalesManagerNameSearch").value=sessionStorage.getItem('SalesManagerNameSearch');
+document.getElementById("prjCost").value=sessionStorage.getItem('prjCost');
+document.getElementById("crNo").value=sessionStorage.getItem('crNo');
+document.getElementById("ApplicationDate").value=sessionStorage.getItem('ApplicationDate');
+document.getElementById("borrowerNo").value=sessionStorage.getItem('borrowerNo');
+document.getElementById("netMean").value=sessionStorage.getItem('netMean');
+document.getElementById("subsidyAmt").value=sessionStorage.getItem('subsidyAmt');
+document.getElementById("refinanceAmt").value=sessionStorage.getItem('refinanceAmt');
+document.getElementById("RefinanceAgency").value=sessionStorage.getItem('RefinanceAgency');
+document.getElementById("singDisbursement").value=sessionStorage.getItem('singDisbursement');
+document.getElementById("repayingCapacity").value=sessionStorage.getItem('repayingCapacity');
+document.getElementById("propGrandTot").value=sessionStorage.getItem('propGrandTot');
+document.getElementById("referralAmt").value=sessionStorage.getItem('referralAmt');
+
+
+}
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+      <!--   <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+
+<html>
+  <center>
+  
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+  
+  
+  
+  
+  <H4>Credit Limit</H4></center>
+  <body onLoad="sessionGet()">
+    <form name="acOpenCreditLimitSanctionForm" method="post" action="/CobaSys/account/acopen/acOpenCreditLimitSanctionAction.do">
+
+	 	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:65%;width:98% ">
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+	 
+        <tr> 
+          <td><label>Sanction Limit<font size="-1" color="#FF0000">*</font></label> 
+          </td>
+          <td> <input type="text" name="snctionLimit" maxlength="20" size="20" value="" onchange="secncTionLimit()" style="TEXT-ALIGN: right"  id="snctionLimit" title="text"> 
+
+		<script>
+
+
+function secncTionLimit(){
+		var a=document.getElementById("snctionLimit").value;
+		
+		var textbox=document.getElementById("tdp");
+		textbox.value=a;
+
+		
+		
+		}
+
+		</script>
+
+
+          </td>
+          <td><div id="dSancDt1" style="display:block;"> 
+		      
+			  Sanction Date
+			  
+		    </div>
+	      </td>
+          <td>
+		    <div id="dSancDt2" style="display:block;">
+			
+			  <input type="text" name="sntionDt"  value=""    id="SenctionDate">
+
+              
+			    </script>
+              </div>
+            </div>
+		  </td>
+        </tr>
+        
+		<tr> 
+          <td><label>Total Drawing Power</label> </td>
+          <td colspan="3"> <input type="text" name="tdp" maxlength="20" size="20" value="" style="TEXT-ALIGN: right" readonly="readonly" class="txt2" id="tdp"> 
+          </td>
+        </tr>
+        								
+        <tr> 
+          <td> <div id="dexpDt1" style="display:block;">
+              <label>Expiry Date<font size="-1" color="#FF0000">*</font></label>
+            </div>
+		  </td>
+          <td> 
+		    <input type="text" name="ExpDate" maxlength="10" size="15"   class="txt2" id="ExpiryDate"> 
+              
+                
+              
+              <div id="cal_expiryDt_display" class="div25"> 
+               
+              </div>
+            </div>
+		  </td>
+          <td> 
+		    <div id="dSanRef1" style="display:block;"> 
+              <label>Sanction Ref. No.</label>
+            </div></td>
+          <td colspan="3"> 
+		    <div id="dSanRef2" style="display:block;">
+			  <input type="text" name="snctionRefNo" maxlength="15" size="20" value="" onfocus="hideCalendar()" class="periodText" id="snctionRefNo"> 
+            </div></td>
+        </tr>
+
+	    <tr> 
+          <td> 
+		    
+			Sanction Authority
+			<font size="-1" color="#FF0000">*</font>  
+			
+		  </td>
+		  <td colspan="3">
+			<div id="dSanAut2" style="display:block;">
+			 <select name="SanctionAuthority" id="Sanction" <option value="1"></option></select> 
+ 
+  <script>
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=Sanction"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("Sanction")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+		    </div>
+	      </td>
+        </tr>
+
+        <tr>
+        <td>Sales Manager</td>
+         <td colspan="3">
+        			<div id="forsalesmanager" style="display:block;">
+					 <select name="SalesManager" id="SalesManagerNameSearch" <option value="1"></option></select> 
+ 
+  <script>
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=SalesManagerNameSearch"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("SalesManagerNameSearch")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+        			 
+        		    </div>
+        	      </td>
+        </tr>
+        
+        <tr> 
+          <td>
+		    <div id="dPrjCst1" style="display:block;"> 
+              <label>Project Cost</label>
+            </div></td>
+          <td>
+		    <div id="dPrjCst2" style="display:block;"> <input type="text" name="prjCost" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="prjCost"> 
+            </div>
+		  </td>
+          <td>
+		    <div id="dcrNo1" style="display:block;"> 
+              <label>Application Reference No.</label>
+            </div></td>
+          <td>
+		    <div id="dcrNo2" style="display:block;"> <input type="text" name="crNo" maxlength="30" size="20" value="" onkeypress="specialCode()" onfocus="hideCalendar()" id="crNo"> 
+            </div></td>
+        </tr>
+    							
+        <tr> 
+          <td>
+		    <div id="dcrDt1" style="display:block;"> 
+              
+			  Application Date
+			  
+            </div></td>
+
+          <td>
+		    <div id="dcrDt2" style="display:block;">
+		      <input type="text" name="crDate" maxlength="10" size="15" value=""  class="txt2" id="ApplicationDate"> 
+              
+			  </div>
+            </div>
+	      </td>
+          <td>
+		    <div id="dBorNo1" style="display:block;"> 
+              <label>Borrower No.</label>
+            </div></td>
+          <td> 
+		    <div id="dBorNo2" style="display:block;"> <input type="text" name="borrowerNo" maxlength="6" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText;" id="borrowerNo"> 
+            </div></td>
+        </tr>
+	  
+	    <tr> 
+          <td>
+		    <div id="dnetMean1" style="display:block;"> 
+              <label>Net Means</label>
+            </div></td>
+          <td>
+		    <div id="dnetMean2" style="display:block;"> <input type="text" name="netMean" maxlength="10" size="20" value="0.00" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="netMean" title="text"> 
+            </div></td>
+          <td> 
+		    <div id="divCashWdLmt1" style="display:none;"> 
+              <label>Cash Withdrawal Limit</label>
+            </div></td>
+          <td>
+		    <div id="divCashWdLmt2" style="display:none;"> <input type="text" name="cashWdLimit" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="cashWdLimit"> 
+            </div></td>
+        </tr>
+      
+	    <tr> 
+          <td>
+		    <div id="dSsAmt1" style="display:block;"> 
+              <label>Adv.-Subsidy Amt.</label>
+            </div></td>
+          <td>
+		    <div id="dSsAmt2" style="display:block;"> <input type="text" name="subsidyAmt" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="subsidyAmt" title="text"> 
+            </div></td>
+          <td>
+		    <div id="dRefinAmt1" style="display:block;"> 
+              <label>Refinance Amount</label>
+            </div></td>
+          <td> 
+		    <div id="dRefinAmt2" style="display:block;"> <input type="text" name="refinanceAmt" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="refinanceAmt" title="text"> 
+            </div></td>
+        </tr>
+      
+	    <tr> 
+          <td> 
+		    
+			Refinance Agency
+			
+		  </td>
+          <td colspan="3"> 
+		    <div id="dRefAgn2" style="display:block;"> 
+			  <select name="RefinanceAgency" id="RefinanceAgency" <option value="1"></option></select> 
+ 
+  <script>
+
+	  
+        var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=RefinanceAgency"; 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("RefinanceAgency")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+	
+var jsonData = JSON.parse(resArray1);
+	   
+	   if(jsonData!=null){
+	   var select= document.getElementById(f);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[2].length; i++){
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];
+			opt.innerHTML = jsonData[2][i];
+			select.appendChild(opt);
+		}
+       
+	   }
+	   }
+	
+	
+     }
+		</script>
+            </div>
+		  </td>
+        </tr>
+      
+	    <tr> 
+          <td>
+		    <div id="dSinDis1" style="display:block;"> 
+              <label>Single Disbursement</label>
+            </div></td>
+          <td>
+		    <div id="dSinDis2" style="display:block;"> <input type="checkbox" name="singDisbursement" value="N" onclick="fillDisbFlag()" onfocus="hideCalendar()" id="singDisbursement"> 
+            </div></td>
+          <td>
+		    <div id="divFees1" style="display:none"> 
+              <label>Upfront Fee</label>
+            </div></td>
+          <td>
+		    <div id="divFees2" style="display:none"> <input type="text" name="upfrontFee" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="upfrontFee"> 
+            </div></td>
+        </tr>
+        
+		<tr> 
+          <td>
+		    <div id="divFees3" style="display:none"> 
+              <label>Documentation Fee</label>
+            </div></td>
+          <td> 
+		    <div id="divFees4" style="display:none"> <input type="text" name="documentFee" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="documentFee"> 
+            </div></td>
+          <td> 
+		    <div id="divFees5" style="display:none"> 
+              <label>Any Other Fee</label>
+            </div>
+		  </td>
+          <td>
+		    <div id="divFees6" style="display:none"> <input type="text" name="anyotherFee" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" onfocus="hideCalendar()" class="periodText" id="anyotherFee"> 
+            </div></td>
+        </tr>
+	    
+		<tr>
+	      <td><label>Repaying Capacity</label> </td>
+	      <td> <input type="text" name="repayingCapacity" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" class="periodText" id="repayingCapacity" title="text"> 
+          </td>
+	      <td><label>Properties Grand Total</label></td>
+	      <td>
+		    <input type="text" name="propGrandTot" maxlength="20" size="20" tabindex="-1" value="0.00" readonly="readonly" class="TextDisable" id="propGrandTot"> 
+          </td>
+	    </tr>
+      
+	    <tr> 
+	      <tr>
+		    <td><label>Referral Amount</label> </td>
+            <td>
+			  <input type="text" name="referralAmt" maxlength="20" size="20" value="0" onkeypress="return isValidNumber()" class="periodText" id="referralAmt" title="text"> 
+            </td>
+          </tr>
+
+
+<script>
+
+
+function sessionSet(){
+sessionStorage.setItem('snctionLimit',document.getElementById("snctionLimit").value);
+sessionStorage.setItem('SenctionDate',document.getElementById("SenctionDate").value);
+sessionStorage.setItem('tdp',document.getElementById("tdp").value);
+sessionStorage.setItem('ExpiryDate',document.getElementById("ExpiryDate").value);
+sessionStorage.setItem('snctionRefNo',document.getElementById("snctionRefNo").value);
+sessionStorage.setItem('Sanction',document.getElementById("Sanction").value);
+sessionStorage.setItem('SalesManagerNameSearch',document.getElementById("SalesManagerNameSearch").value);
+sessionStorage.setItem('prjCost',document.getElementById("prjCost").value);
+sessionStorage.setItem('crNo',document.getElementById("crNo").value);
+sessionStorage.setItem('ApplicationDate',document.getElementById("ApplicationDate").value);
+sessionStorage.setItem('borrowerNo',document.getElementById("borrowerNo").value);
+sessionStorage.setItem('netMean',document.getElementById("netMean").value);
+sessionStorage.setItem('subsidyAmt',document.getElementById("subsidyAmt").value);
+
+sessionStorage.setItem('refinanceAmt',document.getElementById("refinanceAmt").value);
+sessionStorage.setItem('RefinanceAgency',document.getElementById("RefinanceAgency").value);
+sessionStorage.setItem('singDisbursement',document.getElementById("singDisbursement").value);
+sessionStorage.setItem('repayingCapacity',document.getElementById("repayingCapacity").value);
+sessionStorage.setItem('propGrandTot',document.getElementById("propGrandTot").value);
+sessionStorage.setItem('referralAmt',document.getElementById("referralAmt").value);
+
+
+}
+
+
+ function saveCreditLimit(){
+
+ var d=document.forms[0];
+var inputField;
+var jssondataadd='"'+"Creditlimit"+'":'+"{";
+
+jssondataadd+='"'+document.getElementById("snctionLimit").name+'":'+'"'+document.getElementById("snctionLimit").value+'",';
+jssondataadd+='"'+document.getElementById("SenctionDate").name+'":'+'"'+document.getElementById("SenctionDate").value+'",';
+jssondataadd+='"'+document.getElementById("tdp").name+'":'+'"'+document.getElementById("tdp").value+'",';
+
+jssondataadd+='"'+document.getElementById("ExpiryDate").name+'":'+'"'+document.getElementById("ExpiryDate").value+'",';
+jssondataadd+='"'+document.getElementById("snctionRefNo").name+'":'+'"'+document.getElementById("snctionRefNo").value+'",';
+jssondataadd+='"'+document.getElementById("Sanction").name+'":'+'"'+document.getElementById("Sanction").value+'",';
+jssondataadd+='"'+document.getElementById("SalesManagerNameSearch").name+'":'+'"'+document.getElementById("SalesManagerNameSearch").value+'",';
+
+jssondataadd+='"'+document.getElementById("prjCost").name+'":'+'"'+document.getElementById("prjCost").value+'",';
+jssondataadd+='"'+document.getElementById("crNo").name+'":'+'"'+document.getElementById("crNo").value+'",';
+jssondataadd+='"'+document.getElementById("ApplicationDate").name+'":'+'"'+document.getElementById("ApplicationDate").value+'",';
+jssondataadd+='"'+document.getElementById("borrowerNo").name+'":'+'"'+document.getElementById("borrowerNo").value+'",';
+
+jssondataadd+='"'+document.getElementById("netMean").name+'":'+'"'+document.getElementById("netMean").value+'",';
+jssondataadd+='"'+document.getElementById("subsidyAmt").name+'":'+'"'+document.getElementById("subsidyAmt").value+'",';
+jssondataadd+='"'+document.getElementById("refinanceAmt").name+'":'+'"'+document.getElementById("refinanceAmt").value+'",';
+jssondataadd+='"'+document.getElementById("RefinanceAgency").name+'":'+'"'+document.getElementById("RefinanceAgency").value+'",';
+jssondataadd+='"'+document.getElementById("singDisbursement").name+'":'+'"'+document.getElementById("singDisbursement").value+'",';
+jssondataadd+='"'+document.getElementById("repayingCapacity").name+'":'+'"'+document.getElementById("repayingCapacity").value+'",';
+jssondataadd+='"'+document.getElementById("propGrandTot").name+'":'+'"'+document.getElementById("propGrandTot").value+'",';
+jssondataadd+='"'+document.getElementById("referralAmt").name+'":'+'"'+document.getElementById("referralAmt").value+'",';
+jssondataadd+="}";
+
+
+sessionStorage.CreditLimitData=jssondataadd;
+var CreditLimitData=sessionStorage.CreditLimitData;
+sessionSet();
+var bothpagesjson = sessionStorage.bothdata;
+var newjson="{"+CreditLimitData+' , "'+"CreditDetail"+'":'+bothpagesjson+"}";
+sessionStorage.alldata=newjson;
+location.href='AccountOpen.html';
+
+}
+
+function cRdetail(){
+var a=document.getElementById("snctionLimit").value;
+sessionStorage.SenctionLimit=a;
+sessionStorage.setItem('limit',a);
+sessionSet();
+window.location='CRdetail.html';
+}
+
+function callBackPage(){
+window.location='AccountOpen.html';
+}
+</script>
+
+
+
+
+
+	     <td colspan="4" align ="center" >
+           
+			<input type=button   id="CreditDetails"  class="btn btn-default" value="NEW CREDIT LIMIT" onclick="cRdetail()" /> 
+            
+	      </td>
+		</tr>
+      
+	    <tr> 
+          <td colspan="4" align="center"> 
+			<hr class="HeaderLabelAcOpen" size="2">
+			<INPUT TYPE="button" class="btn btn-primary"  name="ok" id="ok" value="OK" onclick="saveCreditLimit()" onfocus="hideCalendar()"/>
+			<INPUT TYPE="button"  class="btn btn-primary" name="cancel" id="cancel" value="Cancel" onclick="callBackPage()" />
+			
+          </td>
+        </tr>
+      </table>
+	  </div>
+	  </div>
+
+      <DIV id = "DivSubmit" class = "WarningTab" 	style = "display:none;FONT-SIZE: 8pt;HEIGHT:20px" >
+		<MARQUEE>
+		  <!--Plz wait While ...-->
+		  <B>Please Wait . . .</B>
+		</MARQUEE>
+	  </DIV>
+      <DIV id = "DivHotKey" style = "display:block;">
+	   
+	  </DIV>
+      <br><br><br><br><br>
+    </body>
+	<input type="hidden" name="focus" value="snctionLimit" id="focus">
+	<input type="hidden" name="mode" value="N" id="mode">
+	<input type="hidden" name="singleDisbYN" value="" id="singleDisbYN">
+	<input type="hidden" name="spriEmiAllow" value="" id="spriEmiAllow">
+	 
+	
+	  
+		<script>
+		  document.getElementById('singDisbursement').disabled=true;
+		</script>
+	  
+	
+	
+  </form>
+</html>
+

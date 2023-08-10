@@ -1,0 +1,231 @@
+import easycbs.smsbanking.ejbserver.PullServHome;
+import easycbs.smsbanking.ejbserver.PullServRemote;
+import easycbs.common.util.LookUpClient;
+
+import java.util.ArrayList;
+
+
+public class SmsBanking {
+	
+	
+	public String getavailbal(String acc_no)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+			System.out.println("7: "+remote);
+			ret = remote.getavailBal(acc_no);
+			System.out.println("The Response"+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+
+	public String getStatement(String acc_no)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.getStatement(acc_no);
+			System.out.println("The Response"+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+
+	public ArrayList<String> ChequeStatusFunction(String acc_no, int chqNo)
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ArrayList stArr = new ArrayList();
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.ChequeStatusFunction(acc_no, chqNo);
+			System.out.println("The Response:: "+ret.size());					
+
+
+		}
+		catch (Exception e)
+		{
+			System.out.println("Exception in JWS:: "+e);					
+		}
+		
+		/*for(int i = 0; i < stArr.size(); i++)
+		{
+			stArr.add(i, ""+);
+		}
+		*/
+		return ret;
+	}
+
+	public String ChequeBookRequest(String[] values)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.chqBookRequest(values);
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "failure";
+		}
+
+		return ret;
+	}
+
+	public String stopChqRequest(String strAccNo, String strChqNo, String strUsrId)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.stopChqRequest(strAccNo, strChqNo, strUsrId);
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "failure";
+		}
+
+		return ret;
+	}
+
+	public String getFDDetails(String strAccNo)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.getFdDetail(strAccNo);
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "No FD Details for this account number.";
+		}
+
+		return ret;
+	}	
+
+	public String changePAccount(String sAccid, String sNPAccNo)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote= home.create() ; 
+
+			ret = remote.changePAccount(sAccid, sNPAccNo);
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "Failure in Invoking Webservice.";
+		}
+
+		return ret;
+	}	
+
+	public String getRequestCode(String s)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote = home.create() ; 
+
+			ret = remote.getRequestCode();
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "Failure in Invoking Webservice.";
+		}
+
+		return ret;
+	}
+
+	public String getAccNo(String sAccid)
+	{
+		String ret = "";
+		try
+		{	
+			PullServRemote remote = null; 
+
+			LookUpClient lookup = new LookUpClient();
+			PullServHome home = (PullServHome)lookup.getHome(
+					"easycbs.smsbanking.ejbserver.PullServHome", "SmsBanking");
+			remote = home.create() ; 
+
+			ret = remote.getAccNo(sAccid);
+			System.out.println("The Response:: "+ret);					
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "Failure in Invoking Webservice.";
+		}
+
+		return ret;
+	}
+}

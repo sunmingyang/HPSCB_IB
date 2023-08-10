@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+		<head runat="server">
+    <title></title>
+	<!-- <script src="jquery1/jquerylibs.js" type="text/javascript"></script>
+        <script src="jquery1/jquerylibs1.8.js"
+        type="text/javascript"></script>
+    <link href="jquery1/ajaxlibs1.8.js"
+        rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+      
+		$(function () {
+            $('#letterDate').datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+		 $(function () {
+            $('#dateOfBirth').datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+		 $(function () {
+            $('#scrDate').datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+		
+		
+    </script>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        #letterDate
+        {
+            background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		 #dateOfBirth
+        {
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		#scrDate
+		{
+             background-image:url(jquery1/jscalender.png);
+            background-repeat: no-repeat;
+            padding-left: 25px;
+        }
+		
+		</style>
+
+
+
+
+
+
+
+
+<link rel = "stylesheet" href="/CobaSys/style/General.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/style.css"  type = "text/css">
+<link rel = "stylesheet" href="/CobaSys/style/CalendarCSS.css" type="text/css">
+<script language=JavaScript src="/CobaSys/scripts/ScrollableTable.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Calendar.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Common.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Conversion.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Date.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/Amount.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/shortcut.js">
+</script>
+<script language=JavaScript src="/CobaSys/scripts/CalendarJS.js">
+</script> -->
+
+<script>
+
+
+var serverIP = "192.168.1.116";		//"192.168.1.72";
+var serverPort = "8098";
+
+var AmtinGrp = '3';
+var appcontext ='/CobaSys' ; 
+function getSecondLangWord(engWord)
+{
+	return region(engWord,'english') ; 
+	
+}
+function showMessage(sArg)
+{
+	getMessage(1,sArg,"errors");
+}
+
+
+
+
+function accountHolder(){
+
+var Accno=document.getElementById("accountNumber").value;
+//alert(capAcc);
+
+ var URL1 ="http://"+serverIP+":"+serverPort+"/AccountInfoAction.do?action=fetchAccountBalance&accNo="+Accno;
+		
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount1("accountNumber")};
+		http.send(null);
+
+
+
+
+function processAccount1(f)
+{
+
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray1=http.responseText;
+		
+		
+	
+var jsonData = JSON.parse(resArray1);
+
+var customername=jsonData["customerName"];
+	var customerid=jsonData["customerId"];
+	var textbox = document.getElementById('nameE'); 
+	  textbox.value=customername;
+
+	   var textbox = document.getElementById('scustId'); 
+	  textbox.value=customerid;
+
+}
+}
+
+}
+
+
+
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+
+<html>
+  
+ 
+
+ 
+
+
+
+<body>
+ 
+  <body onLoad="getsession()"> 
+  
+  <center> 
+ 
+ 	<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+   <h4> Guarantor Detail</h4> </center>
+	<form name="loanLimitGuarantorDetailForm" method="post" action="/CobaSys/account/acopen/loanLimitGuarantorDetailAction.do">
+
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:65%;width:98% ">
+      <table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+	 
+
+
+
+
+<script type="text/javascript" language="JavaScript">
+	function change()
+	{
+		if(document.getElementById("Acholder").checked){
+		document.getElementById("acno").style.display="table-row";
+		document.getElementById("Actype").style.display="table-row";
+		document.getElementById("Ngcustid").style.display="hide";
+		}
+		if(document.getElementById("Newguar").checked){
+		document.getElementById("acno").style.display="none";
+		document.getElementById("Actype").style.display="none";
+		document.getElementById("Ngcustid").style.display="table-row";	
+		}
+		
+	}
+</script>
+
+        <tr> 
+          <td width="33%">
+		    Guarantor Detail
+		  </td>
+          <td width="33%">
+			<input type="Radio" name="radio2text" value="Radiobutton1" 
+onclick="change()" id="Acholder" checked="true"   />
+			Account Holder
+          </td>
+          <td>
+			<input type="Radio" name="radio2text" value="Radiobutton2" 
+onclick="change()" id="Newguar"   />
+
+			New Guarantor </td>
+        </tr>
+      </table>
+   
+      <table width="99%" border="0" cellpadding="0" cellspacing="0" align="center">
+	    <tr  id="acno"> 
+		  <td width="26%" >
+		    <div id="one" style="display:visible;" >
+			  Account No.
+			 
+		  <td width="34%">
+		    <div id="one" style="display:visible;">
+			  <input type="text" class="form-control" name="accountNumber" maxlength="20" size="30" value="0"  id="accountNumber" onchange="accountHolder()"> 
+			</div>
+		  </td>
+		  <td align="left">
+		    <div id="multiGur" style="display:visible;" >
+			  <input type="button" class="btn btn-default" value="Guarantor History" onclick="openWindow()">
+			
+		  </td>
+        </tr>
+		
+		<tr id="Actype"> 
+		  <td>
+			<div id="one" style="display:visible;">
+			  Account Type Code
+			
+		  </td>
+		  <td>
+			<div id="one" style="display:visible;">
+			  <input type="text" name="accountType" maxlength="7" size="30" tabindex="-1" value="" onkeypress="isValidNumAlpha()" onfocus="hide()" readonly="readonly" class="textDisable" id="accountType"> 
+		   
+		  </td>
+		  <td align="left" >
+			<div id="one"style="display:visible;" >
+			  Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  <input type="text" name="scustId" size="15" tabindex="-1" value="0" readonly="readonly" class="TDRight" id="scustId">
+			
+		  </td>
+		</tr>
+		
+		<tr id="Ngcustid"> 
+	      <td>
+		    <div id="divNGCustIdMsg" style="display:visible;">
+		      Customer ID
+		    </div>
+	      </td>
+	      <td colspan="2">
+		    <div id="divNGCustId" style="display:visible;">
+		      <input type="text" name="sNGCustId" maxlength="10" size="30" value="" onkeypress="isValidNumber()"  class="periodText" id="sNGCustId"> 
+		    </div>
+	      </td>
+	    </tr>
+		
+		<tr> 
+		  <td>
+            NIC NO.
+		  </td>
+		  <td>
+		    <input type="text" name="snicNo" maxlength="10" size="30" tabindex="-1" value="0" class="TDRight" id="snicNo"> 
+		  </td>
+		  <td>
+			Date of Issue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" name="sdateIssue" size="11" tabindex="-1" value="01/01/1900" readonly="readonly" class="periodText" id="sdateIssue"> 
+			
+			
+			</div>
+			
+		  </td>
+		</tr>
+		
+		<tr> 
+		  <td>
+			<label id="guarNameHindi"></label>
+		  </td>
+		  <td>
+			<input type="hidden" name="guarantorHName" value="" id="guarantorHName">
+			<input type="text" name="nameH" size="30" tabindex="-1" value="" onfocus="hide()" class="textDisable" id="nameH"> 
+		  </td>
+		  <td align="left">
+			Letter Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="letterDate" id="letterDate" size="11"   readonly="true"/> 
+			
+			</div>
+			<div id="cal_letterDate_display" class="div4"> 
+			 
+			</div>
+		  </td>
+		</tr>
+		
+		<tr> 
+		  <td>
+			<label id="guarNameEnglish">Name</label>	
+		  </td>
+		  <td>
+		    <input type="text" name="nameE" size="30" value="" onkeypress="isValidAlpha()" onblur="JavaScript:nameH.value = changeHindi()" id="nameE">
+		  </td>
+		  <td align="left">
+		    Date of Birth
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" name="dateOfBirth" size="11" tabindex="-1" value=""  readonly="readonly" id="dateOfBirth"> 
+			
+			<div id="cal_dateOfBirth_display_year"  style="display:none;position:absolute;top:78px;left:421px"> 
+			  <input type="text"  name="dateOfBirth_year" id="dateOfBirth_year" size="5" style="margin-left:-250;position:absolute;" maxLength="4"  onKeyPress="isValidNumber()"/>
+			</div>
+			<div id="cal_dateOfBirth_display" style="display:none;position:absolute;top:78px;left:460px;"/></div>
+			 
+			</div>
+		  </td>
+        </tr>
+		
+		<tr> 
+		  <td>
+			Letter No.
+		  </td>
+		  <td >
+			<input type="text" name="letterNo" maxlength="10" size="30" value="0" onkeypress="isValidNumAlpha()" onfocus="hide()" class="periodText" id="letterNo"> 
+		  </td>
+		  <td align="left">
+			
+			Signature
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+			   <select name="Signature" Id="Signature" 
+		<option value="1">Signature</option></select> 
+
+
+
+<script>
+
+
+      var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=GurantorSignature"; 
+	
+	 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount15("Signature")};
+		http.send(null);
+	  
+
+function processAccount15(e)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		
+
+	   var jsonData = JSON.parse(resArray);
+	   
+	   var select= document.getElementById(e);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[0].length; i++){
+		
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];			
+			opt.innerHTML = jsonData[2][i];
+		    select.appendChild(opt);
+		}
+       
+	   }
+	
+	
+     }   
+	 </script>
+			
+
+			
+		  </td>
+		</tr>
+		
+		<tr>
+		  <td>	
+			<label id="guarPlaceHindi"></label>
+		  </td>
+		  <td>
+			<input type="text" name="placeH" size="30" tabindex="-1" value="" readonly="readonly" class="textDisable" id="placeH"> 
+		  </td>
+		 
+		</tr>
+        
+		<tr> 
+          <td>
+		    <label id="guarPlaceEnglish">Place</label>
+		  </td>
+          <td>
+		    <input type="text" name="placeE" maxlength="50" size="30" value="" onkeypress="isValidAlpha()" onblur="JavaScript:placeH.value = region(placeE.value,sThirdLang)" onfocus="hide()" id="placeE"> 
+		  </td>
+        </tr>
+	      
+		<tr>
+          <td>
+            Relationship
+          </td>
+          <td>
+            <select name="Relationship" Id="Relationship" 
+		<option value="1">Relationship</option></select> 
+
+
+
+<script>
+
+
+      var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=relationMaster"; 
+	
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount15("Relationship")};
+		http.send(null);
+	  
+
+function processAccount15(e)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		
+
+	   var jsonData = JSON.parse(resArray);
+	   
+	   var select= document.getElementById(e);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[0].length; i++){
+		
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];			
+			opt.innerHTML = jsonData[2][i];
+		    select.appendChild(opt);
+		}
+       
+	   }
+	
+	
+     }   
+	 </script>
+
+	      </td>	
+        </tr>
+	  
+		<tr> 
+          <td>
+			
+			Occupation
+			
+		  </td>
+		  <td width="34%">
+		   <select name="Occupation" Id="Occupation" 
+		<option value="1">Occupation</option></select> 
+
+
+
+<script>
+
+
+      var URL1 ="http://"+serverIP+":"+serverPort+"/request/DDRequest.do?action=getMaster&masterType=OCCUPATIONWITHBEHAVE"; 
+	 
+	    http.open("POST",URL1,false);
+		http.onreadystatechange= function (){processAccount15("Occupation")};
+		http.send(null);
+	  
+
+function processAccount15(e)
+{
+
+	if((http.readyState == 4) && (http.status == 200)){
+		var resArray=http.responseText;
+		
+
+	   var jsonData = JSON.parse(resArray);
+	   
+	   var select= document.getElementById(e);
+	  
+		var opt = document.createElement('option');
+			opt.value =0;
+			opt.innerHTML = " -- please Select --";
+			select.appendChild(opt);
+		
+
+	    for (var i = 0; i < jsonData[0].length; i++){
+		
+		
+			var opt = document.createElement('option');
+			opt.value = jsonData[0][i];			
+			opt.innerHTML = jsonData[2][i];
+		    select.appendChild(opt);
+		}
+       
+	   }
+	
+	
+     }   
+	 </script>
+			
+			
+		  </td>
+		  <td align="center">
+			<input name="button" type="Button" class="btn btn-primary"   value="Address" onclick="goToAddress()" style="width:100px" id="addBtn" /> 
+		  </td>
+		</tr>
+		
+		<tr> 
+   		  <td width="26%">				
+			CR No. 
+		  </td>
+		  <td>
+			<input type="text" name="guarCrNo" maxlength="7" size="11" value="0" onkeypress="isValidNumAlpha()" onfocus="hide()" class="periodText" id="guarCrNo"> 
+		  </td>
+		  <td align="center">
+			<input name="button3" onfocus="hide()" type="Button" class="btn btn-primary"  id="accBtn" value="Occupation" onclick="gaurantorOccupationDetail()" style="width:150px" /> 
+		  </td>
+		</tr>
+      
+	    <tr> 
+		  <td>Net Means </td>
+		  <td>
+			<input type="text" name="netMeans" maxlength="20" size="11" value="0.0" onfocus="hide()" class="periodText" id="netMeans"> 
+		  </td>
+		  <td align="center">
+			<input name="button" type="Button" onfocus="hide()" class="btn btn-primary"  value="Assets-Liabilities" onclick="goToAssetsAndLiabilities()" style="width:200px"  id="assBtn"/> 
+		  </td>
+		</tr>
+		
+		<tr> 
+		  <td> 	CR Date	</td>
+		  <td>  
+		   <input type="text" name="scrDate" size="11" tabindex="-1" value="" readonly="readonly" id="scrDate"> 
+			
+			
+			</div>
+		  </td>
+		</tr>
+        
+		<tr> 
+		  <td>Guarantee Amt.</td>
+		  <td>
+			<input type="text" name="guaranteeAmount" maxlength="20" size="20" value="0.0" onfocus="hide()" class="periodText" id="guaranteeAmount"> 
+		  </td>
+		  <td align="center">
+			
+			<input type="button"   name="Next" id="Next" style="width:80px" class="btn btn-primary" value="Next" onClick="moveNextGuarantorDetail()" />
+			
+		  </td>
+		</tr>
+        
+		<tr> 
+          <td> Gur.IT Payee </td>
+          <td> 
+		    <input type="checkbox" name="itPayeeYN" value="on" onclick="EnaDisPanNo()" onfocus="hide()" id="itPayeeYN"  checked="checked"> 
+          </td>
+		  <td>
+			<div id="gurItPayPanNo" style="display:visible;"> PAN No. 
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+              <input type="text" name="panNo" maxlength="19" size="20" value="0" onfocus="hide()" id="panNo">
+            </div>
+		  </td>
+        </tr>
+
+
+<script>
+
+function getsession(){
+document.getElementById("accountNumber").value=sessionStorage.getItem('accountNumber'+Guarantorsize);
+document.getElementById("accountType").value=sessionStorage.getItem('accountType'+Guarantorsize);
+document.getElementById("scustId").value=sessionStorage.getItem('scustId'+Guarantorsize);
+document.getElementById("sNGCustId").value=sessionStorage.getItem('sNGCustId'+Guarantorsize);
+document.getElementById("snicNo").value=sessionStorage.getItem('snicNo'+Guarantorsize);
+document.getElementById("sdateIssue").value=sessionStorage.getItem('sdateIssue'+Guarantorsize);
+document.getElementById("nameH").value=sessionStorage.getItem('nameH'+Guarantorsize);
+document.getElementById("letterDate").value=sessionStorage.getItem('letterDate'+Guarantorsize);
+document.getElementById("nameE").value=sessionStorage.getItem('nameE'+Guarantorsize);
+document.getElementById("letterNo").value=sessionStorage.getItem('letterNo'+Guarantorsize);
+document.getElementById("Signature").value=sessionStorage.getItem('Signature'+Guarantorsize);
+document.getElementById("placeH").value=sessionStorage.getItem('placeH'+Guarantorsize);
+document.getElementById("placeE").value=sessionStorage.getItem('placeE'+Guarantorsize);
+document.getElementById("Relationship").value=sessionStorage.getItem('Relationship'+Guarantorsize);
+document.getElementById("Occupation").value=sessionStorage.getItem('Occupation'+Guarantorsize);
+document.getElementById("guarCrNo").value=sessionStorage.getItem('guarCrNo'+Guarantorsize);
+document.getElementById("netMeans").value=sessionStorage.getItem('netMeans'+Guarantorsize);
+document.getElementById("scrDate").value=sessionStorage.getItem('scrDate'+Guarantorsize);
+document.getElementById("guaranteeAmount").value=sessionStorage.getItem('guaranteeAmount'+Guarantorsize);
+document.getElementById("itPayeeYN").value=sessionStorage.getItem('itPayeeYN'+Guarantorsize);
+document.getElementById("panNo").value=sessionStorage.getItem('panNo'+Guarantorsize);
+
+}
+
+function sessionSet(){
+sessionStorage.setItem('accountNumber'+Guarantorsize,document.getElementById("accountNumber").value);
+sessionStorage.setItem('accountType'+Guarantorsize,document.getElementById("accountType").value);
+sessionStorage.setItem('scustId'+Guarantorsize,document.getElementById("scustId").value);
+sessionStorage.setItem('sNGCustId'+Guarantorsize,document.getElementById("sNGCustId").value);
+sessionStorage.setItem('snicNo'+Guarantorsize,document.getElementById("snicNo").value);
+sessionStorage.setItem('sdateIssue'+Guarantorsize,document.getElementById("sdateIssue").value);
+sessionStorage.setItem('nameH'+Guarantorsize,document.getElementById("nameH").value);
+sessionStorage.setItem('letterDate'+Guarantorsize,document.getElementById("letterDate").value);
+sessionStorage.setItem('nameE'+Guarantorsize,document.getElementById("nameE").value);
+sessionStorage.setItem('letterNo'+Guarantorsize,document.getElementById("letterNo").value);
+sessionStorage.setItem('Signature'+Guarantorsize,document.getElementById("Signature").value);
+sessionStorage.setItem('placeH'+Guarantorsize,document.getElementById("placeH").value);
+sessionStorage.setItem('placeE'+Guarantorsize,document.getElementById("placeE").value);
+sessionStorage.setItem('Relationship'+Guarantorsize,document.getElementById("Relationship").value);
+sessionStorage.setItem('Occupation'+Guarantorsize,document.getElementById("Occupation").value);
+sessionStorage.setItem('guarCrNo'+Guarantorsize,document.getElementById("guarCrNo").value);
+sessionStorage.setItem('netMeans'+Guarantorsize,document.getElementById("netMeans").value);
+sessionStorage.setItem('scrDate'+Guarantorsize,document.getElementById("scrDate").value);
+sessionStorage.setItem('guaranteeAmount'+Guarantorsize,document.getElementById("guaranteeAmount").value);
+sessionStorage.setItem('itPayeeYN'+Guarantorsize,document.getElementById("itPayeeYN").value);
+sessionStorage.setItem('panNo'+Guarantorsize,document.getElementById("panNo").value);
+
+  
+  }
+
+
+function saveGuarantorDetail(){
+var d=document.forms[0];
+var inputField;
+
+sessionSet();
+
+var jssondataadd="[{";
+for(i=1;i<5;i++)
+{
+
+if(sessionStorage.getItem('accountNumber'+i)==null)
+{
+break;
+}
+jssondataadd+='"'+"Guarantor"+'":'+"{";
+jssondataadd+='"'+document.getElementById("accountNumber").name+'":'+'"'+sessionStorage.getItem('accountNumber'+i)+'",';
+jssondataadd+='"'+document.getElementById("accountType").name+'":'+'"'+sessionStorage.getItem('accountType'+i)+'",';
+jssondataadd+='"'+document.getElementById("scustId").name+'":'+'"'+sessionStorage.getItem('scustId'+i)+'",';
+jssondataadd+='"'+document.getElementById("sNGCustId").name+'":'+'"'+sessionStorage.getItem('sNGCustId'+i)+'",';
+jssondataadd+='"'+document.getElementById("snicNo").name+'":'+'"'+sessionStorage.getItem('snicNo'+i)+'",';
+jssondataadd+='"'+document.getElementById("sdateIssue").name+'":'+'"'+sessionStorage.getItem('sdateIssue'+i)+'",';
+jssondataadd+='"'+document.getElementById("nameH").name+'":'+'"'+sessionStorage.getItem('nameH'+i)+'",';
+jssondataadd+='"'+document.getElementById("letterDate").name+'":'+'"'+sessionStorage.getItem('letterDate'+i)+'",';
+jssondataadd+='"'+document.getElementById("nameE").name+'":'+'"'+sessionStorage.getItem('nameE'+i)+'",';
+jssondataadd+='"'+document.getElementById("dateOfBirth").name+'":'+'"'+sessionStorage.getItem('dateOfBirth'+i)+'",';
+jssondataadd+='"'+document.getElementById("letterNo").name+'":'+'"'+sessionStorage.getItem('letterNo'+i)+'",';
+jssondataadd+='"'+document.getElementById("Signature").name+'":'+'"'+sessionStorage.getItem('Signature'+i)+'",';
+jssondataadd+='"'+document.getElementById("placeH").name+'":'+'"'+sessionStorage.getItem('placeH'+i)+'",';
+jssondataadd+='"'+document.getElementById("placeE").name+'":'+'"'+sessionStorage.getItem('placeE'+i)+'",';
+jssondataadd+='"'+document.getElementById("Relationship").name+'":'+'"'+sessionStorage.getItem('Relationship'+i)+'",';
+jssondataadd+='"'+document.getElementById("Occupation").name+'":'+'"'+sessionStorage.getItem('Occupation'+i)+'",';
+jssondataadd+='"'+document.getElementById("guarCrNo").name+'":'+'"'+sessionStorage.getItem('guarCrNo'+i)+'",';
+jssondataadd+='"'+document.getElementById("netMeans").name+'":'+'"'+sessionStorage.getItem('netMeans'+i)+'",';
+jssondataadd+='"'+document.getElementById("scrDate").name+'":'+'"'+sessionStorage.getItem('scrDate'+i)+'",';
+jssondataadd+='"'+document.getElementById("guaranteeAmount").name+'":'+'"'+sessionStorage.getItem('guaranteeAmount'+i)+'",';
+jssondataadd+='"'+document.getElementById("itPayeeYN").name+'":'+'"'+sessionStorage.getItem('itPayeeYN'+i)+'",';
+jssondataadd+='"'+document.getElementById("panNo").name+'":'+'"'+sessionStorage.getItem('panNo'+i)+'",';
+jssondataadd+="}";
+var Address=sessionStorage.getItem('Guarantor_Addressform'+'Guarantor'+i);
+var Occuption=sessionStorage.getItem('Occuption'+i);
+var AssetsAndLiabilities=sessionStorage.getItem('AssetsAndLiabilities'+i);
+jssondataadd+=' , "'+"GuarantorAddress"+'":'+sessionStorage.getItem('Guarantor_Addressform'+'Guarantor'+i)+' , "'+"Occupation"+'":'+sessionStorage.getItem('Occuption'+i)+' , "'+"AssetsAndLiabilities"+'":'+sessionStorage.getItem('AssetsAndLiabilities'+i);
+}
+jssondataadd+="}]";
+sessionStorage.GuarantorDetail=jssondataadd;
+location.href='LoanlimitInterest.html';
+}
+
+function callBackPage(){
+location.href='LoanlimitInterest.html';
+}
+
+function goToAddress(){
+ sessionSet();
+sessionStorage.setItem('AdressKnown',"Guarantor"+Guarantorsize);
+location.href='address.html';
+}
+
+function gaurantorOccupationDetail(){
+ sessionSet();
+sessionStorage.setItem('Occuption',+Guarantorsize);
+location.href='GuarantorOccuption.html';
+}
+
+function goToAssetsAndLiabilities(){
+sessionSet();
+sessionStorage.setItem('AssetsAndLiabilities',+Guarantorsize);
+location.href='AssetsLibilities.html';
+}
+
+
+
+var Guarantorsize="";
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+
+Guarantorsize="1";
+}
+else
+{
+Guarantorsize=sessionStorage.getItem("NextPage");
+}
+function moveNextGuarantorDetail(){
+ sessionSet();
+var Guarantorsize="";
+if(sessionStorage.getItem("NextPage")=="null")
+{
+sessionStorage.setItem("NextPage","1");
+}
+else
+{
+Guarantorsize=parseInt(sessionStorage.getItem("NextPage"))+1;
+sessionStorage.setItem("NextPage",Guarantorsize);
+}
+location.href='Guarantor.html';
+}
+
+</script>
+
+        
+		<tr> 
+		  <td colspan="3" align="center"> 
+		    <hr class="HeaderLabelAcOpen" size="2">
+			<INPUT TYPE="button" class="btn btn-primary"  name="ok" value="OK" onclick="saveGuarantorDetail()" id="ok"/>
+			<INPUT TYPE="button" class="btn btn-primary"   name="cancel"  value="Cancel" ONCLICK="callBackPage()" id="cancel"/>
+					  </td>
+		</tr>
+		
+		<tr>
+		  <td>
+			<A class = "anchor" onclick = "javascript:openCustomerDetails()" tabindex = -1>
+			  Alt+F2-Customer Detail
+			</A>
+		  </td>
+		</tr>
+      </table>	
+	  <input type="hidden" name="focus" value="periodInMonth" id="focus">
+	  <input type="hidden" name="mode" value="N" id="mode">
+	  <input type="hidden" name="accKid" value="0" id="accKid">
+	  <input type="hidden" name="acnKid" value="0" id="acnKid">
+	  <input type="hidden" name="totalGuarantor" value="0" id="totalGuarantor">
+	  <input type="hidden" name="currentGuarantor" value="1" id="currentGuarantor">
+	  
+	  
+	    
+	  
+      <DIV id = "DivHotKey" style = "display:block;">
+		
+	  </DIV>
+    </form>
+  </Body>
+  
+</html>
+
+<!-- <script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script>
+<script type="text/javascript" src="/CobaSys/account/acopen/script/loanLimitGuarantorDetail.js"></script> -->
+
+<script>
+  function separateLabel()
+  {
+ 	var gurNameMsg = "Name";
+	var Temp = gurNameMsg.split("/");
+	document.getElementById("guarNameHindi").innerHTML = "";
+	 document.getElementById("guarNameEnglish").innerHTML = Temp[0];
+	 var gurPlaceMsg = "Place";
+	 Temp = gurPlaceMsg.split("/");
+	 document.getElementById("guarPlaceHindi").innerHTML ="";// Temp[0];
+	 document.getElementById("guarPlaceEnglish").innerHTML = Temp[0];
+  }
+
+  function relFocus(){
+    var relFocus="";
+    
+         document.forms[0].ok.focus();
+       
+  }
+
+  function showError(name)
+  {
+     getMessage('1',name,'errors');
+  }
+  
+  function openHelpWindow()
+  {
+	  if(document.getElementById("mode").value=="A")
+	  {
+		  openHelp("/CobaSys/account/acopen/help/pages/loanLimitGuarantorDetail1.html");
+	  }
+	  else
+		  openHelp("/CobaSys/account/acopen/help/pages/loanLimitGuarantorDetail.html");
+  }
+</script>

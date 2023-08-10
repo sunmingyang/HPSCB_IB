@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+
+<!-- Generated XML! -->
+
+<ejb-jar>
+  <enterprise-beans>
+ 
+  
+			<!-- ABB EJB --> 
+		<session>
+				<ejb-name>ABBFundTransBean</ejb-name>
+				<home>easycbs.bancmateib.fundtransfer.ejbserver.ABBFundTransHome</home>
+				<remote>easycbs.bancmateib.fundtransfer.ejbserver.ABBFundTransRemote</remote>
+				<ejb-class>easycbs.bancmateib.fundtransfer.ejbserver.ABBFundTransBean</ejb-class>
+				<session-type>Stateless</session-type>
+				<transaction-type>Bean</transaction-type>
+		</session>
+
+<session>
+  <ejb-name>UtilityConn</ejb-name>
+  <home>easycbs.bancmateib.common.ejbserver.ConnEjbHome</home>
+  <remote>easycbs.bancmateib.common.ejbserver.ConnEjbRemote</remote>
+  <ejb-class>easycbs.bancmateib.common.ejbserver.ConnEjbBean</ejb-class>
+  <session-type>Stateless</session-type>
+  <transaction-type>Bean</transaction-type>
+</session>
+
+<session>
+		<ejb-name>Menu</ejb-name>
+		<home>easycbs.bancmateib.common.menu.ejbserver.MenuHome</home>
+		<remote>easycbs.bancmateib.common.menu.ejbserver.MenuRemote</remote>
+		<ejb-class>easycbs.bancmateib.common.menu.ejbserver.MenuBean</ejb-class>
+		<session-type>Stateless</session-type>
+		<transaction-type>Bean</transaction-type>
+</session>
+
+
+     <!-- NEFT Interface
+        <session>
+			<ejb-name>NeftData</ejb-name>
+			<home>easycbs.bancmateib.common.ejbserver.neftHome</home>
+			<remote>easycbs.bancmateib.common.ejbserver.neftRemote</remote>
+			<ejb-class>easycbs.bancmateib.common.ejbserver.neftBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+		</session> -->
+
+
+
+<!-- Internet Banking Related EJB --> 
+
+	<session>
+			<ejb-name>FundTransfer</ejb-name>
+			<home>easycbs.bancmateib.fundtransfer.ejbserver.InternetFundTransferHome</home>
+			<remote>easycbs.bancmateib.fundtransfer.ejbserver.InternetFundTransferRemote</remote>
+			<ejb-class>easycbs.bancmateib.fundtransfer.ejbserver.InternetFundTransferBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+	</session>
+<session>
+
+		<ejb-name>PullService</ejb-name>
+		<home>easycbs.bancmateib.pullservice.ejbserver.SmsPullServiceHome</home>
+		<remote>easycbs.bancmateib.pullservice.ejbserver.SmsPullServiceRemote</remote>
+		<ejb-class>easycbs.bancmateib.pullservice.ejbserver.SmsPullServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+		<transaction-type>Bean</transaction-type>
+
+</session>
+	<session>
+			<ejb-name>userInfoBean</ejb-name>
+			<home>easycbs.bancmateib.userinfo.ejbserver.UserInfoHome</home>
+			<remote>easycbs.bancmateib.userinfo.ejbserver.UserInfoRemote</remote>
+			<ejb-class>easycbs.bancmateib.userinfo.ejbserver.UserInfoBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+	</session>
+	<!-- Admin Creation -->
+	<session>
+			<ejb-name>AdminCreation</ejb-name>
+			<home>easycbs.bancmateib.accforib.ejbserver.AdminCreationHome</home>
+			<remote>easycbs.bancmateib.accforib.ejbserver.AdminCreationRemote</remote>
+			<ejb-class>easycbs.bancmateib.accforib.ejbserver.AdminCreationBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+		</session>
+    <session>
+      <ejb-name>IBLoginData</ejb-name>
+      <home>easycbs.bancmateib.login.ejbserver.LoginHome</home>
+      <remote>easycbs.bancmateib.login.ejbserver.LoginRemote</remote>
+      <ejb-class>easycbs.bancmateib.login.ejbserver.LoginBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Bean</transaction-type>
+    </session> 
+   <session>
+	    <ejb-name>userDetailBean</ejb-name>
+		<home>easycbs.bancmateib.accforib.ejbserver.AccforibHome</home>
+		<remote>easycbs.bancmateib.accforib.ejbserver.AccforibRemote</remote>
+		<ejb-class>easycbs.bancmateib.accforib.ejbserver.AccforibBean</ejb-class>
+		<session-type>Stateless</session-type>
+		<transaction-type>Bean</transaction-type>
+	</session>
+   <session>
+      <ejb-name>MiniStmt</ejb-name>
+      <home>easycbs.bancmateib.accsum.ejbserver.AccsumHome</home>
+      <remote>easycbs.bancmateib.accsum.ejbserver.AccsumRemote</remote>
+      <ejb-class>easycbs.bancmateib.accsum.ejbserver.AccsumBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Bean</transaction-type>
+    </session>
+	
+   <session>
+      <ejb-name>RequestBean</ejb-name>
+      <home>easycbs.bancmateib.request.ejbserver.RequestHome</home>
+      <remote>easycbs.bancmateib.request.ejbserver.RequestRemote</remote>
+      <ejb-class>easycbs.bancmateib.request.ejbserver.RequestBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Bean</transaction-type>
+    </session>
+
+<!--
+	<session>
+	    <ejb-name>FundBean</ejb-name>
+		<home>easycbs.bancmateib.fundtransfer.ejbserver.FundHome</home>
+		<remote>easycbs.bancmateib.fundtransfer.ejbserver.FundRemote</remote>
+		<ejb-class>easycbs.bancmateib.fundtransfer.ejbserver.FundBean</ejb-class>
+		<session-type>Stateful</session-type>
+		<transaction-type>Bean</transaction-type>
+	 </session>
+   -->
+
+	    <session>
+      <ejb-name>IbUsrRequest</ejb-name>
+      <home>easycbs.bancmateib.ibuserrequest.ejbserver.IbUsrRequestHome</home>
+      <remote>easycbs.bancmateib.ibuserrequest.ejbserver.IbUsrRequestRemote</remote>
+      <ejb-class>easycbs.bancmateib.ibuserrequest.ejbserver.IbUsrRequestBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Bean</transaction-type>
+    </session>
+
+<!-- Internet Banking Related EJB --> 
+
+<!--Coomon Bean Used In IB -->
+<session>
+			<ejb-name>MailService</ejb-name>
+			<home>easycbs.bancmateib.mail.ejbserver.MailServiceHome</home>
+			<remote>easycbs.bancmateib.mail.ejbserver.MailServiceRemote</remote>
+			<ejb-class>easycbs.bancmateib.mail.ejbserver.MailServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+</session>
+
+<session>
+			<ejb-name>Centralbean</ejb-name>
+			<home>easycbs.bancmateib.common.ejbserver.CentralHome</home>
+			<remote>easycbs.bancmateib.common.ejbserver.CentralRemote</remote>
+			<ejb-class>easycbs.bancmateib.common.ejbserver.CentralBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+</session>
+
+<session>
+			<ejb-name>SignPhoto</ejb-name>
+			<home>easycbs.bancmateib.signPhoto.ejbserver.SignPhotoHome</home>
+			<remote>easycbs.bancmateib.signPhoto.ejbserver.SignPhotoRemote</remote>
+			<ejb-class>easycbs.bancmateib.signPhoto.ejbserver.SignPhotoBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+</session>
+
+<session>
+			<ejb-name>DayEndOpration</ejb-name>
+			<home>easycbs.bancmateib.dayendopr.ejbserver.DayEndOprHome</home>
+			<remote>easycbs.bancmateib.dayendopr.ejbserver.DayEndOprRemote</remote>
+			<ejb-class>easycbs.bancmateib.dayendopr.ejbserver.DayEndOprBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+</session>
+<!-- Coomon Bean Used In IB -->
+
+
+<!-- ATM BEAN -->
+<session>
+		<ejb-name>AtmData</ejb-name>
+			<home>easycbs.bancmateib.atm.ejbserver.atmHome</home>
+			<remote>easycbs.bancmateib.atm.ejbserver.atmRemote</remote>
+			<ejb-class>easycbs.bancmateib.atm.ejbserver.atmBean</ejb-class>
+			<session-type>Stateless</session-type>
+		<transaction-type>Bean</transaction-type>
+
+</session>
+<session>
+		<ejb-name>appstart</ejb-name>
+			<home>easycbs.bancmateib.common.ejbserver.BancmateIbParameterHome</home>
+			<remote>easycbs.bancmateib.common.ejbserver.BancmateIbParameterRemote</remote>
+			<ejb-class>easycbs.bancmateib.common.ejbserver.BancmateIbParameterBean</ejb-class>
+			<session-type>Stateless</session-type>
+		<transaction-type>Bean</transaction-type>
+
+</session>
+
+
+<!-- ATM BEAN -->
+
+
+<!-- FOR BRANCH STATUS BY Naveen Jain  -->
+<session>
+	<ejb-name>BrnStatus</ejb-name>
+	<home>easycbs.bancmateib.common.ejbserver.BranchStartHome</home>
+	<remote>easycbs.bancmateib.common.ejbserver.BranchStartRemote</remote>
+	<ejb-class>easycbs.bancmateib.common.ejbserver.BranchStartBean</ejb-class>
+	<session-type>Stateless</session-type>
+	<transaction-type>Bean</transaction-type>
+</session>
+<!-- END FOR BRANCH STATUS -->
+
+  </enterprise-beans>
+
+  <assembly-descriptor>
+  </assembly-descriptor>
+
+</ejb-jar>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mBanking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script src="/mobile/jquery/jquery.min.js"></script>
+    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+	<script src="/mobile/mbanking_js/mbanking.js"></script>
+	<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+	
+	
+<style>
+
+</style>
+
+<script type="text/javascript">
+	//var $ =jQuery.noConflict();
+		jQuery(document).ready( function(){
+		
+		if( !sessionStorage.accounts ){
+			getData("accounts",sessionStorage.customerID);//custID
+		}
+		
+			if(typeof(Storage) !== "undefined") {
+
+					if( sessionStorage.accounts ){
+						//Android.alert(sessionStorage.accounts);
+						getAccountsData(JSON.parse(sessionStorage.accounts));
+					}
+					else {
+						Android.alert("Accounts' Data Not Available.");
+					}
+						
+				} else {
+					Android.alert("Sorry! No Web Storage support..");
+				}
+		
+		$('#tabs').tab();
+
+			try{				
+					$("#spinner").bind("ajaxSend", function() {
+				        $(this).show();
+				    }).bind("ajaxStop", function() {
+				        $(this).hide();
+				    }).bind("ajaxError", function() {
+				        $(this).hide();
+				    });
+			    
+				
+			}catch(err)
+			{
+				$('#spinner').hide();
+			}
+		});
+		
+		
+		</script>	
+
+
+  </head>
+
+ <body>
+  
+  <div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+  </div>
+
+
+  <div style="position:fixed; width:100%; background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+ </div> 
+<div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+ 
+
+<div class="container" style="width:93%;margin-top:30px;" >
+ 
+<!-------->
+<form role="form" action="" method=POST>
+ 
+<!--<div id="content" class="form-group" > -->
+ <!--	 <div id="my-tab-content" class="tab-content" style="margin-top:-30px;"> -->
+ 		
+	    <ul id="tabs" class="nav nav-tabs" >
+	    	<li class="active"><a href="#saving" data-toggle="tab" style="font-weight: bold;">Saving</a></li>
+	        <li><a href="#current" data-toggle="tab" style="font-weight: bold;">Current</a></li>
+	        <li><a href="#fd" data-toggle="tab" style="font-weight: bold;">FD</a></li>
+	        <li><a href="#loan" data-toggle="tab" style="font-weight: bold;">Loan</a></li>
+	    </ul>
+	<div class="tab-content" id="my-tab-content">
+	        <div class="tab-pane fade in active" id="saving"></div>
+			<div class="tab-pane fade" id="current"></div>
+	        <div class="tab-pane fade" id="fd"></div>
+	        <div class="tab-pane fade" id="loan"></div>
+ 	</div>	
+ <!-- </div> -->
+   
+	
+<!--</div> -->
+ 
+
+</form>
+
+
+</div> <!-- container -->
+   
+  
+  </body>
+  
+  <div align="center" style="position:fixed; width:100%;  padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+   <a  href="/mobile/mobilemenu.jsp">   <img src="/mobile/img/home.png" alt="..." class="img-responsive" ></a>
+    </div> 
+</html>
+
+
+
+
+

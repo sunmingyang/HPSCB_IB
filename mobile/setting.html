@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>User Personalization</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style type="text/css">
+
+        body
+        {
+        margin: 0px;
+        }
+
+        .input-cont
+        {
+        width: 300px;
+        padding: 20px;
+        }
+
+        input
+        {
+        width: 200px;
+        height: 30px;
+        padding: 3px 10px;
+
+        margin-bottom: 16px;
+        }
+
+        .ap-ex-row
+        {
+        text-align: center;
+        padding: 10px 0px 10px 0px;
+        }
+
+        .ap-ex-row_icon
+        {
+        float: left;
+        margin-left: 150px;
+
+        width: 30px;
+        height: 30px;
+        }
+
+        .ap-ex-row_label
+        {
+        float: left;
+        margin-left: 20px;
+
+        height: 40px;
+        line-height: 30px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+
+
+
+    <script type="text/javascript">
+
+
+
+		</script>
+
+
+
+    <script type="text/javascript">
+
+function saveee()
+{
+
+ var mdate = document.getElementById("mdate").value;
+ var mtime = document.getElementById("mtime").value;
+ var mamt = document.getElementById("mamt").value;
+
+     localStorage.setItem("mdate",mdate);
+     localStorage.setItem("mtime",mtime);
+     localStorage.setItem("mamt",mamt);
+     alert("Save Successfully :" +mdate+mtime+mamt);
+     location.href = "/mobile/mobilemenu.jsp";
+}
+
+
+</script>
+
+</head>
+<body>
+<div style="text-align: center;">
+    <div id="spinner" class="spinner" style="display:none;">
+        <img id="img-spinner" src="img/Preloader_2.gif" alt="Loading"/>
+    </div>
+
+    <div style="position:fixed; width:100%; background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; "></div>
+
+    <div style="margin-top:60px;" ><img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  /></div>
+
+
+    <h4 style="margin-left:25px;color:#d9534f;margin-top:20px;" id="preferences"> SET PREFERENCES</h4>
+    </div>
+<form  name="myForm">
+    <div class="container-fluid">
+        <br class="input-cont">
+
+            <tr>
+                <td>
+                    <label for="date">Select Date Format:</label>
+                    <select class="form-control input-lg" name = "Format" id="mdate">
+                        <!--  <select name="Format" id = "mySelect">-->
+                        <option value="DD-MM-YYYY">DD-MM-YYYY</option>
+                        <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                        <option value="DD.MM.YYYY">DD.MM.YYYY</option>
+                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                        <option value="MONTH-DD-YYYY">MONTH-DD-YYYY</option>
+                    </select></label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+
+            </tr>
+            </br>
+
+
+        <tr>
+
+            <td>
+
+                <label for="time">Select Time Format:</label>
+                <select class="form-control input-lg" name = "timeFormat" id="mtime">
+                    <!--  <select name="Format" id = "mySelect">-->
+                    <option value="24 hrs ">24 hrs</option>
+                    <option value="12 hrs">12 hrs</option>
+                      </select></label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+
+        </tr>
+            </br>
+
+        <tr>
+            <td>
+
+                <label for="amnt">Select Amount Format:</label>
+                <select class="form-control input-lg" name = "amtFormat" id="mamt">
+                <option value="2Digit">2Digit</option>
+                    <option value="3Digit">3Digit</option>
+                </select>
+            </td>
+        </tr>
+            <tr>
+                <td>
+
+                    <input class = "form-control input-lg btn btn-info" type="button"  onclick="saveee();"  value="Submit Button">
+
+                    <!--  <button onclick="saveee();">Save</button>-->
+
+                </td>
+            </tr>
+         
+
+        </table>
+    </div>
+</form>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+
+<title>Internet Banking | HPSCB Bank</title>
+<script
+	src="<%=request.getContextPath()%>/new_ui/IB_UI/js/js-image-slider.js"
+	type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/new_ui/IB_UI/js/jquery.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/style-1.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/new_ui/products/account/newUser.css" />
+<link
+	href="<%=request.getContextPath()%>/new_ui/IB_UI/css/js-image-slider.css"
+	rel="stylesheet" type="text/css" />
+
+<script>
+	function showDiv() {
+		if (document.getElementById("slide-in").style.display == "block") {
+			document.getElementById("slide-in").style.display = "none";
+			document.getElementById("rightDiv").innerHTML = '<a class="leftpanel-btn" title="Show "><i class="icon-angle-right"></i>< Show</a>';
+		//	showChildDiv('IBLogin');
+		} else {
+			document.getElementById("slide-in").style.display = "block";
+			document.getElementById("rightDiv").innerHTML = '<a class="leftpanel-btn" title="Hide "><i class="icon-angle-right"></i>> Hide</a>';
+		
+		}
+	}
+	function showChildDiv(link) {
+
+		if (link == 'IBLogin') {
+			document.getElementById('child-IBLogin').style.display='block';
+			document.getElementById('child-IBLogin').style.float='right';
+			document.getElementById('child-IBLogin').style.width='361.55px';
+			document.getElementById('child-IBLogin').style.height='auto';
+			document.getElementById('child-IBLogin').style.background='#f5821f';
+			
+			//document.getElementById('child-IBLogin').style = 'display:block;float:right;width:361.55px;height:auto;background:#f5821f;';
+			document.getElementById('left-div').style.float = 'left';
+		} else if (link == 'AppOnline') {
+			//document.getElementById('child-IBLogin').style='display:none;';
+			//document.getElementById('child-AppOnline').style = 'display:block;float:right;width:361.55px;height:280px;background:#053C6A;';
+			document.getElementById('child-AppOnline').style.display='block';
+			document.getElementById('child-AppOnline').style.float='right';
+			document.getElementById('child-AppOnline').style.width='361.55px';
+			document.getElementById('child-AppOnline').style.height='280px';
+			document.getElementById('child-AppOnline').style.background='#053C6A';
+			document.getElementById('left-div').style.float = 'left';
+
+		} else if (link == 'Cust_Care') {
+			//	document.getElementById('child-IBLogin').style='display:none;';
+			//document.getElementById('child-Cust_Care').style = 'display:block;float:right;width:361.55px;height:280px;background:#053C6A;';
+			document.getElementById('child-Cust_Care').style.display='block';
+			document.getElementById('child-Cust_Care').style.float='right';
+			document.getElementById('child-Cust_Care').style.width='361.55px';
+			document.getElementById('child-Cust_Care').style.height='280px';
+			document.getElementById('child-Cust_Care').style.background='#053C6A';
+			document.getElementById('left-div').style.float = 'left';
+
+		}
+		var divArr = new Array('IBLogin', 'AppOnline', 'Cust_Care');
+		for (var i = 0; i < divArr.length; i++) {
+			if (link != divArr[i] && link!='' 
+					&& document.getElementById('child-' + link).style.display == 'block')
+				document.getElementById('child-' + divArr[i]).style.display='none';
+		}
+		if (link == '')
+			document.getElementById('left-div').style.float = 'right ';
+	}
+	function showMenuDiv(link) {
+
+		if(document.getElementById('slider').style.display!='block'){
+		
+			document.getElementById('slider').style.display='block';
+			document.getElementById(link).style.display='none';
+		}
+		if (document.getElementById("slide-in").style.display == "block") {
+			document.getElementById("slide-in").style.display = "none";
+			document.getElementById("rightDiv").innerHTML = '<a class="leftpanel-btn" title="Show "><i class="icon-angle-right"></i>< Show</a>';
+		//	showChildDiv('IBLogin');
+		} 
+		hideMenuDiv(link);
+		
+		if (document.getElementById('slider').style.display == 'block') {
+			document.getElementById('slider').style.display = 'none';
+			document.getElementById(link).style.display = 'block';
+		} else {
+			/*document.getElementById('slider').style='display:block;';
+			document.getElementById(link).style.display='none';*/
+	}
+//document.getElementById('productDiv').style.display = 'block';
+		
+		//onmouseout=";
+	}
+	function hideMenuDiv(link) {
+
+		//document.getElementById('productDiv').style.display = 'block';
+		document.getElementById('slider').style.display = 'block';
+		document.getElementById('productDiv').style.display = 'none';
+		document.getElementById('AppOnlineDiv').style.display = 'none';
+		document.getElementById('PaymentDiv').style.display = 'none';
+		document.getElementById('Way2BankDiv').style.display = 'none';
+	//	document.getElementById('AtmDiv').style.display = 'none';
+
+	}
+		function scrollToElement(ele) {
+		<% if(request.getParameter("src")!=null){%>
+			$(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
+		<%}%>
+	}
+</script>
+</head>
+<body  onload="scrollToElement($('#toptitle'))">
+	<div class="clearfix">
+		<div id="main-container">
+			<div id="sub-container">
+				<div class="top-bar">
+					<img
+						src="<%=request.getContextPath()%>/new_ui/IB_UI/images/animation_new.jpg"
+						alt="bank_Logo" style="float: left;" /> The H.P. STATE
+					CO-OPERATIVE BANK LTD.
+				</div>
+				<!-- <div id="content"></div>  -->
+			</div>
+			<!--class="clearfix" id="main" role="main"-->
+			<div class="leftpanel">
+					
+			<div class="middleContainer clearfix">
+				<div class="leftColumnContainer" data-content="See More" >
+					
+				</div>
+				<div class="rightColumnContainer">
+					<h1 id="toptitle">Internet Banking</h1>
+					<div class="rows visa clearfix">
+						<h2>Log into HPSCB Bank Internet Banking</h2>
+						<div class="short" style="float: left; width: 80%;">
+							<p>&nbsp;</p>
+							<p>Internet Banking is a convenient way to do banking from the
+								comfort of your home or office. Avoid the queue or delays and try
+								our simple and secure Internet Banking facility for an unmatched
+								online banking experience.</p>
+							<p>&nbsp;</p>
+							<p>
+								Just <a
+									href="<%=request.getContextPath()%>/new_ui/onlineBanking.jsp"
+									target="_self" title="Login">login</a> today using your <a
+									onclick="" href="" title="User ID">User ID and Password</a> to
+								experience HPSCB Bank Internet Banking.
+							</p>
+							<p>&nbsp;</p>
+							<div class="password-links clearfix" style="margin-bottom: 0px;">
+								<a class="password-userid-icon" style="margin-bottom: 10px;"
+									onclick="" href="" target="_self" title="I want my User ID">I
+									want my User ID</a><a class="password-password-icon" onclick=""
+									href="" target="_self" title="I want my Password">I want my
+									Password</a>
+							</div>
+						</div>
+					</div>
+					<div class="rows clearfix">
+						<h2>Millions of our customers are using Online Banking to:</h2>
+						<ul>
+							<br>
+							<br>
+							<li>Check account statement</li>
+							<li>Transfer funds</li>
+							<li>Open a fixed deposit</li>
+							<li>Pay utility bills</li>
+							<!-- <li>Recharge prepaid mobile/DTH and a lot more.</li> -->
+
+						</ul>
+						<p>&nbsp;</p>
+						<!-- <p>
+										To view our complete list of services, <a
+											href="http://www.HPSCBbank.com/Personal-Banking/onlineservice/online-services/onlineservice.page?">click
+											here</a>.
+									</p> -->
+					</div>
+					<div class="rows clearfix">
+						<h2>Internet Banking for Credit Card holders!</h2>
+						<p>
+							<b>Steps to login to your HPSCB Bank Internet Banking account:</b>
+						</p>
+						<ul>
+							<br>
+							<br>
+							<li><b>Step 1:</b> Call our Customer Care, authenticate
+								yourself and choose the 'Self Banking' option to get your User ID</li>
+							<li><b>Step 2:</b> Generate your password online, instantly.
+								<a style="color: #03A9F4" href="" target="_blank">Click here</a>.</li>
+							<li><b>Step 3:</b> Login with your User ID and Password to
+								access your HPSCB Bank Credit Card details anytime</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>
+							<b>How to get your User ID through Self Banking?</b>
+						</p>
+						<ul>
+							<br>
+							<br>
+							<li>Call our Customer Care and select language option</li>
+							<li>Select option 2 for Credit Card</li>
+							<li>Enter 16 digit Credit Card number and 4 digit PIN number</li>
+							<li>Know your Credit Card balance and select option 1 for
+								Self Banking</li>
+							<li>Select option 1 to know User ID</li>
+							<li>Select option 3 to reset User ID</li>
+						</ul>
+						<p>
+							<b>Some of the features of your Internet Banking account: </b>
+						</p>
+						<ul>
+							<br>
+							<br>
+							<li>View your current balance</li>
+							<li>Check unbilled statement</li>
+							<li>View past statements</li>
+							<li>Pay utility bills</li>
+							<li>Recharge prepaid mobile</li>
+						</ul>
+						<p>and do a lot more</p>
+						<p>&nbsp;</p>
+						<p>So, login to HPSCBBank.com with your Credit Card!</p>
+					</div>
+					<div class="rows clearfix">
+						<h2>Is it safe?</h2>
+						<p>Industry-accepted security practices along with multi-level
+							authentication system have been put in place to authenticate your
+							identity when you access your Internet Banking account.</p>
+						<p>&nbsp;</p>
+						<!-- <p>
+										To know about security features of HPSCB Bank Internet Banking,
+										please <a
+											href="">click
+											here</a>.
+									</p> -->
+					</div>
+					<!-- <div style="float:right;"><a
+										href="https://infinity.HPSCBbank.com/corp/AuthenticationController?FORMSGROUP_ID__=AuthenticationFG&amp;__START_TRAN_FLAG__=Y&amp;
+										FG_BUTTONS__=LOAD&amp;ACTION.LOAD=Y&amp;AuthenticationFG.LOGIN_FLAG=1&amp;BANK_ID=ICI&amp;ACCESS_DEV=WAP&amp;_ga=1.7652858.9789224
+										7.1402396153&amp;utm_source=gif"
+										class="" target="_blank"><img class="mob-hide fr mt5"
+										src="<%=request.getContextPath()%>/new_ui/IB_UI/internet-banknig-mobile.gif"></a>
+									</div> -->
+					<div class="rows phone clearfix">
+						<div class="smallrowsLeft">
+							<h2></h2>
+							<p>&nbsp;</p>
+							<div class="main-contentz">
+								<div class="table-container" style="float: left; width: 80%;">
+									<table style="">
+										<tbody>
+											<tr>
+												<td style=""><img
+													src="<%=request.getContextPath()%>/new_ui/IB_UI/images/tick_image.png"
+													alt=""></td>
+												<td style="">Unique User ID and password to login</td>
+											</tr>
+											<tr>
+												<td style=""><img
+													src="<%=request.getContextPath()%>/new_ui/IB_UI/images/tick_image.png"
+													alt=""></td>
+												<td style="">Confirmation through Debit Card grid
+													numbers corresponding to random 3 letters shown</td>
+											</tr>
+											<tr>
+												<td style=""><img
+													src="<%=request.getContextPath()%>/new_ui/IB_UI/images/tick_image.png"
+													alt=""></td>
+												<td style="">A One-Time Password (OTP) is sent to your
+													registered mobile number if there is a change in your login
+													pattern</td>
+											</tr>
+											<tr>
+												<td style=""><b>Instant alert</b></td>
+												<td style="">Transaction alert is sent to the registered
+													mobile number</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p>&nbsp;</p>
+						</div>
+						<!-- <div class="smallrowsLeft bottom">
+										<h2>Using mobile phone to access Internet Banking?</h2>
+										<p>
+											If you are using mobile browser, you can visit <a
+												href="" target="_blank">m.HPSCBbank.com</a>&nbsp;to
+											access your Internet Banking and transact while on the move.
+										</p>
+									</div> -->
+					</div>
+					<div class="rows clearfix" style="border: none;">
+						<h2>Tip</h2>
+						<p>
+							HPSCB Bank sends you all your transaction alerts and transaction
+							related authentications (eg One time password) on your registered
+							mobile number. Visit HPSCB Bank <a href="" target="_blank">ATM</a>
+							or <a href="" target="_blank">Branch</a> today to update your
+							mobile number and ensure your account security.
+						</p>
+					</div>
+				</div>
+		</div>
+	</div>
+	</div>
+	<footer>
+		<div class="middleContainer"></div>
+	</footer>
+</body>
+</html>

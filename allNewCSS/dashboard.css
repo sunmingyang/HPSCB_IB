@@ -1,0 +1,2202 @@
+/*
+	@name 05_dashboard
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 1440px; width: 1440px; height: 1886px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg___05_dashboard {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 1886px;
+	background:rgba(255,255,255,1);
+}
+
+#header {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 145px;
+}
+
+#rectangle_372 {
+	top: 89px;
+	left: 0px;
+	width: 1440px;
+	height: 56px;
+	background:rgba(253,246,244,1);
+}
+
+
+#rectangle_1 {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 90px;
+	background:rgba(0,103,184,1);
+}
+
+#logo {
+	top: 12px;
+	left: 50px;
+	width: 152px;
+	height: 64.43px;
+}
+
+#logo__2__1 {
+	top: 0px;
+	left: 0px;
+	width: 152px;
+	height: 64.43px;
+}
+
+
+#hpscb_bank_home_about_us_customer_care_find_atm_branch_mobile_banking {
+	top: 32px;
+	left: 396px;
+	width: 1004px;
+	height: 35px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: right;
+	color:#FFFFFF;
+}
+
+
+#line_19 {
+	top: 42px;
+	left: 776px;
+	width: 12px;
+	height: 1px;
+	
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	background:#7CA9CD;
+}
+
+
+#line_20 {
+	top: 42px;
+	left: 895px;
+	width: 12px;
+	height: 1px;
+	
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	background:#7CA9CD;
+}
+
+
+#line_21 {
+	top: 42px;
+	left: 1057px;
+	width: 12px;
+	height: 1px;
+	
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	background:#7CA9CD;
+}
+
+
+#line_22 {
+	top: 42px;
+	left: 1235px;
+	width: 12px;
+	height: 1px;
+	
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	background:#7CA9CD;
+}
+
+#mobile_usability_icon__1__1 {
+	top: 33px;
+	left: 1249px;
+	width: 12px;
+	height: 17px;
+}
+
+#vector {
+	top: 0px;
+	left: 0px;
+	width: 12px;
+	height: 17px;
+}
+
+#caret_down_icon_10 {
+	top: 114px;
+	left: 612px;
+	width: 8px;
+	height: 6px;
+}
+#caret_down_icon_11 {
+	top: 114px;
+	left: 880px;
+	width: 8px;
+	height: 6px;
+}
+#caret_down_icon_12 {
+	top: 114px;
+	left: 1108px;
+	width: 8px;
+	height: 6px;
+}
+#caret_down_icon_13 {
+	top: 114px;
+	left: 1314px;
+	width: 8px;
+	height: 6px;
+}
+#group_14 {
+	top: 108px;
+	left: 50px;
+	width: 1340px;
+	height: 23px;
+}
+
+#overview_my_accounts_payments___transfer_investments___insurance_exclusive_offerings_customer_service {
+	top: 0px;
+	left: 7px;
+	width: 1343px;
+	height: 33px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color:#000000;
+}
+
+#customer_service_icon_1 {
+	top: 0px;
+	left: 1157px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#vector_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 17.93px;
+	height: 18.01px;
+}
+
+#offer_icon_1 {
+	top: 0px;
+	left: 908px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#vector_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#overview_icon_1 {
+	top: 0px;
+	left: 0px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#vector_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#my_account_icon_1 {
+	top: 0px;
+	left: 158px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#vector_ek4 {
+	top: 0px;
+	left: 0px;
+	width: 17.93px;
+	height: 18px;
+}
+
+#caret_down_icon_8 {
+	top: 6px;
+	left: 101px;
+	width: 7.97px;
+	height: 6px;
+}
+
+#vector_ek5 {
+	top: 0px;
+	left: 0px;
+	width: 7.97px;
+	height: 6px;
+}
+
+#caret_down_icon_9 {
+	top: 6px;
+	left: 291px;
+	width: 7.97px;
+	height: 6px;
+}
+
+#vector_ek6 {
+	top: 0px;
+	left: 0px;
+	width: 7.97px;
+	height: 6px;
+}
+
+
+#vector_ek7 {
+	top: 7px;
+	left: 555px;
+	width: 7.97px;
+	height: 4.27px;
+}
+
+
+#vector_ek8 {
+	top: 7px;
+	left: 848px;
+	width: 7.97px;
+	height: 4.27px;
+}
+
+
+#vector_ek9 {
+	top: 7px;
+	left: 1104px;
+	width: 7.97px;
+	height: 4.27px;
+}
+
+
+#vector_ek10 {
+	top: 7px;
+	left: 1332px;
+	width: 7.97px;
+	height: 4.27px;
+}
+
+#wire_transfer_icon_1 {
+	top: 1px;
+	left: 348px;
+	width: 24.91px;
+	height: 16px;
+}
+
+#vector_ek11 {
+	top: 0px;
+	left: 0px;
+	width: 24.91px;
+	height: 16px;
+}
+
+#investment_analysis_icon_1 {
+	top: 0px;
+	left: 607px;
+	width: 25.9px;
+	height: 18px;
+}
+
+#vector_ek12 {
+	top: 0px;
+	left: 0px;
+	width: 25.9px;
+	height: 18px;
+}
+
+
+#rectangle_258 {
+	top: 220px;
+	left: 50px;
+	width: 470px;
+	height: 766px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-ms-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-o-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-webkit-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-moz-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	background:rgba(255,255,255,1);
+}
+
+
+#rectangle_259 {
+	top: 220px;
+	left: 547px;
+	width: 843px;
+	height: 874px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-ms-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-o-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-webkit-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-moz-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	background:rgba(255,255,255,1);
+}
+
+
+#wel_come_back_dinesh_kuamr__ {
+	top: 259px;
+	left: 137px;
+	width: 377px;
+	height: 58px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#group_15 {
+	top: 250px;
+	left: 72px;
+	width: 55px;
+	height: 55px;
+}
+
+
+#group_26 {
+	top: 156px;
+	left: 1340px;
+	width: 27px;
+	height: 27px;
+}
+
+
+#rectangle_260 {
+	top: 315px;
+	left: 137px;
+	width: 200px;
+	height: 30px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:rgba(0,103,184,1);
+}
+
+
+#rectangle_261 {
+	top: 363px;
+	left: 137px;
+	width: 200px;
+	height: 30px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:rgba(0,103,184,1);
+}
+
+#my_account_icon_2 {
+	top: 317px;
+	left: 87px;
+	width: 26px;
+	height: 26px;
+}
+
+#vector_ek13 {
+	top: 0px;
+	left: 0px;
+	width: 26px;
+	height: 26px;
+}
+
+
+#my_profile {
+	top: 321px;
+	left: 144px;
+	width: 195px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+
+#my_card_pin {
+	top: 369px;
+	left: 144px;
+	width: 195px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+#card_pin_icon_1 {
+	top: 367px;
+	left: 85px;
+	width: 33px;
+	height: 22px;
+}
+#layer_x0020_1 {
+	top: 0px;
+	left: 0.02px;
+	width: 32.96px;
+	height: 22px;
+}
+
+#vector_ek14 {
+	top: 0px;
+	left: 0px;
+	width: 32.96px;
+	height: 22px;
+}
+
+
+#line_38 {
+	top: 411px;
+	left: 72px;
+	width: 432px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+
+#line_41 {
+	top: 190px;
+	left: 0px;
+	width: 1440px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+
+#line_39 {
+	top: 454px;
+	left: 72px;
+	width: 432px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+#group_16 {
+	top: 417px;
+	left: 382px;
+	width: 122px;
+	height: 30px;
+}
+
+#rectangle_262 {
+	top: 0px;
+	left: 0px;
+	width: 122px;
+	height: 30px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:rgba(0,103,184,1);
+}
+
+
+#log_out {
+	top: 6px;
+	left: 13px;
+	width: 112px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+#login_icon__1__1 {
+	top: -9px;
+	left: 15px;
+	width: 13px;
+	height: 16px;
+}
+#group {
+	top: 0px;
+	left: 0px;
+	width: 13px;
+	height: 16px;
+}
+
+#vector_ek15 {
+	top: 0px;
+	left: 0px;
+	width: 13px;
+	height: 16px;
+}
+
+
+#last_visited_ {
+	top: 422px;
+	left: 72px;
+	width: 234px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#rectangle_263 {
+	top: 477px;
+	left: 72px;
+	width: 434px;
+	height: 492px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+	background:rgba(249.69,249.69,249.69,1);
+}
+
+
+#rectangle_264 {
+	top: 477px;
+	left: 72px;
+	width: 432px;
+	height: 52px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:rgba(229,244,255,1);
+}
+
+
+#rectangle_265 {
+	top: 287px;
+	left: 547px;
+	width: 843px;
+	height: 52px;
+	background:rgba(229,244,255,1);
+}
+
+
+#my_shortcuts {
+	top: 491px;
+	left: 119px;
+	width: 409px;
+	height: 37px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+#shortcut_icon_1 {
+	top: 493px;
+	left: 90px;
+	width: 20px;
+	height: 20px;
+}
+#group_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 20px;
+	height: 20px;
+}
+
+#vector_ek16 {
+	top: 0px;
+	left: 0px;
+	width: 20px;
+	height: 20px;
+}
+
+#group_17 {
+	top: 909px;
+	left: 90px;
+	width: 160px;
+	height: 34px;
+}
+
+#rectangle_262_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 160px;
+	height: 34px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background:rgba(0,103,184,1);
+}
+
+
+#customize_links {
+	top: 7px;
+	left: 5px;
+	width: 158.4px;
+	height: 30.4px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+
+#detailed_statement {
+	top: 555px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#pay_any_visa_credit_card {
+	top: 787px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#bill_payments {
+	top: 671px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#fund_transfer {
+	top: 613px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#open_fixed_deposit {
+	top: 845px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#prepaid_recharge {
+	top: 729px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#e_statement {
+	top: 584px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#scheduled_transaction {
+	top: 816px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#quick_pay {
+	top: 700px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#my_favorites {
+	top: 642px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#service_requests {
+	top: 874px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#payment_to_hpscb_bank_credit_card {
+	top: 758px;
+	left: 90px;
+	width: 342px;
+	height: 31px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#welcome_to_hpscb_internet_banking {
+	top: 245px;
+	left: 575px;
+	width: 810px;
+	height: 56px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 26px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#getting_started {
+	top: 302px;
+	left: 578px;
+	width: 546px;
+	height: 34px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 18px;
+	text-align: left;
+	color:#000000;
+}
+
+#footer {
+	top: 1115px;
+	left: 0px;
+	width: 1440px;
+	height: 741px;
+}
+
+#rectangle_233 {
+	top: 17px;
+	left: 1053px;
+	width: 62.83px;
+	height: 42.76px;
+	
+	-ms-transform:rotate(-55.9deg);
+	-o-transform:rotate(-55.9deg);
+	-webkit-transform:rotate(-55.9deg);
+	-moz-transform:rotate(-55.9deg);
+	transform:rotate(-55.9deg);
+	background:rgba(217,217,217,1);
+}
+
+
+#rectangle_231 {
+	top: 29px;
+	left: 0px;
+	width: 1440px;
+	height: 667px;
+	background:rgba(0,103,184,1);
+}
+
+
+#copyright___2023_himachal_pradesh_state_co_operative_bank_ltd_all_rights_reserved_ {
+	top: 722px;
+	left: -3px;
+	width: 1453px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Nunito;
+	font-size: 16px;
+	text-align: center;
+	color:#5A5A5A;
+}
+
+
+#line_10 {
+	top: 243px;
+	left: 0px;
+	width: 1440px;
+	height: 1px;
+	background:#499FE3;
+}
+
+#logo_ek1 {
+	top: 80px;
+	left: 50px;
+	width: 279.39px;
+	height: 118.43px;
+}
+
+#logo__2__1_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 279.39px;
+	height: 118.43px;
+}
+
+
+#the_himachal_pradesh_state_cooperative_bank_ltd__is_an_apex_bank_of_the_state_of_himachal_pradesh__and_is_listed_as_scheduled_bank_with_its_branches_spread_across_6_districts_of_the_state_and_one_branch_at_new_subzi_mandi__new_delhi_ {
+	top: 102px;
+	left: 414px;
+	width: 1004px;
+	height: 120px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 22px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#rectangle_232 {
+	top: 0px;
+	left: 1084px;
+	width: 307px;
+	height: 57px;
+	background:rgba(0,61.86,110.5,1);
+}
+
+
+#follow___hpscblofficial {
+	top: 18px;
+	left: 1108px;
+	width: 293px;
+	height: 36px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+
+#hpscb {
+	top: 287px;
+	left: 50px;
+	width: 326px;
+	height: 58px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: left;
+	color:#9ACEE5;
+}
+
+
+#loans {
+	top: 287px;
+	left: 387px;
+	width: 347px;
+	height: 58px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: left;
+	color:#9ACEE5;
+}
+
+
+#deposits {
+	top: 287px;
+	left: 745px;
+	width: 347px;
+	height: 58px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: left;
+	color:#9ACEE5;
+}
+
+
+#acsti {
+	top: 287px;
+	left: 1097px;
+	width: 347px;
+	height: 58px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: left;
+	color:#9ACEE5;
+}
+
+
+#line_11 {
+	top: 322px;
+	left: 50px;
+	width: 299px;
+	height: 1px;
+	background:#9ACEE5;
+}
+
+
+#line_12 {
+	top: 322px;
+	left: 387px;
+	width: 299px;
+	height: 1px;
+	background:#9ACEE5;
+}
+
+
+#line_13 {
+	top: 322px;
+	left: 745px;
+	width: 299px;
+	height: 1px;
+	background:#9ACEE5;
+}
+
+
+#line_14 {
+	top: 322px;
+	left: 1097px;
+	width: 299px;
+	height: 1px;
+	background:#9ACEE5;
+}
+
+
+#about_us_managing_committee_board_of_directors_branches_network_atm_network_contact_us_right_to_information_list_of_unclaimed_deposits_customer_grievance_redressal_policy {
+	top: 342px;
+	left: 41px;
+	width: 341px;
+	height: 327px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: left;
+	line-height: 30px;
+	margin-top: -4.6666666666667px;
+	height: 343px;
+	color:#FFFFFF;
+}
+
+
+#home_loan_car_loan_personal_loan_education_loan_hotel_motel_tiny_tourism_financing_of_hydel_projects_interest_rates_on_loans {
+	top: 342px;
+	left: 377px;
+	width: 341px;
+	height: 264px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: left;
+	line-height: 30px;
+	margin-top: -4.6666666666667px;
+	height: 280px;
+	color:#FFFFFF;
+}
+
+
+#savings_account_current_account_recurring_deposit_fixed_deposit_himpurnivesh_deposit_sarvapriya_deposit_mahalaxmi_deposit_interest_rates_on_deposits {
+	top: 342px;
+	left: 735px;
+	width: 341px;
+	height: 289px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: left;
+	line-height: 30px;
+	margin-top: -4.6666666666667px;
+	height: 305px;
+	color:#FFFFFF;
+}
+
+
+#about_acsti_facilities_faculty_courses_calendar_how_to_reach_contact_us {
+	top: 342px;
+	left: 1087px;
+	width: 341px;
+	height: 289px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: left;
+	line-height: 30px;
+	margin-top: -4.6666666666667px;
+	height: 305px;
+	color:#FFFFFF;
+}
+
+#twitter_color_icon_1 {
+	top: 1133px;
+	left: 1122px;
+	width: 25px;
+	height: 25px;
+}
+
+#vector_ek17 {
+	top: 2.35px;
+	left: 0px;
+	width: 25px;
+	height: 20.31px;
+}
+
+
+#dashboard {
+	top: 159px;
+	left: 50px;
+	width: 293px;
+	height: 29px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+#group_41 {
+	top: 675px;
+	left: 547px;
+	width: 843px;
+	height: 413px;
+}
+#group_19 {
+	top: 13px;
+	left: 31px;
+	width: 180px;
+	height: 40px;
+}
+
+#rectangle_266 {
+	top: 0px;
+	left: 0px;
+	width: 180px;
+	height: 40px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background:rgba(0,103,184,1);
+}
+
+
+#accounts {
+	top: 10px;
+	left: -3px;
+	width: 193px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 20px;
+	color:#FFFFFF;
+}
+
+#account_number_icon_1 {
+	top: 10px;
+	left: 11px;
+	width: 24px;
+	height: 18px;
+}
+
+#vector_ek18 {
+	top: 0px;
+	left: 0px;
+	width: 24px;
+	height: 18px;
+}
+
+#group_21 {
+	top: 13px;
+	left: 429px;
+	width: 180px;
+	height: 40px;
+}
+
+#rectangle_266_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 180px;
+	height: 40px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background:rgba(229,244,255,1);
+}
+
+
+#card {
+	top: 10px;
+	left: -3px;
+	width: 193px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: center;
+	line-height: 20px;
+	color:#000000;
+}
+
+#group_20 {
+	top: 13px;
+	left: 230px;
+	width: 180px;
+	height: 40px;
+}
+
+#rectangle_266_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 180px;
+	height: 40px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background:rgba(229,244,255,1);
+}
+
+
+#loan {
+	top: 10px;
+	left: -3px;
+	width: 193px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: center;
+	line-height: 20px;
+	color:#000000;
+}
+
+#bank_finance_loan_icon_1 {
+	top: 11px;
+	left: 43px;
+	width: 18px;
+	height: 18px;
+}
+
+#vector_ek19 {
+	top: 0px;
+	left: 0px;
+	width: 18px;
+	height: 18px;
+}
+
+#group_22 {
+	top: 13px;
+	left: 627px;
+	width: 180px;
+	height: 40px;
+}
+
+#rectangle_266_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 180px;
+	height: 40px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background:rgba(229,244,255,1);
+}
+
+
+#fixed_deposit {
+	top: 10px;
+	left: 24px;
+	width: 165px;
+	height: 30px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-align: center;
+	line-height: 20px;
+	color:#000000;
+}
+
+
+#deposit_1 {
+	top: 7px;
+	left: 13px;
+	width: 22px;
+	height: 22px;
+}
+
+
+#line_40 {
+	top: 66px;
+	left: 0px;
+	width: 843px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+
+#line_41_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 843px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+#card_pin_icon_2 {
+	top: 24px;
+	left: 459px;
+	width: 29px;
+	height: 18px;
+}
+#layer_x0020_1_ek1 {
+	top: 0px;
+	left: 0.02px;
+	width: 28.96px;
+	height: 18px;
+}
+
+#vector_ek20 {
+	top: 0px;
+	left: 0px;
+	width: 28.96px;
+	height: 18px;
+}
+
+#group_25 {
+	top: 82px;
+	left: 31px;
+	width: 218px;
+	height: 248px;
+}
+#group_18 {
+	top: 0px;
+	left: 0px;
+	width: 218px;
+	height: 248px;
+}
+
+#rectangle_239 {
+	top: 0px;
+	left: 0px;
+	width: 218px;
+	height: 248px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	-ms-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-o-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-webkit-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-moz-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	background:rgba(255,255,255,1);
+}
+
+#icon_popularsaving_account_1 {
+	top: 15px;
+	left: 7px;
+	width: 40px;
+	height: 40px;
+}
+
+#vector_ek21 {
+	top: 6.4px;
+	left: 9.6px;
+	width: 19.2px;
+	height: 19.2px;
+}
+
+
+#vector_ek22 {
+	top: 6.4px;
+	left: 8px;
+	width: 22.4px;
+	height: 16px;
+}
+
+
+#savings_account {
+	top: 21px;
+	left: 42px;
+	width: 170px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#account_number {
+	top: 55px;
+	left: 23px;
+	width: 205px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	color:#000000;
+}
+
+
+#available_balance {
+	top: 103px;
+	left: 23px;
+	width: 205px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	color:#000000;
+}
+
+
+#branch {
+	top: 155px;
+	left: 23px;
+	width: 205px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	color:#000000;
+}
+
+
+#_123xx678xxx234xx_show {
+	top: 75px;
+	left: 23px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#__xxxxxx_show {
+	top: 123px;
+	left: 23px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#mi_road__jaipur {
+	top: 175px;
+	left: 23px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#view_details {
+	top: 220px;
+	left: 13px;
+	width: 92px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -3.3333333333333px;
+	height: 36px;
+	color:#0067B8;
+}
+
+
+#statement {
+	top: 224px;
+	left: 129px;
+	width: 75px;
+	height: 21px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: right;
+	color:#0067B8;
+}
+
+
+#line_41_ek2 {
+	top: 216px;
+	left: 0px;
+	width: 218px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+#group_24 {
+	top: 82px;
+	left: 266px;
+	width: 218px;
+	height: 248px;
+}
+#group_23 {
+	top: 0px;
+	left: 0px;
+	width: 218px;
+	height: 248px;
+}
+
+#rectangle_239_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 218px;
+	height: 248px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	-ms-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-o-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-webkit-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	-moz-box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	box-shadow:0px 0px 10px 1px rgba(221,221,221,1);
+	background:rgba(255,255,255,1);
+}
+
+
+#current_account {
+	top: 21px;
+	left: 45px;
+	width: 170px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#account_number_ek1 {
+	top: 55px;
+	left: 22px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#available_balance_ek1 {
+	top: 103px;
+	left: 22px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#_123xx678xxx234xx_show_ek1 {
+	top: 75px;
+	left: 22px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#current_account__1__1 {
+	top: 21px;
+	left: 22px;
+	width: 20px;
+	height: 19px;
+}
+
+
+#view_details_ek1 {
+	top: 221px;
+	left: 22px;
+	width: 92px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -3.3333333333333px;
+	height: 36px;
+	color:#0067B8;
+}
+
+
+#statement_ek1 {
+	top: 225px;
+	left: 138px;
+	width: 75px;
+	height: 21px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: right;
+	color:#0067B8;
+}
+
+
+#line_42 {
+	top: 217px;
+	left: 0px;
+	width: 218px;
+	height: 1px;
+	background:#DDDDDD;
+}
+
+
+#branch_ek1 {
+	top: 155px;
+	left: 22px;
+	width: 205px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	color:#000000;
+}
+
+
+#mi_road__jaipur_ek1 {
+	top: 175px;
+	left: 22px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#__xxxxxx_show_ek1 {
+	top: 123px;
+	left: 23px;
+	width: 203px;
+	height: 26px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 12px;
+	text-align: left;
+	line-height: 20px;
+	margin-top: -2.6666666666667px;
+	height: 38px;
+	color:#000000;
+}
+
+
+#the_hpscb_bank_offers_various_deposit_plans_that_you_can_choose_from_depending_on_the_term_period__nature_of_deposit_and_its_unique_saving_and_withdrawal_features_ {
+	top: 358px;
+	left: 31px;
+	width: 794px;
+	height: 65px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	line-height: 20px;
+	color:#000000;
+}
+
+#thin_chevron_arrow_right_icon_1 {
+	top: 163px;
+	left: 1377px;
+	width: 10px;
+	height: 16px;
+}
+
+#vector_ek23 {
+	top: 0px;
+	left: 0px;
+	width: 10px;
+	height: 16px;
+}
+
+
+#line_44 {
+	top: 170px;
+	left: 752px;
+	width: 40px;
+	height: 1px;
+	
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	background:#DDDDDD;
+}
+
+#search_file_icon_1 {
+	top: 384px;
+	left: 584px;
+	width: 24px;
+	height: 27px;
+}
+#financial_statement_icon_1 {
+	top: 455px;
+	left: 555px;
+	width: 24px;
+	height: 27px;
+}
+#group_44 {
+	top: 374px;
+	left: 575px;
+	width: 785px;
+	height: 250px;
+}
+#upi_icon_4 {
+	top: 219px;
+	left: 0px;
+	width: 43px;
+	height: 26px;
+}
+
+#vector_ek24 {
+	top: 17.04px;
+	left: 5.51px;
+	width: 30.29px;
+	height: 1.68px;
+}
+
+
+#vector_ek25 {
+	top: 7.28px;
+	left: 6.36px;
+	width: 26.14px;
+	height: 8.51px;
+}
+
+
+#vector_ek26 {
+	top: 7.29px;
+	left: 33.05px;
+	width: 4.43px;
+	height: 8.49px;
+}
+
+
+#vector_ek27 {
+	top: 7.29px;
+	left: 31.57px;
+	width: 4.44px;
+	height: 8.49px;
+}
+
+
+#vector_ek28 {
+	top: 0px;
+	left: 0px;
+	width: 43px;
+	height: 26px;
+}
+
+#best_quality_icon_1 {
+	top: 150px;
+	left: 275px;
+	width: 22px;
+	height: 29px;
+}
+
+#vector_ek29 {
+	top: 0px;
+	left: 0px;
+	width: 22.01px;
+	height: 29px;
+}
+
+#finger_print_icon_1 {
+	top: 219px;
+	left: 558px;
+	width: 27px;
+	height: 27px;
+}
+#group_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 27px;
+}
+
+#vector_ek30 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 27px;
+}
+
+#timecard_icon_1 {
+	top: 77px;
+	left: 272px;
+	width: 24px;
+	height: 27px;
+}
+
+#vector_ek31 {
+	top: 0px;
+	left: 0px;
+	width: 24px;
+	height: 27px;
+}
+
+#profile_website_icon_1 {
+	top: 2px;
+	left: 557px;
+	width: 27px;
+	height: 24px;
+}
+#group_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 24px;
+}
+
+#vector_ek32 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 24px;
+}
+
+#bank_statement_icon_1 {
+	top: 0px;
+	left: 272px;
+	width: 24px;
+	height: 27px;
+}
+
+#vector_ek33 {
+	top: 0px;
+	left: 0px;
+	width: 24px;
+	height: 27px;
+}
+
+
+#account_summary {
+	top: 2px;
+	left: 36px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#vector_ek34 {
+	top: 0px;
+	left: 0px;
+	width: 24px;
+	height: 27px;
+}
+
+
+#e_statement_ek1 {
+	top: 79px;
+	left: 36px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#vector_ek35 {
+	top: 77px;
+	left: 0px;
+	width: 24px;
+	height: 27px;
+}
+
+
+#know_your_cibil_score {
+	top: 156px;
+	left: 33px;
+	width: 239px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+#speedometer_icon_1 {
+	top: 155px;
+	left: 0px;
+	width: 27px;
+	height: 23px;
+}
+#group_ek4 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 23px;
+}
+
+#vector_ek36 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 23px;
+}
+
+
+#enable___disable_accounts_for_upi {
+	top: 221px;
+	left: 47px;
+	width: 384px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#my_profile_ek1 {
+	top: 2px;
+	left: 592px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#spend_analyzer {
+	top: 79px;
+	left: 592px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+#data_scientist_icon_1 {
+	top: 77px;
+	left: 559px;
+	width: 27px;
+	height: 27px;
+}
+
+#vector_ek37 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 27px;
+}
+
+
+#select_your_segment {
+	top: 155px;
+	left: 590px;
+	width: 216px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+#quarterly_icon_1 {
+	top: 151px;
+	left: 557px;
+	width: 27px;
+	height: 28px;
+}
+
+#vector_ek38 {
+	top: 0px;
+	left: 0px;
+	width: 27px;
+	height: 28px;
+}
+
+
+#update_kyc {
+	top: 221px;
+	left: 592px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#account_statement {
+	top: 2px;
+	left: 306px;
+	width: 212px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#pending_statement {
+	top: 79px;
+	left: 306px;
+	width: 212px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#hpscb_rewards {
+	top: 155px;
+	left: 306px;
+	width: 201px;
+	height: 40px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	color:#0067B8;
+}
+
+
+#_28_mar_2023____04_16_06_am_ist__ {
+	top: 161px;
+	left: 1105px;
+	width: 247px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#_28_mar_2023____04_16_am_ist__ {
+	top: 423px;
+	left: 154px;
+	width: 247px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Montserrat;
+	font-size: 14px;
+	text-align: left;
+	color:#000000;
+}
+
+
+
+/* Add your custom CSS here */

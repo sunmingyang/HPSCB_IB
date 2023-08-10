@@ -1,0 +1,58 @@
+[Template * Comment/README]
+
+ This is OpenCHAT <DOMAIN>.tpls conf file. Each section contains the the HTML template
+ for the corresponding OpenCHAT page of this domain.
+
+ Please refer to the OpenCHAT.tpls Comment/README section for further syntax explanation
+ of this file.
+
+ This file configures only the <DOMAIN> specific templates. If the [Template <DOMAIN>...] tag
+ has a <DOMAIN> param different then the one in the file name, the section will be
+ read anyway, as it where correct. This tag param is keeped here only to preserve the
+ same syntax as the OpenCHAT.tpls file.
+
+ All template examples are in the  OpenCHAT.tpls file. We have set up here only some room
+ specific templates as examples.
+
+ Please read the OpenCHAT.tpls file, where all syntax and special tags which MUST be 
+ used on teplates are better explained in.
+
+
+
+
+
+ From now on these are all real templates...
+
+
+
+[Template * preOpened/Demo%20Room%201/Top]
+
+ <!-- OpenCHAT chat window top frame template for Demo Room 1 -->
+
+ <HTML>
+  <HEAD>
+   <TILE>OpenCHAT</TITLE>
+  </HEAD>
+
+  <BODY leftmargin=0 topmargin=0 margineidth=0 marginheight=0 bgcolor=000000>
+   <FONT FACE=Arial SIZE=4 color=ffffff><b><i>OpenCHAT</b> <font color=cccccc>Sistemica.info</font>
+   <font color=888888>(Demo Room 1 Template)</font>
+  </BODY>
+ </HTML>
+
+[Template * preOpened/Demo%20Room%202/Top]
+
+ <!-- OpenCHAT chat window top frame template for Demo Room 1 -->
+
+ <HTML>
+  <HEAD>
+   <TILE>OpenCHAT</TITLE>
+  </HEAD>
+
+  <BODY leftmargin=0 topmargin=0 margineidth=0 marginheight=0 bgcolor=000000>
+   <FONT FACE=Arial SIZE=4 color=ffffff><b><i>OpenCHAT</b> <font color=cccccc>Sistemica.info</font>
+   <font color=888888>(Demo Room 2 Template)</font>
+  </BODY>
+ </HTML>
+
+

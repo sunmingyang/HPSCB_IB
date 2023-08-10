@@ -1,0 +1,1 @@
+feba.loader={functions:[],fnload:function(n,t){LIB.__ADD__(this.functions,n)},executeAll:function(){for(var n=this.functions.length,t=0;n>t;t++)this.functions[t]()}};

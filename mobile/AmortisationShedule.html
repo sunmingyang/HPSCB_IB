@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
+  	<head>
+
+
+ <title>Account Open</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <script src="/mobile/jquery/jquery.min.js"></script>
+	    <script src="/mobile/bootstrap/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="/mobile/bootstrap/css/bootstrap.min.css">
+		<script src="/mobile/mbanking_js/mbanking.js"></script>
+		<link rel="stylesheet" href="/mobile/mbanking_css/style.css">
+
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+
+<!-- <script type="text/javascript" src="/CobaSys/account/acopen/script/RepaymentSchedule.js"></script>
+<script type="text/javascript" src="/CobaSys/account/acopen/script/acOpenCommon.js"></script>
+<script language="javascript" src="/CobaSys/hotkey/HotKey.js"></script> -->
+<script>
+var bwEmiAmt = 0;
+function printer()
+{
+ window.print();
+}
+
+var sAmort ='';
+var sEditAmort='';
+function FetchNext()
+{
+	revertCommaform(document.forms[0]);
+	document.forms[0].action="/CobaSys/account/acopen/loanLimitRepaymentScheduleAction.do?action=moveNextLoanLimitEditAllAmortisationDetail";
+	document.forms[0].submit();
+	disableFields();
+}
+function FetchPrev()
+{
+revertCommaform(document.forms[0]);
+document.forms[0].action="/CobaSys/account/acopen/loanLimitRepaymentScheduleAction.do?action=moveBackLoanLimitEditAllAmortisationDetail";
+	document.forms[0].submit();
+	disableFields();
+}
+function relFocus(){
+	document.getElementById("Ok").focus();
+}
+
+
+function showinstallment(){
+
+var installmant=sessionStorage.getItem('resArray1');
+
+
+var myBooks=JSON.parse(installmant);
+
+   var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+				         col.push(key);
+                }
+            }
+        }
+
+
+
+
+   for (var i = 0; i < myBooks.length; i++) {
+
+  var value = [];
+			  for (var j = 0; j < col.length; j++) {
+              
+               value.push( myBooks[i][col[j]]);
+				
+            }
+var newtr='<tr><td align="center" width="NaN"><span style="width:NaN;">'+value[6]+'</span></td>'+
+				'<td align="center" width="NaN"><span style="width:NaN;">'+value[7]+'</span></td>'+
+				'<td id="bwEmiAmt" align="right" width="NaN"><span style="width:NaN;">'+value[8]+'</span></td>'+
+				'<td id="intAmt" align="right" width="NaN"><span style="width:NaN;">'+Math.round(value[4] * 100.0)/100.0+'</span></td>'+ 
+				'<td id="principleAmt" align="right" width="NaN"><span style="width:NaN;">'+Math.round(value[5] * 100.0)/100.0+'</span></td>'+
+				'<td id="remainPrinciple" align="right" width="NaN"><span style="width:NaN;">'+value[9]+'</span></td>'+
+				'<td id="interstPenalroi" align="right" width="NaN"><span style="width:NaN;">'+value[10]+'</span></td>'+
+				'<td id="installPenalroi" align="right" width="NaN"><span style="width:NaN;">'+value[11]+'</span></td>'+
+		'</tr>';
+	//alert(newtr);
+document.getElementById("Tablebody1").innerHTML+=newtr;
+
+
+
+        }
+
+}
+
+
+
+function abc(){
+
+		
+		var a=sessionStorage.getItem('cust');
+		
+		 var textbox = document.getElementById('cst'); 
+	  textbox.innerHTML="Customer ID: "+a;
+
+	var GLCode=sessionStorage.getItem('glcode');
+	 var textbox = document.getElementById('glcode'); 
+	  textbox.innerHTML="GL Code: "+GLCode;
+
+	  var GLName=sessionStorage.getItem('glname');
+	 var textbox = document.getElementById('glname'); 
+	  textbox.innerHTML="GL Head: "+GLName;
+
+	  var cstname=sessionStorage.getItem('custname');
+	
+		 var textbox = document.getElementById('cstname'); 
+	  textbox.innerHTML=" Name: "+cstname;
+
+	   var currancy=sessionStorage.getItem('currency');
+	
+		 var textbox = document.getElementById('currency'); 
+	  textbox.innerHTML=" Currency: "+currancy;
+		}
+
+
+
+</script>
+<html>
+<head>
+	<title>
+	Amortisation Schedule
+	</title>		
+</head>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+	</html>
+<script>
+	//window.history.forward(1);//for disabling back button of browser.
+</script>
+<html>
+  <head>
+	<title>
+	  Repayment Schedule
+	</title>
+	 
+  </head>
+<div style="position:fixed; width:100%;background-color: #d9534f;  padding:0px; top:0px;min-height: 30px; ">
+	 	</div> 
+	 	
+		<div align="center" style="position:fixed; width:100%; padding:0px;background-color: #d9534f; bottom:0px;min-height: 30px; ">
+	      	<a href="./home.html">   <img src="./img/home.png" alt="..." class="img-responsive" ></a>
+	    </div> 
+		
+		<div style="margin-top:60px;" >
+		<img src="./img/logo.png" alt="..." class="img-responsive" style="margin:0px auto;display:block"  />
+		</div>
+
+
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" onkeyDown="StopKeyHandler()" >
+	<div id="container-div" class="container" style="margin-left: 20px;margin-top:10px;overflow-y: auto; width:100%;" >
+
+
+		<div class="tab-content" id="my-tab-content" style="height:75%;width:98% ">
+	<table width="100%" border="0" cellpading="0" cellspacing="0" height="80%">
+		<tr >
+			<td colspan="3" height="25%" class="displayTitleacc">		  
+				
+
+
+<script>
+
+function abc(){
+var a=sessionStorage.getItem('limit');
+var amorLoanAmount=document.getElementById("amorLoanAmount");
+amorLoanAmount.value=a;
+var GetPeriod=sessionStorage.getItem('month');
+var amorPeriodInMonth=document.getElementById("amorPeriodInMonth");
+amorPeriodInMonth.value=GetPeriod;
+var RateofInterest=sessionStorage.getItem('roi');
+var amorroi=document.getElementById("amorroi");
+amorroi.value=RateofInterest;
+var panelrate=sessionStorage.getItem('penalrate');
+var penalrate=document.getElementById("panelROI");
+penalrate.value=panelrate;
+var a=sessionStorage.getItem('cust');
+var textbox = document.getElementById('cst'); 
+textbox.innerHTML="Customer ID: "+a;
+var GLCode=sessionStorage.getItem('glcode');
+var textbox = document.getElementById('glcode'); 
+textbox.innerHTML="GL Code: "+GLCode;
+var GLName=sessionStorage.getItem('glname');
+var textbox = document.getElementById('glname'); 
+textbox.innerHTML="GL Head: "+GLName;
+var cstname=sessionStorage.getItem('custname');
+var textbox = document.getElementById('cstname'); 
+textbox.innerHTML=" Name: "+cstname;
+var account=document.getElementById("amorName");
+account.value=cstname;
+var currancy=sessionStorage.getItem('currency');
+var textbox = document.getElementById('currency'); 
+textbox.innerHTML=" Currency: "+currancy;
+}
+
+</script>
+
+
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="/CobaSys/css/normalize.css">
+        <link rel="stylesheet" href="/CobaSys/css/main.css">
+        <script src="/CobaSys/js/vendor/modernizr-2.8.3.min.js"></script> -->
+    </head>
+	</html>
+
+
+
+<center>
+  <body >
+
+ 	
+
+	<table border="0" width="100%" height="100%" >
+ 
+
+	<!-- Added by Ashwani on 25.10.07 -->
+	<tr>
+			 <td colspan="6" align ="center">
+					  <label style = "font-weight:bold; font-size:14; color:#660000;" >
+						<b>New Account Open<b>
+					  </label>
+			 </td>	 
+	</tr>
+
+	<tr>
+		<!-- Customer ID -->
+		<td >
+			<b><label class="displayLabelBright" id="cst">
+				Customer ID:
+			</label><b>
+		</td>
+		<!-- CURRENCY -->
+		<td>		 
+			<b><label class="displayLabelBright" id="currency">
+				Currency:
+			</label><b>
+		</td>
+		<!-- Scheme Code -->
+		<td>
+			<b><label class="displayLabelBright" id="glcode">
+				GL Code:
+			</label><b>
+		</td>
+		<td >
+			<b><label class="displayLabelBright"  id="glname">
+				GL Head:
+			</label><b>
+		</td> <!-- Added by Ashwani on 25.10.07 -->
+
+	</tr>
+	<tr>
+	 <!-- Customer Name -->
+	  <td colspan=4>
+	   <b><label class="displayLabelBright"  id="cstname">
+		Name:
+	   </label><b>
+	  </td>
+	</tr>
+
+	
+	</table>
+	</body>
+</center>
+ 
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3" height="2%" align="center" style="color:yellow;">		  
+				  <b>
+	Repayment Schedule
+<b>
+			</td>
+		</tr>
+
+
+		
+		<tr>
+			<td colspan="3" valign="top" height="70%">		  
+				
+<body style="margin:15" onkeypress = "escapeKey(event),goNextAtDownKey(event)" onload="abc(),showinstallment()"  >
+<form name="loanLimitRepaymentScheduleForm" method="post" action="/CobaSys/account/acopen/loanLimitRepaymentScheduleAction.do">
+
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td class="HeaderLabelAcOpen" align="center"> 
+          <label><b>Amortisation Schedule<b></label> </td>
+      </tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"  align="center">
+      <tr> 
+        <td>Account No.</td>
+        <td><strong>:</strong><input type="text" name="amorName" size="25" value="./A. LAL JAIN" readonly="readonly" style="text-align:right" class="fancyHide" id="amorName">	
+        </td>
+		<td>Loan amount</td>
+        <td> <strong>:</strong><input type="bmamount" name="amorLoanAmount" size="15" onblur ="setBMAmtVal(this);" onkeypress="return isValidBmAmount(this)" value="" readonly="readonly" style="text-align:right" class="fancyHide" id="amorLoanAmount" title="bmamount">
+        </td>
+      </tr>
+      <tr> 
+        <td>Rate of Interest</td>
+        <td> <strong>:</strong><input type="text" name="amorroi" size="15" value="10" readonly="readonly" style="text-align:right" class="fancyHide" id="amorroi">	
+        </td>
+        <td>Period in Months</td>
+        <td> <strong>:</strong><input type="text" name="amorPeriodInMonth" size="15" value="12" readonly="readonly" style="text-align:right" class="fancyHide" id="amorPeriodInMonth">	
+      </tr></tr>
+  	  <tr>
+	   <td>Panel Rate</td>
+        <td> <strong>:</strong><input type="text" name="panelROI" size="15" value="0.0" readonly="readonly" style="text-align:right" class="fancyHide" id="panelROI">	
+        </td>
+		</tr>
+      <tr> 
+        <td>&nbsp;</td>
+      <tr> 
+	 <!-- added loop for displaying data -->
+
+
+	 <table width="100%" cellpadding="5" cellspacing="0" border="0" id="tabela">
+	 <thead style="background-color:#70718F;color:#ffffff; overflow:none;"> 
+	 <td align="center" width="8%" >Sr. No.</td> 
+	 <td align="center" width="12%">Inst.-Int Date</td> 
+	 
+	 <td align="right" width="12%">Principal</td> 
+	 
+	 <td align="right" width="12%">Int.(Approx)</td>
+	 
+	 <td align="right" width="12%">Installment Amount</td> 
+	 
+	 <td align="right" width="14%">Outstanding Principal</td> 
+	 <td align="right" width="10%">Penal Interest</td> 
+	 <td align="right" width="16%">Inst.Amt.with Penal</td>
+	 </thead>
+	 
+<tbody class = "TableLabel" id="Tablebody1">
+
+	
+	
+	</tbody>
+	</table>
+	<!--Ends -->
+
+<script>
+function cancelAmortisationSchedule(){
+
+location.href='RepayMent.html';
+
+}
+
+</script>
+
+
+      <tr> 
+        <td colspan="4"> <table width="100%" cellpadding="3" cellspacing="0" border="0">
+            <tr style="background-color:#70718F;color:#ffffff;"> 
+              <td align="left"> Amortisation Schedule 
+              </td>
+              <td align="right"> <input type="button" class="btn btn-primary" name="Ok" onClick="cancelAmortisationSchedule()"
+			  class=Button value="OK" id="Ok" /> 
+                <input type="button" name="print" class=Button value="Print" onClick="printer()"/> 
+              </td>
+	      
+            </tr>
+          </table></td>
+      </tr>
+	   <tr>
+	      <td colspan="6">
+			Last install ment may have some diffrence due to rounding off EMI
+	      </td>
+      </tr>
+	  
+	  <tr>
+	   <td colspan="6">
+		  It will not take care of Subsidy and slab wise interest rate
+	   </td>
+	  </tr>
+
+    </table>
+	
+
+  </form>
+    
+			</td>
+		</tr>
+		 
+	 
+	</table>
+</body>
+</html>
+

@@ -1,0 +1,1 @@
+ADAPTIVECONFIG={solutionType:"arcot"};feba.js.adaptive.icici={onLoginSubmit:function(e){feba.js.adaptive.arcot.icici.collectArcotDataSetFieldsInArcotUtil();if(ADAPTIVECONFIG.solutionType=="arcot")feba.js.adaptive.arcot.submitDNAForm(true,2);return encryptValues(e)}}
