@@ -91,7 +91,7 @@ div#demo {
 <jsp:include page="/dashBoard/dashboardNew.jsp" />
 
 <body onload="fillData()" >
-      <section class="brad-log-time">
+      <!-- <section class="brad-log-time">
         <div class="inner-brad-log">
             <div class="container">
                 <div class="row">
@@ -133,11 +133,24 @@ div#demo {
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <div class="breadcrumb-container">
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb">
+                    <div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
+                  
+                   
+                    
+                    <div class="breadcrumb-item"><a>Mini-Statement </a></div>
+                </div>
+            </div>
+        </div>
 
 
    <section class="find-atm-branch-main ">
-      <div class="container">
+      <div class="container-fluid">
          <div class="row">            
                <section class="Account-Statement fd-account-details-main">
                   <div class="Account-Statement-inner">
@@ -145,13 +158,19 @@ div#demo {
                            <div class="container">
                               <div class="row">
                                  <div class="statement-main-shadow-div">
-                                       <div class="account-main-heading">
+                                       <!-- <div class="account-main-heading">
                                           <h2>Mini Statement</h2>
-                                       </div>
+                                       </div> -->
+                                       <div class="pay-heading">
+                                        <h6>
+                                           <img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+                                           Mini Statement
+                                        </h6>  
+                                     </div>
                                         <div class="chosse-an-account"> 
                                             <span class="inner-inpts">
                                                 <label>Please Select Account:  </label>
-                                                <select id="mAccNo" name="mAccNo" onchange="radioClick(this.value)" >
+                                                <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
                                                     <%
                                                         if(myList.size()!=0)
                                                     %>
@@ -191,14 +210,14 @@ div#demo {
    </section>
  
 
-<section class="back-home-button mt-5">
+<!-- <section class="back-home-button mt-5">
     <div class="container">
         <div class="inner-back-home">
             <button type="button" onclick="window.location.href='/dashBoard/dashboard.jsp'"> <a>BACK</a></button>
             <button type="button" onclick="window.location.href='/dashBoard/dashboard.jsp'"> <a>HOME</a></button>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Footer Start -->
  <%@ include file="/header/footer.jsp"%>	

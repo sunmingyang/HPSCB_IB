@@ -2709,8 +2709,8 @@ section.PAYMENTS-TRANSFER-main.funds-tra .fund-transfer-list.one {
 }
 
 section.PAYMENTS-TRANSFER-main.funds-tra .inner-funds-transfer-heading h2 {
-  padding: 5px 18px 6px;
-  font-size: 18px;
+  padding: 15px 25px 15px;
+  font-size: 24px;
   font-weight: 600;
   background: #f1f1f1;
   position: relative;
@@ -2766,12 +2766,12 @@ section.PAYMENTS-TRANSFER-main
 }
 
 .procced-button button {
-  padding: auto;
+  padding: 10px 80px;
   border-radius: 5px;
   border: 0;
   background: #0a67b5;
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 

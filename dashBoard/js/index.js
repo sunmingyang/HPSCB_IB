@@ -66,8 +66,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var mainItems = document.getElementById('level_1_menus');
 
         const menuNames = mainMenuData.menus.map(menu => {
+            var link = "#";
+            if(menu.link && menu.link!="0") link = menu.link;
             var menuItem = `<li class="nav-item" id="${menu.name}">
-                                <a class="nav-link text-primary" href="#">${menu.name}</a>
+                                <a class="nav-link text-primary" href="${link}">${menu.name}</a>
                             </li>`
             mainItems.innerHTML+=menuItem;
             console.log(menu.name);
