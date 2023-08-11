@@ -19,7 +19,7 @@
          </div>
      </div>
       <!-- header-end -->
-      <section class="PAYMENTS-TRANSFER-main  funds-tra my-5">
+      <section class="PAYMENTS-TRANSFER-main  funds-tra ">
          <div class="container-fluid">
             <div class="payments-and-transfer-inner">
                <div class="row">

@@ -2709,8 +2709,8 @@ section.PAYMENTS-TRANSFER-main.funds-tra .fund-transfer-list.one {
 }
 
 section.PAYMENTS-TRANSFER-main.funds-tra .inner-funds-transfer-heading h2 {
-  padding: 15px 25px 15px;
-  font-size: 24px;
+  padding: 8px 4px 2px;
+  font-size: 16px;
   font-weight: 600;
   background: #f1f1f1;
   position: relative;
