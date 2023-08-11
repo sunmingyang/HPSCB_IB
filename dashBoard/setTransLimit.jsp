@@ -11,7 +11,14 @@
    </head>
    <style>
         .statement-main-shadow-div .set-limit {
-            padding: 40px 0;
+            background: #e5f4ff;
+    padding: 5px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a67b5;
+    display: flex;
+    align-items: center;
+
         }
 
         .statement-main-shadow-div .set-limit h2 {
@@ -19,20 +26,20 @@
             font-weight: 600;
             color: #0067B8;
         }
-
+/* 
         .statement-main-shadow-div .set-limit-main {
             padding: 0 100px 70px;
-        }
+        } */
 
         .statement-main-shadow-div .set-limit-main .set-limit-inner .form-set-limit {
-            margin-top: 30px;
+            margin-top: 12px;
         }
 
         .statement-main-shadow-div .set-limit-main .set-limit-inner button.tablink {
             border: 1px solid #ccc;
-            padding: 10px 50px;
+            padding: 10px 30px;
             border-radius: 5px;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 500;
         }
 
@@ -41,7 +48,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid #ccc;
-    padding: 40px;
+    padding: 18px;
     border-radius: 15px;
 }
 
@@ -57,13 +64,13 @@
     width: 100%;
     margin: 0 0 0px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
     margin: 0 0 5px;
 }
 
 .statement-main-shadow-div .set-limit-main .set-limit-inner .form-set-limit div.tabcontent form span.inner-inpts select {
     width: 100%;
-    height: 55px;
+    height: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
@@ -72,7 +79,7 @@
 
 .statement-main-shadow-div .set-limit-main .set-limit-inner .form-set-limit div.tabcontent form span.inner-inpts input {
     width: 100%;
-    height: 55px;
+    height: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
@@ -80,11 +87,11 @@
 }
 
 .statement-main-shadow-div .set-limit-main .set-limit-inner .form-set-limit div.tabcontent button {
-    padding: 10px 50px;
+    padding: 7px 25px;
     border: 0;
     background: #0a67b5;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     color: #fff;
     border-radius: 5px;
 }
@@ -101,60 +108,34 @@
 
 <jsp:include page="/dashBoard/dashboardNew.jsp" />
    <body>
-      <section class="brad-log-time">
-        <div class="inner-brad-log">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bradcums">
-                            <ul>
-                                <li>
-                                    <a href="/dashBoard/dashboard.jsp">Dashboard</a>
-                                    >
-                                    <strong>Set Transaction Limit</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>  
-                    <div class="col-md-6">
-                     <div class="log-time">
-                        <span class="time">
-                            <%= (new java.util.Date()).toLocaleString()%>
-                        </span>
-                        <span class="">
-                            <strong><%=session.getAttribute("usrName") %></strong>
-                        </span>
-                        <span class="profile">                       
-                          <i class="fa fa-user" aria-hidden="true"></i>                     
-                           <img src="/styles/images/down-aroowwww.png" alt="">
-                        </span>
-                        <span class="profile-menu">
-                           <ul>
-                              <li>
-                                <a href="/my_profile/my_profile.jsp">My Profile</a>
-                              </li>
-                              <li>
-                                <a href="/jsp/login.do?action=ibUsrLogout">Log Out</a>
-                              </li>
-                           </ul>
-                        </span>
-                     </div>
-                    </div>              
-                </div>
-            </div>
-        </div>
-    </section>
+      
+    
+	<div class="breadcrumb-container">
+		<div class="row">
+			<div class="col">
+				<div class="breadcrumb">
+					<div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
+					<div class="breadcrumb-item">    <a >Account</a></div>
+					
+					
+					<div class="breadcrumb-item"><a>Set Transaction Limit </a></div>
+				</div>
+			</div>
+		</div>
+	</div>
   
-      <section class="Account-Statement my-5 fd-account-details-main set-limit">
+      <section class="Account-Statement fd-account-details-main set-limit">
          <div class="Account-Statement-inner">
             <div class="act-ineer-statemt">
-               <div class="container">
+               <div class="container-fluid">
                   <div class="row">
-                     <div class="statement-main-shadow-div">
-                        <div class="set-limit text-center">
-                           <h2>Set Transaction Limits</h2>
-                        </div>
-                        <div class="set-limit-main">
+                     <div class="statement-main-shadow-div p-0">
+                         <div class="set-limit text-center">
+                           <h6>Set Transaction Limits</h6>
+                        </div> 
+                        
+       
+                        <div class="set-limit-main p-4">
                            <div class="set-limit-inner">
                              
                                 <button class="tablink" onclick="openPage('Account', this, '#0067B8' )" id="defaultOpen">Account</button>

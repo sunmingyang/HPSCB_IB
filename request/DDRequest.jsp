@@ -96,6 +96,7 @@
 
 			function BankInfo()
 			{
+                debugger;
 			  var ran=parseInt(Math.random()*9999);
 			 
 			var url="/request/DDRequest.do?action=getMaster&masterType=RespondingBankYes";
@@ -187,7 +188,8 @@
 
 			function onSet()
 			{
-				
+				debugger;
+            
 				var rr= document.getElementById('DocType').value;
 				
 						for(var i=0;i<data2.length;i++)
@@ -263,6 +265,9 @@
 			<jsp:include page="/dashBoard/dashboardNew.jsp" />
 			<body onload="loadfun();DocumentType();BankInfo()">
 			<html:form action="/request/DDRequest">
+
+            
+           
                 <div class="breadcrumb-container">
                     <div class="row">
                         <div class="col">
@@ -276,7 +281,9 @@
                         </div>
                     </div>
                 </div>
-		
+                <div class="text-center">
+                    <h5 class="justify-content-center  badge bg-primary p-2 fs-6  ">Demand Draft Request</h5>
+                </div>
                 <div class="container-fluid box-sec p-4">
                     <div class="row">
                         <div class="col-md-3">
