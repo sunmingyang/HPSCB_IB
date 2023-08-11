@@ -1,10 +1,9 @@
 <%@ include file="/common/Include.jsp" %>
 <script language="JavaScript" src="/request/scripts/reqChk.js"></script>
-
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body onBlur="onLoad()">
 
 <html:form action="/request/reqchk.do">
-<br>
 <table align="left" class="wrapperDataTable container" style="width: 100%;">
 	<!-- <tr >
 		<td class="wrapperDataTableTR" align="center">
@@ -25,7 +24,6 @@
 	</div>
 	<tr>
 		<td align="center">
-			<br>
 			<div id="diverrmessage" class="errorInfoText">
 				<logic:messagesPresent property="NoServer">
 				<html:errors property="NoServer"/>

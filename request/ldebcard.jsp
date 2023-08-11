@@ -23,7 +23,7 @@ String usrName = (String)session.getAttribute("user");
 	document.body.addEventListener('DOMContentLoaded', onloadFn(<%=request.getParameter("row")%>));
 </script>
 
-
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body>
 
 <html:form action="/request/reqchk.do" >

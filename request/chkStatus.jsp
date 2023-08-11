@@ -59,7 +59,7 @@ document.getElementById("diverrmessage").style.display ="block";
 <% 
 int errorcount=0;
 %>
-
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body onLoad="Onload()">
 <html:form action="/request/reqchk.do"  >
 

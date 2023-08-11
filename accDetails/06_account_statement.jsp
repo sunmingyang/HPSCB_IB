@@ -389,202 +389,205 @@
         <div class="act-ineer-statemt">
             <div class="container">
                 <div class="row">
-                    <div class="statement-main-shadow-div">
+                    <div class="statement-main-shadow-div p-0">
                     <div class="account-main-heading">
                         <img src="/styles/images/bank-statement-icon 1.png" alt=""> Account-Statement
-                    </div>               
-                    <div class="chosse-an-account row p-2">
-                        <html:select property="sAccnum" style="padding: 5px; width: 30%; " styleId="sAccnum" onchange="radioClick(this.value)">                          
-                                <% 
-					            	if(myList.size() != 0){
-        			      			    String accNo = "";
-                                %>
-                                
-                                <%
-                                 	    for(int i=0; i<myList.size(); i++){
-			        		    	        accNo = accTypeList.get(i) + "@" + userInfo[0][1] + "-" + myList.get(i) ;			
-			                    %>
-                                <html:option value="<%=accNo%>" >                                   
-                                    <span class="accountnu">
-                                        <%=myList.get(i)%>     
-                                    </span>
-		        				</html:option>                                
-                                <%
-                                        }
-                                    }
-                                %>
-                        </html:select>
-                    </div>
-
-                    <div class="Selected-Account-Number">
-                        <strong>Selected Account Number:  </strong>
-                        <span><div id="demo" name="demo" ></div></span>
-                    </div>
-
-					<div class="row p-2 d-flex justify-content-center" >
-                        <div class="date-pikkar col-md-4">
-                            <img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
-                            <label>Start Date</label>
-                          <input type="date" id="frdate" name="frdate" size="15"  class="form-control"  onkeypress="isValidDatechar()" maxlength="10"/> 
-                        </div>
-
-                        <div class="date-pikkar col-md-4">
-                            <img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
-                            <label>End Date</label>
-                           <input type="date" id="todate" name="todate" size="15" class="form-control"  onkeypress="isValidDatechar()" maxlength="10"/>
-                        </div>
-
-
-                        <div id="invisible" style="display:none;">
-                            <bean:message bundle='<%=lang%>' key='117'/>
-                            &nbsp;:&nbsp;
-                            <bean:message bundle='<%=lang%>' key='7098'/>
-                            <input type="radio" name="sTran_type" id="sTran_type" value="a"/>
-                            <bean:message bundle='<%=lang%>' key='7100'/>
-                            <input type="radio" name="sTran_type" id="sTran_type" value="d" checked="true"/>
-                            <bean:message bundle='<%=lang%>' key='7101'/>
-                        </div>
-                    </div>
-
-
-                    <%-- <p class="in-case-notice-p">In case the account statement does not reflect all your transaction, please download statement from the 'Pending Statement'  link under the 'My Accounts' tabs after some time  </p> --%>
-                    
-
-                    <div class="Select-Appropriate">
-                        <h5>Select Appropriate Options To View, Print or Download The Statement</h5>
-                        
-                        <span class="seclect-inner-area">
-                            <label for="sOut_req1">
-                                <%-- <img src="/styles/images/quickview-icon 1.png" alt=""> --%>
-                                <input type="radio" name="sOut_req" id="sOut_req" value="screen" checked="true">
-                                <%-- <bean:message bundle='<%=lang %>' key='7102'/> --%>
-                                <p>Display on screen</p>
-
-                                <%-- <p>View</p> --%>
-
-                                
-                                <%-- <input type="radio"> --%>
-                            </label>
-                            &nbsp; &nbsp;
-                        </span>
-
-                        <span class="seclect-inner-area">
-                            <label for="sOut_req2">
-                                <%-- <img src="/styles/images/excel-file-icon 1.png" alt=""> --%>
-                                <input type="radio" name="sOut_req" id="sOut_req" value="xls">
-                                <p>Download in MS Excel format</p>
-
-                                
-                                <%-- <input type="radio"> --%>
-                            </label>
-                            &nbsp; &nbsp;
-                        </span>
-
-                        <span class="seclect-inner-area">
-                            <label for="sOut_req3">
-                                <%-- <img src="/styles/images/pdf-files-icon 1.png" alt=""> --%>
-                                <input type="radio" name="sOut_req" id="sOut_req" value="pdf">
-                                <p>Download in PDF format</p>
-
-                                
-                                <%-- <input type="radio"> --%>
-                            </label>
-                            &nbsp; &nbsp;
-                        </span>
-
-                    </div>
-
-                    <div class="show-btnn">
-                        
-					    <%-- <input type="button" class="statement-button" onclick="return detail_statment('<%= acc_num %>','<%=curCode %>');" value="<bean:message bundle='<%=lang %>' key='3627'/>"> --%>
-                        <%-- <button type="submit" class="statement-button">SUBMIT</button> --%>
-
-                        <button type="submit" class="statement-button"  onclick="return detail_statment('<%= acc_num %>','<%=curCode %>');" >SUBMIT</button>
-
-
-                    </div>
-
-                  
-
-                    <div class="statement-start-aria show" style="width: 100%; margin-top: 85px;">
-                        <span class="headline-upper">
-                            <%
-                                if(source.equals("detail")){
-								    String frdate=(String)request.getAttribute("frdate");
-								    String todate=(String)request.getAttribute("todate");
-				            %>
-				                    <div class="start-date-end-date statement-row" style="display: inline-flex;">    
-                                        <span class="date-pikkar">
-    		    		                    <bean:message bundle='<%=lang %>' key='115'/>
-                                            &nbsp;:&nbsp;
-                	    			        <input type="text" id="fromdate" value="<%=frdate%>" class="miniStmtResultback" disabled>
-                                        </span>
-
-                                        &nbsp;&nbsp;
-                                        
-                                        <span class="date-pikkar">
-			                    	        <bean:message bundle='<%=lang %>' key='116'/>
-                                            &nbsp;:&nbsp;
-                				            <input type="text" id="todate" value="<%=todate%>" class="miniStmtResultback" disabled>
-                                        </span>
-                                    </div>
-				
-            				<%
-                                }
-                            %>           
-                            
-                        </span>
-
-        <div id="group_87">			
-			<%
-				
-				if(mini_stmt != null)
-				{
-					System.out.println("ministatement not null");
-					int j=0;
-					if(mini_date != null)
-					j= mini_date.size();
-					System.out.print("jjj"+j);
-					if(j!=0) {}
-					{%>							
-				<table border="2" id="myTable" style="width: 100%;" >						
-						<thead>		
-							<tr>						
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black "> S.No </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Date </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Description </th>
-                                <th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > DEBIT </th>
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > CREDIT </th>								
-								<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > BALANCE </th>
-							</tr>
-						</thead> 
-						<tbody>
-					<%}%>
-				<%
-					for(int i=0;i<j;i++)
-					{
-						int k=0;
-			%>				
-				<tr>			
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=i+1%>	</td> 
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%= mini_date.get(i) %>     </td>
-					<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=mini_Edesc.get(i) %> </td>
-					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("D")){%> <%= mini_amt.get(i)%><%}%>  </td>
-                    <td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("C")) {%> <%= mini_amt.get(i)%><%}%> </td>					
-					<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%= mini_cumbal.get(i) %> </td>
+                    </div>    
+					<div class="p-3">
+						<div class="chosse-an-account row p-2">
+							<html:select property="sAccnum" style="padding: 5px; width: 30%; " styleId="sAccnum" onchange="radioClick(this.value)">                          
+									<% 
+										if(myList.size() != 0){
+											  String accNo = "";
+									%>
+									
+									<%
+											 for(int i=0; i<myList.size(); i++){
+												accNo = accTypeList.get(i) + "@" + userInfo[0][1] + "-" + myList.get(i) ;			
+									%>
+									<html:option value="<%=accNo%>" >                                   
+										<span class="accountnu">
+											<%=myList.get(i)%>     
+										</span>
+									</html:option>                                
+									<%
+											}
+										}
+									%>
+							</html:select>
+						</div>
+	
+						<div class="Selected-Account-Number">
+							<strong>Selected Account Number:  </strong>
+							<span><div id="demo" name="demo" ></div></span>
+						</div>
+	
+						<div class="row p-2 d-flex justify-content-center" >
+							<div class="date-pikkar col-md-4">
+								<img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
+								<label>Start Date</label>
+							  <input type="date" id="frdate" name="frdate" size="15"  class="form-control"  onkeypress="isValidDatechar()" maxlength="10"/> 
+							</div>
+	
+							<div class="date-pikkar col-md-4">
+								<img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
+								<label>End Date</label>
+							   <input type="date" id="todate" name="todate" size="15" class="form-control"  onkeypress="isValidDatechar()" maxlength="10"/>
+							</div>
+	
+	
+							<div id="invisible" style="display:none;">
+								<bean:message bundle='<%=lang%>' key='117'/>
+								&nbsp;:&nbsp;
+								<bean:message bundle='<%=lang%>' key='7098'/>
+								<input type="radio" name="sTran_type" id="sTran_type" value="a"/>
+								<bean:message bundle='<%=lang%>' key='7100'/>
+								<input type="radio" name="sTran_type" id="sTran_type" value="d" checked="true"/>
+								<bean:message bundle='<%=lang%>' key='7101'/>
+							</div>
+						</div>
+	
+	
+						<%-- <p class="in-case-notice-p">In case the account statement does not reflect all your transaction, please download statement from the 'Pending Statement'  link under the 'My Accounts' tabs after some time  </p> --%>
+						
+	
+						<div class="Select-Appropriate">
+							<h5>Select Appropriate Options To View, Print or Download The Statement</h5>
+							
+							<span class="seclect-inner-area">
+								<label for="sOut_req1">
+									<%-- <img src="/styles/images/quickview-icon 1.png" alt=""> --%>
+									<input type="radio" name="sOut_req" id="sOut_req" value="screen" checked="true">
+									<%-- <bean:message bundle='<%=lang %>' key='7102'/> --%>
+									<p>Display on screen</p>
+	
+									<%-- <p>View</p> --%>
+	
+									
+									<%-- <input type="radio"> --%>
+								</label>
+								&nbsp; &nbsp;
+							</span>
+	
+							<span class="seclect-inner-area">
+								<label for="sOut_req2">
+									<%-- <img src="/styles/images/excel-file-icon 1.png" alt=""> --%>
+									<input type="radio" name="sOut_req" id="sOut_req" value="xls">
+									<p>Download in MS Excel format</p>
+	
+									
+									<%-- <input type="radio"> --%>
+								</label>
+								&nbsp; &nbsp;
+							</span>
+	
+							<span class="seclect-inner-area">
+								<label for="sOut_req3">
+									<%-- <img src="/styles/images/pdf-files-icon 1.png" alt=""> --%>
+									<input type="radio" name="sOut_req" id="sOut_req" value="pdf">
+									<p>Download in PDF format</p>
+	
+									
+									<%-- <input type="radio"> --%>
+								</label>
+								&nbsp; &nbsp;
+							</span>
+	
+						</div>
+	
+						<div class="show-btnn">
+							
+							<%-- <input type="button" class="statement-button" onclick="return detail_statment('<%= acc_num %>','<%=curCode %>');" value="<bean:message bundle='<%=lang %>' key='3627'/>"> --%>
+							<%-- <button type="submit" class="statement-button">SUBMIT</button> --%>
+	
+							<button type="submit" class="statement-button"  onclick="return detail_statment('<%= acc_num %>','<%=curCode %>');" >SUBMIT</button>
+	
+	
+						</div>
+	
+					  
+	
+						<div class="statement-start-aria show" style="width: 100%; margin-top: 85px;">
+							<span class="headline-upper">
+								<%
+									if(source.equals("detail")){
+										String frdate=(String)request.getAttribute("frdate");
+										String todate=(String)request.getAttribute("todate");
+								%>
+										<div class="start-date-end-date statement-row" style="display: inline-flex;">    
+											<span class="date-pikkar">
+												<bean:message bundle='<%=lang %>' key='115'/>
+												&nbsp;:&nbsp;
+												<input type="text" id="fromdate" value="<%=frdate%>" class="miniStmtResultback" disabled>
+											</span>
+	
+											&nbsp;&nbsp;
+											
+											<span class="date-pikkar">
+												<bean:message bundle='<%=lang %>' key='116'/>
+												&nbsp;:&nbsp;
+												<input type="text" id="todate" value="<%=todate%>" class="miniStmtResultback" disabled>
+											</span>
+										</div>
 					
-                </tr>    
-					<%  session.removeAttribute("mini_stmt");
-					} 
-				}
-                
-			%>		
-			</tbody>	
-			</table>
-
-		</div>
-
-                    </div>
+								<%
+									}
+								%>           
+								
+							</span>
+	
+			<div id="group_87">			
+				<%
+					
+					if(mini_stmt != null)
+					{
+						System.out.println("ministatement not null");
+						int j=0;
+						if(mini_date != null)
+						j= mini_date.size();
+						System.out.print("jjj"+j);
+						if(j!=0) {}
+						{%>							
+					<table border="2" id="myTable" style="width: 100%;" >						
+							<thead>		
+								<tr>						
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black "> S.No </th>
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Date </th>
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > Description </th>
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > DEBIT </th>
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > CREDIT </th>								
+									<th style="text-align:center;padding: 10px;border: 1px solid #ccc;font-size: 16px; color:black " > BALANCE </th>
+								</tr>
+							</thead> 
+							<tbody>
+						<%}%>
+					<%
+						for(int i=0;i<j;i++)
+						{
+							int k=0;
+				%>				
+					<tr>			
+						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=i+1%>	</td> 
+						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%= mini_date.get(i) %>     </td>
+						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=mini_Edesc.get(i) %> </td>
+						<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("D")){%> <%= mini_amt.get(i)%><%}%>  </td>
+						<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%if(mini_crdr.get(i).equals("C")) {%> <%= mini_amt.get(i)%><%}%> </td>					
+						<td style="text-align:right;padding: 10px;border: 1px solid #ccc;font-size: 14px;" > <%= mini_cumbal.get(i) %> </td>
+						
+					</tr>    
+						<%  session.removeAttribute("mini_stmt");
+						} 
+					}
+					
+				%>		
+				</tbody>	
+				</table>
+	
+			</div>
+	
+						</div>
+					</div>           
+                   
                 </div>
             </div>
             </div>

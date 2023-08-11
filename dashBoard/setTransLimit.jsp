@@ -37,7 +37,7 @@
 
         .statement-main-shadow-div .set-limit-main .set-limit-inner button.tablink {
             border: 1px solid #ccc;
-            padding: 10px 30px;
+            padding: 5px 15px;
             border-radius: 5px;
             font-size: 16px;
             font-weight: 500;
@@ -138,8 +138,8 @@
                         <div class="set-limit-main p-4">
                            <div class="set-limit-inner">
                              
-                                <button class="tablink" onclick="openPage('Account', this, '#0067B8' )" id="defaultOpen">Account</button>
-                                <button class="tablink" onclick="openPage('Card', this, '#0067B8' )" >Card</button>
+                                <button class="tablink btn btn-primary" onclick="openPage('Account', this, '#0067B8' )" id="defaultOpen">Account</button>
+                                <button class="tablink btn btn-primary" onclick="openPage('Card', this, '#0067B8' )" >Card</button>
 
 
                               <div class="form-set-limit">

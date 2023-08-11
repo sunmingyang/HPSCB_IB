@@ -104,6 +104,7 @@ div#demo {
                 </div>
             </div>
         </div>
+    </div>
 
 
    <section class="find-atm-branch-main ">
@@ -114,51 +115,53 @@ div#demo {
                      <div class="act-ineer-statemt">
                            <div class="container">
                               <div class="row">
-                                 <div class="statement-main-shadow-div">
+                                 <div class="statement-main-shadow-div p-0">
                                        <!-- <div class="account-main-heading">
                                           <h2>Mini Statement</h2>
                                        </div> -->
                                        <div class="account-main-heading">
-                                        <h6>
-                                           <img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
-                                           Mini Statement
-                                        </h6>  
-                                     </div>
-                                        <div class="chosse-an-account col-md-12"> 
-                                            <div class="inner-inpts d-flex">
-                                                <div class="col-md-6" ><label>Please Select Account:  </label></div>
-                                                <div class="col-md-4">
-                                                    <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
-                                                        <%
-                                                            if(myList.size()!=0)
-                                                        %>
-                                                        <%
-                                                            for(int i=0; i<myList.size(); i++){			        		    	               			
-                                                        %>
-                                                        <option value="<%=myList.get(i)%>" >                                   
-                                                            <span class="accountnu">
-                                                                <%=myList.get(i)%>     
-                                                            </span>
-                                                        </option>                                
-                                                        <%                                                            
-                                                            }
-                                                        %>
-                                                    </select>   
+                                            <h6>
+                                            <img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+                                            Mini Statement
+                                            </h6>  
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="chosse-an-account col-md-12"> 
+                                                <div class="inner-inpts d-flex">
+                                                    <div class="col-md-6" ><label>Please Select Account:  </label></div>
+                                                    <div class="col-md-4">
+                                                        <select id="mAccNo" class="form-select" name="mAccNo" onchange="radioClick(this.value)" >
+                                                            <%
+                                                                if(myList.size()!=0)
+                                                            %>
+                                                            <%
+                                                                for(int i=0; i<myList.size(); i++){			        		    	               			
+                                                            %>
+                                                            <option value="<%=myList.get(i)%>" >                                   
+                                                                <span class="accountnu">
+                                                                    <%=myList.get(i)%>     
+                                                                </span>
+                                                            </option>                                
+                                                            <%                                                            
+                                                                }
+                                                            %>
+                                                        </select>   
+                                                    </div>
+                                                                                                   
                                                 </div>
-                                                                                               
-                                            </div>
-                                        </div>  
-                                        <div class="Selected-Account-Number">
-                                            <strong>Selected Account Number:  </strong>
-                                            <span><div id="demo" name="demo" ></div></span>
-                                        </div>  
-
-                                       <div class="fd-details-table">
-                                          <div class="table-inner">
-                                             <div id="MiniStmtResult">
-                                             </div>   
-                                          </div>                            
-                                       </div>
+                                            </div>  
+                                            <div class="Selected-Account-Number">
+                                                <strong>Selected Account Number:  </strong>
+                                                <span><div id="demo" name="demo" ></div></span>
+                                            </div>  
+    
+                                           <div class="fd-details-table">
+                                              <div class="table-inner">
+                                                 <div id="MiniStmtResult">
+                                                 </div>   
+                                              </div>                            
+                                           </div>
+                                        </div>
                                  </div>
                               </div>
                            </div>
