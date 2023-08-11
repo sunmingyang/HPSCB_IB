@@ -2664,7 +2664,7 @@ section.PAYMENTS-TRANSFER-main
   li {
   list-style: none;
   width: 50%;
-  margin: 20px 0 10px;
+  margin: 10px 0 10px;
 }
 
 section.PAYMENTS-TRANSFER-main
@@ -2768,12 +2768,12 @@ section.PAYMENTS-TRANSFER-main
 }
 
 .procced-button button {
-  padding: 10px 80px;
+  padding: 10px 8px;
   border-radius: 5px;
   border: 0;
   background: #0a67b5;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
 }
 

@@ -265,7 +265,7 @@ span.Beneficiary-inner-selection input {
                 </div> -->
 
                 <div class="d-flex justify-content-center">
-                  <div class="procced-button shadow-sm">
+                  <div class="procced-button">
                       <button type="button" class="btn btn-primary" onclick="otp_number()">
                           <img src="/styles/images/next 2.png" alt="Next">
                           Get OTP
@@ -282,7 +282,7 @@ span.Beneficiary-inner-selection input {
 				</span>
               
               <div class="d-flex justify-content-center mt-3">
-                  <div class="procced-button shadow-sm">
+                  <div class="procced-button">
                       <button type="button" class="btn btn-primary" onclick="otp_confirm()">
                           <img src="/styles/images/next 2.png" alt="Next">
                           Confirm OTP
