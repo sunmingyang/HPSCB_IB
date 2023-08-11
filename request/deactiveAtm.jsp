@@ -50,6 +50,7 @@ String usrInfo[][]=(String[][])session.getAttribute("userInfo");
 // document.body.addEventListener('DOM')
 
 </script>
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body >
 
 <html:form action="/request/reqchk.do" >

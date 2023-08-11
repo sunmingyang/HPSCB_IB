@@ -33,6 +33,7 @@ if(usrInfo != null)
 
 
 <html>
+<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body>
 
 <div class="breadcrumb-container">
