@@ -305,7 +305,13 @@
            // alert("fill data is called");
             var e = document.getElementById("sAccnum").value;
            //alert("eee" + e);
+
+		   var scrolling = document.getElementById("table_data");
+		   if(scrolling.textContent){
+			window.scrollTo(0, document.body.scrollHeight);
+		   } 
             radioClick(e);
+
 
         }
 
@@ -566,7 +572,7 @@
 						{
 							int k=0;
 				%>				
-					<tr>			
+					<tr id="table_data">			
 						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=i+1%>	</td> 
 						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%= mini_date.get(i) %>     </td>
 						<td style="text-align:left;padding: 10px;border: 1px solid #ccc;font-size: 14px;"> <%=mini_Edesc.get(i) %> </td>
