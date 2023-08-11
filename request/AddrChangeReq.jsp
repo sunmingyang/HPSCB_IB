@@ -50,7 +50,7 @@ if(usrInfo != null)
 
 
 <div class="d-flex justify-content-center col-md-12">
-	<div class="card box-sec col-md-8">
+	<div class="card box-sec container">
 		<div class="card-body">
 			<form action="/request/reqchk.do">
 				<div class="row mb-3">
