@@ -11,7 +11,11 @@
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.json.*" %>
+<%@ page import="javax.json.Json" %>
+<%@ page import="javax.json.JsonObject" %>
+<%@ page import="javax.json.JsonReader" %>
 <%@ page import="org.json.JSONObject" %>
+<%@ page import="javax.json.JsonValue" %>
 <%@page import="java.text.SimpleDateFormat"%>
 
 <% 
@@ -433,10 +437,9 @@
 		}
 	</style>
 </head>
-<jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body onload=fillData() >
 <html:form action="/accsum/acc_sum" >  
-    <!-- <header class="site-header">
+    <header class="site-header">
         <div class="top-header">
             <div class="container">
             <div class="row">
@@ -450,7 +453,7 @@
             </div>
         </div>
     </div>
-</header>  -->
+</header> 
 
 <!-------------- Login Id --------------->
 <div class="menu">
@@ -469,7 +472,7 @@
 
 
 <!-- header-end -->
-<!-- <section class="brad-log-time">
+<section class="brad-log-time">
         <div class="inner-brad-log">
             <div class="container">
                 <div class="row">
@@ -507,23 +510,7 @@
                 </div>
             </div>
         </div>
-</section> -->
-
-
-
-<div class="breadcrumb-container">
-	<div class="row">
-		<div class="col">
-			<div class="breadcrumb">
-				<div class="breadcrumb-item"><a href="/dashBoard/dashboard.jsp">Home</a></div>
-				<div class="breadcrumb-item">    <a >Loan</a></div>
-				
-				
-				<div class="breadcrumb-item"><a>Interest Certificate </a></div>
-			</div>
-		</div>
-	</div>
-</div>
+</section>
 
 <section class="Account-Statement my-5">
     <div class="Account-Statement-inner">
@@ -531,89 +518,73 @@
             <div class="container">
                 <div class="row">
                     <div class="statement-main-shadow-div">
-          
+                    <div class="account-main-heading">
+                        <img src="/allNewCSS/images/statement/bank-statement-icon 1.png" alt="">
+                        <h2>Loan Certificate</h2>
+                    </div>               
+                    <div class="chosse-an-account">
+                        <label style="font-size: 16px;">Account Number &nbsp;</label>&nbsp;
+					    <html:select property="sAccnum" styleId="sAccnum" onchange="radioClick(this.value)">                          
+							<html:option value="" >Select Account Number</html:option>
+                                <% 
+					            	if(myList.size() != 0){
+        			      			    String accNo = "";
+                                %>
+                                <%
+                                 	    for(int i=0; i<myList.size(); i++){
+			        		    	        accNo = accTypeList.get(i) + "@" + userInfo[0][1] + "-" + myList.get(i);			
+			                    %>
+								
+                                <html:option value="<%=accNo%>" >                                   
+                                    <span class="accountnu">
+                                        <%=myList.get(i)%>       
+                                    </span>
+		        				</html:option>                                
+                                <%
+                                        }
+                                    }
+                                %>
+                        </html:select>
+                       <label style="font-size: 16px;float: right;margin-top: 12px;">Customer Id :- <%=custid%></label>
+                    </div>
 
-					<div class="text-center">
-						<h5 class="justify-content-center  badge bg-primary p-2 fs-6  ">Loan Certificate</h5>
-					</div>
-                
-					<div class="container">
-						<div class="chosse-an-account">
-							<div class="row">
-								<div class="col-md-4">
-									<label class="form-label" style="font-size: 16px;">Account Number</label>
-									<select class="form-select" id="sAccnum" name="sAccnum" onchange="radioClick(this.value)">
-										<option value="">Select Account Number</option>
-										<% if (myList.size() != 0) {
-												String accNo = "";
-												for (int i = 0; i < myList.size(); i++) {
-													accNo = accTypeList.get(i) + "@" + userInfo[0][1] + "-" + myList.get(i);
-										%>
-											<option value="<%= accNo %>">
-												<span class="accountnu"><%= myList.get(i) %></span>
-											</option>
-										<% } } %>
-									</select>
-								</div>
-								<div class="col">
-									<label class="form-label">Customer Id :- <%= custid %></label>
-								</div>
-							</div>
-						</div>
-					</div>
-					
+                    <div class="start-date-end-date">
+                        <span class="date-pikkar">
+                            <img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
+                            <p>From Date</p>
 
+                            <html:bmdate  styleId="frdate" property="frdate" size="15"  onkeypress="isValidDatechar()" maxlength="10"/> 
+                            &nbsp;  (YYYY/MM/DD)
+                            <!-- <input type="date"> -->
+                        </span>
 
-					<div class="container">
-						<div class="start-date-end-date">
-							<div class="row">
-								<div class="col">
-									<span class="date-pikkar">
-										<img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
-										<label>From Date</label>
-										<input type="date" class="form-control" id="frdate" name="frdate" size="15" onkeypress="isValidDatechar()" maxlength="10">
-										
-									</span>
-								</div>
-								<div class="col">
-									<span class="date-pikkar">
-										<img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
-										<label>To Date</label>
-										<input type="date" class="form-control" id="todate" name="todate" size="15" onkeypress="isValidDatechar()" maxlength="10">
-										
-									</span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<div id="invisible" class="mt-2" style="display:none;">
-										<span><bean:message bundle='<%=lang%>' key='117'/></span>
-										
-										<span><bean:message bundle='<%=lang%>' key='7098'/></span>
-										<input type="radio" name="sTran_type" id="sTran_type" value="a">
-										<span><bean:message bundle='<%=lang%>' key='7100'/></span>
-										<input type="radio" name="sTran_type" id="sTran_type" value="d" checked="true">
-										<span><bean:message bundle='<%=lang%>' key='7101'/></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-                   
+                        <span class="date-pikkar">
+                            <img src="/allNewCSS/images/statement/search-date-calendar-icon 1.png" alt="">
+                            <p>To Date</p>
 
-					<div class="container p-2">
-						<div class="row">
-							<div class="col text-center">
-								<div class="d-flex justify-content-center">
-									<button type="button" class="btn btn-primary btn-sm statement-button mx-2" onclick="detailInterest()" id="ViewBtn">View</button>
-									<button type="button" class="btn btn-primary btn-sm statement-button" id="downloadPdf" onclick="downloadPdfInt()">Download</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <html:bmdate  styleId="todate" property="todate" size="15"   onkeypress="isValidDatechar()" maxlength="10"/> 
+                            &nbsp;  (YYYY/MM/DD)
+                            <!-- <input type="date"> -->
+                        </span>
+
+                        <div id="invisible" style="display:none;">
+                            <bean:message bundle='<%=lang%>' key='117'/>
+                            &nbsp;:&nbsp;
+                            <bean:message bundle='<%=lang%>' key='7098'/>
+                            <input type="radio" name="sTran_type" id="sTran_type" value="a"/>
+                            <bean:message bundle='<%=lang%>' key='7100'/>
+                            <input type="radio" name="sTran_type" id="sTran_type" value="d" checked="true"/>
+                            <bean:message bundle='<%=lang%>' key='7101'/>
+                        </div>
+                    </div>
+                    <div style="width: 100%;display: flex;">
+                        <div class="show-btnn" style="margin-left: 0%;width: 50%;">
+                            <button type="button" style="height: 40px;width: 130px;padding: 0px;float: right;" class="statement-button"  onclick="detailInterest()" id="ViewBtn">View</button>
+                        </div>
+                        <div class="show-btnn" style="margin-left: 0%;width: 50%;">
+                            <button type="button" class="statement-button" style="height: 40px;width: 150px;padding: 0px;float: left;" id="downloadPdf"  onclick="downloadPdfInt()">Download</button>
+                        </div>
+                    </div>  
 					<!--------------------Loading Spinner -------------------->
 					<style>
 						.loader {
@@ -650,15 +621,15 @@
 						</div>
 					</div>
 				<!--------------------Loading Spinner -------------------->
-                    <div class="statement-start-aria show m-4 " id="intTableDiv"  style="width: 100%; overflow:  hidden;">
-                        <table class="dataShowTable" id="dataShowTable" style="display: none;width: 100%; ">
+                    <div class="statement-start-aria show" id="intTableDiv"  style="width: 100%;">
+                        <table class="dataShowTable" id="dataShowTable" style="display: none;width: 100%;">
 							<input type="hidden" name = "SelectedRow" id = "SelectedRow" value = "0"> 
 							<thead style="position: sticky;top: -1px;height: 25px;">
 								<tr>
 									<th style="width: 150px;">SR No.</th>
-									<th >Date</th>
-									<th>Cr/Dr</th>
-									<th >Amount</th>
+									<th style="">Date</th>
+									<th style="">Cr/Dr</th>
+									<th style="">Amount</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -666,7 +637,9 @@
 							</tbody>	
 						</table>
 
-						
+						<!-- <table class="dataShowTable" id="totalAmtTable" style="display: none;width: 100%;">
+
+						</table> -->
                     </div>
             </div>
             </div>
@@ -674,7 +647,15 @@
         </div>
     </div>
 </section>
-
+<section class="back-home-button">
+    <div class="container">
+        <div class="inner-back-home">
+            <button type="button" onclick="window.location.href='/dashBoard/dashboard.jsp'"> <a>BACK</a></button>
+            <button type="button" onclick="window.location.href='/dashBoard/dashboard.jsp'"> <a>HOME</a></button>
+            <%-- <button> <a href="/dashBoard/dashboard.jsp"> HOME </a> </button> --%>
+        </div>
+    </div>
+</section>
 <input type="hidden" name ="sCurrency" id ="sCurrency" value=<%=curCode %> >
 </html:form>
 
@@ -683,9 +664,9 @@
 
 <script>
 
-var showIntApiData = '<td><input type="text" class="form-control" name="sr_No" class="sr_No tableTdInput" id="sr_No" value=""  /></td><td><input  class="form-control" type="text" id="intDate" name="intDate" class="intDate tableTdInput"/></td><td><input  class="form-control" type="text" id="intCrDr" name="intCrDr" class="intCrDr tableTdInput" /></td><td><input  class="form-control" type="text" id="intAmount" name="intAmount" class="intAmount tableTdInput" /></td>';
+var showIntApiData = '<td><input type="text" name="sr_No" class="sr_No tableTdInput" id="sr_No" value=""  /></td><td><input type="text" id="intDate" name="intDate" class="intDate tableTdInput"/></td><td><input type="text" id="intCrDr" name="intCrDr" class="intCrDr tableTdInput" /></td><td><input type="text" id="intAmount" name="intAmount" class="intAmount tableTdInput" /></td>';
 
-var showIntTotalAmt = '<td colspan="3" style="text-align:right"><label style="font-size: 15px;padding-left: 40px;">Total Amount </label></td><td><input  class="form-control" type="text" id="totalInput" name="totalInput" style="width:100%;height:100%;border:1px solid black;color:black;font-size: 14px;text-align: center;"></td>';
+var showIntTotalAmt = '<td colspan="3" style="text-align:right"><label style="font-size: 15px;padding-left: 40px;">Total Amount :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label></td><td><input type="text" id="totalInput" name="totalInput" style="width:100%;height:100%;border:1px solid black;color:black;font-size: 14px;text-align: center;"></td>';
 
 
 
