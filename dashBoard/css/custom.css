@@ -1229,7 +1229,7 @@ margin-bottom:10px;}
 }
 
 section.log-in-page {
-  padding: 100px 0 100px;
+  padding: 20px 0 100px;
   background-image: url(../images/log-in-background.png);
 }
 
@@ -1340,7 +1340,7 @@ span.for-any i.fa.fa-info {
 .left-section-log .log-in-area input {
   border: 1px solid #ddd;
   box-shadow: 0 4px 10px 0px #ddd;
-  margin: 0 0 30px;
+  margin: 0 0 10px;
   height: 50px;
   padding: 10px;
   border-radius: 5px;
@@ -1354,7 +1354,7 @@ span.for-any i.fa.fa-info {
 .log-form-bottom {
   background: #fff;
   border-top: 1px solid #ddd;
-  padding: 20px;
+  padding: 5px;
 }
 
 .log-form-bottom span.mobile-log {
