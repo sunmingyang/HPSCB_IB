@@ -13,7 +13,70 @@
 <script language=JavaScript src="/scripts/MD5.js"> </script>
 <script language=JavaScript src="/scripts/Enc_Desc.js"> </script>
 
+<!-- This Link for captcha style -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/jsp/Captcha-login-page/captcha_style.css">
+<!-- Font Awesome CDN Link for Icons -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/jsp/Captcha-login-page/captcha-min.css"/>
 
+
+<style>
+    #logoimg1{
+			height: 110px;
+			margin-left: 20px;
+			widht:30%;
+
+		}
+		#logoimg2{
+			   /* margin-left: -52px;
+                margin-top: -25px;*/
+                height:110px;
+                margin-left: 20px;
+                widht:30%;
+
+
+		}
+			#usernamegroup1{
+			display: none;
+		}
+		#logoimg3{
+			height: 110px;
+           margin-left: 20px;
+			/*margin-left: 300px;*/
+			widht:30%;
+		}
+		#banktimg {
+		  	  /* margin-left: -500px;*/
+		  	}
+		  	#content {
+		  		/*margin-left: -35%;*/
+		  	}
+
+		  	.main_content_div{
+		  		widht: 100%;
+		  		/*margin-left: -16%;*/
+
+
+		  	}
+.captcha-div{
+			width: 15%;
+		    height: 40px;
+		    outline: none;
+		    cursor: pointer;
+		    background: #4db2ec;
+		    border-radius: 5px;
+		    transition: all 0.3s ease;
+		}
+		.captcha-input{
+			width: 100%;
+			outline: none;
+		    cursor: pointer;
+		    background: #4db2ec;
+		    border-radius: 5px;
+		    transition: all 0.3s ease;
+		    border: 1px solid gray;
+		}
+
+</style>
 
 <script>
    var isOpen="c";
@@ -55,7 +118,7 @@
 		http.open("POST",url,false);
 		http.onreadystatechange= function (){processAccount()};
 		http.send(null);	
-	}
+	}  
    function processAccount(){
 	 if (http.readyState == 4)
         {
@@ -91,115 +154,86 @@
 <body onkeyDown="StopKeyHandler()" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" bgcolor="#FFFFFF" link="#00AADD" vlink="#FF9933" background=""  >
 <!-- <body onkeyDown="StopKeyHandler()"  topmargin=0 leftmargin=0 > --><br>
 	<html:form action= "/jsp/login">
-<!--				
-<%	if(request.getParameter("errno")!=null)
-	{%><table>
-		
-		<tr>
-			<td style="padding-left:80px" class="heading"><font face="verdana">
-				Your Session is Expired, Please Login Again !!!</font>
-			</td>
-		</tr>
-		</table>   
-<%}%>
--->
-<table width="100%" cellpadding="0" cellspacing="0" >
-	<%	if(request.getParameter("errno")!=null)
-	{	%>
-		<br><br>
-		<tr>
-			<td style="padding-left:80px" class="heading"><font face="verdana">
-				<bean:message bundle='<%=lang%>' key='7419'/>!!!</font>
-			</td>
-		</tr>
-<%	}	%>
-	<tr> 
-		<td valign="middle" align=left>
-			<div id="diverrmessage"><font face="verdana" color="red">
-				<logic:messagesPresent property="Locked"><html:errors property="Locked"/></logic:messagesPresent>
-				<logic:messagesPresent property="LogOut"><html:errors property="LogOut"/></logic:messagesPresent>
-				<logic:messagesPresent property="Deactive"><html:errors property="Deactive"/></logic:messagesPresent>
-				<logic:messagesPresent property="alreadyLogin"><html:errors property="alreadyLogin"/></logic:messagesPresent>
-				<logic:messagesPresent property="WrongPass"><html:errors property="WrongPass"/></logic:messagesPresent>		 
-				<logic:messagesPresent property="NoServer"><html:errors property="NoServer"/></logic:messagesPresent></font>
-			</div>													
-			<table  cellpadding="0" cellspacing="0" BORDER=0  bordercolor="#E0E0E0" align=left> 
-				<tr>
-					<td valign="middle">
-						<table  cellpadding="0" cellspacing="0" BORDER=1 width="340"  bordercolor="#E0E0E0" height=100%  >
-							<tr> 
-								<td > 
-									<table cellpadding="0"cellspacing="7"  bgcolor="rgb(235,235,235)"  border=0  height=100% >
-										<tr> 
-											<td colspan="3" align="center"  class="tableHeader">
-											<!--<bean:message bundle="<%=lang%>" key= "603"/> -->
-											<%=BMConfig.getProperty("WELCOMEMSG","Login to HPSCB Net Banking")%> 
-											</td>
-										</tr>
-										<tr> 
-											<td  class="tableRowText" width="85"> <bean:message bundle="<%=lang%>" key= "603"/> : 
-											</td>
-											<td width="100"> <html:text   property="sIbUsr_LogId" styleId="sIbUsr_LogId" size="20" tabindex="1" maxlength="15" 		onkeypress="javascript:isValidNumAlpha()"/>
-											</td>
-											<td>&nbsp;</td>
-										</tr>
-										<tr> 
-											<td class="tableRowText"> <bean:message bundle="<%=lang%>" key= "100"/> : 
-											</td>
-											<td><html:password   property="sIbUsr_LogPass" styleId="sIbUsr_LogPass" size="20"  tabindex="2" maxlength="15" />
-											</td>
-											<td style="line-height:1">
+	
+	 <section class="brad-log-time" style="height: 20px">
+         <div class="inner-brad-log">
+            <div class="container">
+               <div class="row">
+                <div class="col-md-6">   
+				<div id="usernamegroup" class="inputgroup">
+					<label for="username" class="label"><bean:message bundle="<%=lang%>" key="1017"/></label>
+					<div id="username_container">
+						<html:text property="sIbUsr_LogId" styleId="sIbUsr_LogId" styleClass="input r4 wide mb16 mt8 username" size="20" tabindex="1" maxlength="15" onkeypress="javascript:isValidNumAlpha()"/>
+
+						<input type="hidden" name="token" id="token"/>
+					</div>
+					</div>
+					<div id="usernamegroup" class="inputgroup">
+						<label for="username" class="label"><bean:message bundle="<%=lang%>" key="100"/></label>
+						<div id="username_container">
+							<html:password property="sIbUsr_LogPass" styleId="sIbUsr_LogPass" size="20" styleClass="input r4 wide mb16 mt8 username" tabindex="2" maxlength="15" />
 											
-														<span onClick="virtualKey()"  class="rowLink1">Click here</span>
-														<span class="rowLink2">to use virtual keypad</span>
-												
-											</td>
+							<input type="hidden" name="sEncCode" id="sEncCode"/>
+
+						</div>
+						<div>
+											<span onClick="virtualKey()"  class="rowLink1">Click here</span>
+											<span class="rowLink2">to use virtual keypad</span>
+									
+									
 											<html:hidden   property="sMacAdd" styleId="sMacAdd"/>
 											<html:hidden  property="password" styleId ="password"/>
+						</div>
+					</div>
+					<div id="usernamegroup" class="inputgroup" >
+						<!--------------- Captcha Code ----------------->
+				
+									<div class="captcha-area" style="height: 60px;">
+										<div class="captcha-img" style="height: inherit;">
+											<img src="<%=request.getContextPath()%>/jsp/Captcha-login-page/captcha-bg.png" alt="Captch Background">
+											<span class="captcha" style="color:black;"></span>
+										</div>
+										<div class="captcha-div" style="height: inherit;">
+										<a onclick="reloadCaptcha();" >
+											<img style="height: 40px;margin: 10px;" src="<%=request.getContextPath()%>/jsp/Captcha-login-page/refresh-2-xxl.png" alt="Captch Background">
+										</a>
+											</input>
+										</div>
+									</div>
+									<!-- <form action="#" class="input-area-captcha"> -->
+										<div>
+										<action="#" class="input-area input input-area-captcha">
+										<!-- <div class="input-area-captcha  input-area input"> -->
+										<input type="text" onchange="functioncl()" id="captchabox" placeholder="Enter captcha" maxlength="6" onkeypress="isValidNumAlpha()" autocomplete="off" spellcheck="false" required>
+										<!-- <button style="display: none;" class="check-btn">Check</button> -->
+									<!-- </form> -->
+									</div>
+									<div class="status-text"></div>
+									
+									<!-- this is for captcha sc -->
+									<script src="<%=request.getContextPath()%>/jsp/Captcha-login-page/captcha_script.js"></script>
+					<!---------------Captcha Code Subhankshi----------------->
+						</div>
+						
+							<div id="usernamegroup" class="inputgroup" >
 
-										</tr>
-										<tr>
-											<td>&nbsp;</td>
-											<td>&nbsp;</td>
-											<td>
-												<span onClick="showKeyPadBenifit()"  class="rowLink3">Know Benefit !!</span></td>
-										</tr>
-										<!-- <tr>
-											<td  colspan="5" align=center>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click to Use virtual keyboard 
-												<span style="color:#a41c2b; font-weight:bold">&nbsp;&nbsp;(Recommended) </span> 
-												<input type="checkbox"  name="virtualpassword" onClick="virtualKey()" value="checkbox">
-											</td>
-										</tr> -->
-										<tr> 
-											<td colspan=3 align="center"> 
-												<input   value="Login" class="ibButton" type="button" name="ok" onclick="login_submit()"  tabindex="3" > 
-											</td>
-										</tr>
+								<div>	
+									<input   value="Login" class="ibButton" type="button" name="ok" onclick="login_submit()"  tabindex="3" > 
+								</div>
+							</div>								
 										
+						</div>				
 										
+									
 										
-										<!--	
-										<tr> 
-											<td colspan=3 align="center"> 
-												<input   value="restTest" class="ibButton" type="button" name="restok" onclick="rest_submit()"  tabindex="3" > 
-											</td>
-										</tr>
-											-->
-										
-										<tr id="invisible" style="display:none;">
-											<td colspan="3" align="center">
-												<span onClick="showForgotPassword()"  class="rowLink4">Forgot Password ?</span>
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</td>
-					<td width="10">&nbsp;</td>
-					<td>
-					<!--     New Added on 11/07/2008 By Ajay -->
+						<div id="invisible" style="display:none;">
+								<div col="md-3" align="center">
+									<span onClick="showForgotPassword()"  class="rowLink4">Forgot Password ?</span>
+								</div>
+						</div>
+                  
+                  </div>
+                  <div class="col-md-6">
 						<table width="300" border="1" bordercolor="black" cellspacing="0" cellpadding="0">
 							<tr>
 								<td class="keyPadHeading" align="center">
@@ -354,17 +388,39 @@
 												
 									
 							
-						</table>
-					</td>
-				</tr>
-			</table>
-	<!--		<iframe src="<%=request.getContextPath()%>/FullscreenSlitSlider/index.jsp" style="height: 280px;width: 395px;"></iframe> -->
+									</table>
+							</td>
+							</tr>
+					</table>
 			
-		</td>
-	</tr>
-</table>
+               </div>
+            </div>
+         </div>
+      </section>
 
-<br><br><br>
+	<%	if(request.getParameter("errno")!=null)
+	{	%>
+		
+		<div>
+			<div>
+				<bean:message bundle='<%=lang%>' key='7419'/>!!!</font>
+			</div>
+		</div>
+<%	}	%>
+	
+	<!-- <div>
+		<div>
+			<div id="diverrmessage"><font face="verdana" color="red">
+				<logic:messagesPresent property="Locked"><html:errors property="Locked"/></logic:messagesPresent>
+				<logic:messagesPresent property="LogOut"><html:errors property="LogOut"/></logic:messagesPresent>
+				<logic:messagesPresent property="Deactive"><html:errors property="Deactive"/></logic:messagesPresent>
+				<logic:messagesPresent property="alreadyLogin"><html:errors property="alreadyLogin"/></logic:messagesPresent>
+				<logic:messagesPresent property="WrongPass"><html:errors property="WrongPass"/></logic:messagesPresent>		 
+				<logic:messagesPresent property="NoServer"><html:errors property="NoServer"/></logic:messagesPresent></font>
+			</div>	
+		</div>
+	</div> -->
+
 </html:form>
 
 

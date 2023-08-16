@@ -431,26 +431,21 @@
 			overflow-y: scroll;
 			padding: 0px;
 		}
+		.heading{
+			background: #e5f4ff;
+    padding: 5px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a67b5;
+    display: flex;
+    align-items: center;
+		} 
 	</style>
 </head>
 <jsp:include page="/dashBoard/dashboardNew.jsp" />
 <body onload=fillData() >
 <html:form action="/accsum/acc_sum" >  
-    <!-- <header class="site-header">
-        <div class="top-header">
-            <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="site-logo">
-                        <a href="index.html">
-                            <img src="/allNewCSS/images/Final_Bank_Logo.png" alt="" width="150">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>  -->
+  
 
 <!-------------- Login Id --------------->
 <div class="menu">
@@ -469,45 +464,7 @@
 
 
 <!-- header-end -->
-<!-- <section class="brad-log-time">
-        <div class="inner-brad-log">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bradcums">
-                            <ul>
-                                <li>
-                                    <a href="/dashBoard/dashboard.jsp">Dashboard</a>
-                                    >
-                                    <strong>Account Statement</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>  
-                    <div class="col-md-6">
-                     <div class="log-time">
-                        <span class="time">
-                            <%= (new java.util.Date()).toLocaleString()%>
-                        </span>
-                        <span class="profile">                       
-                           <img src="/dashBoard/images/down-aroowwww.png" alt="">
-                        </span>
-                        <span class="profile-menu">
-                           <ul>
-                              <li>
-                                <a href="/my_profile/my_profile.jsp">My Profile</a>
-                              </li>
-                              <li>
-                                <a href="/jsp/login.do?action=ibUsrLogout">Log Out</a>
-                              </li>
-                           </ul>
-                        </span>
-                     </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section> -->
+
 
 
 
@@ -525,23 +482,27 @@
 	</div>
 </div>
 
-<section class="Account-Statement my-5">
-    <div class="Account-Statement-inner">
+<section class="Account-Statement my-4 " >
+    <div class="Account-Statement-inner container shadow-sm ">
         <div class="act-ineer-statemt">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="statement-main-shadow-div">
           
 
-					<div class="text-center">
-						<h5 class="justify-content-center  badge bg-primary p-2 fs-6  ">Loan Certificate</h5>
+					<div class="">
+						<!-- <h5 class=" heading ">Loan Certificate</h5> -->
+						<h6 class="heading">
+							<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+							Loan Certificate
+							</h6>  
 					</div>
                 
 					<div class="container">
 						<div class="chosse-an-account">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="form-label" style="font-size: 16px;">Account Number</label>
+									<label class="form-label">Account Number</label>
 									<select class="form-select" id="sAccnum" name="sAccnum" onchange="radioClick(this.value)">
 										<option value="">Select Account Number</option>
 										<% if (myList.size() != 0) {
@@ -555,16 +516,18 @@
 										<% } } %>
 									</select>
 								</div>
-								<div class="col">
+								<div class="">
 									<label class="form-label">Customer Id :- <%= custid %></label>
 								</div>
+
 							</div>
+
 						</div>
 					</div>
 					  
 
 
-					<div class="container">
+					<div class="container ">
 						<div class="start-date-end-date  ">
 							<div class="row">
 								<div class="col">
@@ -602,7 +565,7 @@
 					
                    
 
-					<div class="container p-2">
+					<div class="container p-4">
 						<div class="row">
 							<div class="col text-center">
 								<div class="d-flex justify-content-center">
@@ -650,8 +613,8 @@
 						</div>
 					</div>
 				<!--------------------Loading Spinner -------------------->
-                    <div class="statement-start-aria show m-4 " id="intTableDiv"  style="width: 100%; overflow:  hidden;">
-                        <table class="dataShowTable" id="dataShowTable" style="display: none;width: 100%; ">
+                    <div class="statement-start-aria show m-4 " id="intTableDiv"  style="width: 96%; overflow:  hidden;">
+                        <table class="dataShowTable"  id="dataShowTable" style="display: none;width: 100%; ">
 							<input type="hidden" name = "SelectedRow" id = "SelectedRow" value = "0"> 
 							<thead style="position: sticky;top: -1px;height: 25px;">
 								<tr>
