@@ -63,7 +63,7 @@ int errorcount=0;
 <body onLoad="Onload()">
 <html:form action="/request/reqchk.do"  >
 
-<table align="left" class="wrapperDataTable  container" style="width: 100%;">
+<table align="left" class="wrapperDataTable  container-fluid" style="width: 100%;">
 	<tr >
 		<!-- <td class="wrapperDataTableTR" align="center" >
 		 Request >> Cheque Status Enquiry</td> -->
@@ -108,14 +108,20 @@ int errorcount=0;
 					<bean:message bundle='<%=lang%>' key='7123'/></u></td>
 			</tr> -->
 
-			<div class=" text-center">
+			<!-- <div class=" text-center">
 				<h2 class="wrapperDataTableTR  badge bg-primary p-2 fs-6s"> <bean:message bundle='<%=lang%>' key='7123'/></h2>
 			</div>
-			
+			 -->
 		
 
 						<div class="container d-flex justify-content-center ">
-							<div class="row align-items-center box-sec  mt-5 p-4 s " style="width: 100%;">
+							<div class="row align-items-center box-sec  mt-5  " style="width: 100%;">
+								<div class=" wrapperDataTableTR text-center p-0 mb-4">	<h6 class="heading wrapperDataTableTR ">
+									<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+									<bean:message bundle='<%=lang%>' key='7123'/>
+									</h6>    
+											</div>
+											
 								
 								<div class=" col-md-6">
 									
@@ -177,7 +183,7 @@ int errorcount=0;
 							
 								
 								
-									<div  valign="bottom" >
+									<div  valign="bottom " >
 										<div id ="errorhead" style="display:none;">
 											<label >
 											<font color="#FF0000"><u>
@@ -193,8 +199,8 @@ int errorcount=0;
 
 			<table width="500">
 				<tr>
-					<td class="normalText" align="left">
-						<div id="diverrmessage">
+					<td class="normalText" align="left ">
+						<div id="diverrmessage" style="margin-left: 60px; ">
 							<logic:messagesPresent property="NoSerevr">
 							<html:errors property="NoSerevr"/>
 							</logic:messagesPresent>

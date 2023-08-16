@@ -50,7 +50,13 @@ if(usrInfo != null)
 
 
 <div class="d-flex justify-content-center col-md-12">
-	<div class="card box-sec container">
+	<div class="card box-sec container p-0">
+		<div class=" wrapperDataTableTR text-center ">	<h6 class="heading ">
+			<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+			Address Change Request
+
+			</h6>    
+					</div>
 		<div class="card-body">
 			<form action="/request/reqchk.do">
 				<div class="row mb-3">

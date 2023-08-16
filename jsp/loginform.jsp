@@ -140,9 +140,7 @@
 <tiles:insert page="/common/siteLayout.jsp" flush="true">
 <!-- tiles:put name="title" value="Login Page"/ -->
 <tiles:put name="header" value="/common/header.jsp"/>
-<tiles:put name="header_marquee" value="/common/header_marquee.jsp"/>
 <tiles:put name="menu" value="/common/login_leftHyperlink.jsp"/>
-<tiles:put name="footer_jsp" value="/common/footer.jsp"/>
 
 
 <tiles:put name="page_header" type="String" >							
@@ -151,11 +149,10 @@
 <tiles:put name="content" type="String">
 
 
-<body onkeyDown="StopKeyHandler()" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" bgcolor="#FFFFFF" link="#00AADD" vlink="#FF9933" background=""  >
-<!-- <body onkeyDown="StopKeyHandler()"  topmargin=0 leftmargin=0 > --><br>
+<body onkeyDown="StopKeyHandler()" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" bgcolor="#FFFFFF" link="#00AADD" vlink="#FF9933">
 	<html:form action= "/jsp/login">
 	
-	 <section class="brad-log-time" style="height: 20px">
+	 <section class="brad-log-time container-fluid">
          <div class="inner-brad-log">
             <div class="container">
                <div class="row">
@@ -408,7 +405,7 @@
 		</div>
 <%	}	%>
 	
-	<!-- <div>
+	<div>
 		<div>
 			<div id="diverrmessage"><font face="verdana" color="red">
 				<logic:messagesPresent property="Locked"><html:errors property="Locked"/></logic:messagesPresent>
@@ -419,8 +416,7 @@
 				<logic:messagesPresent property="NoServer"><html:errors property="NoServer"/></logic:messagesPresent></font>
 			</div>	
 		</div>
-	</div> -->
-
+	</div>
 </html:form>
 
 
@@ -757,7 +753,6 @@ function func_click(obj)
 
 </tiles:put>
 <tiles:put name="footerEnd_jsp" value="/common/footerEnd.jsp"/>
-<!--  -->
 </tiles:insert>
 <style type="text/css">
  .textbox {

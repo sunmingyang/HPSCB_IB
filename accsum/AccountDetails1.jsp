@@ -84,14 +84,21 @@ function helpopen()
 	</div>
 	<tr>
 		<td align="center">
-			<div class="container text-center">
+			<!-- <div class="container text-center">
 				<h2 class="wrapperDataTableTR  badge bg-primary p-2 fs-6  ">Account Details</h2>
-			</div>
-						
+			</div> -->
+			
 					<html:form action="/accsum/acc_sum.do">
-						<div class="container">
-							<div class="box-sec mt-5 p-4">
-							  <div class="row align-items-center justify-content-center">
+						<div class="container-fluid">
+							
+							<div class="box-sec mt-5 ">
+								<div class=" text-center">	<h6 class="heading wrapperDataTableTR ">
+									<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+									Account Details
+									</h6>    
+											</div>
+							
+							  <div class="row align-items-center justify-content-center mt-5">
 								<div class="col-md-4 mb-3">
 								  <label class="normalHeadText d-flex">Select an Account</label>
 								  <select class="form-select" onchange="fillaccno()">

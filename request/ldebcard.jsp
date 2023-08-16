@@ -71,8 +71,10 @@ String usrName = (String)session.getAttribute("user");
 		</table> -->
 		<br>
 		<table class="miniStmtBackBorder col-md-6 border box-sec">
+		
 			<tr class="miniStmtBack miniStmtBack d-flex justify-content-center p-5">
 				<td>
+					
 					<table>
 						
 						<% 
@@ -89,6 +91,7 @@ String usrName = (String)session.getAttribute("user");
 						<tr>
 							
 							<td>
+							
 
 								<label class=""><bean:message bundle='<%=lang%>' key='1027'/> :</label>
 								

@@ -10,13 +10,13 @@
   color: #fff;
   background: #ffffff;
 }
-body{
-  display: flex;
+/* body{
+
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background: #4db2ec;
-}
+} */
 .wrapper{
   max-width: 485px;
   width: 100%;
@@ -62,7 +62,7 @@ body{
   top: 50%;
   width: 100%;
   color: #fff;
-  font-size: 35px;
+  font-size: 25px;
   text-align: center;
   letter-spacing: 10px;
   transform: translate(-50%, -50%);

@@ -648,7 +648,7 @@
 
 var showIntApiData = '<td><input type="text" class="form-control" name="sr_No" class="sr_No tableTdInput" id="sr_No" value=""  /></td><td><input  class="form-control" type="text" id="intDate" name="intDate" class="intDate tableTdInput"/></td><td><input  class="form-control" type="text" id="intCrDr" name="intCrDr" class="intCrDr tableTdInput" /></td><td><input  class="form-control" type="text" id="intAmount" name="intAmount" class="intAmount tableTdInput" /></td>';
 
-var showIntTotalAmt = '<td colspan="3" style="text-align:right"><label style="font-size: 15px;padding-left: 40px;">Total Amount </label></td><td><input  class="form-control" type="text" id="totalInput" name="totalInput" style="width:100%;height:100%;border:1px solid black;color:black;font-size: 14px;text-align: center;"></td>';
+var showIntTotalAmt = '<td colspan="3" style="text-align:right"><label style="font-size: 15px;padding-left: 40px;">Total Amount </label></td><td><input  class="form-control" type="text" id="totalInput" name="totalInput"></td>';
 
 
 

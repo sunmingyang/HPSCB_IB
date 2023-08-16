@@ -4,7 +4,7 @@
 <body onBlur="onLoad()">
 
 <html:form action="/request/reqchk.do">
-<table align="left" class="wrapperDataTable container" style="width: 100%;">
+<table align="left" class="wrapperDataTable container-fluid" style="width: 100%;">
 	<!-- <tr >
 		<td class="wrapperDataTableTR" align="center">
 			Request >> Stop cheque request</td>
@@ -32,29 +32,17 @@
 				<html:errors property="NotValidCheque"/>
 				</logic:messagesPresent>
 			</div>
-			<!-- <table align="center" width=527 cellpadding="0" cellspacing="0" border=1 bordercolor="red">
-				<tr>
-					<td colspan="5" align="right" class="simple">
-						<input type="button" onClick="back_req(<%=(String)request.getParameter("row")%>,'STOPCHECK')" 
-						class="button" value="<bean:message bundle='<%=lang%>' key='843'/>"> -->
-						<!-- <input   value="<bean:message bundle='<%=lang%>' key='33'/>" type="button" 	onclick="helpopen()"/>
-						<input type="hidden"  id="sPrev_page" name="sPrev_page" value='stopChk'> -->
-					<!-- </td>
-				</tr>
-			</table> -->
-
-			<!-- <tr> 
-				<td class="tableHeader" align="center" colspan="2"><u>
-					<bean:message bundle='<%=lang%>' key='7140'/></u></td>
-			</tr> -->
-			<div class=" tableHeader text-center">
-				<h2 class="wrapperDataTableTR  badge bg-primary p-2 fs-6s"> <bean:message bundle='<%=lang%>' key='7140'/></h2>
-			</div>
+		
 			
 
 
 			<div class="container miniStmtBackBorder mt-5">
-				<div class=" miniStmtBack row align-items-center box-sec p-4 s" style="width: 100%;">
+				<div class=" miniStmtBack row align-items-center box-sec " style="width: 100%;">
+					<div class=" wrapperDataTableTR text-center p-0 mb-4">	<h6 class="heading wrapperDataTableTR ">
+						<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+						<bean:message bundle='<%=lang%>' key='7140'/>
+						</h6>    
+								</div>
 				  <div class="col-md-4">
 					<label class="normalHeadText"><bean:message bundle='<%=lang%>' key='1027'/> </label>
 									<% 

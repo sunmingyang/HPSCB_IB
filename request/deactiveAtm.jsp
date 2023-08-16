@@ -55,7 +55,7 @@ String usrInfo[][]=(String[][])session.getAttribute("userInfo");
 
 <html:form action="/request/reqchk.do" >
 
-<table align="left" class="wrapperDataTable " style="width: 100%;">
+<table align="left" class="wrapperDataTable container-fluid " style="width: 100%;">
 	
 	<div class="breadcrumb-container">
 		<div class="row">
@@ -70,10 +70,10 @@ String usrInfo[][]=(String[][])session.getAttribute("userInfo");
 		</div>
 	</div>
 
-	<div class="container text-center">
+	<!-- <div class="container text-center">
 		
 		<h2 class="wrapperDataTableTR  badge bg-primary p-2 fs-6s"> Request for ATM Deactivation !!!!!!!!</h2>
-	</div>
+	</div> -->
 	
 	<tr>
 		<td align="center">
@@ -95,8 +95,12 @@ String usrInfo[][]=(String[][])session.getAttribute("userInfo");
 %>
 
 <div class="container "  style="width: 80%; "  >
-	<div class="row justify-content-center align-items-center box-sec   mt-5 p-4" style="width: 100%;">
-	 
+	<div class="row justify-content-center align-items-center box-sec   mt-5 " style="width: 100%;">
+		<div class=" wrapperDataTableTR text-center p-0 mb-4">	<h6 class="heading wrapperDataTableTR ">
+			<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+			Request for ATM Deactivation !!!!!!!!
+			</h6>    
+					</div>
 		
 		<div class="text-left mt-2 col-md-6">
 			<label for="sAccList" class="normalHeadText d-flex ">Select Account Number:</label>
@@ -110,7 +114,7 @@ String usrInfo[][]=(String[][])session.getAttribute("userInfo");
 				 
 			</select>
 		</div>
-		<div class="text-center mt-3">
+		<div class="text-center mt-3 mb-2">
 			<!-- <button class="btn btn-primary" onClick="return deactivateAtm()"><bean:message bundle='<%=lang%>' key='7119'/></button> -->
 			<input type="button" class="btn btn-primary" onClick="return deactivateAtm()" value="<bean:message bundle='<%=lang%>' key='7119'/>">
 		</div>

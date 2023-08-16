@@ -221,11 +221,16 @@ else
 			</div>
 		</div>
 	</div>
-	<div class="wrapperDataTableTR  container text-center" >
+	<!-- <div class="wrapperDataTableTR  container text-center" >
 		<h2 class=" label-style badge bg-primary p-2 fs-6 mt-2 ">Standing Instructions Reminder</h2>
-	</div>
-	<div class="container border shadow">
-		<form action="/request/reqchk.do">
+	</div> -->
+	<div class="container border shadow p-0 " style="border-radius: 10px;" >
+		<div class=" wrapperDataTableTR text-center">	<h6 class="heading wrapperDataTableTR ">
+			<img style="width: 20px"  src="/styles/images/add-user-account-icon 1.png" alt="">
+			Standing Instructions Reminder
+			</h6>    
+					</div>
+		<form action="/request/reqchk.do" class=" p-4">
 			<div class="row mb-3">
 				<div class="col-md-4">
 					<label class="form-label">From Account Number:</label>
