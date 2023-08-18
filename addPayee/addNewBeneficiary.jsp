@@ -78,6 +78,7 @@ label{
 }
 	</script>
    <jsp:include page="/dashBoard/dashboardNew.jsp" />
+   <body>
 		<html:form action="/fundtransfer/fund.do">
       
 
