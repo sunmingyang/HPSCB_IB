@@ -27,7 +27,7 @@ String usrName = (String)session.getAttribute("user");
 <body>
 
 <html:form action="/request/reqchk.do" >
-<table class="wrapperDataTable container">
+<table class="wrapperDataTable  container-fluid" style="width: 100%;">
 	<tr >
 		<div class="breadcrumb-container">
 			<div class="row">
@@ -70,7 +70,7 @@ String usrName = (String)session.getAttribute("user");
 			</tr>
 		</table> -->
 		<br>
-		<table class="miniStmtBackBorder col-md-6 border box-sec">
+		<table class="miniStmtBackBorder col-md-12 border box-sec">
 		
 			<tr class="miniStmtBack miniStmtBack d-flex justify-content-center p-5">
 				<td>
